@@ -149,7 +149,9 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<section id=\"release\" class=\"panel panel-default\">\n<h1 class=\"panel-heading\">\n  Release (";
+output += "<section id=\"release\" class=\"panel panel-default\">\n<h1 class=\"panel-heading\">\n  ";
+output += runtime.suppressValue((lineno = 2, colno = 10, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Release"])), env.opts.autoescape);
+output += " (";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "id"), env.opts.autoescape);
 output += ")  <small> ocid (";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "ocid"), env.opts.autoescape);
