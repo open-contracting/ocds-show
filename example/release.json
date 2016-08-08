@@ -1,0 +1,10 @@
+example_release = {
+  "ocid": "ocid-1",
+  "id": "releaseid xxxxx",
+  "planning": {"rational": "the big plan"},
+  "awards": [
+    {"id": "award-1", "value": {"currency": "gbp", "amount": 1000}},
+    {"id": "award-2", "value": {"currency": "gbp", "amount": 2000}}
+  ]
+}
+

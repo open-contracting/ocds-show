@@ -1,0 +1,12 @@
+<section id="planning" class="panel panel-default">
+  <h2 class="panel-heading">
+    Planning
+  </h2>
+  <div class="panel-body">
+    {% if planning %}
+       Rational: {{planning.rational}}
+    {% else %}
+      <h4>No planning data</h4>
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title> </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/custom.css">
+
+    </head>
+    <body>
+      <h2> Input </h2>
+      <textarea id="input-json" name="input-json"></textarea>
+
+      <h2> Result </h2>
+      <div id="container">
+      </div>
+    </body>
+    
+    <script src="js/nunjucks.min.js"></script>
+    <script src="../templates.js"></script>
+    <script src="release.json"></script>
+    <script>
+       var jsonInput = document.getElementById('input-json')
+       var container = document.getElementById('container')
+
+       try {
+           jsonInput.value = JSON.stringify(example_release, null, 2)
+       } catch (e) {
+           jsonInput.value = "BAD DATA"
+       }
+
+       var render_json = function () {
+         try {
+             var content = nunjucks.render('release.html', JSON.parse(jsonInput.value));
+             container.innerHTML = content
+
+         } catch (e) {
+           container.innerHTML = '<h2> Invalid JSON data </h2>'
+         }
+       }
+
+       render_json()
+       document.getElementById('input-json').onkeyup = function(e) {
+         render_json()
+       }
+
+
+    </script>
+</html>
