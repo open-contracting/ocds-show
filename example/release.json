@@ -44,6 +44,7 @@ example_release = {
         "planning": {
             "budget": {
                 "source": "Highways and Pavements Budget",
+				"id": "2016-HP-001",
                 "description": "Budget allocation for highway maintenance, aligned with 2015 strategic plan. ",
                 "amount": {
                     "amount": 6700000.00,

@@ -1,41 +1,52 @@
 <header class="row">
 	<div class="col-md-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h1>
-					{{tender.title}}
-				</h1>
+		<div class="panel-group">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h1>
+						{{tender.title}} <small><a data-toggle="collapse" href="#metadata">(hide metadata)</a></small>
+						<!-- need to fix collapse behaviour -->
+					</h1>
+				</div>
+				<div id="metadata" class="panel-collapse collapse in">
+					<ul class="list-group">
+						<li class="list-group-item">
+							<strong>OCID: </strong>{{ocid}}
+						</li>
+						<li class="list-group-item">
+							<strong>Release ID: </strong>{{id}}
+						</li>
+						<li class="list-group-item">
+							<strong>Date: </strong>{{date}}
+						</li>
+						<li class="list-group-item">
+							<strong>Tags: </strong>
+							{% for t in tag %}
+								{{t}},
+							{% endfor %}
+						</li>
+						<li class="list-group-item">
+							<strong>Initiation type: </strong>{{initiationType}}
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
 </header>
-<details class="row">
-	<div class="col-md-12">
-		<ul class="list-group">
-			<li class="list-group-item">
-				<strong>OCID: </strong>{{ocid}}
-			</li>
-			<li class="list-group-item">
-				<strong>Release ID: </strong>{{id}}
-			</li>
-			<li class="list-group-item">
-				<strong>Date: </strong>{{date}}
-			</li>
-			<li class="list-group-item">
-				<strong>Tags: </strong>
-				{% for t in tag %}
-					{{t}},
-				{% endfor %}
-			</li>
-			<li class="list-group-item">
-				<strong>Initiation type: </strong>{{initiationType}}
-			</li>
-		</ul>
-	</div>
-</details>
 <main class="row">
 	<div class="col-md-8">
-		{% include 'planning.html' %}
+		{% if planning %}
+			{% include 'planning.html' %}
+		{% else %}
+			<div class="panel panel-danger"> <!-- make the panel behaviour dependent on the release tags, e.g. if planning is present in the release tags this should be danger, otherwise make it collapse -->
+				<div class="panel-heading">
+					<h2 class="panel-title">
+						No planning data provided
+					</h2>
+				</div>
+			</div>
+		{% endif %}
 		{% include 'tender.html' %}
 		{% include 'awards.html' %}
 		{% include 'contracts.html' %} 		
