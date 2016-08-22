@@ -1,12 +1,135 @@
+<!-- To Do: 
+			1. go through and make sure missing information is handled correctly for each property
+			2. work out how to display additional information on documents
+																				-->
 <section id="planning" class="panel panel-default">
-  <h2 class="panel-heading">
-    Planning
-  </h2>
-  <div class="panel-body">
-    {% if planning %}
-       Rational: {{planning.rational}}
-    {% else %}
-      <h4>No planning data</h4>
-    {% endif %}
-  </div>
+	<div class="panel-heading">
+		<h2>
+			{{ gettext("Planning") }}
+		</h2>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			
+			<div class="col-md-4">
+				{% if planning.budget.amount.amount %}
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Budget amount") }}
+							</h3>
+						</div>
+						<div class="panel-body">
+							<h4>
+								{{ planning.budget.amount.amount }} {{planning.budget.amount.currency}}
+							</h4>
+						</div>
+					</div>
+				{% else %}
+					<div class="panel panel-danger">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Budget amount not provided") }}
+							</h3>
+						</div>
+					</div>
+				{% endif %}
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-{% if planning.budget.description %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Budget description") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						{% if planning.budget.description %}
+							{{planning.budget.description}}
+						{% else %}
+							{{ gettext("Budget description not provided") }}
+						{% endif %}
+						<a href="{{planning.budget.source}}" target="_blank">
+							{% if planning.budget.id %}
+								{{planning.budget.id}}
+							{% else %}
+								{{ gettext("Budget source") }}
+							{% endif %}
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Project information") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						{{planning.budget.project}}
+						<a href="{{planning.budget.uri}}" target="_blank">{{planning.budget.projectID}}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				{% if planning.rationale %}
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Rationale") }}
+							</h3>
+						</div>
+						<div class="panel-body">
+							{{planning.rationale}}
+						</div>
+					</div>
+				{% else %}
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Rationale") }}
+							</h3>
+						</div>
+						<div class="panel-body">
+							{{ gettext("No rationale provided") }}
+						</div>
+					</div>
+				{% endif %}
+			</div>
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Documents") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>{{ gettext("Title") }}</th>
+									<th>{{ gettext("Type") }}</th>
+									<th>{{ gettext("Description") }}</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for document in planning.documents %}
+									<tr>
+										<td><a href="{{document.url}}" target="_blank">{{ document.title}}</a></td>
+										<td>{{ document.type }}</td>
+										<td>{{ document.description }}</td>
+										<!-- other document propertoes, i.e. datePublished, dateModified, format and language, should be displayed in a Modal -->
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
+
+

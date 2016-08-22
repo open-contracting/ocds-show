@@ -1,12 +1,46 @@
-<section id="release" class="panel panel-default">
-<h1 class="panel-heading">
-  {{ gettext("Release") }} ({{id}})  <small> ocid ({{ocid}})</small>
-</h1>
-
-<div class="panel-body">
-  {% include 'planning.html' %}
-  {% include 'awards.html' %}
-</div>
-
-
-</section>
+<header class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h1>
+					{{tender.title}}
+				</h1>
+			</div>
+		</div>
+	</div>
+</header>
+<details class="row">
+	<div class="col-md-12">
+		<ul class="list-group">
+			<li class="list-group-item">
+				<strong>OCID: </strong>{{ocid}}
+			</li>
+			<li class="list-group-item">
+				<strong>Release ID: </strong>{{id}}
+			</li>
+			<li class="list-group-item">
+				<strong>Date: </strong>{{date}}
+			</li>
+			<li class="list-group-item">
+				<strong>Tags: </strong>
+				{% for t in tag %}
+					{{t}},
+				{% endfor %}
+			</li>
+			<li class="list-group-item">
+				<strong>Initiation type: </strong>{{initiationType}}
+			</li>
+		</ul>
+	</div>
+</details>
+<main class="row">
+	<div class="col-md-8">
+		{% include 'planning.html' %}
+		{% include 'tender.html' %}
+		{% include 'awards.html' %}
+		{% include 'contracts.html' %} 		
+	</div>
+	<div class="col-md-4">
+		{% include 'buyer.html' %}
+	</div>
+</main>

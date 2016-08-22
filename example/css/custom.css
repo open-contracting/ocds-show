@@ -1,6 +1,16 @@
-h1.panel-heading,h2.panel-heading, h3.panel-heading,h4.panel-heading {
+/*h1.panel-heading,h2.panel-heading, h3.panel-heading,h4.panel-heading {
    margin-top: 0px;
    margin-bottom: 0px
+}*/
+
+.panel-heading h1, .panel-heading h2, .panel-heading h3, .panel-heading h4 {
+   margin-top: 0px;
+   margin-bottom: 0px
+}
+
+.panel-body h1, .panel-body h2, .panel-body h3, .panel-body h4 {
+   margin-top: 0px;
+   margin-bottom: 0px	
 }
 
 #input-json {
