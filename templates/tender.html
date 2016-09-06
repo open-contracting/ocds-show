@@ -1,8 +1,261 @@
 <section id="tender" class="panel panel-default">
-  <h2 class="panel-heading">
-    Tender
-  </h2>
-  <div class="panel-body">
-	Content
-  </div>
+	<div class="panel-heading">
+		<h2>Tender</h2>
+	</div>
+  
+  		<!-- outstanding fields
+		
+		procuringEntity [organisation]
+		
+		hasEnquiries
+		enquiryPeriod
+
+		numberOfTenderers
+		tenderers [organisations]
+
+		milestones []
+		
+		-->
+		
+		<!-- also need to add error handling for all fields -->
+		
+		<!-- is there a way we can reference codelist titles and descriptions? -->
+	
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Description") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						{{ tender.description }}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Status") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						{{ tender.status }}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Value") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						<strong>{{ gettext("Lower: ")}}</strong> {{ tender.minValue.amount }} <small>{{ tender.minValue.currency}}</small>	<!-- number formatting -->
+						<p><strong>{{ gettext("Upper: ")}}</strong> {{ tender.value.amount }} <small>{{ tender.value.currency}}</small></p>	<!-- number formatting -->
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Eligibility criteria")}}
+						</h3>
+					</div>
+					<div class="panel-body">
+						{{ tender.eligibilityCriteria }}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Key Dates")}}
+						</h3>
+					</div>
+					<div class="panel-body">	<!-- date formatting -->
+						<p><strong>{{ gettext("Tender start: ")}}</strong> {{ tender.tenderPeriod.startDate}}</p>
+						<p><strong>{{ gettext("Tender end: ")}}</strong> {{ tender.tenderPeriod.endDate }}</p>
+						<p><strong>{{ gettext("Award start: ")}}</strong> {{ tender.awardPeriod.startDate }}</p>
+						<p><strong>{{ gettext("Award end: ")}}</strong> {{ tender.awardPeriod.endDate }}</p>
+					</div>
+				</div>
+			
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Enquiries")}}	<!-- need to add to example data -->
+						</h3>
+					</div>
+					<div class="panel-body">
+						<p>
+						{% if tender.hasEnquiries %}
+							{{ gettext("There have been enquiries regarding this tender") }}
+						{% else %}
+							{{ gettext("There have been enquiries regarding this tender") }}	<!-- this isn't quite right, we need different messages depending on whether hasEnquiries = false or doesn't exist -->
+						{% endif %}
+						</p>
+						<p>{{ tender.enquiryPeriod.startDate }}</p>
+						<p>{{ tender.enquiryPeriod.endDate }}</p>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Procurement method") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						<h4>{{ tender.procurementMethod}}</h4>
+						<p>{{ tender.procurementMethodRationale}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Award criteria") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						<h4>{{ tender.awardCriteria }}</h4>
+						<p>{{ tender.awardCriteriaDetails }}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Submission method") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						<h4>
+							{% for method in tender.submissionMethod %}
+								{{ method }}
+							{% endfor %}
+						</h4>
+						<p>{{ tender.submissionMethodDetails}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Items") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>{{ gettext("ID") }}</th>
+									<th>{{ gettext("Description") }}</th>
+									<th>{{ gettext("Classification") }} <small>({{ gettext("Scheme - ID") }})</small></th>
+									<th>{{ gettext("Quantity") }} <small>({{ gettext("Unit") }})</small></th>
+									<th>{{ gettext("Value per unit") }}</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for item in tender.items %}
+									<tr>
+										<td>{{ item.id }}</td>
+										<td>{{ item.description }}</td>
+										<td>
+											{{ item.classification.description }}
+											<small>
+												(<a href="http://standard.open-contracting.org/latest/en/schema/codelists/#item-classification-scheme">{{ item.classification.scheme }}</a> -
+												{% if item.classification.uri %}
+													<a href="{{ item.classification.uri }}">{{ item.classification.id }}</a>)
+												{% else %}
+													{{ item.classification.id }})
+												{% endif %}
+											</small>
+											{% if item.additionalClassifications %}
+												{% for classification in item.additionalClassifications %}
+													<br>{{ classification.description }}
+													<small>
+														(<a href="http://standard.open-contracting.org/latest/en/schema/codelists/#item-classification-scheme">{{ classification.scheme }}</a> -
+														{% if classification.uri %}
+															<a href="{{ item.classification.uri }}">{{ classification.id }}</a>)
+														{% else %}
+															{{ classification.id }})
+														{% endif %}
+													</small>
+												{% endfor %}
+											{% endif %}
+										
+										</td>
+										<td>{{ item.quantity }} <small>({{ item.unit.name }})</small></td>
+										<td>{{ item.unit.value.amount }} {{ item.unit.value.currency }}</td> <!-- number formatting -->
+									</tr>
+								{% endfor %}
+							</tbody>	
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+			<!-- move this section into a document template -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Documents") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>{{ gettext("Title") }}</th>
+									<th>{{ gettext("Type") }}</th>
+									<th>{{ gettext("Description") }}</th>
+									<th>{{ gettext("Date published") }}</th>
+									<th>{{ gettext("Date modified") }}</th>
+									<th>{{ gettext("Format") }}</th>
+									<th>{{ gettext("Language") }}</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for document in tender.documents %}
+									<tr> <!-- add conditional colouring based on presence of url? -->
+										<td><a href="{{document.url}}" target="_blank">{{ document.title}}</a></td>
+										<td>{{ document.type }}</td>
+										<td>{{ document.description }}</td>
+										<td>{{ document.datePublished }}</td> <!-- add date formatting -->
+										<td>{{ doucment.dateModified }}</td> <!-- add date formatting -->
+										<td>{{ document.format}}</td>
+										<td>{{ document.language}}</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>

@@ -109,6 +109,24 @@ example_release = {
                             "currency": "GBP"
                         }
                     }
+                },
+				{
+                    "id": "0002",
+                    "description": "test string",
+                    "classification": {
+                        "scheme": "CPV",
+                        "id": "45233320",
+                        "description": "Foundation work for roads",
+                        "uri": "http://cpv.data.ac.uk/code-45233320.html"
+                    },
+                    "quantity": 10,
+                    "unit": {
+                        "name": "Miles",
+                        "value": {
+                            "amount": 50000,
+                            "currency": "GBP"
+                        }
+                    }
                 }
             ],
             "minValue": {
@@ -121,9 +139,17 @@ example_release = {
             },
             "procurementMethod": "open",
             "procurementMethodRationale": "An open competitive tender is required by EU Rules",
+			"eligibilityCriteria": "Bidders must be registered as xxxx in order to participate in the tender",
             "awardCriteria": "bestProposal",
             "awardCriteriaDetails": "The best proposal, subject to value for money requirements, will be accepted.",
-            "tenderPeriod": {
+            "submissionMethod": ["electronicSubmission","written"],
+			"submissionMethodDetails": "Bidders may submit their details via either hard or soft copy to the main contact point",
+			"enquiryPeriod": {
+				"startDate": "2010-03-01T09:00:00Z",
+				"endDate": "2010-03-14T17:30:00Z"
+				},
+			"hasEnquiries": false,
+			"tenderPeriod": {
                 "startDate": "2010-02-01T00:00:00Z"
             },
             "awardPeriod": {
