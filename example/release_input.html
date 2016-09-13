@@ -44,7 +44,12 @@
          try {
              var input = JSON.parse(jsonInput.value)
              input['gettext'] = gettext
-             var content = nunjucks.render('release.html', input);
+			 env = nunjucks.configure()
+			 // this needs replacing with something readable
+             env.addFilter('currency', function(number) {
+				return number.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
+			 })
+			 var content = env.render('release.html', input);
              container.innerHTML = content
 
          } catch (e) {

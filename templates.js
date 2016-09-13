@@ -342,23 +342,34 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "\t\t\t\t<div class=\"panel panel-default\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 3, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Documents"])), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t<table class=\"table table-striped\">\r\n\t\t\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 10, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Title"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 11, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Type"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 12, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Description"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 13, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Date published"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 14, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Date modified"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 15, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Format"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 16, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Language"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t</thead>\r\n\t\t\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t\t\t";
+output += "<div class=\"panel panel-";
+if(env.getFilter("length").call(context, runtime.contextOrFrameLookup(context, frame, "documents")) > 0) {
+output += "default";
+;
+}
+else {
+output += "warning";
+;
+}
+output += "\">\r\n\t<div class=\"panel-heading\">\r\n\t\t<h3 class=\"panel-title\">\r\n\t\t\t";
+output += runtime.suppressValue((lineno = 3, colno = 11, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Documents"])), env.opts.autoescape);
+output += "\r\n\t\t</h3>\r\n\t</div>\r\n\t<div class=\"panel-body\">\r\n\t\t";
+if(env.getFilter("length").call(context, runtime.contextOrFrameLookup(context, frame, "documents")) > 0) {
+output += "\r\n\t\t\t<table class=\"table table-striped\">\r\n\t\t\t\t<thead>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<th>";
+output += runtime.suppressValue((lineno = 11, colno = 18, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Title"])), env.opts.autoescape);
+output += "</th>\r\n\t\t\t\t\t\t<th>";
+output += runtime.suppressValue((lineno = 12, colno = 18, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Type"])), env.opts.autoescape);
+output += "</th>\r\n\t\t\t\t\t\t<th>";
+output += runtime.suppressValue((lineno = 13, colno = 18, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Description"])), env.opts.autoescape);
+output += "</th>\r\n\t\t\t\t\t\t<th>";
+output += runtime.suppressValue((lineno = 14, colno = 18, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Date published"])), env.opts.autoescape);
+output += "</th>\r\n\t\t\t\t\t\t<th>";
+output += runtime.suppressValue((lineno = 15, colno = 18, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Date modified"])), env.opts.autoescape);
+output += "</th>\r\n\t\t\t\t\t\t<th>";
+output += runtime.suppressValue((lineno = 16, colno = 18, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Format"])), env.opts.autoescape);
+output += "</th>\r\n\t\t\t\t\t\t<th>";
+output += runtime.suppressValue((lineno = 17, colno = 18, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Language"])), env.opts.autoescape);
+output += "</th>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t</thead>\r\n\t\t\t\t<tbody>\r\n\t\t\t\t\t";
 frame = frame.push();
 var t_3 = runtime.contextOrFrameLookup(context, frame, "documents");
 if(t_3) {var t_2 = t_3.length;
@@ -372,28 +383,385 @@ frame.set("loop.revindex0", t_2 - t_1 - 1);
 frame.set("loop.first", t_1 === 0);
 frame.set("loop.last", t_1 === t_2 - 1);
 frame.set("loop.length", t_2);
-output += "\r\n\t\t\t\t\t\t\t\t\t<tr> <!-- add conditional colouring based on presence of url? -->\r\n\t\t\t\t\t\t\t\t\t\t<td><a href=\"";
+output += "\r\n\t\t\t\t\t\t<tr> <!-- add conditional colouring based on presence of url? -->\r\n\t\t\t\t\t\t\t<td><a href=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"url"), env.opts.autoescape);
 output += "\" target=\"_blank\">";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"title"), env.opts.autoescape);
-output += "</a></td>\r\n\t\t\t\t\t\t\t\t\t\t<td>";
+output += "</a></td>\r\n\t\t\t\t\t\t\t<td>";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"type"), env.opts.autoescape);
-output += "</td>\r\n\t\t\t\t\t\t\t\t\t\t<td>";
+output += "</td>\r\n\t\t\t\t\t\t\t<td>";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"description"), env.opts.autoescape);
-output += "</td>\r\n\t\t\t\t\t\t\t\t\t\t<td>";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"datePublished"), env.opts.autoescape);
-output += "</td> <!-- add date formatting -->\r\n\t\t\t\t\t\t\t\t\t\t<td>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "doucment")),"dateModified"), env.opts.autoescape);
-output += "</td> <!-- add date formatting -->\r\n\t\t\t\t\t\t\t\t\t\t<td>";
+output += "</td>\r\n\t\t\t\t\t\t\t<td>";
+output += runtime.suppressValue(env.getFilter("truncate").call(context, runtime.memberLookup((t_4),"datePublished"),10,true,""), env.opts.autoescape);
+output += "</td> <!-- add time hover over? -->\r\n\t\t\t\t\t\t\t<td>";
+output += runtime.suppressValue(env.getFilter("truncate").call(context, runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "doucment")),"dateModified"),10,true,""), env.opts.autoescape);
+output += "</td> <!-- add time hover over? -->\r\n\t\t\t\t\t\t\t<td>";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"format"), env.opts.autoescape);
-output += "</td>\r\n\t\t\t\t\t\t\t\t\t\t<td>";
+output += "</td>\r\n\t\t\t\t\t\t\t<td>";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"language"), env.opts.autoescape);
-output += "</td>\r\n\t\t\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t\t";
+output += "</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t";
 ;
 }
 }
 frame = frame.pop();
-output += "\r\n\t\t\t\t\t\t\t</tbody>\r\n\t\t\t\t\t\t</table>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>";
+output += "\r\n\t\t\t\t</tbody>\r\n\t\t\t</table>\r\n\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t";
+output += runtime.suppressValue((lineno = 35, colno = 11, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No documents provided"])), env.opts.autoescape);
+output += "\r\n\t\t";
+;
+}
+output += "\r\n\t</div>\r\n</div>";
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["items.html"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+var parentTemplate = null;
+output += "<div class=\"panel panel-";
+if(env.getFilter("length").call(context, runtime.contextOrFrameLookup(context, frame, "items")) > 0) {
+output += "default";
+;
+}
+else {
+output += "warning";
+;
+}
+output += "\">\r\n\t<div class=\"panel-heading\">\r\n\t\t<h3 class=\"panel-title\">\r\n\t\t\t";
+output += runtime.suppressValue((lineno = 3, colno = 11, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Items"])), env.opts.autoescape);
+output += "\r\n\t\t</h3>\r\n\t</div>\r\n\t<div class=\"panel-body\">\r\n\t\t";
+if(env.getFilter("length").call(context, runtime.contextOrFrameLookup(context, frame, "items")) > 0) {
+output += "\r\n\t\t\t<table class=\"table table-striped\">\r\n\t\t\t\t<thead>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<th>";
+output += runtime.suppressValue((lineno = 11, colno = 18, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["ID"])), env.opts.autoescape);
+output += "</th>\r\n\t\t\t\t\t\t<th>";
+output += runtime.suppressValue((lineno = 12, colno = 18, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Description"])), env.opts.autoescape);
+output += "</th>\r\n\t\t\t\t\t\t<th>";
+output += runtime.suppressValue((lineno = 13, colno = 18, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Classification"])), env.opts.autoescape);
+output += " <small>(";
+output += runtime.suppressValue((lineno = 13, colno = 54, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Scheme - ID"])), env.opts.autoescape);
+output += ")</small></th>\r\n\t\t\t\t\t\t<th>";
+output += runtime.suppressValue((lineno = 14, colno = 18, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Quantity"])), env.opts.autoescape);
+output += " <small>(";
+output += runtime.suppressValue((lineno = 14, colno = 48, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Unit"])), env.opts.autoescape);
+output += ")</small></th>\r\n\t\t\t\t\t\t<th>";
+output += runtime.suppressValue((lineno = 15, colno = 18, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Value per unit"])), env.opts.autoescape);
+output += "</th>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t</thead>\r\n\t\t\t\t<tbody>\r\n\t\t\t\t\t";
+frame = frame.push();
+var t_3 = runtime.contextOrFrameLookup(context, frame, "items");
+if(t_3) {var t_2 = t_3.length;
+for(var t_1=0; t_1 < t_3.length; t_1++) {
+var t_4 = t_3[t_1];
+frame.set("item", t_4);
+frame.set("loop.index", t_1 + 1);
+frame.set("loop.index0", t_1);
+frame.set("loop.revindex", t_2 - t_1);
+frame.set("loop.revindex0", t_2 - t_1 - 1);
+frame.set("loop.first", t_1 === 0);
+frame.set("loop.last", t_1 === t_2 - 1);
+frame.set("loop.length", t_2);
+output += "\r\n\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t<td>";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"id"), env.opts.autoescape);
+output += "</td>\t<!-- need to consider whether to present the id - make sure this is consistent with documents approach -->\r\n\t\t\t\t\t\t\t<td>";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"description"), env.opts.autoescape);
+output += "</td>\r\n\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_4),"classification")),"description"), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t\t<small>\r\n\t\t\t\t\t\t\t\t\t(<a href=\"http://standard.open-contracting.org/latest/en/schema/codelists/#item-classification-scheme\">";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_4),"classification")),"scheme"), env.opts.autoescape);
+output += "</a> -\r\n\t\t\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((t_4),"classification")),"uri")) {
+output += "\r\n\t\t\t\t\t\t\t\t\t\t<a href=\"";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_4),"classification")),"uri"), env.opts.autoescape);
+output += "\">";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_4),"classification")),"id"), env.opts.autoescape);
+output += "</a>)\r\n\t\t\t\t\t\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_4),"classification")),"id"), env.opts.autoescape);
+output += ")\r\n\t\t\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t\t\t</small>\r\n\t\t\t\t\t\t\t\t";
+if(runtime.memberLookup((t_4),"additionalClassifications")) {
+output += "\r\n\t\t\t\t\t\t\t\t\t";
+frame = frame.push();
+var t_7 = runtime.memberLookup((t_4),"additionalClassifications");
+if(t_7) {var t_6 = t_7.length;
+for(var t_5=0; t_5 < t_7.length; t_5++) {
+var t_8 = t_7[t_5];
+frame.set("classification", t_8);
+frame.set("loop.index", t_5 + 1);
+frame.set("loop.index0", t_5);
+frame.set("loop.revindex", t_6 - t_5);
+frame.set("loop.revindex0", t_6 - t_5 - 1);
+frame.set("loop.first", t_5 === 0);
+frame.set("loop.last", t_5 === t_6 - 1);
+frame.set("loop.length", t_6);
+output += "\r\n\t\t\t\t\t\t\t\t\t\t<br>";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"description"), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t\t\t\t<small>\r\n\t\t\t\t\t\t\t\t\t\t\t(<a href=\"http://standard.open-contracting.org/latest/en/schema/codelists/#item-classification-scheme\">";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"scheme"), env.opts.autoescape);
+output += "</a> -\r\n\t\t\t\t\t\t\t\t\t\t\t";
+if(runtime.memberLookup((t_8),"uri")) {
+output += "\r\n\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_4),"classification")),"uri"), env.opts.autoescape);
+output += "\">";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
+output += "</a>)\r\n\t\t\t\t\t\t\t\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
+output += ")\r\n\t\t\t\t\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t\t\t\t\t</small>\r\n\t\t\t\t\t\t\t\t\t";
+;
+}
+}
+frame = frame.pop();
+output += "\r\n\t\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t<td>";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"quantity"), env.opts.autoescape);
+output += " <small>(";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_4),"unit")),"name"), env.opts.autoescape);
+output += ")</small></td>\r\n\t\t\t\t\t\t\t<td>";
+output += runtime.suppressValue(env.getFilter("currency").call(context, runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_4),"unit")),"value")),"amount")), env.opts.autoescape);
+output += " ";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_4),"unit")),"value")),"currency"), env.opts.autoescape);
+output += "</td>\r\n\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t";
+;
+}
+}
+frame = frame.pop();
+output += "\r\n\t\t\t\t</tbody>\t\r\n\t\t\t</table>\r\n\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t";
+output += runtime.suppressValue((lineno = 55, colno = 11, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No items provided"])), env.opts.autoescape);
+output += "\r\n\t\t";
+;
+}
+output += "\r\n\t</div>\r\n</div>";
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["organization.html"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+var parentTemplate = null;
+output += "<div class=\"panel panel-default\">\r\n\t\t<div class=\"panel-heading\">\r\n\t\t\t<h2>\r\n\t\t\t\t";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "title"), env.opts.autoescape);
+output += " \r\n\t\t\t</h2>\r\n\t\t</div>\r\n\t\t<div class=\"panel-body\">\r\n\t\t\t<h2>\r\n\t\t\t\t<small>";
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"name"), env.opts.autoescape);
+output += "</small>\r\n\t\t\t</h2>\r\n\t\t\t<p>\r\n\t\t\t\t";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"contactPoint")) {
+output += "\r\n\t\t\t\t\t<div id=\"contactPoint\" class=\"panel panel-default\">\r\n\t\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 15, colno = 16, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Contact Point"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"contactPoint")),"name")) {
+output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"contactPoint")),"name"), env.opts.autoescape);
+output += " <br>\r\n\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"contactPoint")),"email")) {
+output += "\r\n\t\t\t\t\t\t\t\t<a href=\"mailto:";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"contactPoint")),"email"), env.opts.autoescape);
+output += "\">";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"contactPoint")),"email"), env.opts.autoescape);
+output += "</a><br>\r\n\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"contactPoint")),"telephone")) {
+output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 26, colno = 16, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Phone: "])), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"contactPoint")),"telephone"), env.opts.autoescape);
+output += " <br>\r\n\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"contactPoint")),"faxNumber")) {
+output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 29, colno = 16, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Fax: "])), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"contactPoint")),"faxNumber"), env.opts.autoescape);
+output += " <br>\r\n\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"contactPoint")),"url")) {
+output += "\r\n\t\t\t\t\t\t\t\t<a href=\"";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"contactPoint")),"url"), env.opts.autoescape);
+output += "\" target=\"_blank\">";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"contactPoint")),"url"), env.opts.autoescape);
+output += "</a><br>\r\n\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t<div id=\"contactPoint\" class=\"panel panel-warning\">\r\n\t\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 40, colno = 16, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Contact Point"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 44, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No contact data provided"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"address")) {
+output += "\r\n\t\t\t\t\t<div id=\"address\" class=\"panel panel-default\">\r\n\t\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 52, colno = 16, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Address"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"address")),"streetAddress")) {
+output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"address")),"streetAddress"), env.opts.autoescape);
+output += " <br>\r\n\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"address")),"locality")) {
+output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"address")),"locality"), env.opts.autoescape);
+output += " <br>\r\n\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"address")),"region")) {
+output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"address")),"region"), env.opts.autoescape);
+output += " <br>\r\n\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"address")),"postalCode")) {
+output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"address")),"postalCode"), env.opts.autoescape);
+output += " <br>\r\n\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"address")),"countryName")) {
+output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"address")),"countryName"), env.opts.autoescape);
+output += " <br>\r\n\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t<div id=\"address\" class=\"panel panel-warning\">\r\n\t\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 77, colno = 16, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Address"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 81, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No address data provided"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"identifier")) {
+output += "\r\n\t\t\t\t\t<div id=\"identifier\" class=\"panel panel-default\">\r\n\t\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 89, colno = 16, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Identifiers"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t\t<table class=\"table table-striped\">\r\n\t\t\t\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t\t\t<th>";
+output += runtime.suppressValue((lineno = 96, colno = 22, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Scheme"])), env.opts.autoescape);
+output += "</th>\r\n\t\t\t\t\t\t\t\t\t\t<th>";
+output += runtime.suppressValue((lineno = 97, colno = 22, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Identifer"])), env.opts.autoescape);
+output += "</th>\r\n\t\t\t\t\t\t\t\t\t\t<th>";
+output += runtime.suppressValue((lineno = 98, colno = 22, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Legal Name"])), env.opts.autoescape);
+output += "</th>\r\n\t\t\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t\t</thead>\r\n\t\t\t\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t\t\t<td><a href=\"http://standard.open-contracting.org/latest/en/schema/codelists/#organization-identifier-scheme\" target=\"_blank\">";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"identifier")),"scheme"), env.opts.autoescape);
+output += "</a></td>\r\n\t\t\t\t\t\t\t\t\t\t<td>";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"identifier")),"id"), env.opts.autoescape);
+output += "</td>\r\n\t\t\t\t\t\t\t\t\t\t<td><a href=\"";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"identifier")),"uri"), env.opts.autoescape);
+output += "\" target=\"_blank\">";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"identifier")),"legalName"), env.opts.autoescape);
+output += "</a></td>\r\n\t\t\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"additionalIdentifiers")) {
+output += "\r\n\t\t\t\t\t\t\t\t\t\t";
+frame = frame.push();
+var t_3 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"additionalIdentifiers");
+if(t_3) {var t_2 = t_3.length;
+for(var t_1=0; t_1 < t_3.length; t_1++) {
+var t_4 = t_3[t_1];
+frame.set("identifier", t_4);
+frame.set("loop.index", t_1 + 1);
+frame.set("loop.index0", t_1);
+frame.set("loop.revindex", t_2 - t_1);
+frame.set("loop.revindex0", t_2 - t_1 - 1);
+frame.set("loop.first", t_1 === 0);
+frame.set("loop.last", t_1 === t_2 - 1);
+frame.set("loop.length", t_2);
+output += "\r\n\t\t\t\t\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t\t\t\t\t<td><a href=\"http://standard.open-contracting.org/latest/en/schema/codelists/#organization-identifier-scheme\" target=\"_blank\">";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"scheme"), env.opts.autoescape);
+output += "</a></td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t<td>";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"id"), env.opts.autoescape);
+output += "</td>\r\n\t\t\t\t\t\t\t\t\t\t\t\t<td><a href=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"uri"), env.opts.autoescape);
+output += "\" target=\"_blank\">";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"legalName"), env.opts.autoescape);
+output += "</a></td>\r\n\t\t\t\t\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t\t\t\t";
+;
+}
+}
+frame = frame.pop();
+output += "\r\n\t\t\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t\t\t</tbody>\r\n\t\t\t\t\t\t\t</table>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t<div id=\"identifier\" class=\"panel panel-warning\">\r\n\t\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 124, colno = 16, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Identifers"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 128, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No identifier data provided"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t</p>\r\n\t\t</div>\r\n</div>";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -419,39 +787,48 @@ try {
 var parentTemplate = null;
 output += "<section id=\"planning\" class=\"panel panel-default\">\r\n\t<div class=\"panel-heading\">\r\n\t\t<h2>\r\n\t\t\t";
 output += runtime.suppressValue((lineno = 3, colno = 11, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Planning"])), env.opts.autoescape);
-output += "\r\n\t\t</h2>\r\n\t</div>\r\n\t<div class=\"panel-body\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-6\">\r\n\t\t\t\t";
+output += "\r\n\t\t</h2>\r\n\t</div>\r\n\t<div class=\"panel-body\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-6\">\r\n\t\t\t\t<div class=\"panel panel-";
 if(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"budget")),"amount")),"amount")) {
-output += " <!-- is this approach better than changing the panel body to \"... data not provided\"? -->\r\n\t\t\t\t\t<div class=\"panel panel-default\">\r\n\t\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 13, colno = 16, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Budget amount"])), env.opts.autoescape);
+output += "default";
+;
+}
+else {
+output += "warning";
+;
+}
+output += "\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 12, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Budget amount"])), env.opts.autoescape);
 output += " <small>(";
-output += runtime.suppressValue((lineno = 13, colno = 51, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["ID"])), env.opts.autoescape);
-output += ")</small>\r\n\t\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t\t<h4>\r\n\t\t\t\t\t\t\t<!-- add number formatting -->\r\n\t\t\t\t\t\t\t\t";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"budget")),"amount")),"amount"), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 12, colno = 50, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["ID"])), env.opts.autoescape);
+output += ")</small>\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t<h4>\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"budget")),"amount")),"amount")) {
+output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(env.getFilter("currency").call(context, runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"budget")),"amount")),"amount")), env.opts.autoescape);
 output += "\r\n\t\t\t\t\t\t\t\t";
 output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"budget")),"amount")),"currency"), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t";
+;
+}
+else {
 output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 21, colno = 16, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Budget amount not provided"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t\t";
 if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"budget")),"id")) {
-output += "\r\n\t\t\t\t\t\t\t\t\t<small>(";
+output += "\r\n\t\t\t\t\t\t\t\t<small>(";
 output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"budget")),"id"), env.opts.autoescape);
-output += ")</small>\r\n\t\t\t\t\t\t\t\t";
+output += ")</small>\r\n\t\t\t\t\t\t\t";
 ;
 }
 else {
-output += "\r\n\t\t\t\t\t\t\t\t\t<small class=\"bg-warning\">(";
-output += runtime.suppressValue((lineno = 24, colno = 44, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Budget ID not provided"])), env.opts.autoescape);
-output += ")</small>\r\n\t\t\t\t\t\t\t\t";
+output += "\r\n\t\t\t\t\t\t\t\t<small class=\"bg-warning\">(";
+output += runtime.suppressValue((lineno = 26, colno = 43, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Budget ID not provided"])), env.opts.autoescape);
+output += ")</small>\r\n\t\t\t\t\t\t\t";
 ;
 }
-output += "\r\n\t\t\t\t\t\t\t</h4>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t";
-;
-}
-else {
-output += "\r\n\t\t\t\t\t<div class=\"panel panel-danger\">\r\n\t\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 33, colno = 16, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Budget amount not provided"])), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t";
-;
-}
-output += "\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-6\">\r\n\t\t\t\t<div class=\"panel panel-";
+output += "\r\n\t\t\t\t\t\t</h4>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-6\">\r\n\t\t\t\t<div class=\"panel panel-";
 if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"budget")),"description") && runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"budget")),"source")) {
 output += "default";
 ;
@@ -460,10 +837,10 @@ else {
 output += "warning";
 ;
 }
-output += "\"> <!-- c.f. to approach above -->\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 43, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Budget description"])), env.opts.autoescape);
+output += "\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 36, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Budget description"])), env.opts.autoescape);
 output += " <small>(";
-output += runtime.suppressValue((lineno = 43, colno = 55, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Source"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 36, colno = 55, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Source"])), env.opts.autoescape);
 output += ")</small>\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t";
 if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"budget")),"description")) {
 output += "\r\n\t\t\t\t\t\t\t";
@@ -473,7 +850,7 @@ output += "\r\n\t\t\t\t\t\t";
 }
 else {
 output += "\r\n\t\t\t\t\t\t\t<span class=\"bg-warning\">";
-output += runtime.suppressValue((lineno = 50, colno = 40, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Budget description not provided."])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 43, colno = 40, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Budget description not provided."])), env.opts.autoescape);
 output += "</span>\r\n\t\t\t\t\t\t";
 ;
 }
@@ -482,34 +859,41 @@ if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(cont
 output += "\r\n\t\t\t\t\t\t\t\t<small>(<a href=\"";
 output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"budget")),"source"), env.opts.autoescape);
 output += "\" target=\"_blank\">";
-output += runtime.suppressValue((lineno = 53, colno = 73, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Budget source"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 46, colno = 73, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Budget source"])), env.opts.autoescape);
 output += "</a>)</small>\r\n\t\t\t\t\t\t\t";
 ;
 }
 else {
 output += "\r\n\t\t\t\t\t\t\t\t<small class=\"bg-warning\">(";
-output += runtime.suppressValue((lineno = 55, colno = 43, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Budget source not provided"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 48, colno = 43, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Budget source not provided"])), env.opts.autoescape);
 output += ")</small>\r\n\t\t\t\t\t\t\t";
 ;
 }
-output += "\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-6\">\r\n\t\t\t\t";
+output += "\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-6\">\r\n\t\t\t\t<div class=\"panel panel-";
 if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"rationale")) {
-output += "\r\n\t\t\t\t\t<div class=\"panel panel-default\">\r\n\t\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 67, colno = 16, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Rationale"])), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t\t";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"rationale"), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t";
+output += "default";
 ;
 }
 else {
-output += "\r\n\t\t\t\t\t<div class=\"panel panel-warning\">\r\n\t\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 78, colno = 16, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Rationale"])), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 82, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No rationale provided"])), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t";
+output += "warning";
 ;
 }
-output += "\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-6\">\r\n\t\t\t\t<div class=\"panel panel-";
+output += "\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 59, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Rationale"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"rationale")) {
+output += "\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"rationale"), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 66, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Budget rationale not provided"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-6\">\r\n\t\t\t\t<div class=\"panel panel-";
 if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"budget")),"project") && runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"budget")),"projectID")) {
 output += "default";
 ;
@@ -519,9 +903,9 @@ output += "warning";
 ;
 }
 output += "\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 91, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Project information"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 75, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Project information"])), env.opts.autoescape);
 output += " <small>(";
-output += runtime.suppressValue((lineno = 91, colno = 55, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["ID"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 75, colno = 55, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["ID"])), env.opts.autoescape);
 output += ")</small>\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t";
 if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"budget")),"project")) {
 output += "\r\n\t\t\t\t\t\t\t";
@@ -531,7 +915,7 @@ output += "\r\n\t\t\t\t\t\t";
 }
 else {
 output += "\r\n\t\t\t\t\t\t\t<span class=\"bg-warning\">";
-output += runtime.suppressValue((lineno = 98, colno = 40, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Project name not provided."])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 82, colno = 40, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Project name not provided."])), env.opts.autoescape);
 output += "</span>\r\n\t\t\t\t\t\t";
 ;
 }
@@ -544,62 +928,40 @@ output += ")</small>\r\n\t\t\t\t\t\t";
 }
 else {
 output += "\r\n\t\t\t\t\t\t\t<small class=\"bg-warning\">(";
-output += runtime.suppressValue((lineno = 103, colno = 42, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Project ID not provided"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 87, colno = 42, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Project ID not provided"])), env.opts.autoescape);
 output += ")</small>\r\n\t\t\t\t\t\t";
 ;
 }
-output += "\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-12\">\r\n\t\t\t<!-- move this section into a document template -->\r\n\t\t\t\t<div class=\"panel panel-default\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 115, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Documents"])), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t<table class=\"table table-striped\">\r\n\t\t\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 122, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Title"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 123, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Type"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 124, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Description"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 125, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Date published"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 126, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Date modified"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 127, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Format"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 128, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Language"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t</thead>\r\n\t\t\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t\t\t";
-frame = frame.push();
-var t_3 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"documents");
-if(t_3) {var t_2 = t_3.length;
-for(var t_1=0; t_1 < t_3.length; t_1++) {
-var t_4 = t_3[t_1];
-frame.set("document", t_4);
-frame.set("loop.index", t_1 + 1);
-frame.set("loop.index0", t_1);
-frame.set("loop.revindex", t_2 - t_1);
-frame.set("loop.revindex0", t_2 - t_1 - 1);
-frame.set("loop.first", t_1 === 0);
-frame.set("loop.last", t_1 === t_2 - 1);
-frame.set("loop.length", t_2);
-output += "\r\n\t\t\t\t\t\t\t\t\t<tr> <!-- add conditional colouring based on presence of url? -->\r\n\t\t\t\t\t\t\t\t\t\t<td><a href=\"";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"url"), env.opts.autoescape);
-output += "\" target=\"_blank\">";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"title"), env.opts.autoescape);
-output += "</a></td>\r\n\t\t\t\t\t\t\t\t\t\t<td>";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"type"), env.opts.autoescape);
-output += "</td>\r\n\t\t\t\t\t\t\t\t\t\t<td>";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"description"), env.opts.autoescape);
-output += "</td>\r\n\t\t\t\t\t\t\t\t\t\t<td>";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"datePublished"), env.opts.autoescape);
-output += "</td> <!-- add date formatting -->\r\n\t\t\t\t\t\t\t\t\t\t<td>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "doucment")),"dateModified"), env.opts.autoescape);
-output += "</td> <!-- add date formatting -->\r\n\t\t\t\t\t\t\t\t\t\t<td>";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"format"), env.opts.autoescape);
-output += "</td>\r\n\t\t\t\t\t\t\t\t\t\t<td>";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"language"), env.opts.autoescape);
-output += "</td>\r\n\t\t\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t\t";
+output += "\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-12\">\r\n\t\t\t\t";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"documents")) {
+output += "\r\n\t\t\t\t\t";
+var t_1;
+t_1 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"documents");
+frame.set("documents", t_1, true);
+if(frame.topLevel) {
+context.setVariable("documents", t_1);
+}
+if(frame.topLevel) {
+context.addExport("documents", t_1);
+}
+output += "\r\n\t\t\t\t\t";
+env.getTemplate("documents.html", false, "planning.html", null, function(t_4,t_2) {
+if(t_4) { cb(t_4); return; }
+t_2.render(context.getVariables(), frame, function(t_5,t_3) {
+if(t_5) { cb(t_5); return; }
+output += t_3
+output += "\r\n\t\t\t\t";
+})});
+}
+else {
+output += "\r\n\t\t\t\t\t<div class=\"panel panel-warning\">\r\n\t\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 102, colno = 16, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Documents"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 106, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No documents provided"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t";
 ;
 }
-}
-frame = frame.pop();
-output += "\r\n\t\t\t\t\t\t\t</tbody>\r\n\t\t\t\t\t\t</table>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</section>\r\n\r\n\r\n";
+output += "\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</section>\r\n\r\n\r\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -625,43 +987,24 @@ try {
 var parentTemplate = null;
 output += "<header class=\"row\">\r\n\t<div class=\"col-md-12\">\r\n\t\t<div class=\"panel-group\">\r\n\t\t\t<div class=\"panel panel-default\">\r\n\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t<h1>\r\n\t\t\t\t\t\t";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"title"), env.opts.autoescape);
-output += " <small><a data-toggle=\"collapse\" href=\"#metadata\">(hide metadata)</a></small>\r\n\t\t\t\t\t\t<!-- need to fix collapse behaviour -->\r\n\t\t\t\t\t</h1>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div id=\"metadata\" class=\"panel-collapse collapse in\">\r\n\t\t\t\t\t<ul class=\"list-group\">\r\n\t\t\t\t\t\t<li class=\"list-group-item\">\r\n\t\t\t\t\t\t\t<strong>OCID: </strong>";
+output += " <small><a data-toggle=\"collapse\" href=\"#metadata\">(hide metadata)</a></small>\r\n\t\t\t\t\t</h1>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div id=\"metadata\" class=\"panel-collapse collapse in\">\r\n\t\t\t\t\t<ul class=\"list-group\">\r\n\t\t\t\t\t\t<li class=\"list-group-item\">\r\n\t\t\t\t\t\t\t<strong>OCID: </strong>";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "ocid"), env.opts.autoescape);
 output += "\r\n\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t<li class=\"list-group-item\">\r\n\t\t\t\t\t\t\t<strong>Release ID: </strong>";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "id"), env.opts.autoescape);
 output += "\r\n\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t<li class=\"list-group-item\">\r\n\t\t\t\t\t\t\t<strong>Date: </strong>";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "date"), env.opts.autoescape);
 output += "\r\n\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t<li class=\"list-group-item\">\r\n\t\t\t\t\t\t\t<strong>Tags: </strong>\r\n\t\t\t\t\t\t\t";
-frame = frame.push();
-var t_3 = runtime.contextOrFrameLookup(context, frame, "tag");
-if(t_3) {var t_2 = t_3.length;
-for(var t_1=0; t_1 < t_3.length; t_1++) {
-var t_4 = t_3[t_1];
-frame.set("t", t_4);
-frame.set("loop.index", t_1 + 1);
-frame.set("loop.index0", t_1);
-frame.set("loop.revindex", t_2 - t_1);
-frame.set("loop.revindex0", t_2 - t_1 - 1);
-frame.set("loop.first", t_1 === 0);
-frame.set("loop.last", t_1 === t_2 - 1);
-frame.set("loop.length", t_2);
-output += "\r\n\t\t\t\t\t\t\t\t";
-output += runtime.suppressValue(t_4, env.opts.autoescape);
-output += ",\r\n\t\t\t\t\t\t\t";
-;
-}
-}
-frame = frame.pop();
+output += runtime.suppressValue(env.getFilter("join").call(context, runtime.contextOrFrameLookup(context, frame, "tag"),", "), env.opts.autoescape);
 output += "\r\n\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t<li class=\"list-group-item\">\r\n\t\t\t\t\t\t\t<strong>Initiation type: </strong>";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "initiationType"), env.opts.autoescape);
 output += "\r\n\t\t\t\t\t\t</li>\r\n\t\t\t\t\t</ul>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</header>\r\n<main class=\"row\">\r\n\t<div class=\"col-md-8\">\r\n\t\t";
 if(runtime.contextOrFrameLookup(context, frame, "planning")) {
 output += "\r\n\t\t\t";
-env.getTemplate("planning.html", false, "release.html", null, function(t_7,t_5) {
-if(t_7) { cb(t_7); return; }
-t_5.render(context.getVariables(), frame, function(t_8,t_6) {
-if(t_8) { cb(t_8); return; }
-output += t_6
+env.getTemplate("planning.html", false, "release.html", null, function(t_3,t_1) {
+if(t_3) { cb(t_3); return; }
+t_1.render(context.getVariables(), frame, function(t_4,t_2) {
+if(t_4) { cb(t_4); return; }
+output += t_2
 output += "\r\n\t\t";
 })});
 }
@@ -670,29 +1013,49 @@ output += "\r\n\t\t\t<div class=\"panel panel-danger\"> <!-- make the panel beha
 ;
 }
 output += "\r\n\t\t";
-env.getTemplate("tender.html", false, "release.html", null, function(t_11,t_9) {
+env.getTemplate("tender.html", false, "release.html", null, function(t_7,t_5) {
+if(t_7) { cb(t_7); return; }
+t_5.render(context.getVariables(), frame, function(t_8,t_6) {
+if(t_8) { cb(t_8); return; }
+output += t_6
+output += "\r\n\t\t";
+env.getTemplate("awards.html", false, "release.html", null, function(t_11,t_9) {
 if(t_11) { cb(t_11); return; }
 t_9.render(context.getVariables(), frame, function(t_12,t_10) {
 if(t_12) { cb(t_12); return; }
 output += t_10
 output += "\r\n\t\t";
-env.getTemplate("awards.html", false, "release.html", null, function(t_15,t_13) {
+env.getTemplate("contracts.html", false, "release.html", null, function(t_15,t_13) {
 if(t_15) { cb(t_15); return; }
 t_13.render(context.getVariables(), frame, function(t_16,t_14) {
 if(t_16) { cb(t_16); return; }
 output += t_14
-output += "\r\n\t\t";
-env.getTemplate("contracts.html", false, "release.html", null, function(t_19,t_17) {
-if(t_19) { cb(t_19); return; }
-t_17.render(context.getVariables(), frame, function(t_20,t_18) {
-if(t_20) { cb(t_20); return; }
-output += t_18
 output += " \t\t\r\n\t</div>\r\n\t<div class=\"col-md-4\">\r\n\t\t";
-env.getTemplate("buyer.html", false, "release.html", null, function(t_23,t_21) {
-if(t_23) { cb(t_23); return; }
-t_21.render(context.getVariables(), frame, function(t_24,t_22) {
-if(t_24) { cb(t_24); return; }
-output += t_22
+var t_17;
+t_17 = runtime.contextOrFrameLookup(context, frame, "buyer");
+frame.set("organization", t_17, true);
+if(frame.topLevel) {
+context.setVariable("organization", t_17);
+}
+if(frame.topLevel) {
+context.addExport("organization", t_17);
+}
+output += "\r\n\t\t";
+var t_18;
+t_18 = "Buyer";
+frame.set("title", t_18, true);
+if(frame.topLevel) {
+context.setVariable("title", t_18);
+}
+if(frame.topLevel) {
+context.addExport("title", t_18);
+}
+output += "\r\n\t\t";
+env.getTemplate("organization.html", false, "release.html", null, function(t_21,t_19) {
+if(t_21) { cb(t_21); return; }
+t_19.render(context.getVariables(), frame, function(t_22,t_20) {
+if(t_22) { cb(t_22); return; }
+output += t_20
 output += "\r\n\t</div>\r\n</main>";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
@@ -717,267 +1080,425 @@ var colno = null;
 var output = "";
 try {
 var parentTemplate = null;
-output += "<section id=\"tender\" class=\"panel panel-default\">\r\n\t<div class=\"panel-heading\">\r\n\t\t<h2>Tender</h2>\r\n\t</div>\r\n  \r\n  \t\t<!-- outstanding fields\r\n\t\t\r\n\t\tprocuringEntity [organisation]\r\n\t\t\r\n\t\thasEnquiries\r\n\t\tenquiryPeriod\r\n\r\n\t\tnumberOfTenderers\r\n\t\ttenderers [organisations]\r\n\r\n\t\tmilestones []\r\n\t\t\r\n\t\t-->\r\n\t\t\r\n\t\t<!-- also need to add error handling for all fields -->\r\n\t\t\r\n\t\t<!-- is there a way we can reference codelist titles and descriptions? -->\r\n\t\r\n\t<div class=\"panel-body\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<div class=\"panel panel-default\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 29, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Description"])), env.opts.autoescape);
+output += "<section id=\"tender\" class=\"panel panel-default\">\r\n\t<div class=\"panel-heading\">\r\n\t\t<h2>Tender</h2>\r\n\t</div>\r\n  \r\n  \t\t<!-- outstanding fields\r\n\t\t\r\n\t\tprocuringEntity [organisation]\r\n\t\t\r\n\t\tnumberOfTenderers\r\n\t\ttenderers [organisations]\r\n\r\n\t\tmilestones []\r\n\t\t\r\n\t\t-->\r\n\t\t\r\n\t\t<!-- also need to add error handling for all fields -->\r\n\t\t\r\n\t\t<!-- is there a way we can reference codelist titles and descriptions? Using a custom filter or function -->\r\n\t\t\r\n\t\t<!-- should i go through and add elif field|length == 0 then warning ?-->\r\n\t\r\n\t<div class=\"panel-body\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<div class=\"panel panel-";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"description")) {
+output += "default";
+;
+}
+else {
+output += "warning";
+;
+}
+output += "\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 28, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Description"])), env.opts.autoescape);
 output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"description"), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<div class=\"panel panel-default\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 41, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Status"])), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"status"), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<div class=\"panel panel-default\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 53, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Value"])), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t<strong>";
-output += runtime.suppressValue((lineno = 57, colno = 22, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Lower: "])), env.opts.autoescape);
-output += "</strong> ";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"minValue")),"amount"), env.opts.autoescape);
-output += " <small>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"minValue")),"currency"), env.opts.autoescape);
-output += "</small>\t<!-- number formatting -->\r\n\t\t\t\t\t\t<p><strong>";
-output += runtime.suppressValue((lineno = 58, colno = 25, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Upper: "])), env.opts.autoescape);
-output += "</strong> ";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"value")),"amount"), env.opts.autoescape);
-output += " <small>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"value")),"currency"), env.opts.autoescape);
-output += "</small></p>\t<!-- number formatting -->\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<div class=\"panel panel-default\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 69, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Eligibility criteria"])), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"eligibilityCriteria"), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<div class=\"panel panel-default\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 81, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Key Dates"])), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\t<!-- date formatting -->\r\n\t\t\t\t\t\t<p><strong>";
-output += runtime.suppressValue((lineno = 85, colno = 25, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Tender start: "])), env.opts.autoescape);
-output += "</strong> ";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"tenderPeriod")),"startDate"), env.opts.autoescape);
-output += "</p>\r\n\t\t\t\t\t\t<p><strong>";
-output += runtime.suppressValue((lineno = 86, colno = 25, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Tender end: "])), env.opts.autoescape);
-output += "</strong> ";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"tenderPeriod")),"endDate"), env.opts.autoescape);
-output += "</p>\r\n\t\t\t\t\t\t<p><strong>";
-output += runtime.suppressValue((lineno = 87, colno = 25, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Award start: "])), env.opts.autoescape);
-output += "</strong> ";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"awardPeriod")),"startDate"), env.opts.autoescape);
-output += "</p>\r\n\t\t\t\t\t\t<p><strong>";
-output += runtime.suppressValue((lineno = 88, colno = 25, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Award end: "])), env.opts.autoescape);
-output += "</strong> ";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"awardPeriod")),"endDate"), env.opts.autoescape);
-output += "</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<div class=\"panel panel-default\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 97, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Enquiries"])), env.opts.autoescape);
-output += "\t<!-- need to add to example data -->\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t";
-if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"hasEnquiries")) {
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"description")) {
 output += "\r\n\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 103, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["There have been enquiries regarding this tender"])), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"description"), env.opts.autoescape);
 output += "\r\n\t\t\t\t\t\t";
 ;
 }
 else {
 output += "\r\n\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 105, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["There have been enquiries regarding this tender"])), env.opts.autoescape);
-output += "\t<!-- this isn't quite right, we need different messages depending on whether hasEnquiries = false or doesn't exist -->\r\n\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 35, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No description provided"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t";
 ;
 }
-output += "\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t<p>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"enquiryPeriod")),"startDate"), env.opts.autoescape);
-output += "</p>\r\n\t\t\t\t\t\t<p>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"enquiryPeriod")),"endDate"), env.opts.autoescape);
-output += "</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<div class=\"panel panel-default\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 120, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Procurement method"])), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t<h4>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"procurementMethod"), env.opts.autoescape);
-output += "</h4>\r\n\t\t\t\t\t\t<p>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"procurementMethodRationale"), env.opts.autoescape);
-output += "</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<div class=\"panel panel-default\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 133, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Award criteria"])), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t<h4>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"awardCriteria"), env.opts.autoescape);
-output += "</h4>\r\n\t\t\t\t\t\t<p>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"awardCriteriaDetails"), env.opts.autoescape);
-output += "</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<div class=\"panel panel-default\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 146, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Submission method"])), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t<h4>\r\n\t\t\t\t\t\t\t";
-frame = frame.push();
-var t_3 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"submissionMethod");
-if(t_3) {var t_2 = t_3.length;
-for(var t_1=0; t_1 < t_3.length; t_1++) {
-var t_4 = t_3[t_1];
-frame.set("method", t_4);
-frame.set("loop.index", t_1 + 1);
-frame.set("loop.index0", t_1);
-frame.set("loop.revindex", t_2 - t_1);
-frame.set("loop.revindex0", t_2 - t_1 - 1);
-frame.set("loop.first", t_1 === 0);
-frame.set("loop.last", t_1 === t_2 - 1);
-frame.set("loop.length", t_2);
+output += "\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<div class=\"panel panel-";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"status")) {
+output += "default";
+;
+}
+else {
+output += "warning";
+;
+}
+output += "\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 44, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Status"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t<h4>\r\n\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"status")) {
+output += "\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"status"), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 52, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No status provided"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t</h4>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<div class=\"panel panel-";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"minvalue")),"amount") || runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"value")),"amount")) {
+output += "default";
+;
+}
+else {
+output += "warning";
+;
+}
+output += "\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 62, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Value"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t<strong>";
+output += runtime.suppressValue((lineno = 66, colno = 22, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Lower: "])), env.opts.autoescape);
+output += "</strong>\r\n\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"minValue")),"amount")) {
+output += "\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue(env.getFilter("currency").call(context, runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"minValue")),"amount")), env.opts.autoescape);
+output += " <small>";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"minValue")),"currency"), env.opts.autoescape);
+output += "</small>\r\n\t\t\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t\t\t<span class=\"bg-warning\">";
+output += runtime.suppressValue((lineno = 70, colno = 40, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No minimum value provided"])), env.opts.autoescape);
+output += "</span>\r\n\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t<p><strong>";
+output += runtime.suppressValue((lineno = 72, colno = 25, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Upper: "])), env.opts.autoescape);
+output += "</strong>\r\n\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"value")),"amount")) {
+output += "\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue(env.getFilter("currency").call(context, runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"value")),"amount")), env.opts.autoescape);
+output += " <small>";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"value")),"currency"), env.opts.autoescape);
+output += "</small></p>\r\n\t\t\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t\t\t<span class=\"bg-warning\">";
+output += runtime.suppressValue((lineno = 76, colno = 40, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No value provided"])), env.opts.autoescape);
+output += "</span>\r\n\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<div class=\"panel panel-";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"eligibilityCriteria")) {
+output += "default";
+;
+}
+else {
+output += "warning";
+;
+}
+output += "\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 87, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Eligibility criteria"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"eligibilityCriteria")) {
+output += "\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"eligibilityCriteria"), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 94, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No eligibility criteria provided"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<div class=\"panel panel-";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"tenderPeriod")) {
+output += "default";
+;
+}
+else {
+output += "warning";
+;
+}
+output += "\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 103, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Key Dates"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\t<!-- add time hover over? -->\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<strong>";
+output += runtime.suppressValue((lineno = 108, colno = 23, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Tender start: "])), env.opts.autoescape);
+output += "</strong>\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"tenderPeriod")),"startDate")) {
 output += "\r\n\t\t\t\t\t\t\t\t";
-output += runtime.suppressValue(t_4, env.opts.autoescape);
+output += runtime.suppressValue(env.getFilter("truncate").call(context, runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"tenderPeriod")),"startDate"),10,true,""), env.opts.autoescape);
 output += "\r\n\t\t\t\t\t\t\t";
 ;
 }
+else {
+output += "\r\n\t\t\t\t\t\t\t\t<span class=\"bg-warning\">";
+output += runtime.suppressValue((lineno = 112, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No start date provided"])), env.opts.autoescape);
+output += "</span>\r\n\t\t\t\t\t\t\t";
+;
 }
-frame = frame.pop();
-output += "\r\n\t\t\t\t\t\t</h4>\r\n\t\t\t\t\t\t<p>";
+output += "\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<strong>";
+output += runtime.suppressValue((lineno = 116, colno = 23, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Tender end: "])), env.opts.autoescape);
+output += "</strong>\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"tenderPeriod")),"endDate")) {
+output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(env.getFilter("truncate").call(context, runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"tenderPeriod")),"endDate"),10,true,""), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t\t\t\t<span class=\"bg-warning\">";
+output += runtime.suppressValue((lineno = 120, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No end date provided"])), env.opts.autoescape);
+output += "</span>\r\n\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<strong>";
+output += runtime.suppressValue((lineno = 124, colno = 23, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Award start: "])), env.opts.autoescape);
+output += "</strong>\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"awardPeriod")),"startDate")) {
+output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(env.getFilter("truncate").call(context, runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"awardPeriod")),"startDate"),10,true,""), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t\t\t\t<span class=\"bg-warning\">";
+output += runtime.suppressValue((lineno = 128, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No start date provided"])), env.opts.autoescape);
+output += "</span>\r\n\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t<p>\t\r\n\t\t\t\t\t\t\t<strong>";
+output += runtime.suppressValue((lineno = 132, colno = 23, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Award end: "])), env.opts.autoescape);
+output += "</strong>\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"awardPeriod")),"endDate")) {
+output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(env.getFilter("truncate").call(context, runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"awardPeriod")),"endDate"),10,true,""), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t\t\t\t<span class=\"bg-warning\">";
+output += runtime.suppressValue((lineno = 136, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No end date provided"])), env.opts.autoescape);
+output += "<span>\r\n\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<div class=\"panel panel-";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"enquiryPeriod")) {
+output += "default";
+;
+}
+else {
+output += "warning";
+;
+}
+output += "\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 146, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Enquiries"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"hasEnquiries") == false) {
+output += "\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 152, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["There have been no enquiries regarding this tender"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t";
+;
+}
+else {
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"hasEnquiries")) {
+output += "\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 154, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["There have been enquiries regarding this tender"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t\t\t<span class=\"bg-warning\">";
+output += runtime.suppressValue((lineno = 156, colno = 40, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No information on enquiries provided"])), env.opts.autoescape);
+output += "</span>\r\n\t\t\t\t\t\t";
+;
+}
+;
+}
+output += "\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<strong>";
+output += runtime.suppressValue((lineno = 160, colno = 23, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Enquiries start: "])), env.opts.autoescape);
+output += "</strong>\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"enquiryPeriod")),"startDate")) {
+output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(env.getFilter("truncate").call(context, runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"enquiryPeriod")),"startDate"),10,true,""), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t\t\t\t<span class=\"bg-warning\">";
+output += runtime.suppressValue((lineno = 164, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No start date provided"])), env.opts.autoescape);
+output += "</span>\r\n\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t<strong>";
+output += runtime.suppressValue((lineno = 168, colno = 23, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Enquiries end: "])), env.opts.autoescape);
+output += "</strong>\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"enquiryPeriod")),"endDate")) {
+output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(env.getFilter("truncate").call(context, runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"enquiryPeriod")),"endDate"),10,true,""), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t\t\t\t<span class=\"bg-warning\">";
+output += runtime.suppressValue((lineno = 172, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No end date provided"])), env.opts.autoescape);
+output += "</span>\r\n\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<div class=\"panel panel-";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"procurementMethod")) {
+output += "default";
+;
+}
+else {
+output += "warning";
+;
+}
+output += "\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 185, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Procurement method"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"procurementMethod")) {
+output += "\r\n\t\t\t\t\t\t\t<h4>";
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"procurementMethod"), env.opts.autoescape);
+output += "</h4>\t<!-- set up a filter or function to convert between codelist values and titles -->\r\n\t\t\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t\t\t<h4>No procurement method provided</h4>\r\n\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"procurementMethodRationale")) {
+output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"procurementMethodRationale"), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t\t\t\t<span class=\"bg-warning\">";
+output += runtime.suppressValue((lineno = 198, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No rationale provided"])), env.opts.autoescape);
+output += "</span>\r\n\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<div class=\"panel panel-";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"awardCriteria")) {
+output += "default";
+;
+}
+else {
+output += "warning";
+;
+}
+output += "\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 208, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Award criteria"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t<h4>\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"awardCriteria")) {
+output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"awardCriteria"), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 216, colno = 16, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No award criteria provided"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t</h4>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"awardCriteriaDetails")) {
+output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"awardCriteriaDetails"), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t\t\t\t<span class=\"bg-warning\">";
+output += runtime.suppressValue((lineno = 223, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No award criteria details provided"])), env.opts.autoescape);
+output += "</span>\r\n\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col-md-4\">\r\n\t\t\t\t<div class=\"panel panel-";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"submissionMethod")) {
+output += "default";
+;
+}
+else {
+output += "warning";
+;
+}
+output += "\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 233, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Submission method"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t<h4>\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"submissionMethod")) {
+output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue(env.getFilter("join").call(context, runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"submissionMethod"),", "), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t";
+;
+}
+else {
+output += "\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 241, colno = 16, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No submission method provided"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t";
+;
+}
+output += "\r\n\t\t\t\t\t\t</h4>\r\n\t\t\t\t\t\t<p>\r\n\t\t\t\t\t\t\t";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"submissionMethodDetails")) {
+output += "\r\n\t\t\t\t\t\t\t\t";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"submissionMethodDetails"), env.opts.autoescape);
-output += "</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-12\">\r\n\t\t\t\t<div class=\"panel panel-default\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 165, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Items"])), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t<table class=\"table table-striped\">\r\n\t\t\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 172, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["ID"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 173, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Description"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 174, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Classification"])), env.opts.autoescape);
-output += " <small>(";
-output += runtime.suppressValue((lineno = 174, colno = 57, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Scheme - ID"])), env.opts.autoescape);
-output += ")</small></th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 175, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Quantity"])), env.opts.autoescape);
-output += " <small>(";
-output += runtime.suppressValue((lineno = 175, colno = 51, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Unit"])), env.opts.autoescape);
-output += ")</small></th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 176, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Value per unit"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t</thead>\r\n\t\t\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t\t\t";
-frame = frame.push();
-var t_7 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"items");
-if(t_7) {var t_6 = t_7.length;
-for(var t_5=0; t_5 < t_7.length; t_5++) {
-var t_8 = t_7[t_5];
-frame.set("item", t_8);
-frame.set("loop.index", t_5 + 1);
-frame.set("loop.index0", t_5);
-frame.set("loop.revindex", t_6 - t_5);
-frame.set("loop.revindex0", t_6 - t_5 - 1);
-frame.set("loop.first", t_5 === 0);
-frame.set("loop.last", t_5 === t_6 - 1);
-frame.set("loop.length", t_6);
-output += "\r\n\t\t\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t\t\t<td>";
-output += runtime.suppressValue(runtime.memberLookup((t_8),"id"), env.opts.autoescape);
-output += "</td>\r\n\t\t\t\t\t\t\t\t\t\t<td>";
-output += runtime.suppressValue(runtime.memberLookup((t_8),"description"), env.opts.autoescape);
-output += "</td>\r\n\t\t\t\t\t\t\t\t\t\t<td>\r\n\t\t\t\t\t\t\t\t\t\t\t";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_8),"classification")),"description"), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t\t\t\t\t\t\t<small>\r\n\t\t\t\t\t\t\t\t\t\t\t\t(<a href=\"http://standard.open-contracting.org/latest/en/schema/codelists/#item-classification-scheme\">";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_8),"classification")),"scheme"), env.opts.autoescape);
-output += "</a> -\r\n\t\t\t\t\t\t\t\t\t\t\t\t";
-if(runtime.memberLookup((runtime.memberLookup((t_8),"classification")),"uri")) {
-output += "\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_8),"classification")),"uri"), env.opts.autoescape);
-output += "\">";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_8),"classification")),"id"), env.opts.autoescape);
-output += "</a>)\r\n\t\t\t\t\t\t\t\t\t\t\t\t";
+output += "\r\n\t\t\t\t\t\t\t";
 ;
 }
 else {
-output += "\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_8),"classification")),"id"), env.opts.autoescape);
-output += ")\r\n\t\t\t\t\t\t\t\t\t\t\t\t";
+output += "\r\n\t\t\t\t\t\t\t\t<span class=\"bg-warning\">";
+output += runtime.suppressValue((lineno = 248, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No submission method details provided"])), env.opts.autoescape);
+output += "</span>\r\n\t\t\t\t\t\t\t";
 ;
 }
-output += "\r\n\t\t\t\t\t\t\t\t\t\t\t</small>\r\n\t\t\t\t\t\t\t\t\t\t\t";
-if(runtime.memberLookup((t_8),"additionalClassifications")) {
-output += "\r\n\t\t\t\t\t\t\t\t\t\t\t\t";
-frame = frame.push();
-var t_11 = runtime.memberLookup((t_8),"additionalClassifications");
-if(t_11) {var t_10 = t_11.length;
-for(var t_9=0; t_9 < t_11.length; t_9++) {
-var t_12 = t_11[t_9];
-frame.set("classification", t_12);
-frame.set("loop.index", t_9 + 1);
-frame.set("loop.index0", t_9);
-frame.set("loop.revindex", t_10 - t_9);
-frame.set("loop.revindex0", t_10 - t_9 - 1);
-frame.set("loop.first", t_9 === 0);
-frame.set("loop.last", t_9 === t_10 - 1);
-frame.set("loop.length", t_10);
-output += "\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<br>";
-output += runtime.suppressValue(runtime.memberLookup((t_12),"description"), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<small>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t(<a href=\"http://standard.open-contracting.org/latest/en/schema/codelists/#item-classification-scheme\">";
-output += runtime.suppressValue(runtime.memberLookup((t_12),"scheme"), env.opts.autoescape);
-output += "</a> -\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-if(runtime.memberLookup((t_12),"uri")) {
-output += "\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_8),"classification")),"uri"), env.opts.autoescape);
-output += "\">";
-output += runtime.suppressValue(runtime.memberLookup((t_12),"id"), env.opts.autoescape);
-output += "</a>)\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-;
+output += "\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-12\">\r\n\t\t\t\t";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"items")) {
+output += "\r\n\t\t\t\t\t";
+var t_1;
+t_1 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"items");
+frame.set("items", t_1, true);
+if(frame.topLevel) {
+context.setVariable("items", t_1);
+}
+if(frame.topLevel) {
+context.addExport("items", t_1);
+}
+output += "\r\n\t\t\t\t\t";
+env.getTemplate("items.html", false, "tender.html", null, function(t_4,t_2) {
+if(t_4) { cb(t_4); return; }
+t_2.render(context.getVariables(), frame, function(t_5,t_3) {
+if(t_5) { cb(t_5); return; }
+output += t_3
+output += "\r\n\t\t\t\t";
+})});
 }
 else {
-output += "\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-output += runtime.suppressValue(runtime.memberLookup((t_12),"id"), env.opts.autoescape);
-output += ")\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
+output += "\r\n\t\t\t\t\t<div class=\"panel panel-warning\">\r\n\t\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 264, colno = 16, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Items"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 268, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No items provided"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t";
 ;
 }
-output += "\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t</small>\r\n\t\t\t\t\t\t\t\t\t\t\t\t";
+output += "\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-12\">\r\n\t\t\t\t";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"documents")) {
+output += "\r\n\t\t\t\t\t";
+var t_6;
+t_6 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"documents");
+frame.set("documents", t_6, true);
+if(frame.topLevel) {
+context.setVariable("documents", t_6);
+}
+if(frame.topLevel) {
+context.addExport("documents", t_6);
+}
+output += "\r\n\t\t\t\t\t";
+env.getTemplate("documents.html", false, "tender.html", null, function(t_9,t_7) {
+if(t_9) { cb(t_9); return; }
+t_7.render(context.getVariables(), frame, function(t_10,t_8) {
+if(t_10) { cb(t_10); return; }
+output += t_8
+output += "\r\n\t\t\t\t";
+})});
+}
+else {
+output += "\r\n\t\t\t\t\t<div class=\"panel panel-warning\">\r\n\t\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 283, colno = 16, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Documents"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t\t";
+output += runtime.suppressValue((lineno = 287, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No documents provided"])), env.opts.autoescape);
+output += "\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t";
 ;
 }
-}
-frame = frame.pop();
-output += "\r\n\t\t\t\t\t\t\t\t\t\t\t";
-;
-}
-output += "\r\n\t\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t\t</td>\r\n\t\t\t\t\t\t\t\t\t\t<td>";
-output += runtime.suppressValue(runtime.memberLookup((t_8),"quantity"), env.opts.autoescape);
-output += " <small>(";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_8),"unit")),"name"), env.opts.autoescape);
-output += ")</small></td>\r\n\t\t\t\t\t\t\t\t\t\t<td>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"unit")),"value")),"amount"), env.opts.autoescape);
-output += " ";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_8),"unit")),"value")),"currency"), env.opts.autoescape);
-output += "</td> <!-- number formatting -->\r\n\t\t\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t\t";
-;
-}
-}
-frame = frame.pop();
-output += "\r\n\t\t\t\t\t\t\t</tbody>\t\r\n\t\t\t\t\t\t</table>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col-md-12\">\r\n\t\t\t<!-- move this section into a document template -->\r\n\t\t\t\t<div class=\"panel panel-default\">\r\n\t\t\t\t\t<div class=\"panel-heading\">\r\n\t\t\t\t\t\t<h3 class=\"panel-title\">\r\n\t\t\t\t\t\t\t";
-output += runtime.suppressValue((lineno = 225, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Documents"])), env.opts.autoescape);
-output += "\r\n\t\t\t\t\t\t</h3>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t\t<table class=\"table table-striped\">\r\n\t\t\t\t\t\t\t<thead>\r\n\t\t\t\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 232, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Title"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 233, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Type"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 234, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Description"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 235, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Date published"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 236, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Date modified"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 237, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Format"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t\t<th>";
-output += runtime.suppressValue((lineno = 238, colno = 21, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Language"])), env.opts.autoescape);
-output += "</th>\r\n\t\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t</thead>\r\n\t\t\t\t\t\t\t<tbody>\r\n\t\t\t\t\t\t\t\t";
-frame = frame.push();
-var t_15 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"documents");
-if(t_15) {var t_14 = t_15.length;
-for(var t_13=0; t_13 < t_15.length; t_13++) {
-var t_16 = t_15[t_13];
-frame.set("document", t_16);
-frame.set("loop.index", t_13 + 1);
-frame.set("loop.index0", t_13);
-frame.set("loop.revindex", t_14 - t_13);
-frame.set("loop.revindex0", t_14 - t_13 - 1);
-frame.set("loop.first", t_13 === 0);
-frame.set("loop.last", t_13 === t_14 - 1);
-frame.set("loop.length", t_14);
-output += "\r\n\t\t\t\t\t\t\t\t\t<tr> <!-- add conditional colouring based on presence of url? -->\r\n\t\t\t\t\t\t\t\t\t\t<td><a href=\"";
-output += runtime.suppressValue(runtime.memberLookup((t_16),"url"), env.opts.autoescape);
-output += "\" target=\"_blank\">";
-output += runtime.suppressValue(runtime.memberLookup((t_16),"title"), env.opts.autoescape);
-output += "</a></td>\r\n\t\t\t\t\t\t\t\t\t\t<td>";
-output += runtime.suppressValue(runtime.memberLookup((t_16),"type"), env.opts.autoescape);
-output += "</td>\r\n\t\t\t\t\t\t\t\t\t\t<td>";
-output += runtime.suppressValue(runtime.memberLookup((t_16),"description"), env.opts.autoescape);
-output += "</td>\r\n\t\t\t\t\t\t\t\t\t\t<td>";
-output += runtime.suppressValue(runtime.memberLookup((t_16),"datePublished"), env.opts.autoescape);
-output += "</td> <!-- add date formatting -->\r\n\t\t\t\t\t\t\t\t\t\t<td>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "doucment")),"dateModified"), env.opts.autoescape);
-output += "</td> <!-- add date formatting -->\r\n\t\t\t\t\t\t\t\t\t\t<td>";
-output += runtime.suppressValue(runtime.memberLookup((t_16),"format"), env.opts.autoescape);
-output += "</td>\r\n\t\t\t\t\t\t\t\t\t\t<td>";
-output += runtime.suppressValue(runtime.memberLookup((t_16),"language"), env.opts.autoescape);
-output += "</td>\r\n\t\t\t\t\t\t\t\t\t</tr>\r\n\t\t\t\t\t\t\t\t";
-;
-}
-}
-frame = frame.pop();
-output += "\r\n\t\t\t\t\t\t\t</tbody>\r\n\t\t\t\t\t\t</table>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</section>\r\n";
+output += "\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</section>\r\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {

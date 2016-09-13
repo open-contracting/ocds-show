@@ -5,7 +5,6 @@
 				<div class="panel-heading">
 					<h1>
 						{{tender.title}} <small><a data-toggle="collapse" href="#metadata">(hide metadata)</a></small>
-						<!-- need to fix collapse behaviour -->
 					</h1>
 				</div>
 				<div id="metadata" class="panel-collapse collapse in">
@@ -21,9 +20,7 @@
 						</li>
 						<li class="list-group-item">
 							<strong>Tags: </strong>
-							{% for t in tag %}
-								{{t}},
-							{% endfor %}
+							{{ tag|join(", ") }}
 						</li>
 						<li class="list-group-item">
 							<strong>Initiation type: </strong>{{initiationType}}
@@ -52,6 +49,8 @@
 		{% include 'contracts.html' %} 		
 	</div>
 	<div class="col-md-4">
-		{% include 'buyer.html' %}
+		{% set organization = buyer %}
+		{% set title = "Buyer" %}
+		{% include 'organization.html' %}
 	</div>
 </main>
