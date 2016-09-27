@@ -1,12 +1,116 @@
 <section id="planning" class="panel panel-default">
-  <h2 class="panel-heading">
-    Planning
-  </h2>
-  <div class="panel-body">
-    {% if planning %}
-       Rational: {{planning.rational}}
-    {% else %}
-      <h4>No planning data</h4>
-    {% endif %}
-  </div>
+	<div class="panel-heading">
+		<h2>
+			{{ gettext("Planning") }}
+		</h2>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="panel panel-{% if planning.budget.amount.amount %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Budget amount") }} <small>({{ gettext("ID") }})</small>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<h4>
+							{% if planning.budget.amount.amount %}
+								{{ planning.budget.amount.amount|currency }}
+								{{planning.budget.amount.currency}}
+							{% else %}
+								{{ gettext("Budget amount not provided") }}
+							{% endif %}
+							{% if planning.budget.id %}
+								<small>({{planning.budget.id}})</small>
+							{% else %}
+								<small class="bg-warning">({{ gettext("Budget ID not provided") }})</small>
+							{% endif %}
+						</h4>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="panel panel-{% if planning.budget.description and planning.budget.source %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Budget description") }} <small>({{ gettext("Source") }})</small>
+						</h3>
+					</div>
+					<div class="panel-body">
+						{% if planning.budget.description %}
+							{{planning.budget.description}}
+						{% else %}
+							<span class="bg-warning">{{ gettext("Budget description not provided.") }}</span>
+						{% endif %}
+							{% if planning.budget.source %}
+								<small>(<a href="{{planning.budget.source}}" target="_blank">{{ gettext("Budget source") }}</a>)</small>
+							{% else %}
+								<small class="bg-warning">({{ gettext("Budget source not provided") }})</small>
+							{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="panel panel-{% if planning.rationale %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Rationale") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						{% if planning.rationale %}
+							{{planning.rationale}}
+						{% else %}
+							{{ gettext("Budget rationale not provided") }}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="panel panel-{% if planning.budget.project and planning.budget.projectID %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Project information") }} <small>({{gettext("ID")}})</small>
+						</h3>
+					</div>
+					<div class="panel-body">
+						{% if planning.budget.project %}
+							{{planning.budget.project}}
+						{% else %}
+							<span class="bg-warning">{{ gettext("Project name not provided.") }}</span>
+						{% endif %}
+						{% if planning.budget.projectID %}
+							<small>({{planning.budget.projectID}})</small>
+						{% else %}
+							<small class="bg-warning">({{ gettext("Project ID not provided") }})</small>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				{% if planning.documents %}
+					{% set documents = planning.documents %}
+					{% include 'documents.html' %}
+				{% else %}
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Documents") }}
+							</h3>
+						</div>
+						<div class="panel-body">
+							{{ gettext("No documents provided") }}
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
 </section>
+
+

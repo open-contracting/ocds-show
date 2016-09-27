@@ -1,0 +1,39 @@
+<div class="panel panel-{% if documents|length > 0 %}default{% else %}warning{% endif %}">
+	<div class="panel-heading">
+		<h3 class="panel-title">
+			{{ gettext("Documents") }}
+		</h3>
+	</div>
+	<div class="panel-body">
+		{% if documents|length > 0 %}
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>{{ gettext("Title") }}</th>
+						<th>{{ gettext("Type") }}</th>
+						<th>{{ gettext("Description") }}</th>
+						<th>{{ gettext("Date published") }}</th>
+						<th>{{ gettext("Date modified") }}</th>
+						<th>{{ gettext("Format") }}</th>
+						<th>{{ gettext("Language") }}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for document in documents %}
+						<tr> <!-- add conditional colouring based on presence of url? -->
+							<td><a href="{{document.url}}" target="_blank">{{ document.title}}</a></td>
+							<td>{{ document.type }}</td>
+							<td>{{ document.description }}</td>
+							<td>{{ document.datePublished|truncate(10,true,"") }}</td> <!-- add time hover over? -->
+							<td>{{ doucment.dateModified|truncate(10,true,"") }}</td> <!-- add time hover over? -->
+							<td>{{ document.format}}</td>
+							<td>{{ document.language}}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		{% else %}
+			{{ gettext("No documents provided") }}
+		{% endif %}
+	</div>
+</div>

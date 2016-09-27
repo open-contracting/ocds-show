@@ -1,0 +1,135 @@
+<div class="panel panel-default">
+		<div class="panel-heading">
+			<h2>
+				{{ title }} 
+			</h2>
+		</div>
+		<div class="panel-body">
+			<h2>
+				<small>{{organization.name}}</small>
+			</h2>
+			<p>
+				{% if organization.contactPoint %}
+					<div id="contactPoint" class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Contact Point")}}
+							</h3>
+						</div>
+						<div class="panel-body">
+							{% if organization.contactPoint.name %}
+								{{organization.contactPoint.name}} <br>
+							{% endif %}
+							{% if organization.contactPoint.email %}
+								<a href="mailto:{{organization.contactPoint.email}}">{{organization.contactPoint.email}}</a><br>
+							{% endif %}
+							{% if organization.contactPoint.telephone %}
+								{{ gettext("Phone: ") }}{{organization.contactPoint.telephone}} <br>
+							{% endif %}
+							{% if organization.contactPoint.faxNumber %}
+								{{ gettext("Fax: ") }}{{organization.contactPoint.faxNumber}} <br>
+							{% endif %}
+							{% if organization.contactPoint.url %}
+								<a href="{{organization.contactPoint.url}}" target="_blank">{{organization.contactPoint.url}}</a><br>
+							{% endif %}
+						</div>
+					</div>
+				{% else %}
+					<div id="contactPoint" class="panel panel-warning">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Contact Point")}}
+							</h3>
+						</div>
+						<div class="panel-body">
+							{{ gettext("No contact data provided") }}
+						</div>
+					</div>
+				{% endif %}
+				{% if organization.address %}
+					<div id="address" class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Address")}}
+							</h3>
+						</div>
+						<div class="panel-body">
+							{% if organization.address.streetAddress %}
+								{{organization.address.streetAddress}} <br>
+							{% endif %}
+							{% if organization.address.locality %}
+								{{organization.address.locality}} <br>
+							{% endif %}
+							{% if organization.address.region %}
+								{{organization.address.region}} <br>
+							{% endif %}
+							{% if organization.address.postalCode %}
+								{{organization.address.postalCode}} <br>
+							{% endif %}
+							{% if organization.address.countryName %}
+								{{organization.address.countryName}} <br>
+							{% endif %}
+						</div>
+					</div>
+				{% else %}
+					<div id="address" class="panel panel-warning">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Address")}}
+							</h3>
+						</div>
+						<div class="panel-body">
+							{{ gettext("No address data provided") }}
+						</div>
+					</div>
+				{% endif %}
+				{% if organization.identifier %}
+					<div id="identifier" class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Identifiers") }}
+							</h3>
+						</div>
+						<div class="panel-body">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>{{ gettext("Scheme") }}</th>
+										<th>{{ gettext("Identifer") }}</th>
+										<th>{{ gettext("Legal Name") }}</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><a href="http://standard.open-contracting.org/latest/en/schema/codelists/#organization-identifier-scheme" target="_blank">{{ organization.identifier.scheme }}</a></td>
+										<td>{{ organization.identifier.id }}</td>
+										<td><a href="{{ organization.identifier.uri }}" target="_blank">{{ organization.identifier.legalName }}</a></td>
+									</tr>
+									{% if organization.additionalIdentifiers %}
+										{% for identifier in organization.additionalIdentifiers %}
+											<tr>
+												<td><a href="http://standard.open-contracting.org/latest/en/schema/codelists/#organization-identifier-scheme" target="_blank">{{ identifier.scheme }}</a></td>
+												<td>{{ identifier.id }}</td>
+												<td><a href="{{ identifier.uri }}" target="_blank">{{ identifier.legalName }}</a></td>
+											</tr>
+										{% endfor %}
+									{% endif %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				{% else %}
+					<div id="identifier" class="panel panel-warning">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Identifers") }}
+							</h3>
+						</div>
+						<div class="panel-body">
+							{{ gettext("No identifier data provided") }}
+						</div>
+					</div>
+				{% endif %}
+			</p>
+		</div>
+</div>

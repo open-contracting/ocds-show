@@ -1,0 +1,59 @@
+<div class="panel panel-{% if items|length > 0 %}default{% else %}warning{% endif %}">
+	<div class="panel-heading">
+		<h3 class="panel-title">
+			{{ gettext("Items") }}
+		</h3>
+	</div>
+	<div class="panel-body">
+		{% if items|length > 0 %}
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>{{ gettext("ID") }}</th>
+						<th>{{ gettext("Description") }}</th>
+						<th>{{ gettext("Classification") }} <small>({{ gettext("Scheme - ID") }})</small></th>
+						<th>{{ gettext("Quantity") }} <small>({{ gettext("Unit") }})</small></th>
+						<th>{{ gettext("Value per unit") }}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in items %}
+						<tr>
+							<td>{{ item.id }}</td>	<!-- need to consider whether to present the id - make sure this is consistent with documents approach -->
+							<td>{{ item.description }}</td>
+							<td>
+								{{ item.classification.description }}
+								<small>
+									(<a href="http://standard.open-contracting.org/latest/en/schema/codelists/#item-classification-scheme">{{ item.classification.scheme }}</a> -
+									{% if item.classification.uri %}
+										<a href="{{ item.classification.uri }}">{{ item.classification.id }}</a>)
+									{% else %}
+										{{ item.classification.id }})
+									{% endif %}
+								</small>
+								{% if item.additionalClassifications %}
+									{% for classification in item.additionalClassifications %}
+										<br>{{ classification.description }}
+										<small>
+											(<a href="http://standard.open-contracting.org/latest/en/schema/codelists/#item-classification-scheme">{{ classification.scheme }}</a> -
+											{% if classification.uri %}
+												<a href="{{ item.classification.uri }}">{{ classification.id }}</a>)
+											{% else %}
+												{{ classification.id }})
+											{% endif %}
+										</small>
+									{% endfor %}
+								{% endif %}
+							
+							</td>
+							<td>{{ item.quantity }} <small>({{ item.unit.name }})</small></td>
+							<td>{{ item.unit.value.amount|currency }} {{ item.unit.value.currency }}</td>
+						</tr>
+					{% endfor %}
+				</tbody>	
+			</table>
+		{% else %}
+			{{ gettext("No items provided") }}
+		{% endif %}
+	</div>
+</div>

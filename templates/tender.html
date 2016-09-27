@@ -1,0 +1,295 @@
+<section id="tender" class="panel panel-default">
+	<div class="panel-heading">
+		<h2>Tender</h2>
+	</div>
+  
+  		<!-- outstanding fields
+		
+		procuringEntity [organisation]
+		
+		numberOfTenderers
+		tenderers [organisations]
+
+		milestones []
+		
+		-->
+		
+		<!-- also need to add error handling for all fields -->
+		
+		<!-- is there a way we can reference codelist titles and descriptions? Using a custom filter or function -->
+		
+		<!-- should i go through and add elif field|length == 0 then warning ?-->
+	
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-{% if tender.description %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Description") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						{% if tender.description %}
+							{{ tender.description }}
+						{% else %}
+							{{ gettext("No description provided") }}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-{% if tender.status %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Status") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						<h4>
+						{% if tender.status %}
+							{{ tender.status }}
+						{% else %}
+							{{ gettext("No status provided") }}
+						{% endif %}
+						</h4>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-{% if tender.minvalue.amount or tender.value.amount %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Value") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						<strong>{{ gettext("Lower: ")}}</strong>
+						{% if tender.minValue.amount %}
+							{{ tender.minValue.amount|currency }} <small>{{ tender.minValue.currency}}</small>
+						{% else %}
+							<span class="bg-warning">{{ gettext("No minimum value provided") }}</span>
+						{% endif %}
+						<p><strong>{{ gettext("Upper: ")}}</strong>
+						{% if tender.value.amount %}
+							{{ tender.value.amount|currency }} <small>{{ tender.value.currency}}</small></p>
+						{% else %}
+							<span class="bg-warning">{{ gettext("No value provided") }}</span>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-{% if tender.eligibilityCriteria %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Eligibility criteria")}}
+						</h3>
+					</div>
+					<div class="panel-body">
+						{% if tender.eligibilityCriteria %}
+							{{ tender.eligibilityCriteria }}
+						{% else %}
+							{{ gettext("No eligibility criteria provided") }}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-{% if tender.tenderPeriod %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Key Dates")}}
+						</h3>
+					</div>
+					<div class="panel-body">	<!-- add time hover over? -->
+						<p>
+							<strong>{{ gettext("Tender start: ")}}</strong>
+							{% if tender.tenderPeriod.startDate %}
+								{{ tender.tenderPeriod.startDate|truncate(10,true,"")}}
+							{% else %}
+								<span class="bg-warning">{{ gettext("No start date provided") }}</span>
+							{% endif %}
+						</p>
+						<p>
+							<strong>{{ gettext("Tender end: ")}}</strong>
+							{% if tender.tenderPeriod.endDate %}
+								{{ tender.tenderPeriod.endDate|truncate(10,true,"")}}
+							{% else %}
+								<span class="bg-warning">{{ gettext("No end date provided") }}</span>
+							{% endif %}
+						</p>
+						<p>
+							<strong>{{ gettext("Award start: ")}}</strong>
+							{% if tender.awardPeriod.startDate %}
+								{{ tender.awardPeriod.startDate|truncate(10,true,"")}}
+							{% else %}
+								<span class="bg-warning">{{ gettext("No start date provided") }}</span>
+							{% endif %}
+						</p>
+						<p>	
+							<strong>{{ gettext("Award end: ")}}</strong>
+							{% if tender.awardPeriod.endDate %}
+								{{ tender.awardPeriod.endDate|truncate(10,true,"")}}
+							{% else %}
+								<span class="bg-warning">{{ gettext("No end date provided") }}<span>
+							{% endif %}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-{% if tender.enquiryPeriod %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Enquiries")}}
+						</h3>
+					</div>
+					<div class="panel-body">
+						<p>
+						{% if tender.hasEnquiries == false %}
+							{{ gettext("There have been no enquiries regarding this tender") }}
+						{% elif tender.hasEnquiries %}
+							{{ gettext("There have been enquiries regarding this tender") }}
+						{% else %}
+							<span class="bg-warning">{{ gettext("No information on enquiries provided") }}</span>
+						{% endif %}
+						</p>
+						<p>
+							<strong>{{ gettext("Enquiries start: ")}}</strong>
+							{% if tender.enquiryPeriod.startDate %}
+								{{ tender.enquiryPeriod.startDate|truncate(10,true,"")}}
+							{% else %}
+								<span class="bg-warning">{{ gettext("No start date provided") }}</span>
+							{% endif %}
+						</p>
+						<p>
+							<strong>{{ gettext("Enquiries end: ")}}</strong>
+							{% if tender.enquiryPeriod.endDate %}
+								{{ tender.enquiryPeriod.endDate|truncate(10,true,"")}}
+							{% else %}
+								<span class="bg-warning">{{ gettext("No end date provided") }}</span>
+							{% endif %}
+						</p>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-{% if tender.procurementMethod %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Procurement method") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						{% if tender.procurementMethod %}
+							<h4>{{ tender.procurementMethod}}</h4>	<!-- set up a filter or function to convert between codelist values and titles -->
+						{% else %}
+							<h4>No procurement method provided</h4>
+						{% endif %}
+						<p>
+							{% if tender.procurementMethodRationale %}
+								{{ tender.procurementMethodRationale}}
+							{% else %}
+								<span class="bg-warning">{{ gettext("No rationale provided") }}</span>
+							{% endif %}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-{% if tender.awardCriteria %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Award criteria") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						<h4>
+							{% if tender.awardCriteria %}
+								{{ tender.awardCriteria }}
+							{% else %}
+								{{ gettext("No award criteria provided") }}
+							{% endif %}
+						</h4>
+						<p>
+							{% if tender.awardCriteriaDetails %}
+								{{ tender.awardCriteriaDetails }}
+							{% else %}
+								<span class="bg-warning">{{ gettext("No award criteria details provided")}}</span>
+							{% endif %}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-{% if tender.submissionMethod %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Submission method") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						<h4>
+							{% if tender.submissionMethod %}
+								{{ tender.submissionMethod|join(", ")}}
+							{% else %}
+								{{ gettext("No submission method provided") }}
+							{% endif %}
+						</h4>
+						<p>
+							{% if tender.submissionMethodDetails %}
+								{{ tender.submissionMethodDetails}}
+							{% else %}
+								<span class="bg-warning">{{ gettext("No submission method details provided")}}</span>
+							{% endif %}
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				{% if tender.items %}
+					{% set items = tender.items %}
+					{% include 'items.html' %}
+				{% else %}
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Items") }}
+							</h3>
+						</div>
+						<div class="panel-body">
+							{{ gettext("No items provided") }}
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				{% if tender.documents %}
+					{% set documents = tender.documents %}
+					{% include 'documents.html' %}
+				{% else %}
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Documents") }}
+							</h3>
+						</div>
+						<div class="panel-body">
+							{{ gettext("No documents provided") }}
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</section>
