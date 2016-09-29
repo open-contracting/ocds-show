@@ -1,0 +1,37 @@
+<div class="panel panel-{% if milestones|length > 0 %}default{% else %}warning{% endif %}">
+	<div class="panel-heading">
+		<h3 class="panel-title">
+			{{ gettext("Milestones") }}
+		</h3>
+	</div>
+	<div class="panel-body">
+		{% if milestones|length > 0 %}
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>{{ gettext("Title") }}</th>
+						<th>{{ gettext("Description") }}</th>
+						<th>{{ gettext("Due Date") }}</th>
+						<th>{{ gettext("Date modified") }}</th>
+						<th>{{ gettext("Status") }}</th>
+						<th>{{ gettext("Documents") }}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for milestone in milestones %}
+						<tr> <!-- add conditional colouring based on presence of url? -->
+							<td>{{ milestone.title}}</td>
+							<td>{{ milestone.description }}</td>
+							<td>{{ milestone.dueDate|truncate(10,true,"") }}</td> <!-- add time hover over? -->
+							<td>{{ doucment.dateModified|truncate(10,true,"") }}</td> <!-- add time hover over? -->
+							<td>{{ milestone.status}}</td>
+							<td></td> <!-- work out how to display these -->
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		{% else %}
+			{{ gettext("No milestones provided") }}
+		{% endif %}
+	</div>
+</div>

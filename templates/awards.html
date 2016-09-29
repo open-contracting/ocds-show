@@ -1,10 +1,12 @@
 <section id="awards" class="panel panel-default">
-
-<h2 class="panel-heading"> Awards </h2>
-
-<div class="panel-body">
-Content
-{% for award in awards %}{% include 'award.html' %}{% endfor %}
-</div>
-
+	<div class="panel-heading">
+		<h3>
+			{{ gettext("Awards") }}
+		</h3>
+	</div>
+	<div class="panel-body">
+		{% for award in awards %}
+			{% include 'award.html' %}
+		{% endfor %}
+	</div>
 </section>

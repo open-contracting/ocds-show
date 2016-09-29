@@ -1,8 +1,182 @@
 <section id="award-{{loop.index}}" class="panel panel-default">
-  <h3 class="panel-heading"> (Award {{award.id}}) </h3>
-  <div class="panel-body">
-    Amount {{award.value.currency}} {{award.value.amount}} 
-  <div>
+	<div class="panel-heading">
+		<h3 class="panel-title">
+			{% if award.title %}{{ award.title}}{% else %}{{ gettext("No title provided") }}{% endif %}
+		</h3>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-{% if award.title %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("ID") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						{% if award.id %}
+							{{ award.id }}
+						{% else %}
+							{{ gettext("No ID provided") }}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-{% if award.description %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Description") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						{% if award.description %}
+							{{ award.description }}
+						{% else %}
+							{{ gettext("No description provided") }}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-{% if award.status %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Status") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						{% if award.status %}
+							{{ award.status }}
+						{% else %}
+							{{ gettext("No status provided") }}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-{% if award.date %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Date") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						{% if award.date %}
+							{{ award.date }}
+						{% else %}
+							{{ gettext("No date provided") }}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-{% if award.value.amount %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Value") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						<h4>
+							{% if award.value.amount %}
+								{{ award.value.amount|currency }}
+								{{award.value.currency}}
+							{% else %}
+								{{ gettext("Value not provided") }}
+							{% endif %}
+						</h4>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-{% if award.contractPeriod %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Contract Period")}}
+						</h3>
+					</div>
+					<div class="panel-body">	<!-- add time hover over? -->
+						<p>
+							<strong>{{ gettext("Start: ")}}</strong>
+							{% if award.contractPeriod.startDate %}
+								{{ award.contractPeriod.startDate|truncate(10,true,"")}}
+							{% else %}
+								<span class="bg-warning">{{ gettext("No start date provided") }}</span>
+							{% endif %}
+						</p>
+						<p>
+							<strong>{{ gettext("End: ")}}</strong>
+							{% if award.contractPeriod.endDate %}
+								{{ award.contractPeriod.endDate|truncate(10,true,"")}}
+							{% else %}
+								<span class="bg-warning">{{ gettext("No end date provided") }}</span>
+							{% endif %}
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-{% if award.suppliers %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							 {{ gettext("Suppliers:") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						{% for supplier in award.suppliers %}
+							<div class="col-md-{% if award.suppliers|length  == 1 %}12{% elif award.suppliers|length == 2 %}6{% else %}4{% endif %}">
+								{% set organization = supplier %}
+								{% include 'organization.html' %}
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				{% if award.items %}
+					{% set items = award.items %}
+					{% include 'items.html' %}
+				{% else %}
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Items") }}
+							</h3>
+						</div>
+						<div class="panel-body">
+							{{ gettext("No items provided") }}
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				{% if award.documents %}
+					{% set documents = award.documents %}
+					{% include 'documents.html' %}
+				{% else %}
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Documents") }}
+							</h3>
+						</div>
+						<div class="panel-body">
+							{{ gettext("No documents provided") }}
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	<div>
 </section>
 
 

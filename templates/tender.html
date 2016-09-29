@@ -2,20 +2,7 @@
 	<div class="panel-heading">
 		<h2>Tender</h2>
 	</div>
-  
-  		<!-- outstanding fields
-		
-		procuringEntity [organisation]
-		
-		numberOfTenderers
-		tenderers [organisations]
-
-		milestones []
-		
-		-->
-		
-		<!-- also need to add error handling for all fields -->
-		
+  	
 		<!-- is there a way we can reference codelist titles and descriptions? Using a custom filter or function -->
 		
 		<!-- should i go through and add elif field|length == 0 then warning ?-->
@@ -286,6 +273,44 @@
 						</div>
 						<div class="panel-body">
 							{{ gettext("No documents provided") }}
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-{% if tender.tenderers %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							 {{ gettext("Tenderers:") }} {% if numberOfTenderers %}{{ tender.numberOfTenderers }}{% else %}<span class="bg-warning">{{ gettext("Number of tenderers not provided")}}</span>{% endif %}
+						</h3>
+					</div>
+					<div class="panel-body">
+						{% for tenderer in tender.tenderers %}
+							<div class="col-md-{% if tender.tenderers|length  == 1 %}12{% elif tender.tenderers|length == 2 %}6{% else %}4{% endif %}">
+								{% set organization = tenderer %}
+								{% include 'organization.html' %}
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				{% if tender.milestones %}
+					{% set milestones = tender.milestones %}
+					{% include 'milestones.html' %}
+				{% else %}
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Milestones") }}
+							</h3>
+						</div>
+						<div class="panel-body">
+							{{ gettext("No milestones provided") }}
 						</div>
 					</div>
 				{% endif %}

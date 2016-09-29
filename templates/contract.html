@@ -1,0 +1,248 @@
+<section id="contract-{{loop.index}}" class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">
+			{% if contract.title %}{{ contract.title}}{% else %}{{ gettext("No title provided") }}{% endif %}
+		</h3>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="panel panel-{% if contract.id %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("ID") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						{% if contract.id %}
+							{{ contract.id }}
+						{% else %}
+							{{ gettext("No ID provided") }}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="panel panel-{% if contract.awardID %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Award ID") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						{% if contract.awardID %}
+							{{ contract.awardID }}
+						{% else %}
+							{{ gettext("No award ID provided") }}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="panel panel-{% if contract.description %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Description") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						{% if contract.description %}
+							{{ contract.description }}
+						{% else %}
+							{{ gettext("No description provided") }}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="panel panel-{% if contract.status %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Status") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						{% if contract.status %}
+							{{ contract.status }}
+						{% else %}
+							{{ gettext("No status provided") }}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-{% if contract.period %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Contract Period")}}
+						</h3>
+					</div>
+					<div class="panel-body">	<!-- add time hover over? -->
+						<p>
+							<strong>{{ gettext("Start: ")}}</strong>
+							{% if contract.period.startDate %}
+								{{ contract.period.startDate|truncate(10,true,"")}}
+							{% else %}
+								<span class="bg-warning">{{ gettext("No start date provided") }}</span>
+							{% endif %}
+						</p>
+						<p>
+							<strong>{{ gettext("End: ")}}</strong>
+							{% if contract.period.endDate %}
+								{{ contract.period.endDate|truncate(10,true,"")}}
+							{% else %}
+								<span class="bg-warning">{{ gettext("No end date provided") }}</span>
+							{% endif %}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-{% if contract.value.amount %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Value") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						<h4>
+							{% if contract.value.amount %}
+								{{ contract.value.amount|currency }}
+								{{contract.value.currency}}
+							{% else %}
+								{{ gettext("Value not provided") }}
+							{% endif %}
+						</h4>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-{% if contract.dateSigned %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Date signed")}}
+						</h3>
+					</div>
+					<div class="panel-body">	<!-- add time hover over? -->
+							{% if contract.dateSigned %}
+								{{ contract.dateSigned|truncate(10,true,"")}}
+							{% else %}
+								<span class="bg-warning">{{ gettext("No date provided") }}</span>
+							{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				{% if contract.items %}
+					{% set items = contract.items %}
+					{% include 'items.html' %}
+				{% else %}
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Items") }}
+							</h3>
+						</div>
+						<div class="panel-body">
+							{{ gettext("No items provided") }}
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				{% if contract.documents %}
+					{% set documents = contract.documents %}
+					{% include 'documents.html' %}
+				{% else %}
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Documents") }}
+							</h3>
+						</div>
+						<div class="panel-body">
+							{{ gettext("No documents provided") }}
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ gettext("Implementation") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-12">
+								{% set transactions = contract.implementation.transactions %}
+								{% include 'transactions.html' %}
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								{% if contract.implementation.milestones %}
+									{% set milestones = contract.implementation.milestones %}
+									{% include 'milestones.html' %}
+								{% else %}
+									<div class="panel panel-warning">
+										<div class="panel-heading">
+											<h3 class="panel-title">
+												{{ gettext("Milestones") }}
+											</h3>
+										</div>
+										<div class="panel-body">
+											{{ gettext("No milestones provided") }}
+										</div>
+									</div>
+								{% endif %}
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								{% if contract.implementation.documents %}
+									{% set documents = contract.implementation.documents %}
+									{% include 'documents.html' %}
+								{% else %}
+									<div class="panel panel-warning">
+										<div class="panel-heading">
+											<h3 class="panel-title">
+												{{ gettext("Documents") }}
+											</h3>
+										</div>
+										<div class="panel-body">
+											{{ gettext("No documents provided") }}
+										</div>
+									</div>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+

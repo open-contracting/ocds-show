@@ -1,8 +1,12 @@
 <section id="contracts" class="panel panel-default">
-  <h2 class="panel-heading">
-    Contracts
-  </h2>
-  <div class="panel-body">
-	Content
-  </div>
+	<div class="panel-heading">
+		<h3>
+			{{ gettext("Contracts") }}
+		</h3>
+	</div>
+	<div class="panel-body">
+		{% for contract in contracts %}
+			{% include 'contract.html' %}
+		{% endfor %}
+	</div>
 </section>
