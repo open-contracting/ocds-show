@@ -18,3 +18,74 @@
   height: 200px
 }
 
+
+
+/* Timeline */
+.release-timeline-item {
+  display: inline-block;
+  list-style: none;
+  width:78px
+}
+
+.release-timeline-line {
+  position: relative;
+  height: 5px;
+  width: 58px;
+  background-color: grey;
+  top: -28px;
+  z-index: -1;
+  display:block
+}
+
+.release-badge {
+  color: #fff;
+  width: 54px;
+  height: 54px;
+  line-height: 47px;
+  font-size: 22px;
+  text-align: center;
+  top: 18px;
+  left: 50%;
+  margin-left: -25px;
+  background-color: #7c7c7c;
+  border: 3px solid #ffffff;
+  z-index: 100;
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+.release-badge i,
+.release-badge .fa,
+.release-badge .glyphicon {
+  top: 2px;
+  left: 0px;
+}
+.release-badge.primary {
+  background-color: #1f9eba;
+}
+.release-badge.info {
+  background-color: #5bc0de;
+}
+.release-badge.success {
+  background-color: #59ba1f;
+}
+.release-badge.warning {
+  background-color: #d1bd10;
+}
+.release-badge.danger {
+  background-color: #ba1f1f;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

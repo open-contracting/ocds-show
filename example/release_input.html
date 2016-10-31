@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="css/normalize.min.css">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/custom.css">
 
     </head>
@@ -42,7 +42,8 @@
 
        var render_json = function () {
          try {
-             var input = JSON.parse(jsonInput.value)
+             var input = {}
+             input['release'] = JSON.parse(jsonInput.value)
              input['gettext'] = gettext
 			 env = nunjucks.configure()
 			 // this needs replacing with something readable
@@ -61,6 +62,11 @@
        document.getElementById('input-json').onkeyup = function(e) {
          render_json()
        }
+
+       $('#container').on("click", ".nav a", function(e) {
+         e.preventDefault()
+         $(this).tab('show')
+       })
 
 
     </script>
