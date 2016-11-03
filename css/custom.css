@@ -18,6 +18,16 @@
   height: 200px
 }
 
+#hide-input-button {
+  position: relative;
+  top: -5px;
+}
+
+#label-id-select {
+  margin-left:30px;
+  font-size: 20px
+}
+
 
 
 /* Timeline */

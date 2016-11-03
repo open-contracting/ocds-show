@@ -47,7 +47,9 @@
 							
 							</td>
 							<td>{{ item.quantity }} <small>({{ item.unit.name }})</small></td>
-							<td>{{ item.unit.value.amount|currency }} {{ item.unit.value.currency }}</td>
+						  {% if item.unit.value.amount %}
+                <td>{{ item.unit.value.amount|currency }} {{ item.unit.value.currency }}</td>
+						  {% endif %}
 						</tr>
 					{% endfor %}
 				</tbody>	

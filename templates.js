@@ -1221,11 +1221,16 @@ output += "\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td>";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"quantity"), env.opts.autoescape);
 output += " <small>(";
 output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_4),"unit")),"name"), env.opts.autoescape);
-output += ")</small></td>\n\t\t\t\t\t\t\t<td>";
+output += ")</small></td>\n\t\t\t\t\t\t  ";
+if(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_4),"unit")),"value")),"amount")) {
+output += "\n                <td>";
 output += runtime.suppressValue(env.getFilter("currency").call(context, runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_4),"unit")),"value")),"amount")), env.opts.autoescape);
 output += " ";
 output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((t_4),"unit")),"value")),"currency"), env.opts.autoescape);
-output += "</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t";
+output += "</td>\n\t\t\t\t\t\t  ";
+;
+}
+output += "\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t";
 ;
 }
 }
@@ -1235,11 +1240,11 @@ output += "\n\t\t\t\t</tbody>\t\n\t\t\t</table>\n\t\t";
 }
 else {
 output += "\n\t\t\t";
-output += runtime.suppressValue((lineno = 55, colno = 11, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No items provided"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 57, colno = 11, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No items provided"])), env.opts.autoescape);
 output += "\n\t\t";
 ;
 }
-output += "\n\t</div>\n</div>";
+output += "\n\t</div>\n</div>\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -1829,6 +1834,58 @@ root: root
 
 })();
 })();
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["record_select.html"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+var parentTemplate = null;
+output += "\n    <h2> OCDS Record\n\n    <label id=\"label-id-select\" class=\"pull-right\">\n        OCID:\n    <select id=\"id-select\">\n      ";
+frame = frame.push();
+var t_3 = runtime.contextOrFrameLookup(context, frame, "ocids");
+if(t_3) {var t_2 = t_3.length;
+for(var t_1=0; t_1 < t_3.length; t_1++) {
+var t_4 = t_3[t_1];
+frame.set("id", t_4);
+frame.set("loop.index", t_1 + 1);
+frame.set("loop.index0", t_1);
+frame.set("loop.revindex", t_2 - t_1);
+frame.set("loop.revindex0", t_2 - t_1 - 1);
+frame.set("loop.first", t_1 === 0);
+frame.set("loop.last", t_1 === t_2 - 1);
+frame.set("loop.length", t_2);
+output += "\n      <option ";
+if(t_4 == runtime.contextOrFrameLookup(context, frame, "ocid")) {
+output += "selected";
+;
+}
+output += " value=\"";
+output += runtime.suppressValue(t_4, env.opts.autoescape);
+output += "\">";
+output += runtime.suppressValue(t_4, env.opts.autoescape);
+output += "</option> \n      ";
+;
+}
+}
+frame = frame.pop();
+output += "\n    </select>\n    </label>\n    </h2>\n\n";
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
 (function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["release.html"] = (function() {
 function root(env, context, frame, runtime, cb) {
 var lineno = null;
@@ -1860,7 +1917,7 @@ if(!runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release"
 output += "disabled";
 ;
 }
-output += "\" ><a href=\"#planning\" data-toggle=\"tab\">Planning</a></li>\n    <li role=\"presentation\" class=\"";
+output += "\" ><a href=\"#planning\">Planning</a></li>\n    <li role=\"presentation\" class=\"";
 if(!runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"tender")) {
 output += "disabled";
 ;
@@ -2051,6 +2108,58 @@ parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 cb(null, output);
 }
 })})})})})});
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+
+})();
+})();
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["release_select.html"] = (function() {
+function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+var parentTemplate = null;
+output += "    <h2> OCDS Release\n\n    <label id=\"label-id-select\" class=\"pull-right\">\n        Release ID:\n    <select id=\"id-select\">\n      ";
+frame = frame.push();
+var t_3 = runtime.contextOrFrameLookup(context, frame, "release_ids");
+if(t_3) {var t_2 = t_3.length;
+for(var t_1=0; t_1 < t_3.length; t_1++) {
+var t_4 = t_3[t_1];
+frame.set("id", t_4);
+frame.set("loop.index", t_1 + 1);
+frame.set("loop.index0", t_1);
+frame.set("loop.revindex", t_2 - t_1);
+frame.set("loop.revindex0", t_2 - t_1 - 1);
+frame.set("loop.first", t_1 === 0);
+frame.set("loop.last", t_1 === t_2 - 1);
+frame.set("loop.length", t_2);
+output += "\n        <option ";
+if(t_4 == runtime.contextOrFrameLookup(context, frame, "release_id")) {
+output += "selected";
+;
+}
+output += " value=\"";
+output += runtime.suppressValue(t_4, env.opts.autoescape);
+output += "\">";
+output += runtime.suppressValue(t_4, env.opts.autoescape);
+output += "</option> \n      ";
+;
+}
+}
+frame = frame.pop();
+output += "\n    </select>\n    </label>\n    </h2>\n\n";
+if(parentTemplate) {
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+} else {
+cb(null, output);
+}
+;
 } catch (e) {
   cb(runtime.handleError(e, lineno, colno));
 }
