@@ -1,10 +1,4 @@
-<section id="award-{{loop.index}}" class="panel panel-default">
-	<div class="panel-heading">
-		<h3 class="panel-title">
-			{% if award.title %}{{ award.title}}{% else %}{{ gettext("No title provided") }}{% endif %}
-		</h3>
-	</div>
-	<div class="panel-body">
+<section id="award-{{loop.index}}">
 		<div class="row">
 			<div class="col-md-4">
 				<div class="panel panel-{% if award.title %}default{% else %}warning{% endif %}">
@@ -176,7 +170,6 @@
 				{% endif %}
 			</div>
 		</div>
-	<div>
 </section>
 
 

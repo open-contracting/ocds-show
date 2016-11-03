@@ -1041,6 +1041,110 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "ocds-new-000-00001-contract-02",
+              "awardID": "ocds-new-000-00001-award-01",
+              "title": "Contract to build new cycle lanes in the centre of town.",
+              "description": "A contract has been signed between the Council and AnyCorp Ltd for construction of new cycle lanes in the centre of town.",
+              "status": "active",
+              "period": {
+                "startDate": "2010-07-01T00:00:00Z",
+                "endDate": "2011-08-01T23:59:00Z"
+              },
+              "value": {
+                "amount": 11000000,
+                "currency": "GBP"
+              },
+              "items": [
+                {
+                  "id": "0001",
+                  "description": "string",
+                  "classification": {
+                    "scheme": "CPV",
+                    "id": "45233130",
+                    "description": "Construction work for highways",
+                    "uri": "http://cpv.data.ac.uk/code-45233130"
+                  },
+                  "additionalClassifications": [
+                    {
+                      "scheme": "CPV",
+                      "id": "45233162-2",
+                      "description": "Cycle path construction work",
+                      "uri": "http://cpv.data.ac.uk/code-45233162.html"
+                    }
+                  ],
+                  "quantity": 8,
+                  "unit": {
+                    "name": "Miles",
+                    "value": {
+                      "amount": 137000,
+                      "currency": "GBP"
+                    }
+                  }
+                }
+              ],
+              "dateSigned": "2015-06-10T14:23:12Z",
+              "documents": [
+                {
+                  "id": "0008",
+                  "documentType": "contractSigned",
+                  "title": "Signed Contract",
+                  "description": "The Signed Contract for Cycle Path Construction",
+                  "url": "http://example.com/contracts/ocds-new-000-00001",
+                  "datePublished": "2015-06-10T16:43:12Z",
+                  "format": "application/pdf",
+                  "language": "en"
+                }
+              ],
+              "implementation": {
+                "transactions": [
+                  {
+                    "id": "ocds-new-000-00001-1",
+                    "source": "https://openspending.org/uk-barnet-spending/",
+                    "date": "2010-08-01T00:00:00Z",
+                    "amount": {
+                      "amount": 500000,
+                      "currency": "GBP"
+                    },
+                    "providerOrganization": {
+                      "scheme": "GB-LAC",
+                      "id": "E09000003",
+                      "legalName": "London Borough of Barnet",
+                      "uri": "http://www.barnet.gov.uk/"
+                    },
+                    "receiverOrganization": {
+                      "scheme": "GB-COH",
+                      "id": "1234567844",
+                      "legalName": "AnyCorp Ltd",
+                      "uri": "http://www.anycorp.example"
+                    },
+                    "uri": "https://openspending.org/uk-barnet-spending/transaction/asd9235qaghvs1059620ywhgai"
+                  },
+                  {
+                    "id": "ocds-new-000-00001-2",
+                    "source": "https://openspending.org/uk-barnet-spending/",
+                    "date": "2010-10-01T00:00:00Z",
+                    "amount": {
+                      "amount": 100000,
+                      "currency": "GBP"
+                    },
+                    "providerOrganization": {
+                      "scheme": "GB-LAC",
+                      "id": "E09000003",
+                      "legalName": "London Borough of Barnet",
+                      "uri": "http://www.barnet.gov.uk/"
+                    },
+                    "receiverOrganization": {
+                      "scheme": "GB-COH",
+                      "id": "1234567844",
+                      "legalName": "AnyCorp Ltd",
+                      "uri": "http://www.anycorp.example"
+                    },
+                    "uri": "https://openspending.org/uk-barnet-spending/transaction/asd9235qaghvs105962as0012"
+                  }
+                ]
+              }
             }
           ]
         }

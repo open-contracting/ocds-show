@@ -4,7 +4,7 @@
 
 <main class="row">
 
-  <ul class="col-md-3 nav nav-pills nav-stacked">
+  <ul class="release-pills col-md-3 nav nav-pills nav-stacked">
     <li role="presentation" class="active"><a href="#metadata">Metadata</a></li>
     <li role="presentation" class="{% if not release.tender.procuringEntity %}disabled{%endif%}" ><a href="#procuringEntity">Procuring entity</a></li>
     <li role="presentation" class="{% if not release.buyer %}disabled{%endif%}" ><a href="#buyer">Buyer</a></li>
@@ -15,16 +15,8 @@
   </ul>
 
 
-  <div class="tab-content">
+  <div id="release-tabs" class="tab-content">
 	<div class="col-md-9 tab-pane active" id="metadata">
-		<div class="panel-group">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3>
-            Metadata
-					</h3>
-				</div>
-				<div id="metadata" class="panel-collapse collapse in">
 					<ul class="list-group">
 						<li class="list-group-item">
 							<strong>OCID: </strong>{{release.ocid}}
@@ -43,45 +35,23 @@
 							<strong>Initiation type: </strong>{{release.initiationType}}
 						</li>
 					</ul>
-				</div>
-			</div>
-		</div>
 	</div>
 	<div class="col-md-9 tab-pane" id="procuringEntity">
-		<div class="panel panel-{% if release.tender.procuringEntity %}default{% else %}warning{% endif %}">
-			<div class="panel-heading">
-				<h3>
-					{{ gettext("Procuring entity") }}
-				</h3>
-			</div>
-			<div class="panel-body">
-				{% if release.tender.procuringEntity %}
-					{% set organization = release.tender.procuringEntity %}
-					{% include 'organization.html' %}
-				{% else %}
-					{{ gettext("No procuring entity information provided") }}
-				{% endif %}
-			</div>
-		</div>
+    {% if release.tender.procuringEntity %}
+      {% set organization = release.tender.procuringEntity %}
+      {% include 'organization.html' %}
+    {% else %}
+      {{ gettext("No procuring entity information provided") }}
+    {% endif %}
   </div>
 	<div class="col-md-9 tab-pane" id="buyer">
-		<div class="panel panel-{% if release.buyer %}default{% else %}warning{% endif %}">
-			<div class="panel-heading">
-				<h3>
-					{{ gettext("Buyer") }}
-				</h3>
-			</div>
-			<div class="panel-body">
-				{% if release.buyer %}
-					{% set organization = release.buyer %}
-					{% set title = gettext("Buyer") %}
-					{% include 'organization.html' %}
-				{% else %}
-					{{ gettext("No buyer information provided") }}
-				{% endif %}
-
-			</div>
-		</div>
+    {% if release.buyer %}
+      {% set organization = release.buyer %}
+      {% set title = gettext("Buyer") %}
+      {% include 'organization.html' %}
+    {% else %}
+      {{ gettext("No buyer information provided") }}
+    {% endif %}
 	</div>
 
   {% set planning = release.planning %}
