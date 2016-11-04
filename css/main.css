@@ -5819,7 +5819,7 @@ button.close {
     display: none !important; } }
 
 .sandstone, .navbar .nav > li > a, .btn, .nav, .breadcrumb, .pagination, .pager, .dropdown-menu > li > a, .tooltip, .panel .panel-heading,
-.panel .panel-title, .panel .panel-footer {
+.panel .panel-title, .panel .panel-footer, .panel-body dt {
   font-size: 11px;
   line-height: 22px;
   font-weight: 500;
@@ -5904,7 +5904,8 @@ input,
 
 .panel {
   -webkit-box-shadow: none;
-  box-shadow: none; }
+  box-shadow: none;
+  box-shadow: 2px 2px 0px 0px #ccc; }
   .panel .panel-heading,
   .panel .panel-title {
     color: #fff;
@@ -5913,4 +5914,29 @@ input,
   .panel-default .panel-title,
   .panel-default .panel-footer {
     color: #98978B; }
+  .panel-body dt {
+    color: #98978B;
+    margin-top: 0;
+    margin-bottom: 0; }
+  .panel-body dt.dt-large {
+    font-size: 16px; }
+  .panel-body dt.dt-small {
+    font-size: 14px; }
+  .panel-body dt {
+    clear: left; }
+  .panel-body dt.dt-inline {
+    float: left; }
+  .panel-body dt.dt- {
+    float: left; }
+  .panel-body dt.dt-gap, .panel-body dd.dd-gap {
+    padding-top: 15px; }
+  .panel-body dd.dd-large {
+    font-size: 16px;
+    margin-top: -1px; }
+  .panel-body dd.dd-small {
+    font-size: 14px;
+    padding-top: 1px; }
+  .panel-body dd.dd-inline {
+    float: left;
+    margin-left: 10px; }
 
