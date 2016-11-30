@@ -1,3 +1,4 @@
+{% from "macros.html" import change_label %}
   <h1>
     {{release.tender.title}} {% if not release.tender.title %} {{release.ocid}} {% endif %}  
   </h1>
@@ -6,12 +7,12 @@
 
   <ul class="release-pills col-md-3 nav nav-pills nav-stacked">
     <li role="presentation" class="active"><a href="#metadata">Metadata</a></li>
-    <li role="presentation" class="{% if not release.tender.procuringEntity %}disabled{%endif%}" ><a href="#procuringEntity">Procuring entity</a></li>
-    <li role="presentation" class="{% if not release.buyer %}disabled{%endif%}" ><a href="#buyer">Buyer</a></li>
-    <li role="presentation" class="{% if not release.planning %}disabled{%endif%}" ><a href="#planning">Planning</a></li>
-    <li role="presentation" class="{% if not release.tender %}disabled{%endif%}" ><a href="#tender">Tender</a></li>
-    <li role="presentation" class="{% if not release.awards %}disabled{%endif%}" ><a href="#awards">Awards</a></li>
-    <li role="presentation" class="{% if not release.contracts %}disabled{%endif%}" ><a href="#contracts">Contracts</a></li>
+    <li role="presentation" class="{% if not release.tender.procuringEntity %}disabled{%endif%}" ><a href="#procuringEntity">Procuring entity {% if release.tender.procuringEntity %}{{change_label(get_change(release, 'tender'), gettext)}}{%endif%}</a></li>
+    <li role="presentation" class="{% if not release.buyer %}disabled{%endif%}" ><a href="#buyer">Buyer {{change_label(get_change(release, 'buyer'), gettext)}} </a></li>
+    <li role="presentation" class="{% if not release.planning %}disabled{%endif%}" ><a href="#planning">Planning {{change_label(get_change(release, 'planning'), gettext)}}</a></li>
+    <li role="presentation" class="{% if not release.tender %}disabled{%endif%} " ><a href="#tender">Tender {{ change_label(get_change(release, 'tender'), gettext) }}</a> </li>
+    <li role="presentation" class="{% if not release.awards %}disabled{%endif%}" ><a href="#awards">Awards {{ change_label(get_change(release, 'awards'), gettext) }}</a></li>
+    <li role="presentation" class="{% if not release.contracts %}disabled{%endif%}" ><a href="#contracts">Contracts {{ change_label(get_change(release, 'contracts'), gettext) }}</a></li>
   </ul>
 
 

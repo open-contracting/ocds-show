@@ -520,6 +520,50 @@
               }
             }
           ]
+        },{
+          "ocid": "ocds-213czf-000-00001",
+          "id": "ocds-213czf-000-00001-03-awards",
+          "date": "2009-03-15T14:45:00Z",
+          "tag": [
+            "contractAmendment"
+          ],
+          "buyer": {
+            "identifier": {
+              "scheme": "GB-LAC",
+              "id": "E09000003",
+              "legalName": "London Borough of Barnet",
+              "uri": "http://www.barnet.gov.uk/"
+            },
+            "additionalIdentifiers": [
+              {
+                "scheme": "schemeA",
+                "id": "XXXXX",
+                "legalName": "London Borough of Barnet",
+                "uri": "http://www.barnet.gov.uk/"
+              },
+              {
+                "scheme": "schemeB",
+                "id": "YYYY",
+                "legalName": "London Borough of Barnet",
+                "uri": "http://www.barnet.gov.uk/"
+              }
+            ],
+            "name": "London Borough of Barnet",
+            "address": {
+              "streetAddress": "4, North London Business Park, Oakleigh Rd S",
+              "locality": "London",
+              "region": "London",
+              "postalCode": "N11 1NP",
+              "countryName": "United Kingdom"
+            },
+            "contactPoint": {
+              "name": "New Procurement Team",
+              "email": "New procurement-team@example.com",
+              "telephone": "01234 345 342",
+              "faxNumber": "01234 345 343",
+              "url": "http://example.com/contact/fda"
+            }
+          }
         }
       ]
     },
