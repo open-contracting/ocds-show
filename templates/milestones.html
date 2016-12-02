@@ -1,7 +1,7 @@
 <div class="panel panel-{% if milestones|length > 0 %}default{% else %}warning{% endif %}">
 	<div class="panel-heading">
 		<h3 class="panel-title">
-			{{ gettext("Milestones") }}
+			{{ gettext("Milestones") }} {{change_label(parent, 'milestones')}}
 		</h3>
 	</div>
 	<div class="panel-body">
@@ -20,11 +20,11 @@
 				<tbody>
 					{% for milestone in milestones %}
 						<tr> <!-- add conditional colouring based on presence of url? -->
-							<td>{{ milestone.title}}</td>
-							<td>{{ milestone.description }}</td>
-							<td>{{ milestone.dueDate|truncate(10,true,"") }}</td> <!-- add time hover over? -->
-							<td>{{ doucment.dateModified|truncate(10,true,"") }}</td> <!-- add time hover over? -->
-							<td>{{ milestone.status}}</td>
+							<td>{{ milestone.title}} {{change_label(milestone, 'milestones')}}</td>
+							<td>{{ milestone.description }} {{change_label(milestone, 'description')}}</td>
+							<td>{{ milestone.dueDate|truncate(10,true,"") }} {{change_label(milestone, 'dueDate')}}</td> <!-- add time hover over? -->
+							<td>{{ milestone.dateModified|truncate(10,true,"") }} {{change_label(milestone, 'dateModified')}}</td> <!-- add time hover over? -->
+							<td>{{ milestone.status}} {{change_label(milestone, 'status')}}</td>
 							<td></td> <!-- work out how to display these -->
 						</tr>
 					{% endfor %}

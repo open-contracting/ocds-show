@@ -137,7 +137,9 @@
              var path = obj.__path;
              if (!path) {return}
              var path_list = JSON.parse(path)
-             path_list.push(field)
+             if (field) {
+               path_list.push(field)
+             }
              var full_path = JSON.stringify(path_list)
              return changes[full_path]
            }

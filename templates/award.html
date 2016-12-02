@@ -1,3 +1,11 @@
+<h3 class="tab-heading">
+  {% if award.title %}
+    {{ award.title }}
+  {% else %}
+    {{ award.id }}
+  {% endif %} {{change_label(award)}}
+
+</h3>
 <section id="award-{{loop.index}}">
 		<div class="row">
 			<div class="col-md-4">
@@ -9,7 +17,7 @@
 					</div>
 					<div class="panel-body">
 						{% if award.id %}
-							{{ award.id }}
+							{{ award.id }} {{change_label(award, 'id')}}
 						{% else %}
 							{{ gettext("No ID provided") }}
 						{% endif %}
@@ -20,12 +28,12 @@
 				<div class="panel panel-{% if award.description %}default{% else %}warning{% endif %}">
 					<div class="panel-heading">
 						<h3 class="panel-title">
-							{{ gettext("Description") }}
+							{{ gettext("Description") }} {{change_label(award, 'description')}}
 						</h3>
 					</div>
 					<div class="panel-body">
 						{% if award.description %}
-							{{ award.description }}
+							{{ award.description }} 
 						{% else %}
 							{{ gettext("No description provided") }}
 						{% endif %}
@@ -36,7 +44,7 @@
 				<div class="panel panel-{% if award.status %}default{% else %}warning{% endif %}">
 					<div class="panel-heading">
 						<h3 class="panel-title">
-							{{ gettext("Status") }}
+							{{ gettext("Status") }} {{change_label(award, 'status')}}
 						</h3>
 					</div>
 					<div class="panel-body">
@@ -54,7 +62,7 @@
 				<div class="panel panel-{% if award.date %}default{% else %}warning{% endif %}">
 					<div class="panel-heading">
 						<h3 class="panel-title">
-							{{ gettext("Date") }}
+							{{ gettext("Date") }} {{change_label(award, 'date')}}
 						</h3>
 					</div>
 					<div class="panel-body">
@@ -70,14 +78,14 @@
 				<div class="panel panel-{% if award.value.amount %}default{% else %}warning{% endif %}">
 					<div class="panel-heading">
 						<h3 class="panel-title">
-							{{ gettext("Value") }}
+							{{ gettext("Value") }} {{change_label(award, 'value')}}
 						</h3>
 					</div>
 					<div class="panel-body">
 						<h4>
 							{% if award.value.amount %}
-								{{ award.value.amount|currency }}
-								{{award.value.currency}}
+								{{ award.value.amount|currency }} {{change_label(award.value, 'amount')}}
+								{{award.value.currency}} {{change_label(award.value, 'currency')}}
 							{% else %}
 								{{ gettext("Value not provided") }}
 							{% endif %}
@@ -89,14 +97,14 @@
 				<div class="panel panel-{% if award.contractPeriod %}default{% else %}warning{% endif %}">
 					<div class="panel-heading">
 						<h3 class="panel-title">
-							{{ gettext("Contract Period")}}
+							{{ gettext("Contract Period")}} {{change_label(award, 'contractPeriod')}}
 						</h3>
 					</div>
 					<div class="panel-body">	<!-- add time hover over? -->
 						<p>
 							<strong>{{ gettext("Start: ")}}</strong>
 							{% if award.contractPeriod.startDate %}
-								{{ award.contractPeriod.startDate|truncate(10,true,"")}}
+								{{ award.contractPeriod.startDate|truncate(10,true,"")}} {{change_label(award.contractPeriod, 'startDate')}}
 							{% else %}
 								<span class="bg-warning">{{ gettext("No start date provided") }}</span>
 							{% endif %}
@@ -104,7 +112,7 @@
 						<p>
 							<strong>{{ gettext("End: ")}}</strong>
 							{% if award.contractPeriod.endDate %}
-								{{ award.contractPeriod.endDate|truncate(10,true,"")}}
+								{{ award.contractPeriod.endDate|truncate(10,true,"")}} {{change_label(award.contractPeriod, 'endDate')}}
 							{% else %}
 								<span class="bg-warning">{{ gettext("No end date provided") }}</span>
 							{% endif %}
@@ -118,7 +126,7 @@
 				<div class="panel panel-{% if award.suppliers %}default{% else %}warning{% endif %}">
 					<div class="panel-heading">
 						<h3 class="panel-title">
-							 {{ gettext("Suppliers:") }}
+							 {{ gettext("Suppliers:") }} {{change_label(award, 'suppliers')}}
 						</h3>
 					</div>
 					<div class="panel-body">
@@ -136,6 +144,7 @@
 			<div class="col-md-12">
 				{% if award.items %}
 					{% set items = award.items %}
+					{% set parent = award %}
 					{% include 'items.html' %}
 				{% else %}
 					<div class="panel panel-warning">
@@ -155,6 +164,7 @@
 			<div class="col-md-12">
 				{% if award.documents %}
 					{% set documents = award.documents %}
+					{% set parent = award %}
 					{% include 'documents.html' %}
 				{% else %}
 					<div class="panel panel-warning">
