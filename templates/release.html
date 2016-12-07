@@ -40,7 +40,11 @@
 						</li>
 						<li class="list-group-item">
 							<strong>Tags: </strong>
-							{{ release.tag|join(", ") }}
+              {% if release.tag %}
+                {{ release.tag|join(", ") }}
+              {% else %}
+							  {{ gettext("No Tags Provided") }}
+              {% endif %}
 						</li>
 						<li class="list-group-item">
 							<strong>Initiation type: </strong>{{release.initiationType}}
