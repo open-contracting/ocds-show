@@ -91,3 +91,109 @@ function merge(releases) {
   return unflatten(merged)
 }
 
+
+function flatten_all(obj) {
+  var flattened = {};
+  var flatten_object = function(path, obj) {
+    Object.keys(obj).forEach(function (key){
+      var value = obj[key];
+      if (typeof(value) === "object" && NOT_FLATTEN_KEYS.indexOf(key) === -1) {
+        if (Array.isArray(value)) {
+          if (typeof(value[0]) === 'object' ){
+            flattened[JSON.stringify(path.concat(key))] = true;
+            flatten_array(path.concat(key), value);
+          } else {
+            flattened[JSON.stringify(path.concat(key))] = value;
+          }
+        } else {
+          flattened[JSON.stringify(path.concat(key))] = true;
+          flatten_object(path.concat(key), value);
+        }
+      } else {
+        flattened[JSON.stringify(path.concat(key))] = value;
+      }
+    });
+  }
+  var flatten_array = function(path, obj) {
+    obj.forEach(function (item, index){
+      var id = item["id"];
+      if (!id) {
+        id = index;
+      };
+      flattened[JSON.stringify(path.concat([[id]]))] = true;
+      flatten_object(path.concat([[id]]), item);
+    });
+  };
+  flatten_object([], obj);
+  return flattened;
+}
+
+function get_changes(old_flat, new_flat) {
+  // sort shortest keys first so that we can check shorter keys for newness.
+  var sorted_keys = Object.keys(new_flat).sort(function(a, b){
+    return a.length - b.length;
+  });
+  var results = {}
+  sorted_keys.forEach(function(item) {
+    var new_value = new_flat[item]
+    var old_value = old_flat[item]
+    var item_as_list = JSON.parse(item)
+    //new
+    if (typeof old_value === "undefined") {
+      //check parants to see if this is new or a parent is new
+      var parents_new = item_as_list.some(function(item, index) {
+        var slice_to_index = JSON.stringify(item_as_list.slice(0, index+1));
+        if (results[slice_to_index] == "new") {
+          return true
+        }
+      })
+      if (!parents_new) {
+        //mark all as changed
+        item_as_list.forEach(function(item, index) {
+          var slice_to_index = JSON.stringify(item_as_list.slice(0, index+1));
+          results[slice_to_index] = "changed"
+        })
+        //mark latest as new
+        results[item] = "new"
+      }
+    }
+    //changed
+    else if (old_value !== new_value) {
+      //mark each parant as changed
+      item_as_list.forEach(function(item, index) {
+        var slice_to_index = JSON.stringify(item_as_list.slice(0, index+1));
+        results[slice_to_index] = "changed"
+      })
+    }
+  })
+  return results
+}
+
+function augment_path(obj) {
+  var traverse_object = function(path, obj) {
+    obj["__path"] = JSON.stringify(path);
+    Object.keys(obj).forEach(function (key){
+      var value = obj[key];
+      if (typeof(value) === "object" && NOT_FLATTEN_KEYS.indexOf(key) === -1) {
+        if (Array.isArray(value)) {
+          if (typeof(value[0]) === 'object' ){
+            traverse_array(path.concat(key), value);
+          } 
+        } else {
+          traverse_object(path.concat(key), value);
+        }
+      } 
+    });
+  }
+  var traverse_array = function(path, obj) {
+    obj.forEach(function (item, index){
+      var id = item["id"];
+      if (!id) {
+        id = index;
+      };
+      traverse_object(path.concat([[id]]), item);
+    });
+  };
+  traverse_object([], obj);
+  return obj;
+}

@@ -10,6 +10,14 @@
   border: 1px solid #DFD7CA;
   padding-top: 20px;
 }
+
+#release-tabs .label {
+  text-transform: uppercase;
+  font-size: 55%;
+  position:relative;
+  bottom:2px
+}
+
 #release-tabs .tab-pane > h3, #release-tabs .tab-pane section > h3 {
   color: #3E3F3A;
   margin-top: 0px
@@ -21,6 +29,14 @@
   z-index: 100;
 
 }
+
+.release-pills .label {
+  font-size: 50%;
+  vertical-align: middle;
+  top: -1px;
+  position: relative;
+}
+
 
 .release-pills a {
   border-right: 0px !important;

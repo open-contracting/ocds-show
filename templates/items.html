@@ -1,7 +1,7 @@
 <div class="panel panel-{% if items|length > 0 %}default{% else %}warning{% endif %}">
 	<div class="panel-heading">
 		<h3 class="panel-title">
-			{{ gettext("Items") }}
+			{{ gettext("Items") }} {{change_label(parent, "items")}}
 		</h3>
 	</div>
 	<div class="panel-body">
@@ -19,18 +19,22 @@
 				<tbody>
 					{% for item in items %}
 						<tr>
-							<td>{{ item.id }}</td>	<!-- need to consider whether to present the id - make sure this is consistent with documents approach -->
-							<td>{{ item.description }}</td>
+							<td>{{ item.id }} {{change_label(item)}} </td>	<!-- need to consider whether to present the id - make sure this is consistent with documents approach -->
+							<td>{{ item.description }} {{change_label(item, "description")}}</td>
 							<td>
-								{{ item.classification.description }}
+								{{change_label(item, "classification")}} {{ item.classification.description }} {{change_label(item.classification, "description")}}
 								<small>
 									(<a href="http://standard.open-contracting.org/latest/en/schema/codelists/#item-classification-scheme">{{ item.classification.scheme }}</a> -
+                  {{change_label(item.classification, "scheme")}}
 									{% if item.classification.uri %}
 										<a href="{{ item.classification.uri }}">{{ item.classification.id }}</a>)
+                    {{change_label(item.classification, "uri")}}
 									{% else %}
 										{{ item.classification.id }})
+                    {{change_label(item.classification, "id")}}
 									{% endif %}
 								</small>
+                {{change_label(item, "additionalClassifications")}}
 								{% if item.additionalClassifications %}
 									{% for classification in item.additionalClassifications %}
 										<br>{{ classification.description }}
@@ -46,9 +50,10 @@
 								{% endif %}
 							
 							</td>
-							<td>{{ item.quantity }} <small>({{ item.unit.name }})</small></td>
+							<td>{{ item.quantity }} {{change_label(item, "quantity")}} <small>{{change_label(item, "unit")}} ({{ item.unit.name }}{{change_label(item.unit, "name")}})</small></td>
 						  {% if item.unit.value.amount %}
-                <td>{{ item.unit.value.amount|currency }} {{ item.unit.value.currency }}</td>
+                {{change_label(item.unit, "value")}}
+                <td>{{ item.unit.value.amount|currency }} {{change_label(item.unit.value, "amount")}} {{ item.unit.value.currency }} {{change_label(item.unit.value, "currency")}}</td>
 						  {% endif %}
 						</tr>
 					{% endfor %}

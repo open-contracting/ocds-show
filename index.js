@@ -85,7 +85,31 @@ var render_json = function (context) {
     var releaseNumber = context["releaseNumber"] || 0
     input['releaseNumber'] = releaseNumber
     input['releases'] = current_record.releases
-    input['release'] = merge(input.releases.slice(0, releaseNumber + 1))
+
+    var prev_release = merge(input.releases.slice(0, releaseNumber))
+    var current_release =  merge(input.releases.slice(0, releaseNumber + 1))
+
+    var changes = get_changes(flatten_all(prev_release), flatten_all(current_release))
+
+    input['release'] = augment_path(current_release)
+
+    //console.log(input['release'])
+
+    //console.log(changes)
+
+    function get_change(obj, field) {
+      if (!obj) {return}
+      var path = obj.__path;
+      if (!path) {return}
+      var path_list = JSON.parse(path)
+      if (field) {
+        path_list.push(field)
+      }
+      var full_path = JSON.stringify(path_list)
+      return changes[full_path]
+    }
+    input['get_change'] = get_change
+
     container.empty()
     var content = env.render('record_select.html', input);
     container.append(content)
