@@ -1,4 +1,5 @@
 var jsonInput = $('#input-json')
+var URLInput  = $('#input-url')
 var container = $('#container')
 var message   = $('#message-container')
 var currentView = null
@@ -21,6 +22,18 @@ FileReaderJS.setupInput(document.getElementById('upload'), {
     }
   }
 });
+
+var loadURL = function(url) {
+  console.log("loading " + url)
+  $.ajax({
+    url: url,
+    datatype: 'json',
+    success: function(result) {
+      jsonInput.val(result);
+      render_json({"newData": true});
+    }
+  })
+}
 
 var gettext = function(text) {
    return text
@@ -112,6 +125,10 @@ $('#input-json').on("input", function(e) {
   render_json({"newData": true});
 })
 
+$('#input-url').on("input", function(e) {
+  loadURL(URLInput.val())
+})
+
 $('#container').on("click", ".release-button", function(e) {
   render_json({"releaseNumber": $(this).data()["releaseNumber"]})
 })
@@ -121,12 +138,12 @@ $('.hide-input-button').on("click", function(e) {
   toggleView(null)
 })
 
-$('#text-input').on("click", function(e) {
+$('#input-json-button').on("click", function(e) {
   e.preventDefault()
   toggleView("#input-json-container")
 })
 
-$('#url-input').on("click", function(e) {
+$('#input-url-button').on("click", function(e) {
   e.preventDefault()
   toggleView("#input-url-container")
 })
