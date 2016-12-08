@@ -1,6 +1,6 @@
 var jsonInput = $('#input-json')
 var URLInput  = $('#input-url')
-var container = $('#container')
+var container = $('#results-container')
 var message   = $('#message-container')
 var currentView = null
 
@@ -129,10 +129,6 @@ $('#input-url').on("input", function(e) {
   loadURL(URLInput.val())
 })
 
-$('#container').on("click", ".release-button", function(e) {
-  render_json({"releaseNumber": $(this).data()["releaseNumber"]})
-})
-
 $('.hide-input-button').on("click", function(e) {
   e.preventDefault()
   toggleView(null)
@@ -148,7 +144,11 @@ $('#input-url-button').on("click", function(e) {
   toggleView("#input-url-container")
 })
 
-$('#container').on("click", ".nav a", function(e) {
+container.on("click", ".release-button", function(e) {
+  render_json({"releaseNumber": $(this).data()["releaseNumber"]})
+})
+
+container.on("click", ".nav a", function(e) {
   e.preventDefault()
   if (!$(this).parent().hasClass("disabled")) {
     $(this).tab('show');
@@ -156,7 +156,7 @@ $('#container').on("click", ".nav a", function(e) {
   }
 })
 
-$('#container').on("change", "#id-select", function(e) {
+container.on("change", "#id-select", function(e) {
   e.preventDefault()
   render_json()
 })
