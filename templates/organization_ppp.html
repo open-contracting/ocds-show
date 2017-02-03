@@ -1,0 +1,56 @@
+{% extends 'organization.html' %}
+
+{% block additionalOrgFieldsBefore %}
+	<div class="panel panel-{% if organization.roles %}default{% else %}warning{% endif %}">
+		<div class="panel-heading">
+      <strong> {{gettext("Roles within process")}} </strong> 
+		</div>
+		<div class="panel-body">
+      <ul>
+      {% for role in organization.roles %}
+       <li>
+       {{role}}
+       </li>
+      {% endfor %}
+      <ul>
+		</div>
+	</div>
+
+{% endblock additionalOrgFieldsBefore %}
+
+{% block additionalOrgFieldsAfter %}
+	<div class="panel panel-{% if organization.shareholders or organization.shareholders %}default{% else %}warning{% endif %}">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				{{ gettext("Shareholders") }}
+			</h3>
+		</div>
+		<div class="panel-body">
+			{% if organization.shareholders %}
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>{{ gettext("Shareholder") }}</th>
+							<th>{{ gettext("Shareholding") }}</th>
+							<th>{{ gettext("Voting Rights") }}</th>
+							<th>{{ gettext("Voting Rights Details") }}</th>
+						</tr>
+					</thead>
+					<tbody>
+            {% for shareholder in organization.shareholders %}
+              <tr>
+                <td> {{shareholder.shareholder.name}} {{change_label(shareholder.shareholder, "name")}}
+                  <small> ({{shareholder.shareholder.id}} {{change_label(shareholder.shareholder, "id")}}) </small> </td>
+                <td> {{shareholder.shareholding * 100}}% {{change_label(shareholder, "shareholding")}} </td>
+                <td> {{shareholder.votingRights}} {{change_label(shareholder, "votingRights")}} </td>
+                <td> {{shareholder.votingRightsDetails}} {{change_label(shareholder, "votingRightsDetails")}} </td>
+              </tr>
+            {% endfor %}
+					</tbody>
+				</table>
+			{% else %}
+				{{ gettext("No shareholder data provided") }}
+			{% endif %}
+		</div>
+	</div>
+{% endblock additionalOrgFieldsAfter %}

@@ -4,6 +4,8 @@
 	{{organization.name}} {{change_label(organization, 'name')}}
 </h3>
 <p>
+  {% block additionalOrgFieldsBefore %}
+  {% endblock additionalOrgFieldsBefore %}
 	<div class="panel panel-{% if organization.contactPoint %}default{% else %}warning{% endif %}">
 		<div class="panel-heading">
 			<h3 class="panel-title">
@@ -100,4 +102,6 @@
 			{% endif %}
 		</div>
 	</div>
+  {% block additionalOrgFieldsAfter %}
+  {% endblock additionalOrgFieldsAfter %}
 </p>

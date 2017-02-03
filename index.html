@@ -16,7 +16,7 @@
     <body>
       <nav class="navbar navbar-inverse">
         <div class="container">
-          <a class="navbar-brand" href="#">OCDS Show</a>
+          <a class="navbar-brand" href="#">OCDS PPP Show</a>
           <form class="navbar-form navbar-right" role="search">
             <div class="form-group">
                   <label class="btn btn-danger btn-file ">
@@ -31,7 +31,7 @@
       <div class="container">
 
         <div id="input-json-container" class="hide">
-          <h3> Input a valid OCDS record/release 
+          <h3> Input a valid PPP OCDS record/release 
           <button id="hide-input-button" class="pull-right btn btn-primary btn-sm">Hide Input</button>
           </h3>
           <textarea id="input-json" name="input-json"></textarea>
@@ -85,7 +85,7 @@
            return
          }
          if (!currentValue) {
-           container.html('<h1> Welcome to OCDS Show. </h1> <h4>Please supply either an OCDS release or OCDS record. Use upload file or text input buttons above.</h4>')
+           container.html('<h1> Welcome to PPP OCDS Show. </h1> <h4>Please supply either an OCDS release or OCDS record. Use upload file or text input buttons above.</h4>')
            return
          }
 
@@ -128,6 +128,14 @@
 
            input['release'] = augment_path(current_release)
 
+           var parties = input['release']['parties'] || []
+
+           input.parties = {}
+
+           parties.forEach(function (party) {
+             input.parties[party.id] = party
+           })
+
            //console.log(input['release'])
 
            //console.log(changes)
@@ -149,7 +157,7 @@
            container.empty()
            var content = env.render('record_select.html', input);
            container.append(content)
-           var content = env.render('record_release.html', input);
+           var content = env.render('record_release_ppp.html', input);
            container.append(content)
          } else {
            input.release_ids = input.releases.map(function (value) {
@@ -171,9 +179,18 @@
            container.empty()
            input['release'] = current_release
            input['release_id'] = id
+
+           var parties = input['release']['parties'] || []
+
+           input.parties = {}
+
+           parties.forEach(function (party) {
+             input.parties[party.id] = party
+           })
+
            var content = env.render('release_select.html', input);
            container.append(content)
-           var content = env.render('release.html', input);
+           var content = env.render('release_ppp.html', input);
            container.append(content)
          }
        }
