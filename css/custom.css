@@ -20,6 +20,10 @@
     background-color:  #F6EDE5 !important;
 }
 
+.gap-left {
+  margin-left: 10px
+}
+
 .table-striped > tbody > tr:nth-of-type(2n+1) {background-color: #F6EDE5; }
 
 a:hover, a:focus {color: #7c1200;text-decoration: underline;}

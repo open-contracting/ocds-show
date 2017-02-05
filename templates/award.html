@@ -1,138 +1,101 @@
 <h3 class="tab-heading">
   {% if award.title %}
-    {{ award.title }}
+  {{ award.title }} <small> ({{ award.id }}) </small>
   {% else %}
     {{ award.id }}
   {% endif %} {{change_label(award)}}
 
 </h3>
 <section id="award-{{loop.index}}">
-		<div class="row">
-			<div class="col-md-4">
-				<div class="panel panel-{% if award.title %}default{% else %}warning{% endif %}">
-					<div class="panel-heading">
-						<h3 class="panel-title">
-							{{ gettext("ID") }}
-						</h3>
-					</div>
-					<div class="panel-body">
-						{% if award.id %}
-							{{ award.id }} {{change_label(award, 'id')}}
-						{% else %}
-							{{ gettext("No ID provided") }}
-						{% endif %}
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="panel panel-{% if award.description %}default{% else %}warning{% endif %}">
-					<div class="panel-heading">
-						<h3 class="panel-title">
-							{{ gettext("Description") }} {{change_label(award, 'description')}}
-						</h3>
-					</div>
-					<div class="panel-body">
-						{% if award.description %}
-							{{ award.description }} 
-						{% else %}
-							{{ gettext("No description provided") }}
-						{% endif %}
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="panel panel-{% if award.status %}default{% else %}warning{% endif %}">
-					<div class="panel-heading">
-						<h3 class="panel-title">
-							{{ gettext("Status") }} {{change_label(award, 'status')}}
-						</h3>
-					</div>
-					<div class="panel-body">
-						{% if award.status %}
-							{{ award.status }}
-						{% else %}
-							{{ gettext("No status provided") }}
-						{% endif %}
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4">
-				<div class="panel panel-{% if award.date %}default{% else %}warning{% endif %}">
-					<div class="panel-heading">
-						<h3 class="panel-title">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        {% if award.description %}
+          {{ award.description }} 
+        {% else %}
+          {{ gettext("No description provided") }}
+        {% endif %}
+        <dl> 
+           <dt class="dt-large dt-inline dt-gap">
+						 {{ gettext("Status") }} {{change_label(award, 'status')}}
+           </dt>
+           <dd class="dd-large dd-inline dd-gap">
+             {% if award.status %}
+               {{ award.status }}
+             {% else %}
+               {{ gettext("No status provided") }}
+             {% endif %}
+           </dd>
+
+           <dt class="dt-large dt-inline">
 							{{ gettext("Date") }} {{change_label(award, 'date')}}
-						</h3>
-					</div>
-					<div class="panel-body">
-						{% if award.date %}
-							{{ award.date }}
-						{% else %}
-							{{ gettext("No date provided") }}
-						{% endif %}
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="panel panel-{% if award.value.amount %}default{% else %}warning{% endif %}">
-					<div class="panel-heading">
-						<h3 class="panel-title">
+           </dt>
+           <dd class="dd-large dd-inline">
+              {% if award.date %}
+                {{ award.date }}
+              {% else %}
+                {{ gettext("No date provided") }}
+              {% endif %}
+           </dd>
+
+           <dt class="dt-large dt-inline">
 							{{ gettext("Value") }} {{change_label(award, 'value')}}
-						</h3>
-					</div>
-					<div class="panel-body">
-						<h4>
+           </dt>
+           <dd class="dd-large dd-inline">
 							{% if award.value.amount %}
 								{{ award.value.amount|currency }} {{change_label(award.value, 'amount')}}
-								{{award.value.currency}} {{change_label(award.value, 'currency')}}
+								{{ award.value.currency}} {{change_label(award.value, 'currency')}}
 							{% else %}
 								{{ gettext("Value not provided") }}
 							{% endif %}
-						</h4>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="panel panel-{% if award.contractPeriod %}default{% else %}warning{% endif %}">
-					<div class="panel-heading">
-						<h3 class="panel-title">
+           </dd>
+
+           <dt class="dt-large dt-gap">
 							{{ gettext("Contract Period")}} {{change_label(award, 'contractPeriod')}}
-						</h3>
-					</div>
-					<div class="panel-body">	<!-- add time hover over? -->
-						<p>
+           </dt>
+           <dd class="dd-small">
 							<strong>{{ gettext("Start: ")}}</strong>
 							{% if award.contractPeriod.startDate %}
 								{{ award.contractPeriod.startDate|truncate(10,true,"")}} {{change_label(award.contractPeriod, 'startDate')}}
 							{% else %}
 								<span class="bg-warning">{{ gettext("No start date provided") }}</span>
 							{% endif %}
-						</p>
-						<p>
-							<strong>{{ gettext("End: ")}}</strong>
+							<strong class="gap-left">{{ gettext("End: ")}}</strong>
 							{% if award.contractPeriod.endDate %}
 								{{ award.contractPeriod.endDate|truncate(10,true,"")}} {{change_label(award.contractPeriod, 'endDate')}}
 							{% else %}
 								<span class="bg-warning">{{ gettext("No end date provided") }}</span>
 							{% endif %}
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
+           </dd>
+
+         </dl> 
+      </div>
+    </div>
+
+
 		<div class="row">
 			<div class="col-md-12">
-				<div class="panel panel-{% if award.suppliers %}default{% else %}warning{% endif %}">
+				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">
-							 {{ gettext("Suppliers:") }} {{change_label(award, 'suppliers')}}
+							 {{ gettext("Private Party") }} {{change_label(award, 'suppliers')}}
 						</h3>
 					</div>
 					<div class="panel-body">
 						{% for supplier in award.suppliers %}
-							<div class="col-md-{% if award.suppliers|length  == 1 %}12{% elif award.suppliers|length == 2 %}6{% else %}4{% endif %}">
-								{% set organization = supplier %}
+							<div class="col-md-12">
+								{% set organization = parties[supplier.id] %}
+                {% if not organization %}
+                  {% set organization = supplier %}
+                {% endif %}
+								{% include 'organization.html' %}
+							</div>
+						{% endfor %}
+						{% for supplier in award.privateParty %}
+							<div class="col-md-12">
+								{% set organization = parties[supplier.id] %}
+                {% if not organization %}
+                  {% set organization = supplier %}
+                {% endif %}
 								{% include 'organization.html' %}
 							</div>
 						{% endfor %}
@@ -175,6 +138,36 @@
 						</div>
 						<div class="panel-body">
 							{{ gettext("No documents provided") }}
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				{% if award.agreedMetrics %}
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Agreed Metrics") }}
+							</h3>
+						</div>
+						<div class="panel-body">
+              {% set metrics = award.agreedMetrics %}
+              {% set parent = award %}
+              {% include 'metrics.html' %}
+						</div>
+					</div>
+				{% else %}
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Agreed Metrics") }}
+							</h3>
+						</div>
+						<div class="panel-body">
+							{{ gettext("No Agreed Metrics provided") }}
 						</div>
 					</div>
 				{% endif %}

@@ -3481,7 +3481,7 @@
                 "amount": 49243511
               },
               "interestRate": {
-                "fixed": false,
+                "fixed": true,
                 "notes": "anim in",
                 "base": -9802168,
                 "margin": -13165796
@@ -4679,6 +4679,7 @@
         "id": "ex eliteiusmod in amet in aute",
         "eligibilityCriteria_x-yhW0lF-6H9": "veniam",
         "submissionMethodDetails": "qui id sunt labore veniam",
+        "procurementMethod": "open", 
         "procuringEntity": {
           "id": "ullamcoinullamco tempor veniam",
           "name": "nulla elit enim"
@@ -5441,11 +5442,11 @@
         "eligibilityCriteria": "magna",
         "tenderers": [
           {
-            "id": "ullamco Duisin elit sunt tempor incididunt",
+            "id": "org2",
             "name": "est veniam irure culpa ut"
           },
           {
-            "id": "eiusmod consectetur deserunt nisi",
+            "id": "org3",
             "name": "cupidatat quis"
           }
         ],

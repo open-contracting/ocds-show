@@ -28,9 +28,13 @@
     <li role="presentation" class="{% if not release.publicAuthority %}disabled{%endif%}" ><a href="#publicAuthority">Public Authority {{change_label(release, 'publicAuthority')}} </a></li>
 
     <li role="presentation" class="{% if not release.planning %}disabled{%endif%}" ><a href="#planning">Planning {{change_label(release, 'planning')}}</a></li>
+    <li role="presentation" class="{% if not release.preQualification %}disabled{%endif%} " ><a href="#preQualification">Pre-Qualification {{ change_label(release, 'preQualification') }}</a> </li>
     <li role="presentation" class="{% if not release.tender %}disabled{%endif%} " ><a href="#tender">Tender {{ change_label(release, 'tender') }}</a> </li>
     <li role="presentation" class="{% if not release.awards %}disabled{%endif%}" ><a href="#awards">Awards {{ change_label(release, 'awards') }}</a></li>
-    <li role="presentation" class="{% if not release.contracts %}disabled{%endif%}" ><a href="#contracts">Contracts {{ change_label(release, 'contracts') }}</a></li>
+    <li role="presentation" class="{% if not release.contracts %}disabled{%endif%}" ><a href="#contracts">Contract {{ change_label(release, 'contracts') }}</a></li>
+    <li role="presentation" class="{% if not release.contracts[0].implementation %}disabled{%endif%}" >
+      <a href="#implementation">Implementation {{ change_label(release.contracts[0].implementation, 'contracts') }}</a>
+    </li>
   </ul>
 
 
@@ -41,28 +45,28 @@
          {{release.description}}
       </div>
     </div>
-					<ul class="list-group">
-						<li class="list-group-item">
-							<strong>OCID: </strong>{{release.ocid}}
-						</li>
-						<li class="list-group-item">
-							<strong>Release ID: </strong>{{release.id}}
-						</li>
-						<li class="list-group-item">
-							<strong>Date: </strong>{{release.date}}
-						</li>
-						<li class="list-group-item">
-							<strong>Tags: </strong>
-              {% if release.tag %}
-                {{ release.tag|join(", ") }}
-              {% else %}
-							  {{ gettext("No Tags Provided") }}
-              {% endif %}
-						</li>
-						<li class="list-group-item">
-							<strong>Initiation type: </strong>{{release.initiationType}}
-						</li>
-					</ul>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <strong>OCID: </strong>{{release.ocid}}
+      </li>
+      <li class="list-group-item">
+        <strong>Release ID: </strong>{{release.id}}
+      </li>
+      <li class="list-group-item">
+        <strong>Date: </strong>{{release.date}}
+      </li>
+      <li class="list-group-item">
+        <strong>Tags: </strong>
+        {% if release.tag %}
+          {{ release.tag|join(", ") }}
+        {% else %}
+          {{ gettext("No Tags Provided") }}
+        {% endif %}
+      </li>
+      <li class="list-group-item">
+        <strong>Initiation type: </strong>{{release.initiationType}}
+      </li>
+    </ul>
 	</div>
 
 	<div class="col-md-9 tab-pane" id="relatedProcesses">
@@ -146,9 +150,12 @@
 			</div>
 		{% endif %}
 	</div>
+	<div id="preQualification" class="tab-pane col-md-9">
+		{% include 'prequalification.html' %}
+	</div>
   {% set tender = release.tender %}
 	<div id="tender" class="tab-pane col-md-9">
-		{% include 'tender.html' %}
+		{% include 'tender_ppp.html' %}
 	</div>
   {% set awards = release.awards %}
 	<div id="awards" class="tab-pane col-md-9">
@@ -156,6 +163,86 @@
 	</div>
   {% set contracts = release.contracts %}
 	<div id="contracts" class="tab-pane col-md-9">
-		{% include 'contracts.html' %} 		
+		{% include 'contracts_ppp.html' %} 		
+	</div>
+
+	<div id="implementation" class="tab-pane col-md-9">
+    {% set contract = release.contracts[0] %}
+    <div class="row">
+      <div class="col-md-12">
+        {% set transactions = contract.implementation.transactions %}
+        {% set parent = contract.implementation %}
+        {% include 'transactions.html' %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        {% if contract.implementation.milestones %}
+          {% set milestones = contract.implementation.milestones %}
+          {% set parent = contract.implementation %}
+          {% include 'milestones.html' %}
+        {% else %}
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                {{ gettext("Milestones") }}
+              </h3>
+            </div>
+            <div class="panel-body">
+              {{ gettext("No milestones provided") }}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        {% if contract.implementation.documents %}
+          {% set documents = contract.implementation.documents %}
+          {% set parent = contract.implementation %}
+          {% include 'documents.html' %}
+        {% else %}
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                {{ gettext("Documents") }}
+              </h3>
+            </div>
+            <div class="panel-body">
+              {{ gettext("No documents provided") }}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+				{% if contract.implementation.metrics %}
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Metrics") }}
+							</h3>
+						</div>
+						<div class="panel-body">
+              {% set metrics = contract.implementation.metrics %}
+              {% set parent = contract.implementation %}
+              {% include 'metrics.html' %}
+						</div>
+					</div>
+				{% else %}
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Metrics") }}
+							</h3>
+						</div>
+						<div class="panel-body">
+							{{ gettext("No Metrics provided") }}
+						</div>
+					</div>
+				{% endif %}
+      </div>
+    </div>
 	</div>
 </main>
