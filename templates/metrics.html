@@ -1,6 +1,6 @@
 {% for metric in metrics %}
 <div class="col-xs-12">
-  <div class="panel panel-{% if planning.budget.amount.amount %}default{% else %}warning{% endif %}">
+  <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">
         {{change_label(metric)}} {{ metric.title }} {{change_label(metric, 'title')}} <small> ({{ metric.id}}) {{change_label(metric, 'id')}}</small>

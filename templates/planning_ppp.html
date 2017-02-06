@@ -43,18 +43,6 @@
                 {% endif %}
                </dd>
 
-						   <dt class="dt-small dt-inline">
-                {{ gettext("Budget Source") }} 
-						   </dt>
-               <dd class="dd-small dd-inline">
-                {% if planning.budget.source %}
-                  <a href="{{planning.budget.uri}}" target="_blank">{{planning.budget.source}}</a>
-                  {{change_label(planning.budget, 'source')}}
-                {% else %}
-                  <span class="bg-warning">{{ gettext("Budget source not provided") }}</span>
-                {% endif %}
-               </dd>
-
 
 						   <dt class="dt-large dt-gap">
                 {{ gettext("Budget description") }}
@@ -69,12 +57,84 @@
                </dd>
 
              </dl> 
-
-
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              {{ gettext("Budget Breakdown") }} 
+            </h3>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-striped table-condensed">
+              <thead>
+                <tr>
+                  <th>
+                    {{ gettext("ID") }} 
+                  </th>
+                  <th>
+                    {{ gettext("Period") }} 
+                  </th>
+                  <th>
+                    {{ gettext("SourceParty") }} 
+                  </th>
+                  <th>
+                    {{ gettext("Amount") }} 
+                  </th>
+                  <th>
+                    {{ gettext("Description") }} 
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for line in planning.budget.budgetBreakdown %}
+                  <tr>
+                    <td>
+                      {% if line.uri %}
+                        <a href="{{ line.uri }}">{{ line.id }}</a>
+                      {% else %}
+                        {{ line.id }}
+                      {% endif %}
+                    </td>
+                    <td>
+                      {% if line.period.startDate %}
+                        <strong> {{ gettext("Start Date:") }} </strong> {{ line.period.startDate }}
+                        {% if line.period.endDate %}
+                          <br/>
+                        {% endif %}
+                      {% endif %}
+                      {% if line.period.endDate %}
+                        <strong> {{ gettext("End Date:") }} </strong> {{ line.period.endDate }}
+                      {% endif %}
+                    </td>
+                    <td>
+                      {{line.sourceParty.name}} <small> ({{line.sourceParty.id}}) </small>
+                    </td>
+                    <td>
+                       {{line.amount.amount|currency }}
+                       {{change_label(line.amount, 'amount')}}
+                       {{line.amount.currency }}
+                       {{change_label(line.amount, 'currency')}}
+                    </td>
+                    <td>
+                      {{line.description|truncate(70)}}
+                      {{change_label(observation, 'description')}}
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+		</div>
+
 
 		<div class="row">
 			<div class="col-md-12">

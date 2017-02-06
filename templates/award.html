@@ -84,7 +84,7 @@
 						{% for supplier in award.suppliers %}
 							<div class="col-md-12">
 								{% set organization = parties[supplier.id] %}
-                {% if not organization %}
+                {% if not parties[supplier.id] %}
                   {% set organization = supplier %}
                 {% endif %}
 								{% include 'organization.html' %}
@@ -93,7 +93,7 @@
 						{% for supplier in award.privateParty %}
 							<div class="col-md-12">
 								{% set organization = parties[supplier.id] %}
-                {% if not organization %}
+                {% if not parties[supplier.id] %}
                   {% set organization = supplier %}
                 {% endif %}
 								{% include 'organization.html' %}

@@ -6,32 +6,38 @@
 	</div>
 	<div class="panel-body">
 		{% if documents|length > 0 %}
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>{{ gettext("Title") }}</th>
-						<th>{{ gettext("Type") }}</th>
-						<th>{{ gettext("Description") }}</th>
-						<th>{{ gettext("Date published") }}</th>
-						<th>{{ gettext("Date modified") }}</th>
-						<th>{{ gettext("Format") }}</th>
-						<th>{{ gettext("Language") }}</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for document in documents %}
-						<tr> <!-- add conditional colouring based on presence of url? -->
-							<td>{{change_label(document, 'url')}} <a href="{{document.url}}" target="_blank">{{ document.title }}</a>{{change_label(document, 'title')}}</td>
-							<td>{{ document.type }} {{change_label(document, 'type')}}</td>
-							<td>{{ document.description }} {{change_label(document, 'description')}}</td>
-							<td>{{ document.datePublished|truncate(10,true,"") }} {{change_label(document, 'datePublished')}}</td> <!-- add time hover over? -->
-							<td>{{ doucment.dateModified|truncate(10,true,"") }} {{change_label(document, 'dateModified')}}</td> <!-- add time hover over? -->
-							<td>{{ document.format}} {{change_label(document, 'format')}}</td>
-							<td>{{ document.language}} {{change_label(document, 'language')}}</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>{{ gettext("Title") }}</th>
+              <th>{{ gettext("Type") }}</th>
+              <th>{{ gettext("Description") }}</th>
+              <th>{{ gettext("Author") }}</th>
+              <th>{{ gettext("Date published") }}</th>
+              <th>{{ gettext("Date modified") }}</th>
+              <th>{{ gettext("Format") }}</th>
+              <th>{{ gettext("Language") }}</th>
+              <th>{{ gettext("Page") }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for document in documents %}
+              <tr> <!-- add conditional colouring based on presence of url? -->
+                <td>{{change_label(document, 'url')}} <a href="{{document.url}}" target="_blank">{{ document.title }}</a>{{change_label(document, 'title')}}</td>
+                <td>{{ document.documentType }} {{change_label(document, 'documentType')}}</td>
+                <td>{{ document.description | truncate(50) }} {{change_label(document, 'description')}}</td>
+                <td>{{ document.author }} {{change_label(document, 'author')}}</td>
+                <td>{{ document.datePublished|truncate(10,true,"") }} </td> 
+                <td>{{ document.dateModified|truncate(10,true,"") }} </td> 
+                <td>{{ document.format}} {{change_label(document, 'format')}}</td>
+                <td>{{ document.language}} {{change_label(document, 'language')}}</td>
+                <td>{{ document.pageStart}} - {{ document.pageEnd}} {{change_label(document, 'pageStart')}} {{change_label(document, 'pageEnd')}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
 		{% else %}
 			{{ gettext("No documents provided") }}
 		{% endif %}

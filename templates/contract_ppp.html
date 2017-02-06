@@ -414,8 +414,8 @@
                    {{ gettext("Indicator Code") }}
                   </dt>
                   <dd class="dd-large dd-inline dd-gap">
-                   {% if indicator.code %}
-                   {{ indicator.code }} {{change_label(indicator, 'code')}}
+                   {% if indicator.indicatorValue %}
+                     {{ indicator.indicatorCode }} {{change_label(indicator, 'indicatorCode')}}
                    {% else %}
                      {{ gettext("No Indicator Code Provided") }}
                    {% endif %}
@@ -424,13 +424,12 @@
                     {{ gettext("Value") }}
                   </dt>
                   <dd class="dd-large dd-inline">
-                     {% if indicator.value %}
-                     {{ indicator.value }} {{change_label(indicator, 'value')}}
+                     {% if indicator.indicatorCode %}
+                     {{ indicator.indicatorValue }} {{change_label(indicator, 'indicatorValue')}}
                      {% else %}
                        {{ gettext("No Indicator Value Provided") }}
                      {% endif %}
                   </dd>
-
                 </dl> 
               </div>
             </div>
@@ -474,10 +473,10 @@
                      {{ gettext("No Equitly Transfer Cap given ") }}
                    {% endif %}
                   </dd>
-                  <dt class="dt-large dt-inline dt-gap">
+                  <dt class="dt-large dt-inline">
                    {{ gettext("Milestone") }}
                   </dt>
-                  <dd class="dd-large dd-inline dd-gap">
+                  <dd class="dd-large dd-inline">
                    {% if equityTransferCap.milestone.title %}
                      {{ equityTransferCap.milestone.title }} 
                      {{change_label(equityTransferCap.milestone, 'title')}}

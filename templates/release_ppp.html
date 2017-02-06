@@ -30,6 +30,7 @@
     <li role="presentation" class="{% if not release.planning %}disabled{%endif%}" ><a href="#planning">Planning {{change_label(release, 'planning')}}</a></li>
     <li role="presentation" class="{% if not release.preQualification %}disabled{%endif%} " ><a href="#preQualification">Pre-Qualification {{ change_label(release, 'preQualification') }}</a> </li>
     <li role="presentation" class="{% if not release.tender %}disabled{%endif%} " ><a href="#tender">Tender {{ change_label(release, 'tender') }}</a> </li>
+    <li role="presentation" class="{% if not release.bids %}disabled{%endif%}" ><a href="#bids">Bids {{ change_label(release, 'bids') }}</a></li>
     <li role="presentation" class="{% if not release.awards %}disabled{%endif%}" ><a href="#awards">Awards {{ change_label(release, 'awards') }}</a></li>
     <li role="presentation" class="{% if not release.contracts %}disabled{%endif%}" ><a href="#contracts">Contract {{ change_label(release, 'contracts') }}</a></li>
     <li role="presentation" class="{% if not release.contracts[0].implementation %}disabled{%endif%}" >
@@ -127,7 +128,7 @@
 
 	<div class="col-md-9 tab-pane" id="publicAuthority">
     {% set organization = parties[release.publicAuthority.id] %}
-    {% if not organization %}
+    {% if not parties[release.publicAuthority.id] %}
       {% set organization = release.publicAuthority %}
     {% endif %}
     {% set title = gettext("Public authority") %}
@@ -150,6 +151,7 @@
 			</div>
 		{% endif %}
 	</div>
+  {% set tender = release.preQualification %}
 	<div id="preQualification" class="tab-pane col-md-9">
 		{% include 'prequalification.html' %}
 	</div>
@@ -157,6 +159,13 @@
 	<div id="tender" class="tab-pane col-md-9">
 		{% include 'tender_ppp.html' %}
 	</div>
+
+  {% set bids = release.bids %}
+	<div id="bids" class="tab-pane col-md-9">
+		{% include 'bids.html' %}
+	</div>
+
+
   {% set awards = release.awards %}
 	<div id="awards" class="tab-pane col-md-9">
 		{% include 'awards.html' %}

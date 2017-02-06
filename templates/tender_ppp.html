@@ -212,7 +212,7 @@
 
 		<div class="row">
 			<div class="col-md-12">
-				<div class="panel panel-{% if tender.tenderers %}default{% else %}warning{% endif %}">
+				<div class="panel panel-{% if tender.procuringEntity %}default{% else %}warning{% endif %}">
 					<div class="panel-heading">
 						<h3 class="panel-title">
 							 {{ gettext("Procuring Entity") }}
@@ -221,7 +221,7 @@
 					<div class="panel-body">
             <div class="col-md-12">
               {% set organization = parties[tender.procuringEntity.id] %}
-              {% if not organization %}
+              {% if not parties[tender.procuringEntity.id] %}
                 {% set organization = tender.procuringEntity %}
               {% endif %}
               {% include 'organization.html' %}
@@ -242,17 +242,18 @@
 					<div class="panel-body">
 						{% for tenderer in tender.tenderers %}
 							<div class="col-md-{% if tender.tenderers|length  == 1 %}12{% elif tender.tenderers|length == 2 %}6{% else %}4{% endif %}">
-								{% set organization = parties[tenderer.id] %}
-								{% if not organization %}
-                  {% set organization = parties[tenderer] %}
-								{% endif %}
-								{% include 'organization.html' %}
+                {% set organization = parties[tenderer.id] %}
+                {% if not parties[tenderer.id] %}
+                  {% set organization = tenderer %}
+                {% endif %}
+                {% include 'organization.html' %}
 							</div>
 						{% endfor %}
 					</div>
 				</div>
 			</div>
 		</div>
+
 		<div class="row">
 			<div class="col-md-12">
 				{% if tender.milestones %}

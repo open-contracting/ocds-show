@@ -184,8 +184,8 @@
       </div>
       <div class="panel-body">
         <div class="col-md-12">
-          {% set organization = tender.procuringEntity %}
-          {% if not organization %}
+          {% set organization = parties[tender.procuringEntity.id] %}
+          {% if not parties[tender.procuringEntity.id] %}
             {% set organization = tender.procuringEntity %}
           {% endif %}
           {% include 'organization.html' %}
@@ -207,8 +207,8 @@
         {% for tenderer in tender.tenderers %}
           <div class="col-md-12">
             {% set organization = parties[tenderer.id] %}
-            {% if not organization %}
-              {% set organization = parties[tenderer] %}
+            {% if not parties[tenderer.id] %}
+              {% set organization = tenderer %}
             {% endif %}
             {% include 'organization.html' %}
           </div>
@@ -217,6 +217,7 @@
     </div>
   </div>
 </div>
+
 <div class="row">
   <div class="col-md-12">
     {% if tender.milestones %}
