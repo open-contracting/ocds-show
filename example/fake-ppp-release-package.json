@@ -3390,6 +3390,7 @@
               "notes": "sint elit ut es",
               "description": "incididunt",
               "likelihood": "medium",
+              "allocation": "publicAuthority",
               "fiscalImpact": "medium"
             },
             {
@@ -4681,7 +4682,7 @@
         "submissionMethodDetails": "qui id sunt labore veniam",
         "procurementMethod": "open", 
         "procuringEntity": {
-          "id": "ullamcoinullamco tempor veniam",
+          "id": "org4",
           "name": "nulla elit enim"
         },
         "title": "laborum tempor do ad ut",

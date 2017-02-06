@@ -20,6 +20,14 @@
     background-color:  #F6EDE5 !important;
 }
 
+.label-primary {
+  background-color: #883832
+}
+
+.label-success {
+  background-color: #883287
+}
+
 .gap-left {
   margin-left: 10px
 }
@@ -127,13 +135,13 @@ a {color: #AF5D00;text-decoration: none;}
   left: 0px;
 }
 .release-badge.primary {
-  background-color: #325D88;
+  background-color: #883287;
 }
 .release-badge.info {
   background-color: #29ABE0;
 }
 .release-badge.success {
-  background-color: #9BAF00;
+  background-color: #AF0000;
 }
 .release-badge.warning {
   background-color: #d1bd10;

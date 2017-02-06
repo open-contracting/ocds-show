@@ -478,11 +478,11 @@
                    {{ gettext("Milestone") }}
                   </dt>
                   <dd class="dd-large dd-inline dd-gap">
-                   {% if equityTransferCap.title %}
-                     {{ equityTransferCap.milestone.title }}% 
+                   {% if equityTransferCap.milestone.title %}
+                     {{ equityTransferCap.milestone.title }} 
                      {{change_label(equityTransferCap.milestone, 'title')}}
                      <small>
-                     ({{ equityTransferCap.milestone.id}}% 
+                     ({{ equityTransferCap.milestone.id}} 
                       {{ change_label(equityTransferCap.milestone, 'id')}})
                      </small>
                    {% else %}
@@ -498,6 +498,185 @@
     </div>
   </div>
 
+  {% endif %}
+
+  {% if contract.riskAllocation %}
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default %}">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            {{ gettext("Risk Allocation") }}
+          </h3>
+        </div>
+        <div class="panel-body">
+          {% for risk in contract.riskAllocation %}
+            <div class="panel panel-default %}">
+              <div class="panel-body">
+                {% if risk.description %}
+                  {{ risk.description }} {{change_label(risk, 'description')}}
+                {% endif %}
+                {% if risk.id %}
+                  (id: {{ risk.id }}) {{change_label(risk, 'id')}}
+                {% endif %}
+
+                <dl> 
+                  <dt class="dt-large dt-inline dt-gap">
+                   {{ gettext("Category") }}
+                  </dt>
+                  <dd class="dd-large dd-inline dd-gap">
+                   {% if risk.category %}
+                     {{ risk.category}} {{change_label(risk, 'category')}}
+                   {% else %}
+                     {{ gettext("No category") }}
+                   {% endif %}
+                  </dd>
+                  <dt class="dt-large dt-inline">
+                   {{ gettext("Mitigation") }}
+                  </dt>
+                  <dd class="dd-large dd-inline">
+                   {% if risk.mitigation %}
+                     {{ risk.mitigation}} {{change_label(risk, 'mitigation')}}
+                   {% else %}
+                     {{ gettext("No mitigation") }}
+                   {% endif %}
+                  </dd>
+                  <dt class="dt-large dt-inline">
+                   {{ gettext("allocation") }}
+                  </dt>
+                  <dd class="dd-large dd-inline">
+                   {% if risk.allocation %}
+                     {{ risk.allocation}} {{change_label(risk, 'allocation')}}
+                   {% else %}
+                     {{ gettext("No allocation") }}
+                   {% endif %}
+                  </dd>
+                  <dt class="dt-large dt-inline">
+                   {{ gettext("Fiscal Impact") }}
+                  </dt>
+                  <dd class="dd-large dd-inline">
+                   {% if risk.fiscalImpact %}
+                     {{ risk.fiscalImpact}} {{change_label(risk, 'fiscalImpact')}}
+                   {% else %}
+                     {{ gettext("No Fiscal Impact") }}
+                   {% endif %}
+                  </dd>
+                  <dt class="dt-large dt-inline">
+                   {{ gettext("Likelihood") }}
+                  </dt>
+                  <dd class="dd-large dd-inline">
+                   {% if risk.likelihood %}
+                     {{ risk.likelihood}} {{change_label(risk, 'likelihood')}}
+                   {% else %}
+                     {{ gettext("No likelihood") }}
+                   {% endif %}
+                  </dd>
+                  <dt class="dt-large dt-gap">
+                   {{ gettext("Notes") }}
+                  </dt>
+                  <dd class="dd-small">
+                   {% if risk.notes %}
+                     {{ risk.notes }} {{change_label(risk, 'notes')}}
+                   {% else %}
+                     {{ gettext("No notes") }}
+                   {% endif %}
+                  </dd>
+                  
+                </dl> 
+              </div>
+            </div>
+          {% endfor%}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endif %}
+
+
+  {% if contract.tariffs %}
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Tariffs {{change_label(contract.tariffs)}} 
+          </h3>
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped table-condensed table-responsive">
+            <thead>
+              <tr>
+                <th>
+                  {{ gettext("title") }} 
+                </th>
+                <th>
+                  {{ gettext("Period") }} 
+                </th>
+                <th>
+                  {{ gettext("Dimensions") }} 
+                </th>
+                <th>
+                  {{ gettext("Value") }} 
+                </th>
+                <th>
+                  {{ gettext("Unit") }} 
+                </th>
+                <th>
+                  {{ gettext("Notes") }} 
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for tariff in contract.tariffs %}
+                <tr>
+                  <td>
+                     {{tariff.title}}
+                     {{change_label(tariff, 'title')}}
+                     <br>
+                     <small> ({{tariff.id}}) {{change_label(tariff, 'id')}} </small>
+                  </td>
+                  <td>
+                    {% if tariff.period.startDate %}
+                      <strong> {{ gettext("Start Date:") }} </strong> {{ tariff.period.startDate }}
+                      {% if tariff.period.endDate %}
+                        <br/>
+                      {% endif %}
+                    {% endif %}
+                    {% if tariff.period.endDate %}
+                      <strong> {{ gettext("End Date:") }} </strong> {{ tariff.period.endDate }}
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% for key, value in tariff.dimensions %}
+                      <strong>{{ key }}: </strong>{{ value }}
+                      {% if not loop.last %}
+                        <br/>
+                      {% endif %}
+                    {% endfor %}
+                  </td>
+                  <td>
+                     {{tariff.value.amount|currency }}
+                     {{change_label(tariff.value, 'amount')}}
+                     {{tariff.value.currency }}
+                     {{change_label(tariff.value, 'currency')}}
+                  </td>
+                  <td>
+                     {{tariff.unit.name}}
+                     {{change_label(tariff.unit, 'name')}}
+                  </td>
+                  <td>
+                     {{tariff.notes}}
+                     {{change_label(tariff, 'notes')}}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
   {% endif %}
 
 </section>
