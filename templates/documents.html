@@ -19,6 +19,7 @@
               <th>{{ gettext("Format") }}</th>
               <th>{{ gettext("Language") }}</th>
               <th>{{ gettext("Page") }}</th>
+              <th>{{ gettext("Access Details") }}</th>
             </tr>
           </thead>
           <tbody>
@@ -33,6 +34,7 @@
                 <td>{{ document.format}} {{change_label(document, 'format')}}</td>
                 <td>{{ document.language}} {{change_label(document, 'language')}}</td>
                 <td>{{ document.pageStart}} - {{ document.pageEnd}} {{change_label(document, 'pageStart')}} {{change_label(document, 'pageEnd')}}</td>
+                <td>{{ document.accessDetails}} {{change_label(document, 'accessDetails')}}</td>
               </tr>
             {% endfor %}
           </tbody>

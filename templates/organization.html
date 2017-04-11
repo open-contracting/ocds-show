@@ -1,7 +1,8 @@
 
 
 <h3 class="tab-heading">
-	{{organization.name}} {{change_label(organization, 'name')}}
+  {{organization.name}} {{change_label(organization, 'name')}} {% if organization.id %} <small>({{organization.id}})</small> {% endif %}
+
 </h3>
 <p>
   {% block additionalOrgFieldsBefore %}
@@ -24,7 +25,7 @@
 					{{ gettext("Phone: ") }}{{organization.contactPoint.telephone}} {{change_label(organization.contactPoint, "telephone")}}<br>
 				{% endif %}
 				{% if organization.contactPoint.faxNumber %}
-					{{ gettext("Fax: ") }}{{organization.contactPoint.faxNumber}} {{change_label(organization.contactPoint, "email")}}<br>
+					{{ gettext("Fax: ") }}{{organization.contactPoint.faxNumber}} {{change_label(organization.contactPoint, "faxNumber")}}<br>
 				{% endif %}
 				{% if organization.contactPoint.url %}
 					<a href="{{organization.contactPoint.url}}" target="_blank">{{organization.contactPoint.url}}</a>{{change_label(organization.contactPoint, "url")}}<br>
@@ -83,7 +84,13 @@
 							<tr>
 								<td><a href="http://standard.open-contracting.org/latest/en/schema/codelists/#organization-identifier-scheme" target="_blank">{{ organization.identifier.scheme }}</a>{{change_label(organization.identifier, "scheme")}}</td>
 								<td>{{ organization.identifier.id }} {{change_label(organization.identifier, "id")}}</td>
-								<td><a href="{{ organization.identifier.uri }}" target="_blank">{{ organization.identifier.legalName }}</a> {{change_label(organization.identifier, "legalName")}} </td>
+								<td>
+                  {% if organization.identifier.uri %}
+                    <a href="{{ organization.identifier.uri }}" target="_blank">{{ organization.identifier.legalName }}</a> {{change_label(organization.identifier, "legalName")}} 
+                  {% else %}
+                    {{ organization.identifier.legalName }} {{change_label(organization.identifier, "legalName")}} 
+                  {% endif %}
+                </td>
 							</tr>
 						{% endif %}
 						{% if organization.additionalIdentifiers %}
@@ -91,7 +98,13 @@
 								<tr>
 									<td><a href="http://standard.open-contracting.org/latest/en/schema/codelists/#organization-identifier-scheme" target="_blank">{{ identifier.scheme }}</a> {{change_label(identifier, "legalName")}} </td>
 									<td>{{ identifier.id }} {{ change_label(identifier, "id") }}</td>
-									<td><a href="{{ identifier.uri }}" target="_blank">{{ identifier.legalName }}</a>{{ change_label(identifier, "legalName") }}</td>
+									<td>
+                    {% if identifier.uri %}
+                      <a href="{{ identifier.uri }}" target="_blank">{{ identifier.legalName }}</a>{{ change_label(identifier, "legalName") }}
+                    {% else %}
+                      {{ identifier.legalName }} {{ change_label(identifier, "legalName") }}
+                    {% endif %}
+                  </td>
 								</tr>
 							{% endfor %}
 						{% endif %}

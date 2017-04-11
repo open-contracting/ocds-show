@@ -19,39 +19,51 @@
 {% endblock additionalOrgFieldsBefore %}
 
 {% block additionalOrgFieldsAfter %}
-	<div class="panel panel-{% if organization.shareholders or organization.shareholders %}default{% else %}warning{% endif %}">
-		<div class="panel-heading">
-			<h3 class="panel-title">
-				{{ gettext("Shareholders") }}
-			</h3>
-		</div>
-		<div class="panel-body">
-			{% if organization.shareholders %}
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>{{ gettext("Shareholder") }}</th>
-							<th>{{ gettext("Shareholding") }}</th>
-							<th>{{ gettext("Voting Rights") }}</th>
-							<th>{{ gettext("Voting Rights Details") }}</th>
-						</tr>
-					</thead>
-					<tbody>
-            {% for shareholder in organization.shareholders %}
+  {% if organization.shareholders %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          {{ gettext("Shareholders") }}
+        </h3>
+      </div>
+      <div class="panel-body">
+          <table class="table table-striped">
+            <thead>
               <tr>
-                <td> {{shareholder.shareholder.name}} {{change_label(shareholder.shareholder, "name")}}
-                  <small> ({{shareholder.shareholder.id}} {{change_label(shareholder.shareholder, "id")}}) </small> </td>
-                <td> {{shareholder.shareholding * 100}}% {{change_label(shareholder, "shareholding")}} </td>
-                <td> {{shareholder.votingRights}} {{change_label(shareholder, "votingRights")}} </td>
-                <td> {{shareholder.votingRightsDetails}} {{change_label(shareholder, "votingRightsDetails")}} </td>
+                <th>{{ gettext("Shareholder") }}</th>
+                <th>{{ gettext("Shareholding") }}</th>
+                <th>{{ gettext("Voting Rights") }}</th>
+                <th>{{ gettext("Voting Rights Details") }}</th>
+                <th>{{ gettext("Shareholder Notes") }}</th>
               </tr>
-            {% endfor %}
-					</tbody>
-				</table>
-                <div class="shareholders-chart" id="{{organization.name|replace(' ', '')}}" data-shareholders-chart="{{organization.shareholders|dump}}"></div>
-			{% else %}
-				{{ gettext("No shareholder data provided") }}
-			{% endif %}
-		</div>
-	</div>
+            </thead>
+            <tbody>
+              {% for shareholder in organization.shareholders %}
+                <tr>
+                  <td> {{shareholder.shareholder.name}} {{change_label(shareholder.shareholder, "name")}}
+                    <small> ({{shareholder.shareholder.id}} {{change_label(shareholder.shareholder, "id")}}) </small> </td>
+                  <td> {{shareholder.shareholding * 100}}% {{change_label(shareholder, "shareholding")}} </td>
+                  <td> {{shareholder.votingRights}} {{change_label(shareholder, "votingRights")}} </td>
+                  <td> {{shareholder.votingRightsDetails}} {{change_label(shareholder, "votingRightsDetails")}} </td>
+                  <td> {{shareholder.notes}} {{change_label(shareholder, "notes")}} </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class="shareholders-chart" id="{{organization.name|replace(' ', '')}}" data-shareholders-chart="{{organization.shareholders|dump}}"></div>
+      </div>
+    </div>
+  {% endif %}
+  {% if organization.beneficialOwnership %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          {{ gettext("Beneficial Ownership") }}
+        </h3>
+      </div>
+      <div class="panel-body">
+        <p> {{ organization.beneficialOwnership.description }} </p>
+      </div>
+    </div>
+  {% endif %}
 {% endblock additionalOrgFieldsAfter %}

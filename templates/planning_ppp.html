@@ -42,6 +42,17 @@
                   {{ gettext("Budget ID not provided") }}
                 {% endif %}
                </dd>
+						   <dt class="dt-small dt-inline">
+                {{ gettext("Budget URI") }} 
+						   </dt>
+               <dd class="dd-small dd-inline">
+                {% if planning.budget.uri %}
+                <a href={{planning.budget.uri}}>{{planning.budget.uri}}</a>
+                  {{change_label(planning.budget, 'uri')}}
+                {% else %}
+                  {{ gettext("Budget ID not provided") }}
+                {% endif %}
+               </dd>
 
 
 						   <dt class="dt-large dt-gap">
@@ -55,6 +66,7 @@
                   <span class="bg-warning">{{ gettext("Budget description not provided.") }}</span>
                 {% endif %}
                </dd>
+
 
              </dl> 
 					</div>
@@ -82,7 +94,7 @@
                     {{ gettext("Period") }} 
                   </th>
                   <th>
-                    {{ gettext("SourceParty") }} 
+                    {{ gettext("Source Party") }} 
                   </th>
                   <th>
                     {{ gettext("Amount") }} 
@@ -114,7 +126,7 @@
                       {% endif %}
                     </td>
                     <td>
-                      {{line.sourceParty.name}} <small> ({{line.sourceParty.id}}) </small>
+                      {{line.sourceParty.name}} {% if line.sourceParty.id %} <small> ({{line.sourceParty.id}}) </small> {% endif %}
                     </td>
                     <td>
                        {{line.amount.amount|currency }}
