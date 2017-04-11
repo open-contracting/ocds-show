@@ -3620,12 +3620,16 @@ output += " </td>\n              </tr>\n            ";
 }
 }
 frame = frame.pop();
-output += "\n\t\t\t\t\t</tbody>\n\t\t\t\t</table>\n\t\t\t";
+output += "\n\t\t\t\t\t</tbody>\n\t\t\t\t</table>\n                <div class=\"shareholders-chart\" id=\"";
+output += runtime.suppressValue(env.getFilter("replace").call(context, runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"name")," ",""), env.opts.autoescape);
+output += "\" data-shareholders-chart=\"";
+output += runtime.suppressValue(env.getFilter("dump").call(context, runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"shareholders")), env.opts.autoescape);
+output += "\"></div>\n\t\t\t";
 ;
 }
 else {
 output += "\n\t\t\t\t";
-output += runtime.suppressValue((lineno = 51, colno = 12, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No shareholder data provided"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 52, colno = 12, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No shareholder data provided"])), env.opts.autoescape);
 output += "\n\t\t\t";
 ;
 }

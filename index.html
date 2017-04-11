@@ -40,12 +40,15 @@
         <div id="container">
         </div>
       </div>
+      <div id="graph"></div>
     </body>
     
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="js/nunjucks.min.js"></script>
-	<script src="js/merge.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://vega.github.io/vega/vega.min.js"></script>
+  <script src="js/nunjucks.min.js"></script>
+  <script src="js/merge.js"></script>
   <script src="js/filereader.js"></script>
   <script src="templates.js"></script>
     <script>
@@ -67,7 +70,6 @@
          }
        });
 
-       
        var gettext = function(text) {
           return text
        }
@@ -197,6 +199,101 @@
            var content = env.render('release_ppp.html', input);
            container.append(content)
          }
+
+         // Shareholder pie chart
+           var shareholders = $('.shareholders-chart');
+           if (shareholders.length > 0) {
+             var data = {
+              '$schema': 'https://vega.github.io/schema/vega/v3.0.json',
+              'width': 200,
+              'height': 200,
+              'padding': 20,
+              'autosize': 'pad',
+              'data': [
+                {
+                  'name': 'pieChart',
+                  'values': null,
+                  'transform': [
+                    {
+                      'type': 'pie',
+                      'field': 'percent'
+                    }
+                  ]
+                }
+              ],
+
+              'scales': [
+                {
+                  'name': 'color',
+                  'type': 'ordinal',
+                  'domain': {'data': 'pieChart', 'field': 'shareholder'},
+                  'range': {'scheme': 'category20'}
+                }
+              ],
+
+              'marks': [
+                {
+                  'type': 'arc',
+                  'from': {'data': 'pieChart'},
+                  'encode': {
+                    'enter': {
+                      'fill': {'scale': 'color', 'field': 'shareholder'},
+                      'x': {'signal': 'width / 2', 'value': 'field'},
+                      'y': {'signal': 'height / 2'},
+                      'startAngle': {'field': 'startAngle'},
+                      'endAngle': {'field': 'endAngle'},
+                      'innerRadius': {'value': 60},
+                      'outerRadius': {'signal': 'width / 2'}
+                    }
+                  }
+                },
+                {
+                  'type': 'text',
+                  'from': {'data': 'pieChart'},
+                  'encode': {
+                    'enter': {
+                      'x': {'field': {'group': 'width'}, 'mult': 0.5},
+                      'y': {'field': {'group': 'height'}, 'mult': 0.5},
+                      'radius': {'value': 80},
+                      'theta': {'signal': '(datum.startAngle + datum.endAngle)/2'},
+                      'fontSize': {'value': 12},
+                      'fontWeight': {'value': 'bold'},
+                      'fill': {'value': '#444'},
+                      'align': {'value': 'center'},
+                      'baseline': {'value': 'middle'},
+                      'text': {'field': 'percentString'}
+                    }
+                  }
+                }
+              ],
+              'legends': [
+                {
+                  'orient': 'right',
+                  'title': 'Shareholders',
+                  'fill': 'color'
+                }
+              ]
+             }
+             shareholders.each(function() {
+               var shareData = [];
+               var organization = this.id;
+               var shareObj = JSON.parse(this.dataset.shareholdersChart);
+               shareObj.forEach(function(shareholder) {
+                 
+                 shareData.push({
+                  'percent': shareholder.shareholding,
+                  'percentString': (shareholder.shareholding * 100) + '%',
+                  "shareholder": shareholder.shareholder.name + ' (' + shareholder.shareholder.id + ')'
+                 })
+               });
+               data.data[0].values = shareData;
+               var view = new vega.View(vega.parse(data))
+                 .renderer('canvas')
+                 .initialize('#' + organization)
+                 .hover()
+                 .run();
+             })
+           }
        }
 
        jsonInput.val("")
@@ -237,9 +334,6 @@
          e.preventDefault()
          render_json()
        })
-
-
-
 
     </script>
 </html>

@@ -2413,7 +2413,7 @@
             "shareholders": [
               {
                 "id": "in laborum tempor id pariatur",
-                "shareholding": 0,
+                "shareholding": 0.60,
                 "shareholder": {
                   "id": "sint quis reprehenderit",
                   "name": "non"
@@ -2422,7 +2422,7 @@
                 "votingRightsDetails": "sed dolor"
               },
               {
-                "shareholding": 1,
+                "shareholding": 0.40,
                 "shareholder": {
                   "id": "sed et voluptate laboris",
                   "name": "dolor velit do ipsum"
@@ -2500,7 +2500,7 @@
                   "id": "tempor proident fugiat",
                   "name": "mollit cupi"
                 },
-                "shareholding": 0,
+                "shareholding": 0.12,
                 "id": "eiusmod cupidatat ipsum Excepteur"
               },
               {
@@ -2511,11 +2511,11 @@
                   "id": "sit dolore est ullamco",
                   "name": "ex ipsum irure"
                 },
-                "shareholding": 0
+                "shareholding": 0.18
               },
               {
                 "votingRights": "additional",
-                "shareholding": 0,
+                "shareholding": 0.3,
                 "shareholder": {
                   "id": "dolore eu nulla consectetu",
                   "name": "dolor"
@@ -2528,7 +2528,7 @@
                   "id": "anim esse elitin dolore adipisicing ad",
                   "name": "exercitation Ut anim dolore aute"
                 },
-                "shareholding": 0,
+                "shareholding": 0.4,
                 "votingRightsDetails": "exercitation consequat velit Excepteur",
                 "votingRights": "additional",
                 "id": "dolor do cupidatatin qui in officia sed"
@@ -2726,13 +2726,13 @@
                 "id": "temporcillum fugiat dolor esse",
                 "name": "ex"
               },
-              "shareholding": 0,
+              "shareholding": 0.50,
               "votingRights": "restricted",
               "votingRightsDetails": "nulla enim dolor commodo",
               "id": "minimullamcoqui ea Ut proident sed"
             },
             {
-              "shareholding": 0,
+              "shareholding": 0.25,
               "votingRightsDetails": "Excepteur eu minim occaecat",
               "votingRights": "none",
               "shareholder": {
@@ -2745,7 +2745,7 @@
               "id": "in sint doloredolore eu",
               "votingRights": "restricted",
               "votingRightsDetails": "labore pariatur aliquip culpa irure",
-              "shareholding": 1,
+              "shareholding": 0.25,
               "shareholder": {
                 "id": "eu proident veniam elit",
                 "name": "Lorem quis"
@@ -4295,7 +4295,7 @@
                 "id": "irure ullamco pariatur",
                 "name": "id quis ipsum eiusmod"
               },
-              "shareholding": 0.5,
+              "shareholding": 0.35,
               "votingRights": "additional",
               "votingRightsDetails": "consectetur irure elit sed",
               "id": "qui essecillumvoluptate"
@@ -4308,7 +4308,7 @@
               },
               "votingRights": "additional",
               "id": "magna nisi Duis do elit",
-              "shareholding": 0.5 
+              "shareholding": 0.65
             }
           ],
           "name_iN-8L1RbyZ-PS6TSSga-f-46PQ-fP17Eo-ieND6h-Ls-lSMPZZ-o-J6alPgSv-o-GBh8e-L-J2JQ-s7sOAJ-a8iQAp8-ln-mffh-GNNLRbXb-L-Jj-tU2VqIn6-k5YB-x-QuHzlN-Ivg5-hAdH-GJQIvVcj-2SE-Z0yz-lA3ACF-udgywH": "fugiat"
@@ -4340,7 +4340,7 @@
               "id": "Utdoloreex consequat ut molli",
               "votingRightsDetails": "incididunt",
               "votingRights": "none",
-              "shareholding": 0
+              "shareholding": 0.2
             },
             {
               "shareholder": {
@@ -4349,9 +4349,20 @@
               },
               "votingRightsDetails": "sed occaecat commodo nulla",
               "id": "amet cillum ad laboris sint",
-              "shareholding": 0,
+              "shareholding": 0.62,
+              "votingRights": "additional"
+            },
+            {
+              "shareholder": {
+                "id": "mollit nisidolore nulla",
+                "name": "voluptate elit"
+              },
+              "votingRightsDetails": "sed commodo nulla",
+              "id": "amet cillum sint",
+              "shareholding": 0.38,
               "votingRights": "additional"
             }
+
           ],
           "additionalIdentifiers": [
             {
@@ -4406,7 +4417,7 @@
               },
               "id": "velit consequat Lorem",
               "votingRights": "none",
-              "shareholding": 0.5
+              "shareholding": 0.22
             },
             {
               "shareholder": {
@@ -4414,7 +4425,7 @@
                 "name": "cillum commodo in"
               },
               "votingRightsDetails": "ut qui nostrud dolor veniam",
-              "shareholding": 0.5,
+              "shareholding": 0.78,
               "id": "velitsunt voluptate aliquip non"
             }
           ],
@@ -4515,7 +4526,7 @@
           "shareholders": [
             {
               "votingRightsDetails": "culpa eiusmod Dui",
-              "shareholding": 1,
+              "shareholding": 0.25,
               "votingRights": "enhanced",
               "id": "voluptate fugiat dolor cillum amet",
               "shareholder": {
@@ -4526,7 +4537,7 @@
             {
               "votingRightsDetails": "nisi elit",
               "votingRights": "restricted",
-              "shareholding": 1,
+              "shareholding": 0.33,
               "id": "cillum magna exercitation culpa",
               "shareholder": {
                 "id": "ullamco ut reprehenderit aliquip in",
@@ -4541,7 +4552,27 @@
                 "id": "eiusmod in pariatur sunt labore",
                 "name": "elit sit adipisicing ut dolor"
               },
-              "shareholding": 1
+              "shareholding": 0.2
+            },
+            {
+              "votingRightsDetails": "mollit irure cillum deserunt culpa",
+              "id": "pariatur cupidatat ad",
+              "votingRights": "none",
+              "shareholder": {
+                "id": "eiusmod labore",
+                "name": "adipisicing ut dolor"
+              },
+              "shareholding": 0.8
+            },
+            {
+              "votingRightsDetails": "culpa eiusmod Dui",
+              "shareholding": 0.32,
+              "votingRights": "enhanced",
+              "id": "voluptate fugiat dolor et tu",
+              "shareholder": {
+                "id": "dolorea sint commodo",
+                "name": "in"
+              }
             }
           ],
           "id": "org4",
@@ -4610,7 +4641,7 @@
                 "id": "incididunt mollit consectetur",
                 "name": "Ut sunt et voluptate dolor"
               },
-              "shareholding": 1,
+              "shareholding": 0.7,
               "id": "velit aliquip laboris esse in"
             },
             {
@@ -4619,12 +4650,12 @@
                 "id": "anim mollitdolor eiusmod laboris",
                 "name": "nulla voluptate Excepteur nisi"
               },
-              "shareholding": 1,
+              "shareholding": 0.1,
               "votingRightsDetails": "Excepteur in sint officia nostrud",
               "votingRights": "ordinary"
             },
             {
-              "shareholding": 0,
+              "shareholding": 0.1,
               "id": "labore deserunt dolor aute qui",
               "shareholder": {
                 "id": "occaecat commodo ipsum officia",
@@ -4639,7 +4670,7 @@
                 "id": "est voluptate Ut utsed",
                 "name": "qui"
               },
-              "shareholding": 1,
+              "shareholding": 0.1,
               "votingRightsDetails": "Lorem dolor dolo",
               "id": "dolor laboreaute officia do"
             }

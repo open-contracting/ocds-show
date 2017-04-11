@@ -48,6 +48,7 @@
             {% endfor %}
 					</tbody>
 				</table>
+                <div class="shareholders-chart" id="{{organization.name|replace(' ', '')}}" data-shareholders-chart="{{organization.shareholders|dump}}"></div>
 			{% else %}
 				{{ gettext("No shareholder data provided") }}
 			{% endif %}

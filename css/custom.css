@@ -150,15 +150,8 @@ a {color: #AF5D00;text-decoration: none;}
   background-color: #ba1f1f;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+/*****************************/
+.shareholders-chart canvas {
+  display: block;
+  margin: 0 auto 0 33%;
+}
