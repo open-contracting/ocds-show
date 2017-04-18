@@ -1,0 +1,40 @@
+
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>{{ gettext("Requirement") }}</th>
+      <th>{{ gettext("Title") }}</th>
+      <th>{{ gettext("Description") }}</th>
+      <th>{{ gettext("Period") }}</th>
+      <th>{{ gettext("Related Tenderer") }}</th>
+      <th>{{ gettext("Value") }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for requirementResponse in requirementResponses %}
+      <tr>
+        <td>{{ requirementResponse.requirement.title }} {{change_label(requirementResponse.requirement, "title")}} 
+          <small>({{requirementResponse.requirement.id}}){{change_label(requirementResponse.requirement, "id")}}<small>  
+        </td>	<!-- need to consider whether to present the id - make sure this is consistent with documents approach -->
+
+        <td>{{ requirementResponse.title }} {{change_label(requirementResponse, "title")}}</td>
+        <td>{{ requirementResponse.description }} {{change_label(requirementResponse, "description")}}</td>
+        <td>
+          {% set period = requirementResponse.period %}
+          {% include "period.html" %}
+        </td>
+        <td>{{ requirementResponse.relatedTenderer.name }} {{change_label(requirementResponse.relatedTenderer, "name")}}
+          <small>({{requirementResponse.relatedTenderer.id}}){{change_label(requirementResponse.relatedTenderer, "id")}}<small>  
+        </td>
+        <td>
+           {{requirementResponse.value }}
+           {{change_label(requirementResponse, 'value')}}
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>	
+</table>
+</div>
+
+

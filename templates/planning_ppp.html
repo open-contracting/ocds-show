@@ -115,15 +115,8 @@
                       {% endif %}
                     </td>
                     <td>
-                      {% if line.period.startDate %}
-                        <strong> {{ gettext("Start Date:") }} </strong> {{ line.period.startDate }}
-                        {% if line.period.endDate %}
-                          <br/>
-                        {% endif %}
-                      {% endif %}
-                      {% if line.period.endDate %}
-                        <strong> {{ gettext("End Date:") }} </strong> {{ line.period.endDate }}
-                      {% endif %}
+                      {% set period = line.period %}
+                      {% include "period.html" %}
                     </td>
                     <td>
                       {{line.sourceParty.name}} {% if line.sourceParty.id %} <small> ({{line.sourceParty.id}}) </small> {% endif %}

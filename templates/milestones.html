@@ -4,7 +4,6 @@
 			{{ gettext("Milestones") }} {{change_label(parent, 'milestones')}}
 		</h3>
 	</div>
-	<div class="panel-body">
 		{% if milestones|length > 0 %}
       <div class="table-responsive">
         <table class="table table-striped">
@@ -37,7 +36,8 @@
         </table>
       </div>
 		{% else %}
+      <div class="panel-body">
 			{{ gettext("No milestones provided") }}
+      </div>
 		{% endif %}
-	</div>
 </div>

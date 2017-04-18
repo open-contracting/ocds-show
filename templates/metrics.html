@@ -35,29 +35,27 @@
           <th>
             {{ gettext("Notes") }} 
           </th>
+          <th>
+            {{ gettext("Related Milestone") }} 
+          </th>
         </tr>
       </thead>
       <tbody>
         {% for observation in metric.observations %}
           <tr>
             <td>
-              {% if observation.period.startDate %}
-                <strong> {{ gettext("Start Date:") }} </strong> {{ observation.period.startDate }}
-                {% if observation.period.endDate %}
-                  <br/>
-                {% endif %}
-              {% endif %}
-              {% if observation.period.endDate %}
-                <strong> {{ gettext("End Date:") }} </strong> {{ observation.period.endDate }}
-              {% endif %}
+              {% set period = observation.period %}
+              {% include "period.html" %}
             </td>
             <td>
+
+              <dl>
               {% for key, value in observation.dimensions %}
-                <strong>{{ key }}: </strong>{{ value }}
-                {% if not loop.last %}
-                  <br/>
+                {% if key != "__path" %}
+                   <dt>{{ key }}:<dt/><dd>{{ value }}</dd>
                 {% endif %}
               {% endfor %}
+              </dl>
             </td>
             <td>
                {{observation.value.amount|currency }}
@@ -80,6 +78,14 @@
             <td>
                {{observation.notes}}
                {{change_label(observation, 'notes')}}
+            </td>
+            <td>
+               {{observation.relatedImplementationMilestone.title}}
+               {{change_label(observation.relatedImplementationMilestone, 'title')}}
+
+               {% if observation.relatedImplementationMilestone.id %}
+                 ({{observation.relatedImplementationMilestone.id}}) {{change_label(observation.relatedImplementationMilestone, 'id')}}
+               {% endif %}
             </td>
           </tr>
         {% endfor %}

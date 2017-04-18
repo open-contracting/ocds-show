@@ -28,7 +28,7 @@
      {% endif %}
     </dd>
     <dt class="dt-large dt-inline dt-gap">
-     {{ gettext("Total Amount") }} 
+     {{ gettext("Total Value") }} 
     </dt>
     <dd class="dd-large dd-inline dd-gap">
      {% if project.totalValue.amount %}
@@ -37,7 +37,7 @@
        {{project.totalValue.currency}}
        {{change_label(project.totalValue, 'currency')}}
      {% else %}
-       {{ gettext("Total amount not provided") }}
+       {{ gettext("Total value not provided") }}
      {% endif %}
    </dd>
    <dt class="dt-large dt-gap"> {{gettext("Sector Classifications")}} {{change_label(project, "sector")}} </dt>
@@ -69,7 +69,13 @@
         {% endfor %}
       {% endif %}
    </dd>
-   {#location missing#}
+   <dt class="dt-large dt-gap">
+       {{ gettext("Project Locations") }}
+   </dt>
+   <dd class="dd-large">
+   {% set locations = project.locations %}
+   {% include 'locations.html' %}
+   </dd>
   </dl> 
 	</div>
 </div>

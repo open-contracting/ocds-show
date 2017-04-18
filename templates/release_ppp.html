@@ -17,7 +17,7 @@
 <main class="row">
 
   <ul class="release-pills col-md-3 nav nav-pills nav-stacked">
-    <li role="presentation" class="active"><a href="#metadata">Description</a></li>
+    <li role="presentation" class="active"><a href="#metadata">Description{{change_label(release, 'ocid')}}</a></li>
     <li role="presentation" class="{% if not release.relatedProcesses %}disabled{%endif%}" >
        <a href="#relatedProcesses">Related Processes {% if release.relatedProcesses %}{{change_label(release, 'relatedProcesses')}}{%endif%}</a>
     </li>
@@ -29,7 +29,7 @@
 
     <li role="presentation" class="{% if not release.planning %}disabled{%endif%}" ><a href="#planning">Planning {{change_label(release, 'planning')}}</a></li>
     <li role="presentation" class="{% if not release.preQualification %}disabled{%endif%} " ><a href="#preQualification">Pre-Qualification {{ change_label(release, 'preQualification') }}</a> </li>
-    <li role="presentation" class="{% if not release.tender %}disabled{%endif%} " ><a href="#tender">Tender {{ change_label(release, 'tender') }}</a> </li>
+    <li role="presentation" class="{% if not release.tender %}disabled{%endif%}"><a href="#tender">Tender {{ change_label(release, 'tender') }}</a> </li>
     <li role="presentation" class="{% if not release.bids %}disabled{%endif%}" ><a href="#bids">Bids {{ change_label(release, 'bids') }}</a></li>
     <li role="presentation" class="{% if not release.awards %}disabled{%endif%}" ><a href="#awards">Awards {{ change_label(release, 'awards') }}</a></li>
     <li role="presentation" class="{% if not release.contracts %}disabled{%endif%}" ><a href="#contracts">Contract {{ change_label(release, 'contracts') }}</a></li>
@@ -169,6 +169,21 @@
         {% endif %}
       </div>
     </div>
+
+    {% if contract.implementation.charges %}
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                {{ gettext("Charges") }}
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
     <div class="row">
       <div class="col-md-12">
         {% if contract.implementation.documents %}

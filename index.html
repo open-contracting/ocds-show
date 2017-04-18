@@ -276,7 +276,6 @@
              }
              shareholders.each(function() {
                var shareData = [];
-               var organization = this.id;
                var shareObj = JSON.parse(this.dataset.shareholdersChart);
                shareObj.forEach(function(shareholder) {
                  
@@ -289,7 +288,7 @@
                data.data[0].values = shareData;
                var view = new vega.View(vega.parse(data))
                  .renderer('canvas')
-                 .initialize('#' + organization)
+                 .initialize(this)
                  .hover()
                  .run();
              })

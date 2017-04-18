@@ -1,7 +1,7 @@
 
 
 <h3 class="tab-heading">
-  {{organization.name}} {{change_label(organization, 'name')}} {% if organization.id %} <small>({{organization.id}})</small> {% endif %}
+  {{organization.name}} {{change_label(organization, 'name')}} {% if organization.id %} <small>({{organization.id}})</small> {{change_label(organization)}}{% endif %}
 
 </h3>
 <p>

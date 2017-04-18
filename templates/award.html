@@ -31,7 +31,7 @@
            </dt>
            <dd class="dd-large dd-inline">
               {% if award.date %}
-                {{ award.date }}
+                {{ award.date|truncate(10,true,"") }}
               {% else %}
                 {{ gettext("No date provided") }}
               {% endif %}
@@ -65,6 +65,16 @@
 							{% else %}
 								<span class="bg-warning">{{ gettext("No end date provided") }}</span>
 							{% endif %}
+
+							{% if award.contractPeriod.durationInDays %}
+                <strong class="gap-left">{{ gettext("Duration (in days): ")}}</strong>
+								{{ award.contractPeriod.durationInDays}} {{change_label(award.contractPeriod, 'durationInDays')}}
+							{% endif %}
+
+							{% if award.contractPeriod.maxExtentDate %}
+                <strong class="gap-left">{{ gettext("Max Extent Date: ")}}</strong>
+								{{ award.contractPeriod.maxExtentDate|truncate(10,true,"")}} {{change_label(award.contractPeriod, 'maxExtentDate')}}
+							{% endif %}
            </dd>
 
          </dl> 
@@ -77,20 +87,11 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">
-							 {{ gettext("Private Party") }} {{change_label(award, 'suppliers')}}
+							 {{ gettext("Preferred Bidders") }} {{change_label(award, 'preferredBidders')}}
 						</h3>
 					</div>
 					<div class="panel-body">
-						{% for supplier in award.suppliers %}
-							<div class="col-md-12">
-								{% set organization = parties[supplier.id] %}
-                {% if not parties[supplier.id] %}
-                  {% set organization = supplier %}
-                {% endif %}
-								{% include 'organization.html' %}
-							</div>
-						{% endfor %}
-						{% for supplier in award.privateParty %}
+						{% for supplier in award.preferredBidders %}
 							<div class="col-md-12">
 								{% set organization = parties[supplier.id] %}
                 {% if not parties[supplier.id] %}
@@ -103,6 +104,23 @@
 				</div>
 			</div>
 		</div>
+
+    {% if award.requirementResponses %}
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                 {{ gettext("Reqirement Responses") }} 
+              </h3>
+            </div>
+                {% set requirementResponses = award.requirementResponses %}
+                {% include 'requirement_responses.html' %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
 		<div class="row">
 			<div class="col-md-12">
 				{% if award.items %}

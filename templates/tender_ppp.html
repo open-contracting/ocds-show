@@ -1,3 +1,10 @@
+    <h3 class="tab-heading">
+    {% if tender.title %}
+      {{ tender.title }} {{change_label(tender, 'title')}}
+    {% else %}
+      {{ gettext("No title provided") }}
+    {% endif %}
+    </h3>
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="panel panel-default">
@@ -28,6 +35,12 @@
                   {% else %}
                     {{ gettext("No eligibility criteria provided") }}
                   {% endif %}
+               </dd>
+               <dt class="dt-inline dt-large">
+                  {{ gettext("ID")}}
+               </dt>
+               <dd class="dd-inline dd-large">
+                  {{ tender.id }} {{change_label(tender, 'id')}}
                </dd>
 
 						   <dt class="dt-large dt-gap">
@@ -64,6 +77,16 @@
                 {% else %}
                   <span class="bg-warning">{{ gettext("No end date provided") }}</span>
                 {% endif %}
+                {% if tender.tenderPeriod.durationInDays %}
+                  <strong class="gap-left">{{ gettext("Tender Duration (in days): ")}}</strong>
+                  {{ tender.tenderPeriod.durationInDays }} {{change_label(tender.tenderPeriod, 'durationInDays')}}
+                {% endif %}
+                {% if tender.tenderPeriod.maxExtentDate %}
+                  <strong class="gap-left">{{ gettext("Tender Max Extent Date: ")}}</strong>
+                  {{ tender.tenderPeriod.maxExtentDate|truncate(10,true,"")}} {{change_label(tender.tenderPeriod, 'maxExtentDate')}}
+                {% endif %}
+
+
                 <br/>
                 <strong>{{ gettext("Award start: ")}}</strong>
                 {% if tender.awardPeriod.startDate %}
@@ -76,6 +99,36 @@
                   {{ tender.awardPeriod.endDate|truncate(10,true,"")}} {{change_label(tender.awardPeriod, 'endDate')}}
                 {% else %}
                   <span class="bg-warning">{{ gettext("No end date provided") }}<span>
+                {% endif %}
+                {% if tender.awardPeriod.durationInDays %}
+                  <strong class="gap-left">{{ gettext("Award Period Duration (in days): ")}}</strong>
+                  {{ tender.awardPeriod.durationInDays}} {{change_label(tender.awardPeriod, 'durationInDays')}}
+                {% endif %}
+                {% if tender.awardPeriod.maxExtentDate %}
+                  <strong class="gap-left">{{ gettext("Max Extent Date: ")}}</strong>
+                  {{ tender.awardPeriod.maxExtentDate|truncate(10,true,"")}} {{change_label(tender.awardPeriod, 'maxExtentDate')}}
+                {% endif %}
+
+                <br/>
+                <strong>{{ gettext("Contract start: ")}}</strong>
+                {% if tender.contractPeriod.startDate %}
+                  {{ tender.contractPeriod.startDate|truncate(10,true,"")}} {{change_label(tender.contractPeriod, 'startDate')}}
+                {% else %}
+                  <span class="bg-warning">{{ gettext("No start date provided") }}</span>
+                {% endif %}
+                <strong class="gap-left">{{ gettext("Contract end: ")}}</strong>
+                {% if tender.contractPeriod.endDate %}
+                  {{ tender.contractPeriod.endDate|truncate(10,true,"")}} {{change_label(tender.contractPeriod, 'endDate')}}
+                {% else %}
+                  <span class="bg-warning">{{ gettext("No end date provided") }}<span>
+                {% endif %}
+                {% if tender.contractPeriod.durationInDays %}
+                  <strong class="gap-left">{{ gettext("Contract Period Duration (in days): ")}}</strong>
+                  {{ tender.contractPeriod.durationInDays}} {{change_label(tender.contractPeriod, 'durationInDays')}}
+                {% endif %}
+                {% if tender.contractPeriod.maxExtentDate %}
+                  <strong class="gap-left">{{ gettext("Max Extent Date: ")}}</strong>
+                  {{ tender.contractPeriod.maxExtentDate|truncate(10,true,"")}} {{change_label(tender.contractPeriod, 'maxExtentDate')}}
                 {% endif %}
                </dd>
 
@@ -107,7 +160,26 @@
                  {% else %}
                    <span class="bg-warning">{{ gettext("No end date provided") }}</span>
                  {% endif %}
+                 {% if tender.enquiryPeriod.durationInDays %}
+                   <strong class="gap-left">{{ gettext("Enquiries Period Duration (in days): ")}}</strong>
+                   {{ tender.enquiryPeriod.durationInDays}}
+                   {{change_label(tender.enquiryPeriod, 'durationInDays')}}
+                 {% endif %}
+                 {% if tender.enquiryPeriod.maxExtentDate %}
+                   <strong class="gap-left">{{ gettext("Enquiries Max Extent Date: ")}}</strong>
+                   {{ tender.enquiryPeriod.maxExtentDate|truncate(10,true,"")}}
+                   {{change_label(tender.enquiryPeriod, 'maxExtentDate')}}
+                 {% endif %}
                </dd>
+
+               {% if tender.procurementCategory %}
+						   <dt class="dt-large dt-gap">
+							   {{ gettext("Procurement Category") }}
+						   </dt>
+               <dd class="dd-small">
+                 {{ tender.procurementCategory }} {{change_label(tender, 'procurementCategory')}}
+               </dd>
+               {% endif %}
 
 						   <dt class="dt-large dt-gap">
 							   {{ gettext("Procurement method") }}
@@ -123,6 +195,10 @@
                  {% else %}
                    <span class="bg-warning">{{ gettext("No rationale provided") }}</span>
                  {% endif %}
+                 {% if tender.procurementMethodDetails %}
+                   <p> {{ tender.procurementMethodDetails }} {{change_label(tender, 'procurementMethodDetails')}}</p>
+                 {% endif %}
+
                </dd>
 
 						   <dt class="dt-large dt-gap">
@@ -230,6 +306,25 @@
 				</div>
 			</div>
 		</div>
+    
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-{% if tender.procuringEntity %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							 {{ gettext("Criteria") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+            <div class="col-md-12">
+              {% for criterion in tender.criteria %}
+                {% include 'criterion.html' %}
+              {% endfor %}
+            </div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<div class="row">
 			<div class="col-md-12">
@@ -250,6 +345,22 @@
 							</div>
 						{% endfor %}
 					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-{% if tender.tenderers %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							 {{ gettext("Targets:") }} 
+						</h3>
+					</div>
+          <div class="panel-body">
+            {% set metrics = tender.targets %}
+            {% include 'metrics.html' %}
+          </div>
 				</div>
 			</div>
 		</div>

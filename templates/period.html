@@ -1,0 +1,14 @@
+<dl>
+  {% if period.startDate %}
+    <dt> {{ gettext("Start Date:") }} </dt> <dd>{{ period.startDate }} </dd>
+  {% endif %}
+  {% if period.endDate %}
+    <dt> {{ gettext("End Date:") }} </dt> <dd>{{ period.endDate }} </dd>
+  {% endif %}
+  {% if period.durationInDays %}
+    <dt> {{ gettext("Duration in Days:") }} </dt> <dd>{{ period.durationInDays }} </dd>
+  {% endif %}
+  {% if period.maxExtentDate %}
+    <dt> {{ gettext("Max Extent Date:") }} </dt> <dd>{{ period.maxExtentDate }} </dd>
+  {% endif %}
+</dl>

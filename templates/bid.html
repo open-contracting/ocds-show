@@ -1,7 +1,7 @@
 <section id="bid-{{loop.index}}">
   <div class="row">
     <div class="col-xs-12">
-      <div class="panel panel-{% if planning.budget.amount.amount %}default{% else %}warning{% endif %}">
+      <div class="panel panel-{% if bid.amount.amount %}default{% else %}warning{% endif %}">
         <div class="panel-body">
           <dl> 
             <dt class="dt-large dt-inline">
@@ -19,11 +19,11 @@
             </dt>
             <dd class="dd-large dd-inline dd-gap">
               {{change_label(bid, 'value')}}
-              {% if bid.amount %}
-                {{bid.amount|currency }}
-                {{change_label(bid, 'amount')}}
-                {{bid.currency}}
-                {{change_label(bid, 'currency')}}
+              {% if bid.value.amount %}
+                {{bid.value.amount|currency }}
+                {{change_label(bid.value, 'amount')}}
+                {{bid.value.currency}}
+                {{change_label(bid.value, 'currency')}}
               {% else %}
                 {{ gettext("Value not provided") }}
               {% endif %}
@@ -34,7 +34,7 @@
             </dt>
             <dd class="dd-large dd-inline">
               {% if bid.date %}
-                {{ bid.date }}
+                {{ bid.date|truncate(10,true,"") }}
               {% else %}
                 {{ gettext("Date not provided") }}
               {% endif %}
@@ -44,6 +44,22 @@
       </div>
     </div>
   </div>
+
+  {% if bid.requirementResponses %}
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+               {{ gettext("Reqirement Responses") }} 
+            </h3>
+          </div>
+              {% set requirementResponses = bid.requirementResponses %}
+              {% include 'requirement_responses.html' %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
 
   <div class="row">
     <div class="col-md-12">

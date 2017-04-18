@@ -20,6 +20,15 @@
             {{ gettext("No description provided") }}
           {% endif %}
           <dl> 
+             {% if contract.extendsContractID %}
+               <dt class="dt-large dt-inline dt-gap">
+                {{ gettext("Extends Contract ID") }}
+               </dt>
+               <dd class="dd-large dd-inline dd-gap">
+                  {{ contract.extendsContractID }} {{change_label(contract, 'extendsContractID')}}
+               </dd>
+             {% endif %}
+
              <dt class="dt-large dt-inline dt-gap">
               {{ gettext("Award ID") }}
              </dt>
@@ -63,6 +72,19 @@
                 {% else %}
                   <span class="bg-warning">{{ gettext("No end date provided") }}</span>
                 {% endif %}
+
+                {% if contract.period.durationInDays %}
+                  <strong class="gap-left">{{ gettext("Duration (in days): ")}}</strong>
+                  {{ contract.period.durationInDays}} {{change_label(contract.period, 'durationInDays')}}
+                {% endif %}
+
+                {% if contract.period.maxExtentDate %}
+                  <strong class="gap-left">{{ gettext("Max Extent Date: ")}}</strong>
+                  {{ contract.period.maxExtentDate|truncate(10,true,"")}} {{change_label(contract.period, 'maxExtentDate')}}
+                {% endif %}
+
+
+              
              </dd>
              <dt class="dt-large dt-inline dt-gap">
                {{ gettext("Value") }}
@@ -97,6 +119,75 @@
       </div>
     </div>
   </div>
+
+  {% if contract.evaluationIndicators %}
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            {{ gettext("Evaluation Indicators") }}
+          </h3>
+        </div>
+        <div class="panel-body">
+          <dl> 
+            {% if contract.evaluationIndicators.discountRate %}
+              <dt class="dt-large dt-inline dt-gap">
+                {{ gettext("Discount Rate") }}
+              </dt>
+              <dd class="dd-large dd-inline dd-gap">
+                {{ contract.evaluationIndicators.discountRate }} {{change_label(contract.evaluationIndicators, 'discountRate')}}
+              </dd>
+            {% endif %}
+            {% if contract.evaluationIndicators.discountRateDetails %}
+              <dt class="dt-small">
+                {{ gettext("Discount Rate Details") }}
+              </dt>
+              <dd class="dd-small">
+                {{ contract.evaluationIndicators.discountRateDetails }} {{change_label(contract.evaluationIndicators, 'discountRateDetails')}}
+              </dd>
+            {% endif %}
+
+            {% if contract.evaluationIndicators.riskPremium %}
+              <dt class="dt-large dt-inline dt-gap">
+                {{ gettext("Risk Premium") }}
+              </dt>
+              <dd class="dd-large dd-inline dd-gap">
+                {{ contract.evaluationIndicators.riskPremium }} {{change_label(contract.evaluationIndicators, 'riskPremium')}}
+              </dd>
+            {% endif %}
+            {% if contract.evaluationIndicators.riskPremiumDetails %}
+              <dt class="dt-small">
+                {{ gettext("Risk Premium Details") }}
+              </dt>
+              <dd class="dd-small">
+                {{ contract.evaluationIndicators.riskPremiumDetails }} {{change_label(contract.evaluationIndicators, 'riskPremiumDetails')}}
+              </dd>
+            {% endif %}
+
+            {% if contract.evaluationIndicators.netPresentValue %}
+              <dt class="dt-large dt-inline dt-gap">
+                {{ gettext("Net Present Value") }}
+              </dt>
+              <dd class="dd-large dd-inline dd-gap">
+                {{ contract.evaluationIndicators.netPresentValue.amount|currency }} {{change_label(contract.evaluationIndicators.netPresentValue, 'amount')}}
+                {{ contract.evaluationIndicators.netPresentValue.currency }} {{change_label(contract.evaluationIndicators.netPresentValue, 'currency')}}
+              </dd>
+            {% endif %}
+            {% if contract.evaluationIndicators.netPresentValueDetails %}
+              <dt class="dt-small">
+                {{ gettext("Net Present Value Details") }}
+              </dt>
+              <dd class="dd-small">
+                {{ contract.evaluationIndicators.netPresentValueDetails }} {{change_label(contract.evaluationIndicators, 'netPresentValueDetails')}}
+              </dd>
+            {% endif %}
+           </dl> 
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
 
   <div class="row">
     <div class="col-md-12">
@@ -246,6 +337,92 @@
     </div>
   </div>
 
+  {% if contract.financeSummary %}
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            {{ gettext("Finance Summary") }}
+          </h3>
+        </div>
+        <div class="panel-body">
+          <dl> 
+            {% if contract.financeSummary.debtEquityRatio %}
+              <dt class="dt-large dt-inline dt-gap">
+                {{ gettext("Debt Equity Ratio") }}
+              </dt>
+              <dd class="dd-large dd-inline dd-gap">
+                {{ contract.financeSummary.debtEquityRatio }} {{change_label(contract.financeSummary, 'debtEquityRatio')}}
+              </dd>
+            {% endif %}
+            {% if contract.financeSummary.debtEquityRatioDetails %}
+              <dt class="dt-small">
+                {{ gettext("Debt Equity Ratio Details") }}
+              </dt>
+              <dd class="dd-small">
+                {{ contract.financeSummary.debtEquityRatioDetails }} {{change_label(contract.financeSummary, 'debtEquityRatioDetails')}}
+              </dd>
+            {% endif %}
+
+            {% if contract.financeSummary.projectIRR %}
+              <dt class="dt-large dt-inline dt-gap">
+                {{ gettext("Project IRR") }}
+              </dt>
+              <dd class="dd-large dd-inline dd-gap">
+                {{ contract.financeSummary.projectIRR }} {{change_label(contract.financeSummary, 'projectIRR')}}
+              </dd>
+            {% endif %}
+            {% if contract.financeSummary.projectIRRDetails %}
+              <dt class="dt-small">
+                {{ gettext("Project IRR Detials") }}
+              </dt>
+              <dd class="dd-small">
+                {{ contract.financeSummary.projectIRRDetails }} {{change_label(contract.financeSummary, 'projectIRRDetails')}}
+              </dd>
+            {% endif %}
+
+            {% if contract.financeSummary.shareCapital %}
+              <dt class="dt-large dt-inline dt-gap">
+                {{ gettext("Share Capital") }}
+              </dt>
+              <dd class="dd-large dd-inline dd-gap">
+                {{ contract.financeSummary.shareCapital }} {{change_label(contract.financeSummary, 'shareCapital')}}
+              </dd>
+            {% endif %}
+            {% if contract.financeSummary.shareCapitalDetails %}
+              <dt class="dt-small">
+                {{ gettext("Share Capital Details") }}
+              </dt>
+              <dd class="dd-small">
+                {{ contract.financeSummary.shareCapitalDetails }} {{change_label(contract.financeSummary, 'shareCapitalDetails')}}
+              </dd>
+            {% endif %}
+
+            {% if contract.financeSummary.subsidyRatio %}
+              <dt class="dt-large dt-inline dt-gap">
+                {{ gettext("Subsidy Ratio") }}
+              </dt>
+              <dd class="dd-large dd-inline dd-gap">
+                {{ contract.financeSummary.subsidyRatio }} {{change_label(contract.financeSummary, 'subsidyRatio')}}
+              </dd>
+            {% endif %}
+            {% if contract.financeSummary.subsidyRatioDetails %}
+              <dt class="dt-small">
+                {{ gettext("Subsidy Ratio Details") }}
+              </dt>
+              <dd class="dd-small">
+                {{ contract.financeSummary.subsidyRatioDetails }} {{change_label(contract.financeSummary, 'subsidyRatioDetails')}}
+              </dd>
+            {% endif %}
+
+           </dl> 
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
   {% if contract.finance %}
   <div class="row">
     <div class="col-xs-12">
@@ -317,6 +494,40 @@
                     {% endif %}
                   </dd>
 
+                  <dt class="dt-large dt-inline">
+                    {{ gettext("Repayment Frequency") }}
+                  </dt>
+                  <dd class="dd-large dd-inline">
+                    {% if finance.repaymentFrequency %}
+                      {{ finance.repaymentFrequency }} {{change_label(finance, 'repaymentFrequency')}}
+                    {% else %}
+                      {{ gettext("No Repayment Frequency provided") }}
+                    {% endif %}
+                  </dd>
+
+                  <dt class="dt-large dt-inline">
+                    {{ gettext("Step in Rights") }}
+                  </dt>
+                  <dd class="dd-large dd-inline">
+                    {% if finance.stepInRights == true or finance.stepInRights == false  %}
+                      {{ finance.stepInRights }} {{change_label(finance, 'stepInRights')}}
+                    {% else %}
+                      {{ gettext("No Step in Rights provided") }}
+                    {% endif %}
+                  </dd>
+
+                  <dt class="dt-large dt-inline">
+                    {{ gettext("Exchange Rate Guarantee") }}
+                  </dt>
+                  <dd class="dd-large dd-inline">
+                    {% if finance.exchangeRateGuarantee == true or finance.exchangeRateGuarantee == false  %}
+                      {{ finance.exchangeRateGuarantee }} {{change_label(finance, 'exchangeRateGuarantee')}}
+                    {% else %}
+                      {{ gettext("No Exchange Rate Guarantee information provided") }}
+                    {% endif %}
+                  </dd>
+
+
                   <dt class="dt-large dt-gap">
                     {{ gettext("Finance Period")}}
                   </dt>
@@ -336,6 +547,15 @@
                        {{change_label(finance.period, 'endDate')}}
                      {% else %}
                        <span class="bg-warning">{{ gettext("No end date provided") }}</span>
+                     {% endif %}
+                     {% if finance.period.durationInDays %}
+                       <strong class="gap-left">{{ gettext("Duration (in days): ")}}</strong>
+                       {{ finance.period.durationInDays}} {{change_label(finance.period, 'durationInDays')}}
+                     {% endif %}
+
+                     {% if finance.period.maxExtentDate %}
+                       <strong class="gap-left">{{ gettext("Max Extent Date: ")}}</strong>
+                       {{ finance.period.maxExtentDate|truncate(10,true,"")}} {{change_label(finance.period, 'maxExtentDate')}}
                      {% endif %}
                   </dd>
 
@@ -361,7 +581,7 @@
                        <span class="bg-warning">{{ gettext("No base provided") }}</span>
                      {% endif %}
 
-                     {% if finance.interestRate.fixed %}
+                     {% if finance.interestRate.fixed == true or finance.interestRate.fixed == false %}
                        <strong class="gap-left">{{ gettext("Fixed: ")}}</strong>
                        {{ finance.interestRate.fixed }}
                        {{change_label(finance.interestRate, 'fixed')}}
@@ -470,7 +690,7 @@
                    {% if equityTransferCap.amount %}
                      {{ equityTransferCap.amount * 100 }}% {{change_label(equityTransferCap, 'amount')}}
                    {% else %}
-                     {{ gettext("No Equitly Transfer Cap given ") }}
+                     {{ gettext("No Equity Transfer Cap given ") }}
                    {% endif %}
                   </dd>
                   <dt class="dt-large dt-inline">
@@ -497,6 +717,22 @@
     </div>
   </div>
 
+  {% endif %}
+
+  {% if contract.requirementResponses %}
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+               {{ gettext("Reqirement Responses") }} 
+            </h3>
+          </div>
+              {% set requirementResponses = contract.requirementResponses %}
+              {% include 'requirement_responses.html' %}
+        </div>
+      </div>
+    </div>
   {% endif %}
 
   {% if contract.riskAllocation %}
@@ -537,7 +773,7 @@
                    {% if risk.mitigation %}
                      {{ risk.mitigation}} {{change_label(risk, 'mitigation')}}
                    {% else %}
-                     {{ gettext("No mitigation") }}
+                     {{ gettext("No mitigation provided") }}
                    {% endif %}
                   </dd>
                   <dt class="dt-large dt-inline">
@@ -547,7 +783,7 @@
                    {% if risk.allocation %}
                      {{ risk.allocation}} {{change_label(risk, 'allocation')}}
                    {% else %}
-                     {{ gettext("No allocation") }}
+                     {{ gettext("No allocation provided") }}
                    {% endif %}
                   </dd>
                   <dt class="dt-large dt-inline">
@@ -557,7 +793,7 @@
                    {% if risk.fiscalImpact %}
                      {{ risk.fiscalImpact}} {{change_label(risk, 'fiscalImpact')}}
                    {% else %}
-                     {{ gettext("No Fiscal Impact") }}
+                     {{ gettext("No Fiscal Impact provided") }}
                    {% endif %}
                   </dd>
                   <dt class="dt-large dt-inline">
@@ -677,6 +913,31 @@
     </div>
   </div>
   {% endif %}
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+             {{ gettext("Signatories") }}
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="col-md-12">
+						{% for signatory in contract.signatories %}
+							<div class="col-md-12">
+                {% set organization = parties[signatory.id] %}
+                {% if not parties[signatory.id] %}
+                  {% set organization = signatory %}
+                {% endif %}
+                {% include 'organization.html' %}
+							</div>
+						{% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </section>
 

@@ -4,7 +4,6 @@
 			{{ gettext("Documents") }} {{change_label(parent, 'documents')}}
 		</h3>
 	</div>
-	<div class="panel-body">
 		{% if documents|length > 0 %}
       <div class="table-responsive">
         <table class="table table-striped">
@@ -41,7 +40,8 @@
         </table>
       </div>
 		{% else %}
-			{{ gettext("No documents provided") }}
+      <div class="panel-body">
+        {{ gettext("No documents provided") }}
+      </div>
 		{% endif %}
-	</div>
 </div>
