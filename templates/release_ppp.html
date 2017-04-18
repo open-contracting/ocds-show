@@ -17,12 +17,15 @@
 <main class="row">
 
   <ul class="release-pills col-md-3 nav nav-pills nav-stacked">
-    <li role="presentation" class="active"><a href="#metadata">Description{{change_label(release, 'ocid')}}</a></li>
+    <li role="presentation" class="active"><a href="#metadata">Description{{change_label(release, 'description')}}</a></li>
     <li role="presentation" class="{% if not release.relatedProcesses %}disabled{%endif%}" >
        <a href="#relatedProcesses">Related Processes {% if release.relatedProcesses %}{{change_label(release, 'relatedProcesses')}}{%endif%}</a>
     </li>
     <li role="presentation" class="{% if not release.parties %}disabled{%endif%}" >
        <a href="#parties">Parties {% if release.parties %}{{change_label(release, 'parties')}}{%endif%}</a>
+    </li>
+       <li role="presentation" class="{% if release.socialWitness|length == 0 %}disabled{%endif%}" >
+       <a href="#social-witness">Social Witness {% if release.socialWitness %}{{change_label(release, 'socialWitness')}}{%endif%}</a>
     </li>
 
     <li role="presentation" class="{% if not release.publicAuthority %}disabled{%endif%}" ><a href="#publicAuthority">Public Authority {{change_label(release, 'publicAuthority')}} </a></li>
@@ -84,6 +87,15 @@
 
 	<div class="col-md-9 tab-pane" id="parties">
     {% for organization in release.parties %}
+      {% include 'organization_ppp.html' %}
+      {% if not loop.last %}
+        <hr>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+	<div class="col-md-9 tab-pane" id="social-witness">
+    {% for organization in release.socialWitness %}
       {% include 'organization_ppp.html' %}
       {% if not loop.last %}
         <hr>
@@ -371,3 +383,20 @@
     {% endif %}
 	</div>
 </main>
+
+
+{% for organization in release.parties %}
+  <div class="modal" id="organization-{{organization.id}}" tabindex="-1" role="dialog" aria-labelledby="orgainization-{{organization.id}}">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          {% include 'organization_ppp.html' %}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}

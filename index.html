@@ -14,6 +14,7 @@
 
     </head>
     <body>
+
       <nav class="navbar navbar-inverse">
         <div class="container">
           <a class="navbar-brand" href="#">OCDS PPP Show</a>
@@ -41,11 +42,12 @@
         </div>
       </div>
       <div id="graph"></div>
+
+
     </body>
     
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
   <script src="https://vega.github.io/vega/vega.min.js"></script>
   <script src="js/nunjucks.min.js"></script>
   <script src="js/merge.js"></script>
@@ -137,14 +139,14 @@
            var parties = input['release']['parties'] || []
 
            input.parties = {}
+           input.socialWitness = []
 
            parties.forEach(function (party) {
              input.parties[party.id] = party
+             if (party.roles && party.roles.indexOf('socialWitness') !== -1) {
+                input.socialWitness.push(party)
+             }
            })
-
-           //console.log(input['release'])
-
-           //console.log(changes)
 
            function get_change(obj, field) {
              if (!obj) {return}
@@ -189,9 +191,13 @@
            var parties = input['release']['parties'] || []
 
            input.parties = {}
+           input.release.socialWitness = []
 
            parties.forEach(function (party) {
              input.parties[party.id] = party
+             if (party.roles.indexOf('socialWitness') !== -1) {
+                input.release.socialWitness.push(party)
+             }
            })
 
            var content = env.render('release_select.html', input);

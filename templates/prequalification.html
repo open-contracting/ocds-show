@@ -230,7 +230,7 @@
           {% if not parties[tender.procuringEntity.id] %}
             {% set organization = tender.procuringEntity %}
           {% endif %}
-          {% include 'organization.html' %}
+          {% include 'organization_ppp.html' %}
         </div>
       </div>
     </div>
@@ -252,7 +252,7 @@
             {% if not parties[tenderer.id] %}
               {% set organization = tenderer %}
             {% endif %}
-            {% include 'organization.html' %}
+            {% include 'organization_ppp.html' %}
           </div>
         {% endfor %}
       </div>

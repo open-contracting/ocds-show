@@ -27,9 +27,6 @@
             {{ gettext("Unit") }} 
           </th>
           <th>
-            {{ gettext("Quantity") }} 
-          </th>
-          <th>
             {{ gettext("Measure") }} 
           </th>
           <th>
@@ -66,10 +63,6 @@
             <td>
                {{observation.unit.name}}
                {{change_label(observation.unit, 'name')}}
-            </td>
-            <td>
-               {{observation.quantity}}
-               {{change_label(observation, 'quantity')}}
             </td>
             <td>
                {{observation.measure}}

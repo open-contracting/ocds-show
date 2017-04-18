@@ -24,8 +24,15 @@
           {% set period = requirementResponse.period %}
           {% include "period.html" %}
         </td>
-        <td>{{ requirementResponse.relatedTenderer.name }} {{change_label(requirementResponse.relatedTenderer, "name")}}
+        <td>
+          {% if requirementResponse.relatedTenderer.id and parties[requirementResponse.relatedTenderer.id] %}
+          <a data-toggle="modal" href="#organization-{{requirementResponse.relatedTenderer.id}}">
+          {% endif %}
+          {{ requirementResponse.relatedTenderer.name }} {{change_label(requirementResponse.relatedTenderer, "name")}}
           <small>({{requirementResponse.relatedTenderer.id}}){{change_label(requirementResponse.relatedTenderer, "id")}}<small>  
+          {% if requirementResponse.relatedTenderer.id and parties[requirementResponse.relatedTenderer.id] %}
+          </a>
+          {% endif %}
         </td>
         <td>
            {{requirementResponse.value }}
