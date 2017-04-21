@@ -20,8 +20,7 @@
           {% for statistic in bids.statistics %}
             <tr>
               <td>{{ statistic.id }} {{change_label(statistic, "title")}} </td>
-              <td>{{ statistic.date|truncate(10,true,"") }} {{change_label(statistic, "date")}} </td>
-              <td>{{ statistic.notes }} {{change_label(statistic, "notes")}} </td>
+              <td>{{ date_popout(statistic, "date") }} </td>
               <td>{{ statistic.measure }} {{change_label(statistic, "measure")}} </td>
               <td>{{ statistic.value }} {{change_label(statistic, "value")}} </td>
             </tr>

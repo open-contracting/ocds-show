@@ -132,8 +132,7 @@
                        {{change_label(line.amount, 'currency')}}
                     </td>
                     <td>
-                      {{line.description|truncate(70)}}
-                      {{change_label(observation, 'description')}}
+                     {{long_text_popout(line, 'description')}}
                     </td>
                   </tr>
                 {% endfor %}

@@ -10,6 +10,18 @@
     {% endif %}
   {% endmacro %}
 
+  {% macro date_popout(object, key) %}
+    <span class="no-wrap" data-toggle="tooltip" title="{{object[key]}}"> {{ object[key]|truncate(10,true,"") }} {{change_label(object, key)}} <span class="glyphicon glyphicon-new-window small-icon" aria-hidden="true"></span> </span>
+  {% endmacro %}
+
+  {% macro long_text_popout(object, key) %}
+  <div {% if object[key]|length > 70 %} data-toggle="popover" {% endif %} data-trigger="hover" data-placement="left" data-content="{{object[key]}}">
+    {{ object[key]|truncate(70) }}
+    {{ change_label(object, key) }}
+    {% if object[key]|length > 70  %} <span class="glyphicon glyphicon-new-window small-icon" aria-hidden="true"></span> {% endif %}
+  </div>
+  {% endmacro %}
+
   <h1>
     {{release.title}} {% if not release.title %} {{release.ocid}} {% endif %}  
   </h1>
@@ -57,7 +69,7 @@
         <strong>Release ID: </strong>{{release.id}}
       </li>
       <li class="list-group-item">
-        <strong>Date: </strong>{{release.date|truncate(10,true,"")}}
+      <strong>Date: </strong> {{ date_popout(release, "date") }}
       </li>
       <li class="list-group-item">
         <strong>Language: </strong>{{release.language}}

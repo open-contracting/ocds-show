@@ -173,6 +173,9 @@
            container.append(content)
            var content = env.render('record_release_ppp.html', input);
            container.append(content)
+           $('[data-toggle="popover"]').popover()
+           $('[data-toggle="tooltip"]').tooltip()
+
          } else {
            input['releases'].sort(function (a, b) {
              if (a.date) {
@@ -216,6 +219,8 @@
            container.append(content)
            var content = env.render('release_ppp.html', input);
            container.append(content)
+           $('[data-toggle="popover"]').popover()
+           $('[data-toggle="tooltip"]').tooltip()
          }
 
          // Shareholder pie chart
@@ -351,6 +356,7 @@
          e.preventDefault()
          render_json()
        })
+
 
     </script>
 </html>

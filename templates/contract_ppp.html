@@ -60,15 +60,13 @@
 
                 <strong>{{ gettext("Start: ")}}</strong>
                 {% if contract.period.startDate %}
-                  {{ contract.period.startDate|truncate(10,true,"")}}
-                  {{change_label(contract.period, 'startDate')}}
+                  {{date_popout(contract.period, 'startDate')}}
                 {% else %}
                   <span class="bg-warning">{{ gettext("No start date provided") }}</span>
                 {% endif %}
                 <strong class="gap-left">{{ gettext("End: ")}}</strong>
                 {% if contract.period.endDate %}
-                  {{ contract.period.endDate|truncate(10,true,"")}}
-                  {{change_label(contract.period, 'endDate')}}
+                  {{date_popout(contract.period, 'endDate')}}
                 {% else %}
                   <span class="bg-warning">{{ gettext("No end date provided") }}</span>
                 {% endif %}
@@ -80,7 +78,7 @@
 
                 {% if contract.period.maxExtentDate %}
                   <strong class="gap-left">{{ gettext("Max Extent Date: ")}}</strong>
-                  {{ contract.period.maxExtentDate|truncate(10,true,"")}} {{change_label(contract.period, 'maxExtentDate')}}
+                  {{date_popout(contract.period, 'maxExtentDate')}}
                 {% endif %}
 
 
@@ -105,8 +103,7 @@
              </dt>
              <dd class="dd-large dd-inline">
                {% if contract.dateSigned %}
-                 {{contract.dateSigned|truncate(10,true,"")}}
-                 {{change_label(contract, 'dateSigned')}}
+                 {{date_popout(contract, 'dateSigned')}}
                {% else %}
                  <span class="bg-warning">{{ gettext("No date provided") }}</span>
                {% endif %}
@@ -536,15 +533,13 @@
 
                      <strong>{{ gettext("Start: ")}}</strong>
                      {% if finance.period.startDate %}
-                       {{ finance.period.startDate|truncate(10,true,"")}}
-                       {{change_label(finance.period, 'startDate')}}
+                       {{date_popout(finance.period, 'startDate')}}
                      {% else %}
                        <span class="bg-warning">{{ gettext("No start date provided") }}</span>
                      {% endif %}
                      <strong class="gap-left">{{ gettext("End: ")}}</strong>
                      {% if finance.period.endDate %}
-                       {{ finance.period.endDate|truncate(10,true,"")}}
-                       {{change_label(finance.period, 'endDate')}}
+                       {{date_popout(finance.period, 'endDate')}}
                      {% else %}
                        <span class="bg-warning">{{ gettext("No end date provided") }}</span>
                      {% endif %}
@@ -555,7 +550,7 @@
 
                      {% if finance.period.maxExtentDate %}
                        <strong class="gap-left">{{ gettext("Max Extent Date: ")}}</strong>
-                       {{ finance.period.maxExtentDate|truncate(10,true,"")}} {{change_label(finance.period, 'maxExtentDate')}}
+                       {{date_popout(finance.period, 'maxExtentDate')}}
                      {% endif %}
                   </dd>
 

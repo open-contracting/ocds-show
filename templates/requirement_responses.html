@@ -19,7 +19,7 @@
         </td>	<!-- need to consider whether to present the id - make sure this is consistent with documents approach -->
 
         <td>{{ requirementResponse.title }} {{change_label(requirementResponse, "title")}}</td>
-        <td>{{ requirementResponse.description }} {{change_label(requirementResponse, "description")}}</td>
+        <td> {{long_text_popout(requirementResponse, "description")}}</td>
         <td>
           {% set period = requirementResponse.period %}
           {% include "period.html" %}

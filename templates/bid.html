@@ -34,7 +34,7 @@
             </dt>
             <dd class="dd-large dd-inline">
               {% if bid.date %}
-                {{ bid.date|truncate(10,true,"") }}
+                {{ date_popout(bid, 'date') }}
               {% else %}
                 {{ gettext("Date not provided") }}
               {% endif %}

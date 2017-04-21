@@ -23,7 +23,7 @@
 					{% for item in items %}
 						<tr>
 							<td>{{ item.id }} {{change_label(item)}} </td>	<!-- need to consider whether to present the id - make sure this is consistent with documents approach -->
-							<td>{{ item.description }} {{change_label(item, "description")}}</td>
+							<td>{{long_text_popout(item, "description")}}</td>
 							<td>
 								{{change_label(item, "classification")}} {{ item.classification.description }} {{change_label(item.classification, "description")}}
 								<small>

@@ -69,8 +69,7 @@
                {{change_label(observation, 'measure')}}
             </td>
             <td>
-               {{observation.notes}}
-               {{change_label(observation, 'notes')}}
+               {{long_text_popout(observation, 'notes')}}
             </td>
             <td>
                {{observation.relatedImplementationMilestone.title}}

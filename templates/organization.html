@@ -71,6 +71,7 @@
 		</div>
 		<div class="panel-body">
 			{% if organization.identifier or organization.additionalIdentifiers %}
+        <div class="table-responsive">
 				<table class="table table-striped">
 					<thead>
 						<tr>
@@ -110,6 +111,7 @@
 						{% endif %}
 					</tbody>
 				</table>
+        </div>
 			{% else %}
 				{{ gettext("No identifier data provided") }}
 			{% endif %}

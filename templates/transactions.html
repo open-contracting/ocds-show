@@ -12,8 +12,6 @@
 						<th>{{ gettext("ID") }}</th>
 						<th>{{ gettext("Date") }}</th>
 						<th>{{ gettext("Value") }}</th>
-						<th>{{ gettext("Provider organization") }} <small>({{ gettext("Scheme - ID") }})</small></th>
-						<th>{{ gettext("Receiver organization") }} <small>({{ gettext("Scheme - ID") }})</small></th>
 						<th>{{ gettext("Payee") }} </th>
 						<th>{{ gettext("Payer") }} </th>
 						<th>{{ gettext("Related Milestone") }} </th>
@@ -24,12 +22,34 @@
 					{% for transaction in transactions %}
 						<tr>
 							<td>{{ transaction.id }}</td>
-							<td>{{ transaction.date|truncate(10,true,"") }}</td>
+							<td>{{ date_popout(transaction, 'date') }}</td>
 							<td>{{ transaction.amount.amount|currency }} {{ transaction.amount.currency }}</td>
-							<td>{{ transaction.providerOrganization.legalName }} <small><a href="{{transaction.providerOrganization.uri}}">({{ transaction.providerOrganization.scheme }} - {{ transaction.providerOrganization.id }})</a></small></td>
-							<td>{{ transaction.receiverOrganization.legalName }} <small><a href="{{transaction.receiverOrganization.uri}}">({{ transaction.receiverOrganization.scheme }} - {{ transaction.receiverOrganization.id }})</a></small></td>
-              <td>{{ transaction.payee.name }} <small> ({{ transaction.payee.id }})</a></td>
-              <td>{{ transaction.payer.name }} <small> ({{ transaction.payer.id }})</a></td>
+
+              <td>
+
+                {% if transaction.payee.id and parties[transaction.payee.id] %}
+                <a data-toggle="modal" href="#organization-{{transaction.payee.id}}">
+                {% endif %}
+
+                {{ transaction.payee.name }} <small> ({{ transaction.payee.id }})</a>
+
+                {% if transaction.payee.id and parties[transaction.payee.id] %}
+                </a>
+                {% endif %}
+              
+              </td>
+              <td>
+                {% if transaction.payer.id and parties[transaction.payer.id] %}
+                <a data-toggle="modal" href="#organization-{{transaction.payer.id}}">
+                {% endif %}
+
+                {{ transaction.payer.name }} <small> ({{ transaction.payer.id }})</a></td>
+
+                {% if transaction.payer.id and parties[transaction.payer.id] %}
+                </a>
+                {% endif %}
+              </td>
+
               <td>
                  {{transaction.relatedImplementationMilestone.title}}
                  {{change_label(transaction.relatedImplementationMilestone, 'title')}}
