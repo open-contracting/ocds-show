@@ -3962,9 +3962,9 @@ output += runtime.suppressValue(runtime.memberLookup((t_4),"type"), env.opts.aut
 output += " ";
 output += runtime.suppressValue((lineno = 30, colno = 48, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [t_4,"type"])), env.opts.autoescape);
 output += "</td>\n                <td>";
-output += runtime.suppressValue(runtime.memberLookup((t_4),"dateMet"), env.opts.autoescape);
+output += runtime.suppressValue(env.getFilter("truncate").call(context, runtime.memberLookup((t_4),"dateMet"),10,true,""), env.opts.autoescape);
 output += " ";
-output += runtime.suppressValue((lineno = 31, colno = 51, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [t_4,"dateMet"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 31, colno = 72, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [t_4,"dateMet"])), env.opts.autoescape);
 output += "</td>\n              </tr>\n            ";
 ;
 }
@@ -4514,7 +4514,7 @@ if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "period"))
 output += "\n    <dt> ";
 output += runtime.suppressValue((lineno = 2, colno = 17, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Start Date:"])), env.opts.autoescape);
 output += " </dt> <dd>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "period")),"startDate"), env.opts.autoescape);
+output += runtime.suppressValue(env.getFilter("truncate").call(context, runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "period")),"startDate"),10,true,""), env.opts.autoescape);
 output += " </dd>\n  ";
 ;
 }
@@ -4523,7 +4523,7 @@ if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "period"))
 output += "\n    <dt> ";
 output += runtime.suppressValue((lineno = 5, colno = 17, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["End Date:"])), env.opts.autoescape);
 output += " </dt> <dd>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "period")),"endDate"), env.opts.autoescape);
+output += runtime.suppressValue(env.getFilter("truncate").call(context, runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "period")),"endDate"),10,true,""), env.opts.autoescape);
 output += " </dd>\n  ";
 ;
 }
@@ -4541,7 +4541,7 @@ if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "period"))
 output += "\n    <dt> ";
 output += runtime.suppressValue((lineno = 11, colno = 17, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Max Extent Date:"])), env.opts.autoescape);
 output += " </dt> <dd>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "period")),"maxExtentDate"), env.opts.autoescape);
+output += runtime.suppressValue(env.getFilter("truncate").call(context, runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "period")),"maxExtentDate"),10,true,""), env.opts.autoescape);
 output += " </dd>\n  ";
 ;
 }
@@ -6667,7 +6667,7 @@ output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLook
 output += "\n      </li>\n      <li class=\"list-group-item\">\n        <strong>Release ID: </strong>";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"id"), env.opts.autoescape);
 output += "\n      </li>\n      <li class=\"list-group-item\">\n        <strong>Date: </strong>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"date"), env.opts.autoescape);
+output += runtime.suppressValue(env.getFilter("truncate").call(context, runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"date"),10,true,""), env.opts.autoescape);
 output += "\n      </li>\n      <li class=\"list-group-item\">\n        <strong>Language: </strong>";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"language"), env.opts.autoescape);
 output += "\n      </li>\n      <li class=\"list-group-item\">\n        <strong>Tags: </strong>\n        ";

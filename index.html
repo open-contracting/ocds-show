@@ -129,6 +129,12 @@
            var releaseNumber = context["releaseNumber"] || 0
            input['releaseNumber'] = releaseNumber
            input['releases'] = current_record.releases
+           input['releases'].sort(function (a, b) {
+             if (a.date) {
+               return a.date.localeCompare( b.date );
+             }
+             return -1
+           });
            var prev_release = merge(input.releases.slice(0, releaseNumber))
            var current_release =  merge(input.releases.slice(0, releaseNumber + 1))
 
@@ -168,6 +174,12 @@
            var content = env.render('record_release_ppp.html', input);
            container.append(content)
          } else {
+           input['releases'].sort(function (a, b) {
+             if (a.date) {
+               return a.date.localeCompare( b.date );
+             }
+             return -1
+           });
            input.release_ids = input.releases.map(function (value) {
              return value.id
            })

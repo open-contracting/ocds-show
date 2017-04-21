@@ -57,7 +57,7 @@
         <strong>Release ID: </strong>{{release.id}}
       </li>
       <li class="list-group-item">
-        <strong>Date: </strong>{{release.date}}
+        <strong>Date: </strong>{{release.date|truncate(10,true,"")}}
       </li>
       <li class="list-group-item">
         <strong>Language: </strong>{{release.language}}

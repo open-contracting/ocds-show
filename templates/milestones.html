@@ -29,7 +29,7 @@
                 <td>{{ milestone.status}} {{change_label(milestone, 'status')}}</td>
                 <td>{{ milestone.code}} {{change_label(milestone, 'code')}}</td>
                 <td>{{ milestone.type}} {{change_label(milestone, 'type')}}</td>
-                <td>{{ milestone.dateMet}} {{change_label(milestone, 'dateMet')}}</td>
+                <td>{{ milestone.dateMet|truncate(10,true,"")}} {{change_label(milestone, 'dateMet')}}</td>
               </tr>
             {% endfor %}
           </tbody>
