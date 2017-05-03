@@ -110,7 +110,9 @@
            input.ocids = input.records.map(function (value) {
              return value.ocid
            })
-           if (context.newData) {
+           if (context.id) {
+              id = context.id
+           } else if(context.newData) {
              id = input.ocids[0]
            } else {
              id = $('#id-select').val() 
@@ -186,7 +188,10 @@
            input.release_ids = input.releases.map(function (value) {
              return value.id
            })
-           if (context.newData) {
+
+           if (context.id) {
+              id = context.id 
+            } else if (context.newData) {
              id = input.release_ids[0]
            } else {
              id = $('#id-select').val() 
@@ -334,7 +339,12 @@
        if(getUrlVars()["load"]) {
           $.get(getUrlVars()["load"],function(data){ 
               jsonInput.val(JSON.stringify(data))
-              render_json({"newData": true});
+              if(getUrlVars()["releaseID"]) {
+                render_json({"id":getUrlVars()["releaseID"],"newData":true});  
+              } else {
+                render_json({"newData":true});
+              }
+              
           })
        } else {
           jsonInput.val("") 
