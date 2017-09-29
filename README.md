@@ -5,6 +5,7 @@ A tool for displaying OCDS releases and records.
 * This tool will try and convert a record/release in HTML (in progress)
 * Create a javascript widget using this HTML.
 
+[Visit a live version of the tool](https://open-contracting.github.io/ocds-show/).
 
 ## Intallation
 
