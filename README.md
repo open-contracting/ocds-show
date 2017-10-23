@@ -2,12 +2,12 @@
 
 A tool for displaying OCDS releases and records.
 
-* This tool will try and convert a record/release in HTML (in progress)
+* This tool will try and convert a record/release into HTML (in progress)
 * Create a javascript widget using this HTML.
 
 [Visit a live version of the tool](https://open-contracting.github.io/ocds-show/).
 
-## Intallation
+## Installation
 
 Clone this repository and run
 
@@ -15,10 +15,10 @@ Clone this repository and run
 
 ## Development
 
-In order to complile the templates ready to use in the broser run
+In order to compile the templates ready to use in the browser run
 
 `node build-frontend.js -w`
 
-The -w will watch the files so that any change in the templates will regenerate the templates.
+The -w option will watch the template files and recompile them after any changes.
 
 A test file can be found in example/release_input.html.
