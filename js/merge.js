@@ -158,7 +158,7 @@ function get_changes(old_flat, new_flat) {
       }
     }
     //changed
-    else if (old_value !== new_value) {
+    else if (JSON.stringify(old_value) !== JSON.stringify(new_value)) {
       //mark each parant as changed
       item_as_list.forEach(function(item, index) {
         var slice_to_index = JSON.stringify(item_as_list.slice(0, index+1));

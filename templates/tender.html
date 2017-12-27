@@ -85,7 +85,7 @@
 						<p>
 							<strong>{{ gettext("Tender start: ")}}</strong>
 							{% if tender.tenderPeriod.startDate %}
-								{{ tender.tenderPeriod.startDate|truncate(10,true,"")}} {{change_label(tender.tenderPeriod, 'startDate')}}
+								{{date_popout(tender.tenderPeriod, 'startDate')}}
 							{% else %}
 								<span class="bg-warning">{{ gettext("No start date provided") }}</span>
 							{% endif %}
@@ -93,7 +93,7 @@
 						<p>
 							<strong>{{ gettext("Tender end: ")}}</strong>
 							{% if tender.tenderPeriod.endDate %}
-								{{ tender.tenderPeriod.endDate|truncate(10,true,"")}} {{change_label(tender.tenderPeriod, 'endDate')}}
+								{{date_popout(tender.tenderPeriod, 'endDate')}}
 							{% else %}
 								<span class="bg-warning">{{ gettext("No end date provided") }}</span>
 							{% endif %}
@@ -101,7 +101,7 @@
 						<p>
 							<strong>{{ gettext("Award start: ")}}</strong>
 							{% if tender.awardPeriod.startDate %}
-								{{ tender.awardPeriod.startDate|truncate(10,true,"")}} {{change_label(tender.awardPeriod, 'startDate')}}
+								{{date_popout(tender.awardPeriod, 'startDate')}}
 							{% else %}
 								<span class="bg-warning">{{ gettext("No start date provided") }}</span>
 							{% endif %}
@@ -109,7 +109,7 @@
 						<p>	
 							<strong>{{ gettext("Award end: ")}}</strong>
 							{% if tender.awardPeriod.endDate %}
-								{{ tender.awardPeriod.endDate|truncate(10,true,"")}} {{change_label(tender.awardPeriod, 'endDate')}}
+								{{date_popout(tender.awardPeriod, 'endDate')}}
 							{% else %}
 								<span class="bg-warning">{{ gettext("No end date provided") }}<span>
 							{% endif %}
