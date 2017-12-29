@@ -1,8 +1,6 @@
     <h3 class="tab-heading">
     {% if tender.title %}
       {{ tender.title }} {{change_label(tender, 'title')}}
-    {% elif tender.id %}
-      {{ tender.id }} {{change_label(tender, 'id')}}
     {% else %}
       {{ gettext("No title provided") }}
     {% endif %}
@@ -322,6 +320,25 @@
     
 		<div class="row">
 			<div class="col-md-12">
+				<div class="panel panel-{% if tender.procuringEntity %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							 {{ gettext("Criteria") }}
+						</h3>
+					</div>
+					<div class="panel-body">
+            <div class="col-md-12">
+              {% for criterion in tender.criteria %}
+                {% include 'criterion.html' %}
+              {% endfor %}
+            </div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
 				<div class="panel panel-{% if tender.tenderers %}default{% else %}warning{% endif %}">
 					<div class="panel-heading">
 						<h3 class="panel-title">
@@ -339,6 +356,22 @@
 							</div>
 						{% endfor %}
 					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-{% if tender.tenderers %}default{% else %}warning{% endif %}">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							 {{ gettext("Targets:") }} 
+						</h3>
+					</div>
+          <div class="panel-body">
+            {% set metrics = tender.targets %}
+            {% include 'metrics.html' %}
+          </div>
 				</div>
 			</div>
 		</div>

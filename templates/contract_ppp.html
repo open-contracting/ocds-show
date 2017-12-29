@@ -1,7 +1,7 @@
 
 <section id="contract-{{loop.index}}">
   <h3>
-    {% if contract.title %}{{ contract.title}}{% else %}{{ gettext("No title provided") }}{% endif %} {{change_label(contract)}}
+    {% if contract.title %}{{ contract.title}}{% else %}{{ gettext("No title provided") }}{% endif %} {{change_label(contract)}} 
     <small> 
       ({% if contract.id %}
         {{ contract.id }} {{change_label(contract, 'id')}}
@@ -20,6 +20,15 @@
             {{ gettext("No description provided") }}
           {% endif %}
           <dl> 
+             {% if contract.extendsContractID %}
+               <dt class="dt-large dt-inline dt-gap">
+                {{ gettext("Extends Contract ID") }}
+               </dt>
+               <dd class="dd-large dd-inline dd-gap">
+                  {{ contract.extendsContractID }} {{change_label(contract, 'extendsContractID')}}
+               </dd>
+             {% endif %}
+
              <dt class="dt-large dt-inline dt-gap">
               {{ gettext("Award ID") }}
              </dt>
@@ -289,6 +298,36 @@
           </div>
           <div class="panel-body">
             {{ gettext("No milestones provided") }}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      {% if contract.agreedMetrics %}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              {{ gettext("Agreed Metrics") }}
+            </h3>
+          </div>
+          <div class="panel-body">
+            {% set metrics = contract.agreedMetrics %}
+            {% set parent = contract %}
+            {% include 'metrics.html' %}
+          </div>
+        </div>
+      {% else %}
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              {{ gettext("Agreed Metrics") }}
+            </h3>
+          </div>
+          <div class="panel-body">
+            {{ gettext("No Agreed Metrics provided") }}
           </div>
         </div>
       {% endif %}
@@ -882,61 +921,26 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">
-            {{ gettext("Implementation") }}
+             {{ gettext("Signatories") }}
           </h3>
         </div>
         <div class="panel-body">
-          <div class="row">
-            <div class="col-md-12">
-              {% set transactions = contract.implementation.transactions %}
-              {% set parent = contract.implementation %}
-              {% include 'transactions.html' %}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              {% if contract.implementation.milestones %}
-                {% set milestones = contract.implementation.milestones %}
-                {% set parent = contract.implementation %}
-                {% include 'milestones.html' %}
-              {% else %}
-                <div class="panel panel-warning">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">
-                      {{ gettext("Milestones") }}
-                    </h3>
-                  </div>
-                  <div class="panel-body">
-                    {{ gettext("No milestones provided") }}
-                  </div>
-                </div>
-              {% endif %}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              {% if contract.implementation.documents %}
-                {% set documents = contract.implementation.documents %}
-                {% set parent = contract.implementation %}
-                {% include 'documents.html' %}
-              {% else %}
-                <div class="panel panel-warning">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">
-                      {{ gettext("Documents") }}
-                    </h3>
-                  </div>
-                  <div class="panel-body">
-                    {{ gettext("No documents provided") }}
-                  </div>
-                </div>
-              {% endif %}
-            </div>
+          <div class="col-md-12">
+						{% for signatory in contract.signatories %}
+							<div class="col-md-12">
+                {% set organization = parties[signatory.id] %}
+                {% if not parties[signatory.id] %}
+                  {% set organization = signatory %}
+                {% endif %}
+                {% include 'organization.html' %}
+							</div>
+						{% endfor %}
           </div>
         </div>
       </div>
     </div>
   </div>
+
 </section>
 
 

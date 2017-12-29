@@ -11,6 +11,46 @@
   padding-top: 20px;
 }
 
+/* ppp styling
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    background-color: #F6EDE5 !important;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color:  #F6EDE5 !important;
+}
+
+.label-primary {
+  background-color: #883832
+}
+
+.label-success {
+  background-color: #883287
+}
+
+.table-striped > tbody > tr:nth-of-type(2n+1) {background-color: #F6EDE5; }
+
+a {color: #AF5D00;text-decoration: none;}
+
+a:hover, a:focus {color: #7c1200;text-decoration: underline;}
+
+.navbar-inverse {background-color: #c20000 !important ;border-color: red !important ;}
+*/
+
+.gap-left {
+  margin-left: 10px
+}
+
+.small-icon {
+  font-size: 12px;
+  color: grey
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
 #release-tabs .label {
   text-transform: uppercase;
   font-size: 55%;
@@ -106,13 +146,13 @@
   left: 0px;
 }
 .release-badge.primary {
-  background-color: #325D88;
+  background-color: #883287;
 }
 .release-badge.info {
   background-color: #29ABE0;
 }
 .release-badge.success {
-  background-color: #9BAF00;
+  background-color: #AF0000;
 }
 .release-badge.warning {
   background-color: #d1bd10;
@@ -121,15 +161,8 @@
   background-color: #ba1f1f;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+/*****************************/
+.shareholders-chart canvas {
+  display: block;
+  margin: 0 auto 0 33%;
+}

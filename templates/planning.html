@@ -4,10 +4,22 @@
 				<div class="panel panel-{% if planning.budget.amount.amount %}default{% else %}warning{% endif %}">
 					<div class="panel-body">
             <dl> 
-						   <dt class="dt-large dt-inline">
+						   <dt class="dt-large">
+                  {{ gettext("Rationale") }}
+						   </dt>
+               <dd class="dd-small">
+                 {% if planning.rationale %}
+                   {{planning.rationale}}
+                   {{change_label(planning, 'rationale')}}
+                 {% else %}
+                   {{ gettext("Budget rationale not provided") }}
+                 {% endif %}
+               </dd>
+
+						   <dt class="dt-large dt-inline dt-gap">
                 {{ gettext("Budget amount") }} 
 						   </dt>
-               <dd class="dd-large dd-inline">
+               <dd class="dd-large dd-inline dd-gap">
                 {% if planning.budget.amount.amount %}
                   {{ planning.budget.amount.amount|currency }}
                   {{change_label(planning.budget.amount, 'amount')}}
@@ -55,17 +67,6 @@
                 {% endif %}
                </dd>
 
-						   <dt class="dt-large dt-gap">
-                  {{ gettext("Rationale") }}
-						   </dt>
-               <dd class="dd-small">
-                 {% if planning.rationale %}
-                   {{planning.rationale}}
-                   {{change_label(planning, 'rationale')}}
-                 {% else %}
-                   {{ gettext("Budget rationale not provided") }}
-                 {% endif %}
-               </dd>
 						   <dt class="dt-large dt-gap dt-inline">
                  {{ gettext("Project Name") }}
 						   </dt>
@@ -95,6 +96,27 @@
 				</div>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-md-12">
+				{% if planning.milestones %}
+					{% set milestones = planning.milestones %}
+					{% set parent = planning %}
+					{% include 'milestones.html' %}
+				{% else %}
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								{{ gettext("Milestones") }}
+							</h3>
+						</div>
+						<div class="panel-body">
+							{{ gettext("No milestones provided") }}
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+
 		<div class="row">
 			<div class="col-md-12">
 				{% if planning.documents %}

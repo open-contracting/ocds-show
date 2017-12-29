@@ -9,6 +9,23 @@
     {% endif %}
   {% endmacro %}
 
+  {% macro date_popout(object, key) %}
+    <span class="no-wrap" data-toggle="tooltip" title="{{object[key]}}"> {{ object[key]|truncate(10,true,"") }} {{change_label(object, key)}} 
+      
+    {% if object[key] %}
+      <span class="glyphicon glyphicon-new-window small-icon" aria-hidden="true"></span> 
+    {% endif %}
+    </span>
+  {% endmacro %}
+
+  {% macro long_text_popout(object, key) %}
+  <div {% if object[key]|length > 70 %} data-toggle="popover" {% endif %} data-trigger="hover" data-placement="left" data-content="{{object[key]}}">
+    {{ object[key]|truncate(70) }}
+    {{ change_label(object, key) }}
+    {% if object[key]|length > 70  %} <span class="glyphicon glyphicon-new-window small-icon" aria-hidden="true"></span> {% endif %}
+  </div>
+  {% endmacro %}
+
   <h1>
     {{release.tender.title}} {% if not release.tender.title %} {{release.ocid}} {% endif %}  
   </h1>
@@ -17,6 +34,12 @@
 
   <ul class="release-pills col-md-3 nav nav-pills nav-stacked">
     <li role="presentation" class="active"><a href="#metadata">Metadata</a></li>
+    <li role="presentation" class="{% if not release.relatedProcesses %}disabled{%endif%}" >
+       <a href="#relatedProcesses">Related Processes {% if release.relatedProcesses %}{{change_label(release, 'relatedProcesses')}}{%endif%}</a>
+    </li>
+    <li role="presentation" class="{% if not release.parties %}disabled{%endif%}" >
+       <a href="#parties">Parties {% if release.parties %}{{change_label(release, 'parties')}}{%endif%}</a>
+    </li>
     <li role="presentation" class="{% if not release.tender.procuringEntity %}disabled{%endif%}" ><a href="#procuringEntity">Procuring entity {% if release.tender.procuringEntity %}{{change_label(release, 'tender')}}{%endif%}</a></li>
     <li role="presentation" class="{% if not release.buyer %}disabled{%endif%}" ><a href="#buyer">Buyer {{change_label(release, 'buyer')}} </a></li>
     <li role="presentation" class="{% if not release.planning %}disabled{%endif%}" ><a href="#planning">Planning {{change_label(release, 'planning')}}</a></li>
@@ -35,9 +58,12 @@
 						<li class="list-group-item">
 							<strong>Release ID: </strong>{{release.id}}
 						</li>
-						<li class="list-group-item">
-							<strong>Date: </strong>{{release.date}}
-						</li>
+            <li class="list-group-item">
+               <strong>Date: </strong> {{ date_popout(release, "date") }}
+            </li>
+            <li class="list-group-item">
+              <strong>Language: </strong>{{release.language}}
+            </li>
 						<li class="list-group-item">
 							<strong>Tags: </strong>
               {% if release.tag %}
@@ -51,17 +77,41 @@
 						</li>
 					</ul>
 	</div>
+
+	<div class="col-md-9 tab-pane" id="relatedProcesses">
+    <div class="panel panel-default">
+      {% set relatedProcesses = release.relatedProcesses %}
+      {% include 'related_processes.html' %}
+    </div>
+  </div>
+
+	<div class="col-md-9 tab-pane" id="parties">
+    {% for organization in release.parties %}
+      {% include 'organization.html' %}
+      {% if not loop.last %}
+        <hr>
+      {% endif %}
+    {% endfor %}
+  </div>
+
 	<div class="col-md-9 tab-pane" id="procuringEntity">
-    {% if release.tender.procuringEntity %}
+    {% set organization = parties[release.tender.procuringEntity.id] %}
+    {% if not parties[release.tender.procuringEntity.id] %}
       {% set organization = release.tender.procuringEntity %}
+    {% endif %}
+    {% if release.tender.procuringEntity %}
       {% include 'organization.html' %}
     {% else %}
       {{ gettext("No procuring entity information provided") }}
     {% endif %}
   </div>
+
 	<div class="col-md-9 tab-pane" id="buyer">
-    {% if release.buyer %}
+    {% set organization = parties[release.buyer.id] %}
+    {% if not parties[release.buyer.id] %}
       {% set organization = release.buyer %}
+    {% endif %}
+    {% if release.buyer %}
       {% set title = gettext("Buyer") %}
       {% include 'organization.html' %}
     {% else %}
@@ -96,3 +146,18 @@
 		{% include 'contracts.html' %} 		
 	</div>
 </main>
+{% for organization in release.parties %}
+  <div class="modal" id="organization-{{organization.id}}" tabindex="-1" role="dialog" aria-labelledby="orgainization-{{organization.id}}">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          {% include 'organization.html' %}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}

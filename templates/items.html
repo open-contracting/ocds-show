@@ -4,8 +4,8 @@
 			{{ gettext("Items") }} {{change_label(parent, "items")}}
 		</h3>
 	</div>
-	<div class="panel-body">
 		{% if items|length > 0 %}
+      <div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -13,14 +13,17 @@
 						<th>{{ gettext("Description") }}</th>
 						<th>{{ gettext("Classification") }} <small>({{ gettext("Scheme - ID") }})</small></th>
 						<th>{{ gettext("Quantity") }} <small>({{ gettext("Unit") }})</small></th>
+						<th>{{ gettext("Unit") }} </small></th>
 						<th>{{ gettext("Value per unit") }}</th>
+						<th>{{ gettext("Delivery Address") }}</th>
+						<th>{{ gettext("Delivery Location") }}</th>
 					</tr>
 				</thead>
 				<tbody>
 					{% for item in items %}
 						<tr>
 							<td>{{ item.id }} {{change_label(item)}} </td>	<!-- need to consider whether to present the id - make sure this is consistent with documents approach -->
-							<td>{{ item.description }} {{change_label(item, "description")}}</td>
+							<td>{{long_text_popout(item, "description")}}</td>
 							<td>
 								{{change_label(item, "classification")}} {{ item.classification.description }} {{change_label(item.classification, "description")}}
 								<small>
@@ -50,17 +53,72 @@
 								{% endif %}
 							
 							</td>
-							<td>{{ item.quantity }} {{change_label(item, "quantity")}} <small>{{change_label(item, "unit")}} ({{ item.unit.name }}{{change_label(item.unit, "name")}})</small></td>
+							<td>{{ item.quantity }} {{change_label(item, "quantity")}} </td>
+							<td>
+                {{change_label(item, "unit")}}
+                {% if item.unit.name %}
+                  {{ item.unit.name }} {{change_label(item.unit, "name")}} <br>
+                {% endif %}
+                {% if item.unit.scheme %}
+                  <strong>{{ gettext("Scheme:") }}</strong> {{ item.unit.scheme }} {{change_label(item.unit, "scheme")}} <br>  
+                {% endif %}
+                {% if item.unit.uri %}
+                  <a href="{{item.unit.uri}}"> {{item.unit.uri}}</a> {{change_label(item.unit, "uri")}} 
+                {% endif %}
+              </td>
 						  {% if item.unit.value.amount %}
                 {{change_label(item.unit, "value")}}
                 <td>{{ item.unit.value.amount|currency }} {{change_label(item.unit.value, "amount")}} {{ item.unit.value.currency }} {{change_label(item.unit.value, "currency")}}</td>
+              {% else %}
+                <td></td>
 						  {% endif %}
+
+              <td>
+                {% if item.deliveryAddress.streetAddress %}
+                  {{item.deliveryAddress.streetAddress}} {{change_label(item.deliveryAddress, "streetAddress")}}<br>
+                {% endif %}
+                {% if item.deliveryAddress.locality %} {{change_label(item.deliveryAddress, "locality")}}
+                  {{item.deliveryAddress.locality}} <br>
+                {% endif %}
+                {% if item.deliveryAddress.region %} {{change_label(item.deliveryAddress, "region")}}
+                  {{item.deliveryAddress.region}} <br>
+                {% endif %}
+                {% if item.deliveryAddress.postalCode %} {{change_label(item.deliveryAddress, "postalCode")}}
+                  {{item.deliveryAddress.postalCode}} <br>
+                {% endif %}
+                {% if item.deliveryAddress.countryName %} {{change_label(item.deliveryAddress, "countryName")}}
+                  {{item.deliveryAddress.countryName}} <br>
+                {% endif %}
+              </td>
+              <td>
+                <dl>
+                  <dt>{{ gettext("Location Description") }}</dt>
+                  <dd>{{ item.deliveryLocation.description }} {{change_label(item.deliveryLocation, 'description')}}</dd>
+
+                  <dt>{{ gettext("URI") }}</dt
+                  ><dd><a href="{{ item.deliveryLocation.uri }}">{{ item.deliveryLocation.uri }} {{change_label(item.deliveryLocation, 'uri')}}</a></dd>
+
+                  <dt>{{ gettext("Gazetteer Scheme") }}</dt>
+                  <dd>{{ item.deliveryLocation.gazetteer.scheme }} {{change_label(item.deliveryLocation.gazetteer, 'scheme')}}</dd>
+
+                  <dt>{{ gettext("Gazetteer Identifiers") }}</dt>
+                  <dd>
+                    {% if item.deliveryLocation.gazetteer.identifiers %} 
+                        {{ item.deliveryLocation.gazetteer.identifiers|join(", ") }} 
+                        {{change_label(item.deliveryLocation.gazetteer, 'identifiers')}}
+                    {% endif %}
+                  </dd>
+                </dl>
+              </td>
+
 						</tr>
 					{% endfor %}
 				</tbody>	
 			</table>
+      </div>
 		{% else %}
-			{{ gettext("No items provided") }}
+      <div class="panel-body">
+        {{ gettext("No items provided") }}
+      </div>
 		{% endif %}
-	</div>
 </div>

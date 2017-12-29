@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title> </title>
+        <title>ODCS Show/</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,9 +22,10 @@
 
     </head>
     <body>
+
       <nav class="navbar navbar-inverse">
         <div class="container">
-          <a class="navbar-brand" href="#">OCDS Show</a>
+          <a class="navbar-brand" href="#">ODCS Show</a>
           <form class="navbar-form navbar-right" role="search">
             <div class="form-group">
                   <label class="btn btn-danger btn-file ">
@@ -48,12 +49,16 @@
         <div id="container">
         </div>
       </div>
+      <div id="graph"></div>
+
+
     </body>
     
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="js/nunjucks.min.js"></script>
-	<script src="js/merge.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+  <script src="https://vega.github.io/vega/vega.min.js"></script>
+  <script src="js/nunjucks.min.js"></script>
+  <script src="js/merge.js"></script>
   <script src="js/filereader.js"></script>
   <script src="templates.js"></script>
     <script>
@@ -75,14 +80,17 @@
          }
        });
 
-       
        var gettext = function(text) {
           return text
        }
        var env = nunjucks.configure()
        // this needs replacing with something readable
        env.addFilter('currency', function(number) {
-          return number.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
+          try {
+            return number.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
+          } catch (e) {
+            return ""
+          }
        })
 
        var render_json = function (context) {
@@ -93,7 +101,7 @@
            return
          }
          if (!currentValue) {
-           container.html('<h1> Welcome to OCDS Show. </h1> <h4>Please supply either an OCDS release or OCDS record. Use upload file or text input buttons above.</h4>')
+           container.html('<h1> ODCS Show. </h1> <h4>Please supply either an OCDS release or OCDS record. Use upload file or text input buttons above.</h4>')
            return
          }
 
@@ -110,7 +118,9 @@
            input.ocids = input.records.map(function (value) {
              return value.ocid
            })
-           if (context.newData) {
+           if (context.id) {
+              id = context.id
+           } else if(context.newData) {
              id = input.ocids[0]
            } else {
              id = $('#id-select').val() 
@@ -129,6 +139,12 @@
            var releaseNumber = context["releaseNumber"] || 0
            input['releaseNumber'] = releaseNumber
            input['releases'] = current_record.releases
+           input['releases'].sort(function (a, b) {
+             if (a.date) {
+               return a.date.localeCompare( b.date );
+             }
+             return -1
+           });
            var prev_release = merge(input.releases.slice(0, releaseNumber))
            var current_release =  merge(input.releases.slice(0, releaseNumber + 1))
 
@@ -136,9 +152,18 @@
 
            input['release'] = augment_path(current_release)
 
-           //console.log(input['release'])
+           var parties = input['release']['parties'] || []
 
-           //console.log(changes)
+           input.parties = {}
+
+           //input.socialWitness = []
+
+           parties.forEach(function (party) {
+             input.parties[party.id] = party
+           //  if (party.roles && party.roles.indexOf('socialWitness') !== -1) {
+           //     input.socialWitness.push(party)
+           //  }
+           })
 
            function get_change(obj, field) {
              if (!obj) {return}
@@ -159,11 +184,23 @@
            container.append(content)
            var content = env.render('record_release.html', input);
            container.append(content)
+           $('[data-toggle="popover"]').popover()
+           $('[data-toggle="tooltip"]').tooltip()
+
          } else {
+           input['releases'].sort(function (a, b) {
+             if (a.date) {
+               return a.date.localeCompare( b.date );
+             }
+             return -1
+           });
            input.release_ids = input.releases.map(function (value) {
              return value.id
            })
-           if (context.newData) {
+
+           if (context.id) {
+              id = context.id 
+            } else if (context.newData) {
              id = input.release_ids[0]
            } else {
              id = $('#id-select').val() 
@@ -179,14 +216,150 @@
            container.empty()
            input['release'] = current_release
            input['release_id'] = id
+
+           var parties = input['release']['parties'] || []
+
+           input.parties = {}
+           //input.release.socialWitness = []
+
+           parties.forEach(function (party) {
+             input.parties[party.id] = party
+           //   if (party.roles.indexOf('socialWitness') !== -1) {
+           //     input.release.socialWitness.push(party)
+           //  }
+           })
+
            var content = env.render('release_select.html', input);
            container.append(content)
            var content = env.render('release.html', input);
            container.append(content)
+           $('[data-toggle="popover"]').popover()
+           $('[data-toggle="tooltip"]').tooltip()
          }
+
+         // Shareholder pie chart
+           var shareholders = $('.shareholders-chart');
+           if (shareholders.length > 0) {
+             var data = {
+              '$schema': 'https://vega.github.io/schema/vega/v3.0.json',
+              'width': 200,
+              'height': 200,
+              'padding': 20,
+              'autosize': 'pad',
+              'data': [
+                {
+                  'name': 'pieChart',
+                  'values': null,
+                  'transform': [
+                    {
+                      'type': 'pie',
+                      'field': 'percent'
+                    }
+                  ]
+                }
+              ],
+
+              'scales': [
+                {
+                  'name': 'color',
+                  'type': 'ordinal',
+                  'domain': {'data': 'pieChart', 'field': 'shareholder'},
+                  'range': {'scheme': 'category20'}
+                }
+              ],
+
+              'marks': [
+                {
+                  'type': 'arc',
+                  'from': {'data': 'pieChart'},
+                  'encode': {
+                    'enter': {
+                      'fill': {'scale': 'color', 'field': 'shareholder'},
+                      'x': {'signal': 'width / 2', 'value': 'field'},
+                      'y': {'signal': 'height / 2'},
+                      'startAngle': {'field': 'startAngle'},
+                      'endAngle': {'field': 'endAngle'},
+                      'innerRadius': {'value': 60},
+                      'outerRadius': {'signal': 'width / 2'}
+                    }
+                  }
+                },
+                {
+                  'type': 'text',
+                  'from': {'data': 'pieChart'},
+                  'encode': {
+                    'enter': {
+                      'x': {'field': {'group': 'width'}, 'mult': 0.5},
+                      'y': {'field': {'group': 'height'}, 'mult': 0.5},
+                      'radius': {'value': 80},
+                      'theta': {'signal': '(datum.startAngle + datum.endAngle)/2'},
+                      'fontSize': {'value': 12},
+                      'fontWeight': {'value': 'bold'},
+                      'fill': {'value': '#444'},
+                      'align': {'value': 'center'},
+                      'baseline': {'value': 'middle'},
+                      'text': {'field': 'percentString'}
+                    }
+                  }
+                }
+              ],
+              'legends': [
+                {
+                  'orient': 'right',
+                  'title': 'Shareholders',
+                  'fill': 'color'
+                }
+              ]
+             }
+             shareholders.each(function() {
+               var shareData = [];
+               var shareObj = JSON.parse(this.dataset.shareholdersChart);
+               shareObj.forEach(function(shareholder) {
+                 
+                 shareData.push({
+                  'percent': shareholder.shareholding,
+                  'percentString': (shareholder.shareholding * 100) + '%',
+                  "shareholder": shareholder.shareholder.name + ' (' + shareholder.shareholder.id + ')'
+                 })
+               });
+               data.data[0].values = shareData;
+               var view = new vega.View(vega.parse(data))
+                 .renderer('canvas')
+                 .initialize(this)
+                 .hover()
+                 .run();
+             })
+           }
        }
 
-       jsonInput.val("")
+       function getUrlVars()
+        {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for(var i = 0; i < hashes.length; i++)
+            {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+
+       if(getUrlVars()["load"]) {
+          $.get(getUrlVars()["load"],function(data){ 
+              jsonInput.val(JSON.stringify(data))
+              if(getUrlVars()["releaseID"]) {
+                render_json({"id":getUrlVars()["releaseID"],"newData":true});  
+              } else {
+                render_json({"newData":true});
+              }
+              
+          })
+       } else {
+          jsonInput.val("") 
+       }
+
+       
        render_json({"newData": true});
 
        $('#input-json').on("input", function(e) {
@@ -224,8 +397,6 @@
          e.preventDefault()
          render_json()
        })
-
-
 
 
     </script>
