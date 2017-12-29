@@ -81,23 +81,22 @@
       </div>
     </div>
 
-
 		<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">
-							 {{ gettext("Preferred Bidders") }} {{change_label(award, 'preferredBidders')}}
+							 {{ gettext("Suppliers") }} {{change_label(award, 'suppliers')}}
 						</h3>
 					</div>
 					<div class="panel-body">
-						{% for supplier in award.preferredBidders %}
+						{% for supplier in award.suppliers %}
 							<div class="col-md-12">
 								{% set organization = parties[supplier.id] %}
                 {% if not parties[supplier.id] %}
                   {% set organization = supplier %}
                 {% endif %}
-								{% include 'organization_ppp.html' %}
+								{% include 'organization.html' %}
 							</div>
 						{% endfor %}
 					</div>
@@ -105,21 +104,6 @@
 			</div>
 		</div>
 
-    {% if award.requirementResponses %}
-      <div class="row">
-        <div class="col-md-12">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">
-                 {{ gettext("Reqirement Responses") }} 
-              </h3>
-            </div>
-                {% set requirementResponses = award.requirementResponses %}
-                {% include 'requirement_responses.html' %}
-          </div>
-        </div>
-      </div>
-    {% endif %}
 
 		<div class="row">
 			<div class="col-md-12">
@@ -162,104 +146,6 @@
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col-md-12">
-				{% if award.agreedMetrics %}
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">
-								{{ gettext("Agreed Metrics") }}
-							</h3>
-						</div>
-						<div class="panel-body">
-              {% set metrics = award.agreedMetrics %}
-              {% set parent = award %}
-              {% include 'metrics.html' %}
-						</div>
-					</div>
-				{% else %}
-					<div class="panel panel-warning">
-						<div class="panel-heading">
-							<h3 class="panel-title">
-								{{ gettext("Agreed Metrics") }}
-							</h3>
-						</div>
-						<div class="panel-body">
-							{{ gettext("No Agreed Metrics provided") }}
-						</div>
-					</div>
-				{% endif %}
-			</div>
-		</div>
-
-    {% if award.evaluationIndicators %}
-    <div class="row">
-      <div class="col-md-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-              {{ gettext("Evaluation Indicators") }}
-            </h3>
-          </div>
-          <div class="panel-body">
-            <dl> 
-              {% if award.evaluationIndicators.discountRate %}
-                <dt class="dt-large dt-inline dt-gap">
-                  {{ gettext("Discount Rate") }}
-                </dt>
-                <dd class="dd-large dd-inline dd-gap">
-                  {{ award.evaluationIndicators.discountRate }} {{change_label(award.evaluationIndicators, 'discountRate')}}
-                </dd>
-              {% endif %}
-              {% if award.evaluationIndicators.discountRateDetails %}
-                <dt class="dt-small">
-                  {{ gettext("Discount Rate Details") }}
-                </dt>
-                <dd class="dd-small">
-                  {{ award.evaluationIndicators.discountRateDetails }} {{change_label(award.evaluationIndicators, 'discountRateDetails')}}
-                </dd>
-              {% endif %}
-
-              {% if award.evaluationIndicators.riskPremium %}
-                <dt class="dt-large dt-inline dt-gap">
-                  {{ gettext("Risk Premium") }}
-                </dt>
-                <dd class="dd-large dd-inline dd-gap">
-                  {{ award.evaluationIndicators.riskPremium }} {{change_label(award.evaluationIndicators, 'riskPremium')}}
-                </dd>
-              {% endif %}
-              {% if award.evaluationIndicators.riskPremiumDetails %}
-                <dt class="dt-small">
-                  {{ gettext("Risk Premium Details") }}
-                </dt>
-                <dd class="dd-small">
-                  {{ award.evaluationIndicators.riskPremiumDetails }} {{change_label(award.evaluationIndicators, 'riskPremiumDetails')}}
-                </dd>
-              {% endif %}
-
-              {% if award.evaluationIndicators.netPresentValue %}
-                <dt class="dt-large dt-inline dt-gap">
-                  {{ gettext("Net Present Value") }}
-                </dt>
-                <dd class="dd-large dd-inline dd-gap">
-                  {{ award.evaluationIndicators.netPresentValue.amount|currency }} {{change_label(award.evaluationIndicators.netPresentValue, 'amount')}}
-                  {{ award.evaluationIndicators.netPresentValue.currency }} {{change_label(award.evaluationIndicators.netPresentValue, 'currency')}}
-                </dd>
-              {% endif %}
-              {% if award.evaluationIndicators.netPresentValueDetails %}
-                <dt class="dt-small">
-                  {{ gettext("Net Present Value Details") }}
-                </dt>
-                <dd class="dd-small">
-                  {{ award.evaluationIndicators.netPresentValueDetails }} {{change_label(award.evaluationIndicators, 'netPresentValueDetails')}}
-                </dd>
-              {% endif %}
-             </dl> 
-          </div>
-        </div>
-      </div>
-    </div>
-    {% endif %}
 </section>
 
 

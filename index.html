@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>ODCS Show for Public Private Partnerships</title>
+        <title>ODCS Show/</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,7 +25,7 @@
 
       <nav class="navbar navbar-inverse">
         <div class="container">
-          <a class="navbar-brand" href="#">ODCS Show for Public Private Partnerships</a>
+          <a class="navbar-brand" href="#">ODCS Show</a>
           <form class="navbar-form navbar-right" role="search">
             <div class="form-group">
                   <label class="btn btn-danger btn-file ">
@@ -40,7 +40,7 @@
       <div class="container">
 
         <div id="input-json-container" class="hide">
-          <h3> Input a valid PPP OCDS record/release 
+          <h3> Input a valid OCDS record/release 
           <button id="hide-input-button" class="pull-right btn btn-primary btn-sm">Hide Input</button>
           </h3>
           <textarea id="input-json" name="input-json"></textarea>
@@ -101,7 +101,7 @@
            return
          }
          if (!currentValue) {
-           container.html('<h1> ODCS Show for Public Private Partnerships. </h1> <h4>Please supply either an OCDS release or OCDS record. Use upload file or text input buttons above.</h4>')
+           container.html('<h1> ODCS Show. </h1> <h4>Please supply either an OCDS release or OCDS record. Use upload file or text input buttons above.</h4>')
            return
          }
 
@@ -155,13 +155,14 @@
            var parties = input['release']['parties'] || []
 
            input.parties = {}
-           input.socialWitness = []
+
+           //input.socialWitness = []
 
            parties.forEach(function (party) {
              input.parties[party.id] = party
-             if (party.roles && party.roles.indexOf('socialWitness') !== -1) {
-                input.socialWitness.push(party)
-             }
+           //  if (party.roles && party.roles.indexOf('socialWitness') !== -1) {
+           //     input.socialWitness.push(party)
+           //  }
            })
 
            function get_change(obj, field) {
@@ -181,7 +182,7 @@
            container.empty()
            var content = env.render('record_select.html', input);
            container.append(content)
-           var content = env.render('record_release_ppp.html', input);
+           var content = env.render('record_release.html', input);
            container.append(content)
            $('[data-toggle="popover"]').popover()
            $('[data-toggle="tooltip"]').tooltip()
@@ -219,18 +220,18 @@
            var parties = input['release']['parties'] || []
 
            input.parties = {}
-           input.release.socialWitness = []
+           //input.release.socialWitness = []
 
            parties.forEach(function (party) {
              input.parties[party.id] = party
-             if (party.roles.indexOf('socialWitness') !== -1) {
-                input.release.socialWitness.push(party)
-             }
+           //   if (party.roles.indexOf('socialWitness') !== -1) {
+           //     input.release.socialWitness.push(party)
+           //  }
            })
 
            var content = env.render('release_select.html', input);
            container.append(content)
-           var content = env.render('release_ppp.html', input);
+           var content = env.render('release.html', input);
            container.append(content)
            $('[data-toggle="popover"]').popover()
            $('[data-toggle="tooltip"]').tooltip()

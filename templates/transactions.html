@@ -5,8 +5,8 @@
 		</h3>
 	</div>
 		{% if transactions|length > 0 %}
-      <div class="table-responsive">
-			<table class="table table-striped">
+    <div class="table-responsive">
+      <table class="table table-striped">
 				<thead>
 					<tr>
 						<th>{{ gettext("ID") }}</th>
@@ -62,8 +62,8 @@
 						</tr>
 					{% endfor %}
 				</tbody>	
-        </div>
 			</table>
+    </div>
 		{% else %}
 			{{ gettext("No transactions provided") }}
 		{% endif %}

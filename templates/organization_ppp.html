@@ -1,21 +1,6 @@
 {% extends 'organization.html' %}
 
 {% block additionalOrgFieldsBefore %}
-	<div class="panel panel-{% if organization.roles %}default{% else %}warning{% endif %}">
-		<div class="panel-heading">
-      <strong> {{gettext("Roles within process")}} </strong> 
-		</div>
-		<div class="panel-body">
-      <ul>
-      {% for role in organization.roles %}
-       <li>
-       {{role}}
-       </li>
-      {% endfor %}
-      <ul>
-		</div>
-	</div>
-
 {% endblock additionalOrgFieldsBefore %}
 
 {% block additionalOrgFieldsAfter %}
