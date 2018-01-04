@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "qunit -t js/tests.js --code js/merge.js -d js/nunjucks.min.js"
   },
   "author": "",
   "license": "MIT",
@@ -13,5 +13,8 @@
     "node-sass": "^3.11.1",
     "nunjucks": "^2.4.2",
     "watch": "^0.19.1"
+  }
+  "devDependencies": {
+    "node-qunit": "^1.0.0"
   }
 }

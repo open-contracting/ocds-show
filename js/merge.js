@@ -196,4 +196,11 @@ function augment_path(obj) {
   };
   traverse_object([], obj);
   return obj;
+
 }
+
+if (typeof window === 'undefined') {
+   exports.flatten_all = flatten_all;
+   exports.get_changes = get_changes;
+   exports.augment_path = augment_path;
+} 
