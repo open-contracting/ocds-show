@@ -23,7 +23,7 @@
 						<tr>
 							<td>{{ transaction.id }}</td>
 							<td>{{ date_popout(transaction, 'date') }}</td>
-							<td>{{ transaction.amount.amount|currency }} {{ transaction.amount.currency }}</td>
+							<td>{{ transaction.amount.amount|currency }} {{ transaction.amount.currency }}{{ transaction.value.amount|currency }} {{ transaction.value.currency }}</td>
 
               <td>
 

@@ -10766,6 +10766,9 @@ output += "</td>\n\t\t\t\t\t\t\t<td>";
 output += runtime.suppressValue(env.getFilter("currency").call(context, runtime.memberLookup((runtime.memberLookup((t_4),"amount")),"amount")), env.opts.autoescape);
 output += " ";
 output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_4),"amount")),"currency"), env.opts.autoescape);
+output += runtime.suppressValue(env.getFilter("currency").call(context, runtime.memberLookup((runtime.memberLookup((t_4),"value")),"amount")), env.opts.autoescape);
+output += " ";
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_4),"value")),"currency"), env.opts.autoescape);
 output += "</td>\n\n              <td>\n\n                ";
 if(runtime.memberLookup((runtime.memberLookup((t_4),"payee")),"id") && runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "parties")),runtime.memberLookup((runtime.memberLookup((t_4),"payee")),"id"))) {
 output += "\n                <a data-toggle=\"modal\" href=\"#organization-";
