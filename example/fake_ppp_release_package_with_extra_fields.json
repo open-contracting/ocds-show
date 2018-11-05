@@ -4230,12 +4230,8 @@
       "parties": [
         {
           "id": "org1",
-          "__extra": {
-            "address": {"County": "County extra address value"},
-            "roles": ["Extra role 1", "Extra role 2"],
-            "contactPoint": {"Mobile": "Extra mobile field"},
-          },
           "address": {
+            "__extra": {"county": "County extra address value", "foo": ["bar", "extra"]},
             "locality": "amet nisi non ipsum",
             "countryName": "eu proident ea",
             "region": "ipsum do aliquip id",
@@ -4287,6 +4283,7 @@
             }
           ],
           "contactPoint": {
+            "__extra": {"Mobile": "Extra mobile field"},
             "url": "http://Wrwff8kLZ5.com",
             "name": "Duis cupidatat velit",
             "name_Ocg-aFs-NiK-sVS-cG3sC-OqVm49jo-9VDa-08XF6-1FZR-TnVUqFcB-30By-9O9u-crvtz-6-Nohsr-nqkYD-eM34K-9dv-rjyCo-p1S-5pfeX5YI-joViI9S-x-c-EST-Mf6qaQ-tQbsGK90-RGI0sS": "et",
