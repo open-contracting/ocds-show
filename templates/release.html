@@ -9,6 +9,13 @@
     {% endif %}
   {% endmacro %}
 
+  {% macro insert_extra_fields(obj) %}
+    {% if obj.__extra %} {{change_label(obj, "__extra")}}
+      <p><strong>Extra fields:</strong></p>
+      <pre>{{ obj.__extra | dump(2) }}</pre>
+    {% endif %}
+  {% endmacro %}
+
   {% macro date_popout(object, key) %}
     <span class="no-wrap" data-toggle="tooltip" title="{{object[key]}}"> {{ object[key]|truncate(10,true,"") }} {{change_label(object, key)}} 
       
