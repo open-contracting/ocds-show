@@ -35,6 +35,9 @@
       <td>
         {{relatedProcess.relationship|join(", ")}}
       </td>
+      <td>
+        {{ insert_extra_fields(relatedProcess) }}
+      </td>
     </tr>
     {% endfor %}
   </tbody>

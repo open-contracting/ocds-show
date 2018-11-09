@@ -13,12 +13,12 @@
 		</div>
 		<div class="panel-body">
       <ul>
-      {% for role in organization.roles %}
-       <li>
-       {{role}}
-       </li>
-      {% endfor %}
-      <ul>
+				{% for role in organization.roles %}
+					 <li>
+					 	{{role}}
+					 </li>
+				{% endfor %}
+      </ul>
 		</div>
 	</div>
 
@@ -45,6 +45,7 @@
 				{% if organization.contactPoint.url %}
 					<a href="{{organization.contactPoint.url}}" target="_blank">{{organization.contactPoint.url}}</a>{{change_label(organization.contactPoint, "url")}}<br>
 				{% endif %}
+				{{ insert_extra_fields(organization.contactPoint) }}
 			{% else %}
 				{{ gettext("No contact data provided") }}
 			{% endif %}
@@ -73,6 +74,7 @@
 				{% if organization.address.countryName %} {{change_label(organization.address, "countryName")}}
 					{{organization.address.countryName}} <br>
 				{% endif %}
+				{{ insert_extra_fields(organization.address) }}
 			{% else %}
 				{{ gettext("No address data provided") }}
 			{% endif %}
@@ -107,6 +109,7 @@
                     {{ organization.identifier.legalName }} {{change_label(organization.identifier, "legalName")}} 
                   {% endif %}
                 </td>
+								<td>{{ insert_extra_fields(organization.identifier) }}</td>
 							</tr>
 						{% endif %}
 						{% if organization.additionalIdentifiers %}
@@ -121,6 +124,7 @@
                       {{ identifier.legalName }} {{ change_label(identifier, "legalName") }}
                     {% endif %}
                   </td>
+									<td>{{ insert_extra_fields(identifier) }}</td>
 								</tr>
 							{% endfor %}
 						{% endif %}

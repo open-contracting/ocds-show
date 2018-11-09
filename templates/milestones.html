@@ -30,6 +30,7 @@
                 <td>{{ milestone.code}} {{change_label(milestone, 'code')}}</td>
                 <td>{{ milestone.type}} {{change_label(milestone, 'type')}}</td>
                 <td>{{ date_popout(milestone, 'dateMet')}}</td>
+                <td>{{ insert_extra_fields(milestone) }}</td>
               </tr>
             {% endfor %}
           </tbody>
