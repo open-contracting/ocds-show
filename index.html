@@ -72,7 +72,6 @@
          return !$("#input-json-container").hasClass("hide")
        }
 
-
        FileReaderJS.setupInput(document.getElementById('upload'), {
          readAsDefault: 'Text',
          on: {
@@ -91,6 +90,17 @@
        var id_counter = function() {
           id_counter_value = id_counter_value + 1
           return id_counter_value
+       }
+
+       var after_release_render = function() {
+         $('[data-toggle="popover"]').popover()
+         $('[data-toggle="tooltip"]').tooltip()
+
+         $(".extra_view").each(function (index, extra_view) {
+            var jq_extra_view = $(extra_view)
+            var extra_data = jq_extra_view.data()["extra"]
+            jq_extra_view.append(JsonHuman.format(extra_data))
+         })
        }
 
        var env = nunjucks.configure()
@@ -195,8 +205,7 @@
            container.append(content)
            var content = env.render('record_release.html', input);
            container.append(content)
-           $('[data-toggle="popover"]').popover()
-           $('[data-toggle="tooltip"]').tooltip()
+           after_release_render()
 
          } else {
            input['releases'].sort(function (a, b) {
@@ -244,15 +253,7 @@
            container.append(content)
            var content = env.render('release.html', input);
            container.append(content)
-           $('[data-toggle="popover"]').popover()
-           $('[data-toggle="tooltip"]').tooltip()
-
-           $(".extra_view").each(function (index, extra_view) {
-              var jq_extra_view = $(extra_view)
-              var extra_data = jq_extra_view.data()["extra"]
-              jq_extra_view.append(JsonHuman.format(extra_data))
-           })
-
+           after_release_render()
          }
 
          // Shareholder pie chart
