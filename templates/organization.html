@@ -136,6 +136,19 @@
 			{% endif %}
 		</div>
 	</div>
+	{% if organization.__extra %}
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					Extra fields {{change_label(organization, "__extra")}}
+				</h3>
+			</div>
+			<div class="panel-body">
+				{{ extra_view(organization) }}
+			</div>
+		</div>
+	{% endif %}
+
   {% block additionalOrgFieldsAfter %}
   {% endblock additionalOrgFieldsAfter %}
 </p>

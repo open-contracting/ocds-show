@@ -2811,7 +2811,16 @@ output += runtime.suppressValue((lineno = 931, colno = 28, runtime.callWrap(runt
 output += "\n                  </div>\n                </div>\n              ";
 ;
 }
-output += "\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</section>\n\n\n\n\n\n\n\n\n\n\n\n\n";
+output += "\n            </div>\n          </div>\n          ";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"__extra")) {
+output += "\n            <div class=\"row\">\n              <div class=\"col-md-12\">\n                <div class=\"panel panel-default\">\n                  <div class=\"panel-heading\">\n                    <h3 class=\"panel-title\">\n                      Extra fields ";
+output += runtime.suppressValue((lineno = 943, colno = 47, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.contextOrFrameLookup(context, frame, "contract"),"__extra"])), env.opts.autoescape);
+output += "\n                    </h3>\n                  </div>\n                  <div class=\"panel-body\">\n                    ";
+output += runtime.suppressValue((lineno = 947, colno = 31, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "extra_view"), "extra_view", context, [runtime.contextOrFrameLookup(context, frame, "contract")])), env.opts.autoescape);
+output += "\n                  </div>\n                </div>\n              </div>\n            </div>\n          ";
+;
+}
+output += "\n        </div>\n      </div>\n    </div>\n  </div>\n</section>\n\n\n\n\n\n\n\n\n\n\n\n\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -5764,7 +5773,16 @@ output += runtime.suppressValue((lineno = 134, colno = 12, runtime.callWrap(runt
 output += "\n\t\t\t";
 ;
 }
-output += "\n\t\t</div>\n\t</div>\n  ";
+output += "\n\t\t</div>\n\t</div>\n\t";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "organization")),"__extra")) {
+output += "\n\t\t<div class=\"panel panel-default\">\n\t\t\t<div class=\"panel-heading\">\n\t\t\t\t<h3 class=\"panel-title\">\n\t\t\t\t\tExtra fields ";
+output += runtime.suppressValue((lineno = 142, colno = 30, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.contextOrFrameLookup(context, frame, "organization"),"__extra"])), env.opts.autoescape);
+output += "\n\t\t\t\t</h3>\n\t\t\t</div>\n\t\t\t<div class=\"panel-body\">\n\t\t\t\t";
+output += runtime.suppressValue((lineno = 146, colno = 15, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "extra_view"), "extra_view", context, [runtime.contextOrFrameLookup(context, frame, "organization")])), env.opts.autoescape);
+output += "\n\t\t\t</div>\n\t\t</div>\n\t";
+;
+}
+output += "\n\n  ";
 (parentTemplate ? function(e, c, f, r, cb) { cb(""); } : context.getBlock("additionalOrgFieldsAfter"))(env, context, frame, runtime, function(t_12,t_11) {
 if(t_12) { cb(t_12); return; }
 output += t_11;
@@ -6241,7 +6259,16 @@ output += runtime.suppressValue((lineno = 135, colno = 15, runtime.callWrap(runt
 output += "\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t";
 ;
 }
-output += "\n\t\t\t</div>\n\t\t</div>\n\n</section>\n\n\n";
+output += "\n\t\t\t</div>\n\t\t</div>\n    ";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "planning")),"__extra")) {
+output += "\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <div class=\"panel panel-default\">\n\t\t\t\t\t\t<div class=\"panel-heading\">\n              <h3 class=\"panel-title\">\n                Extra fields ";
+output += runtime.suppressValue((lineno = 147, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.contextOrFrameLookup(context, frame, "planning"),"__extra"])), env.opts.autoescape);
+output += "\n              </h3>\n            </div>\n            <div class=\"panel-body\">\n              ";
+output += runtime.suppressValue((lineno = 151, colno = 25, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "extra_view"), "extra_view", context, [runtime.contextOrFrameLookup(context, frame, "planning")])), env.opts.autoescape);
+output += "\n            </div>\n          </div>\n        </div>\n      </div>\n    ";
+;
+}
+output += "\n\n</section>\n\n\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
@@ -10006,7 +10033,16 @@ output += runtime.suppressValue((lineno = 363, colno = 15, runtime.callWrap(runt
 output += "\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t";
 ;
 }
-output += "\n\t\t\t</div>\n\t\t</div>\n";
+output += "\n\t\t\t</div>\n\t\t</div>\n\n    ";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"__extra")) {
+output += "\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <div class=\"panel panel-default\">\n\t\t\t\t\t\t<div class=\"panel-heading\">\n              <h3 class=\"panel-title\">\n                Extra fields ";
+output += runtime.suppressValue((lineno = 376, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.contextOrFrameLookup(context, frame, "tender"),"__extra"])), env.opts.autoescape);
+output += "\n              </h3>\n            </div>\n            <div class=\"panel-body\">\n              ";
+output += runtime.suppressValue((lineno = 380, colno = 25, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "extra_view"), "extra_view", context, [runtime.contextOrFrameLookup(context, frame, "tender")])), env.opts.autoescape);
+output += "\n            </div>\n          </div>\n        </div>\n      </div>\n    ";
+;
+}
+output += "\n";
 if(parentTemplate) {
 parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
 } else {
