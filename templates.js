@@ -7705,53 +7705,57 @@ kwargs = kwargs || {};
 if (kwargs.hasOwnProperty("caller")) {
 frame.set("caller", kwargs.caller); }
 frame.set("obj", l_obj);
-var t_5 = "";t_5 += "\n    ";
-if(runtime.memberLookup((l_obj),"__extra")) {
-t_5 += " ";
-t_5 += runtime.suppressValue((lineno = 12, colno = 33, runtime.callWrap(macro_t_1, "change_label", context, [l_obj,"__extra"])), env.opts.autoescape);
-t_5 += "\n      <p><strong>Extra fields:</strong></p>\n      <pre>";
-t_5 += runtime.suppressValue(env.getFilter("dump").call(context, runtime.memberLookup((l_obj),"__extra"),2), env.opts.autoescape);
-t_5 += "</pre>\n    ";
-;
-}
-t_5 += "\n  ";
+var t_5 = "";t_5 += "\n      <div class=\"extra_view\" data-extra=\"";
+t_5 += runtime.suppressValue(env.getFilter("dump").call(context, runtime.memberLookup((l_obj),"__extra")), env.opts.autoescape);
+t_5 += "\"></div>\n  ";
 ;
 frame = frame.pop();
 return new runtime.SafeString(t_5);
 });
-context.addExport("insert_extra_fields");
-context.setVariable("insert_extra_fields", macro_t_4);
+context.addExport("extra_view");
+context.setVariable("extra_view", macro_t_4);
 output += "\n\n  ";
 var macro_t_6 = runtime.makeMacro(
-["object", "key"], 
+["obj"], 
 [], 
-function (l_object, l_key, kwargs) {
+function (l_obj, kwargs) {
 frame = frame.push(true);
 kwargs = kwargs || {};
 if (kwargs.hasOwnProperty("caller")) {
 frame.set("caller", kwargs.caller); }
-frame.set("object", l_object);
-frame.set("key", l_key);
-var t_7 = "";t_7 += "\n    <span class=\"no-wrap\" data-toggle=\"tooltip\" title=\"";
-t_7 += runtime.suppressValue(runtime.memberLookup((l_object),l_key), env.opts.autoescape);
-t_7 += "\"> ";
-t_7 += runtime.suppressValue(env.getFilter("truncate").call(context, runtime.memberLookup((l_object),l_key),10,true,""), env.opts.autoescape);
+frame.set("obj", l_obj);
+var t_7 = "";t_7 += "\n    ";
+if(runtime.memberLookup((l_obj),"__extra")) {
 t_7 += " ";
-t_7 += runtime.suppressValue((lineno = 19, colno = 116, runtime.callWrap(macro_t_1, "change_label", context, [l_object,l_key])), env.opts.autoescape);
-t_7 += " \n      \n    ";
-if(runtime.memberLookup((l_object),l_key)) {
-t_7 += "\n      <span class=\"glyphicon glyphicon-new-window small-icon\" aria-hidden=\"true\"></span> \n    ";
+t_7 += runtime.suppressValue((lineno = 16, colno = 33, runtime.callWrap(macro_t_1, "change_label", context, [l_obj,"__extra"])), env.opts.autoescape);
+t_7 += "\n\n      ";
+var t_8;
+t_8 = (lineno = 18, colno = 32, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "id_counter"), "id_counter", context, []));
+frame.set("id_value", t_8, true);
+if(frame.topLevel) {
+context.setVariable("id_value", t_8);
+}
+if(frame.topLevel) {
+context.addExport("id_value", t_8);
+}
+t_7 += "\n      <button class=\"small-top-margin btn btn-success btn-sm\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapse_";
+t_7 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "id_value"), env.opts.autoescape);
+t_7 += "\" aria-expanded=\"false\" aria-controls=\"collapseExample\">\n        Extra fields\n      </button>\n      <div class=\"collapse\" id=\"collapse_";
+t_7 += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "id_value"), env.opts.autoescape);
+t_7 += "\">\n        <div class=\"well\">\n          ";
+t_7 += runtime.suppressValue((lineno = 24, colno = 21, runtime.callWrap(macro_t_4, "extra_view", context, [l_obj])), env.opts.autoescape);
+t_7 += "\n        </div>\n      </div>\n    ";
 ;
 }
-t_7 += "\n    </span>\n  ";
+t_7 += "\n\n  ";
 ;
 frame = frame.pop();
 return new runtime.SafeString(t_7);
 });
-context.addExport("date_popout");
-context.setVariable("date_popout", macro_t_6);
+context.addExport("insert_extra_fields");
+context.setVariable("insert_extra_fields", macro_t_6);
 output += "\n\n  ";
-var macro_t_8 = runtime.makeMacro(
+var macro_t_9 = runtime.makeMacro(
 ["object", "key"], 
 [], 
 function (l_object, l_key, kwargs) {
@@ -7761,29 +7765,58 @@ if (kwargs.hasOwnProperty("caller")) {
 frame.set("caller", kwargs.caller); }
 frame.set("object", l_object);
 frame.set("key", l_key);
-var t_9 = "";t_9 += "\n  <div ";
-if(env.getFilter("length").call(context, runtime.memberLookup((l_object),l_key)) > 70) {
-t_9 += " data-toggle=\"popover\" ";
+var t_10 = "";t_10 += "\n    <span class=\"no-wrap\" data-toggle=\"tooltip\" title=\"";
+t_10 += runtime.suppressValue(runtime.memberLookup((l_object),l_key), env.opts.autoescape);
+t_10 += "\"> ";
+t_10 += runtime.suppressValue(env.getFilter("truncate").call(context, runtime.memberLookup((l_object),l_key),10,true,""), env.opts.autoescape);
+t_10 += " ";
+t_10 += runtime.suppressValue((lineno = 32, colno = 116, runtime.callWrap(macro_t_1, "change_label", context, [l_object,l_key])), env.opts.autoescape);
+t_10 += " \n      \n    ";
+if(runtime.memberLookup((l_object),l_key)) {
+t_10 += "\n      <span class=\"glyphicon glyphicon-new-window small-icon\" aria-hidden=\"true\"></span> \n    ";
 ;
 }
-t_9 += " data-trigger=\"hover\" data-placement=\"left\" data-content=\"";
-t_9 += runtime.suppressValue(runtime.memberLookup((l_object),l_key), env.opts.autoescape);
-t_9 += "\">\n    ";
-t_9 += runtime.suppressValue(env.getFilter("truncate").call(context, runtime.memberLookup((l_object),l_key),70), env.opts.autoescape);
-t_9 += "\n    ";
-t_9 += runtime.suppressValue((lineno = 30, colno = 17, runtime.callWrap(macro_t_1, "change_label", context, [l_object,l_key])), env.opts.autoescape);
-t_9 += "\n    ";
-if(env.getFilter("length").call(context, runtime.memberLookup((l_object),l_key)) > 70) {
-t_9 += " <span class=\"glyphicon glyphicon-new-window small-icon\" aria-hidden=\"true\"></span> ";
-;
-}
-t_9 += "\n  </div>\n  ";
+t_10 += "\n    </span>\n  ";
 ;
 frame = frame.pop();
-return new runtime.SafeString(t_9);
+return new runtime.SafeString(t_10);
+});
+context.addExport("date_popout");
+context.setVariable("date_popout", macro_t_9);
+output += "\n\n  ";
+var macro_t_11 = runtime.makeMacro(
+["object", "key"], 
+[], 
+function (l_object, l_key, kwargs) {
+frame = frame.push(true);
+kwargs = kwargs || {};
+if (kwargs.hasOwnProperty("caller")) {
+frame.set("caller", kwargs.caller); }
+frame.set("object", l_object);
+frame.set("key", l_key);
+var t_12 = "";t_12 += "\n  <div ";
+if(env.getFilter("length").call(context, runtime.memberLookup((l_object),l_key)) > 70) {
+t_12 += " data-toggle=\"popover\" ";
+;
+}
+t_12 += " data-trigger=\"hover\" data-placement=\"left\" data-content=\"";
+t_12 += runtime.suppressValue(runtime.memberLookup((l_object),l_key), env.opts.autoescape);
+t_12 += "\">\n    ";
+t_12 += runtime.suppressValue(env.getFilter("truncate").call(context, runtime.memberLookup((l_object),l_key),70), env.opts.autoescape);
+t_12 += "\n    ";
+t_12 += runtime.suppressValue((lineno = 43, colno = 17, runtime.callWrap(macro_t_1, "change_label", context, [l_object,l_key])), env.opts.autoescape);
+t_12 += "\n    ";
+if(env.getFilter("length").call(context, runtime.memberLookup((l_object),l_key)) > 70) {
+t_12 += " <span class=\"glyphicon glyphicon-new-window small-icon\" aria-hidden=\"true\"></span> ";
+;
+}
+t_12 += "\n  </div>\n  ";
+;
+frame = frame.pop();
+return new runtime.SafeString(t_12);
 });
 context.addExport("long_text_popout");
-context.setVariable("long_text_popout", macro_t_8);
+context.setVariable("long_text_popout", macro_t_11);
 output += "\n\n  <h1>\n    ";
 output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"tender")),"title"), env.opts.autoescape);
 output += " ";
@@ -7800,7 +7833,7 @@ output += "disabled";
 }
 output += "\" >\n       <a href=\"#relatedProcesses\">Related Processes ";
 if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"relatedProcesses")) {
-output += runtime.suppressValue((lineno = 44, colno = 94, runtime.callWrap(macro_t_1, "change_label", context, [runtime.contextOrFrameLookup(context, frame, "release"),"relatedProcesses"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 57, colno = 94, runtime.callWrap(macro_t_1, "change_label", context, [runtime.contextOrFrameLookup(context, frame, "release"),"relatedProcesses"])), env.opts.autoescape);
 ;
 }
 output += "</a>\n    </li>\n    <li role=\"presentation\" class=\"";
@@ -7810,7 +7843,7 @@ output += "disabled";
 }
 output += "\" >\n       <a href=\"#parties\">Parties ";
 if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"parties")) {
-output += runtime.suppressValue((lineno = 47, colno = 66, runtime.callWrap(macro_t_1, "change_label", context, [runtime.contextOrFrameLookup(context, frame, "release"),"parties"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 60, colno = 66, runtime.callWrap(macro_t_1, "change_label", context, [runtime.contextOrFrameLookup(context, frame, "release"),"parties"])), env.opts.autoescape);
 ;
 }
 output += "</a>\n    </li>\n    <li role=\"presentation\" class=\"";
@@ -7820,7 +7853,7 @@ output += "disabled";
 }
 output += "\" ><a href=\"#procuringEntity\">Procuring entity ";
 if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"tender")),"procuringEntity")) {
-output += runtime.suppressValue((lineno = 49, colno = 181, runtime.callWrap(macro_t_1, "change_label", context, [runtime.contextOrFrameLookup(context, frame, "release"),"tender"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 62, colno = 181, runtime.callWrap(macro_t_1, "change_label", context, [runtime.contextOrFrameLookup(context, frame, "release"),"tender"])), env.opts.autoescape);
 ;
 }
 output += "</a></li>\n    <li role=\"presentation\" class=\"";
@@ -7829,41 +7862,48 @@ output += "disabled";
 ;
 }
 output += "\" ><a href=\"#buyer\">Buyer ";
-output += runtime.suppressValue((lineno = 50, colno = 108, runtime.callWrap(macro_t_1, "change_label", context, [runtime.contextOrFrameLookup(context, frame, "release"),"buyer"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 63, colno = 108, runtime.callWrap(macro_t_1, "change_label", context, [runtime.contextOrFrameLookup(context, frame, "release"),"buyer"])), env.opts.autoescape);
 output += " </a></li>\n    <li role=\"presentation\" class=\"";
 if(!runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"planning")) {
 output += "disabled";
 ;
 }
 output += "\" ><a href=\"#planning\">Planning ";
-output += runtime.suppressValue((lineno = 51, colno = 117, runtime.callWrap(macro_t_1, "change_label", context, [runtime.contextOrFrameLookup(context, frame, "release"),"planning"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 64, colno = 117, runtime.callWrap(macro_t_1, "change_label", context, [runtime.contextOrFrameLookup(context, frame, "release"),"planning"])), env.opts.autoescape);
 output += "</a></li>\n    <li role=\"presentation\" class=\"";
 if(!runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"tender")) {
 output += "disabled";
 ;
 }
 output += " \" ><a href=\"#tender\">Tender ";
-output += runtime.suppressValue((lineno = 52, colno = 113, runtime.callWrap(macro_t_1, "change_label", context, [runtime.contextOrFrameLookup(context, frame, "release"),"tender"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 65, colno = 113, runtime.callWrap(macro_t_1, "change_label", context, [runtime.contextOrFrameLookup(context, frame, "release"),"tender"])), env.opts.autoescape);
 output += "</a> </li>\n    <li role=\"presentation\" class=\"";
 if(!runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"awards")) {
 output += "disabled";
 ;
 }
 output += "\" ><a href=\"#awards\">Awards ";
-output += runtime.suppressValue((lineno = 53, colno = 112, runtime.callWrap(macro_t_1, "change_label", context, [runtime.contextOrFrameLookup(context, frame, "release"),"awards"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 66, colno = 112, runtime.callWrap(macro_t_1, "change_label", context, [runtime.contextOrFrameLookup(context, frame, "release"),"awards"])), env.opts.autoescape);
 output += "</a></li>\n    <li role=\"presentation\" class=\"";
 if(!runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"contracts")) {
 output += "disabled";
 ;
 }
 output += "\" ><a href=\"#contracts\">Contracts ";
-output += runtime.suppressValue((lineno = 54, colno = 121, runtime.callWrap(macro_t_1, "change_label", context, [runtime.contextOrFrameLookup(context, frame, "release"),"contracts"])), env.opts.autoescape);
-output += "</a></li>\n  </ul>\n\n\n  <div id=\"release-tabs\" class=\"tab-content\">\n\t<div class=\"col-md-9 tab-pane active\" id=\"metadata\">\n\t\t\t\t\t<ul class=\"list-group\">\n\t\t\t\t\t\t<li class=\"list-group-item\">\n\t\t\t\t\t\t\t<strong>OCID: </strong>";
+output += runtime.suppressValue((lineno = 67, colno = 121, runtime.callWrap(macro_t_1, "change_label", context, [runtime.contextOrFrameLookup(context, frame, "release"),"contracts"])), env.opts.autoescape);
+output += "</a></li>\n\n    ";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"__extra")) {
+output += "\n      <li role=\"presentation\"><a href=\"#extra\">Extra Fields ";
+output += runtime.suppressValue((lineno = 70, colno = 73, runtime.callWrap(macro_t_1, "change_label", context, [runtime.contextOrFrameLookup(context, frame, "release"),"__extra"])), env.opts.autoescape);
+output += "</a></li>\n    ";
+;
+}
+output += "\n\n  </ul>\n\n\n  <div id=\"release-tabs\" class=\"tab-content\">\n\t<div class=\"col-md-9 tab-pane active\" id=\"metadata\">\n\t\t\t\t\t<ul class=\"list-group\">\n\t\t\t\t\t\t<li class=\"list-group-item\">\n\t\t\t\t\t\t\t<strong>OCID: </strong>";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"ocid"), env.opts.autoescape);
 output += "\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li class=\"list-group-item\">\n\t\t\t\t\t\t\t<strong>Release ID: </strong>";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"id"), env.opts.autoescape);
 output += "\n\t\t\t\t\t\t</li>\n            <li class=\"list-group-item\">\n               <strong>Date: </strong> ";
-output += runtime.suppressValue((lineno = 68, colno = 51, runtime.callWrap(macro_t_6, "date_popout", context, [runtime.contextOrFrameLookup(context, frame, "release"),"date"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 86, colno = 51, runtime.callWrap(macro_t_9, "date_popout", context, [runtime.contextOrFrameLookup(context, frame, "release"),"date"])), env.opts.autoescape);
 output += "\n            </li>\n            <li class=\"list-group-item\">\n              <strong>Language: </strong>";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"language"), env.opts.autoescape);
 output += "\n            </li>\n\t\t\t\t\t\t<li class=\"list-group-item\">\n\t\t\t\t\t\t\t<strong>Tags: </strong>\n              ";
@@ -7875,48 +7915,48 @@ output += "\n              ";
 }
 else {
 output += "\n\t\t\t\t\t\t\t  ";
-output += runtime.suppressValue((lineno = 78, colno = 17, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No Tags Provided"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 96, colno = 17, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No Tags Provided"])), env.opts.autoescape);
 output += "\n              ";
 ;
 }
 output += "\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li class=\"list-group-item\">\n\t\t\t\t\t\t\t<strong>Initiation type: </strong>";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"initiationType"), env.opts.autoescape);
 output += "\n\t\t\t\t\t\t</li>\n\t\t\t\t\t</ul>\n\t</div>\n\n\t<div class=\"col-md-9 tab-pane\" id=\"relatedProcesses\">\n    <div class=\"panel panel-default\">\n      ";
-var t_10;
-t_10 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"relatedProcesses");
-frame.set("relatedProcesses", t_10, true);
+var t_13;
+t_13 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"relatedProcesses");
+frame.set("relatedProcesses", t_13, true);
 if(frame.topLevel) {
-context.setVariable("relatedProcesses", t_10);
+context.setVariable("relatedProcesses", t_13);
 }
 if(frame.topLevel) {
-context.addExport("relatedProcesses", t_10);
+context.addExport("relatedProcesses", t_13);
 }
 output += "\n      ";
-env.getTemplate("related_processes.html", false, "release.html", null, function(t_13,t_11) {
-if(t_13) { cb(t_13); return; }
-t_11.render(context.getVariables(), frame, function(t_14,t_12) {
-if(t_14) { cb(t_14); return; }
-output += t_12
+env.getTemplate("related_processes.html", false, "release.html", null, function(t_16,t_14) {
+if(t_16) { cb(t_16); return; }
+t_14.render(context.getVariables(), frame, function(t_17,t_15) {
+if(t_17) { cb(t_17); return; }
+output += t_15
 output += "\n    </div>\n  </div>\n\n\t<div class=\"col-md-9 tab-pane\" id=\"parties\">\n    ";
 frame = frame.push();
-var t_17 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"parties");
-if(t_17) {var t_16 = t_17.length;
-for(var t_15=0; t_15 < t_17.length; t_15++) {
-var t_18 = t_17[t_15];
-frame.set("organization", t_18);
-frame.set("loop.index", t_15 + 1);
-frame.set("loop.index0", t_15);
-frame.set("loop.revindex", t_16 - t_15);
-frame.set("loop.revindex0", t_16 - t_15 - 1);
-frame.set("loop.first", t_15 === 0);
-frame.set("loop.last", t_15 === t_16 - 1);
-frame.set("loop.length", t_16);
+var t_20 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"parties");
+if(t_20) {var t_19 = t_20.length;
+for(var t_18=0; t_18 < t_20.length; t_18++) {
+var t_21 = t_20[t_18];
+frame.set("organization", t_21);
+frame.set("loop.index", t_18 + 1);
+frame.set("loop.index0", t_18);
+frame.set("loop.revindex", t_19 - t_18);
+frame.set("loop.revindex0", t_19 - t_18 - 1);
+frame.set("loop.first", t_18 === 0);
+frame.set("loop.last", t_18 === t_19 - 1);
+frame.set("loop.length", t_19);
 output += "\n      ";
-env.getTemplate("organization.html", false, "release.html", null, function(t_21,t_19) {
-if(t_21) { cb(t_21); return; }
-t_19.render(context.getVariables(), frame, function(t_22,t_20) {
-if(t_22) { cb(t_22); return; }
-output += t_20
+env.getTemplate("organization.html", false, "release.html", null, function(t_24,t_22) {
+if(t_24) { cb(t_24); return; }
+t_22.render(context.getVariables(), frame, function(t_25,t_23) {
+if(t_25) { cb(t_25); return; }
+output += t_23
 output += "\n      ";
 if(!runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "loop")),"last")) {
 output += "\n        <hr>\n      ";
@@ -7928,26 +7968,26 @@ output += "\n    ";
 }
 frame = frame.pop();
 output += "\n  </div>\n\n\t<div class=\"col-md-9 tab-pane\" id=\"procuringEntity\">\n    ";
-var t_23;
-t_23 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "parties")),runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"tender")),"procuringEntity")),"id"));
-frame.set("organization", t_23, true);
+var t_26;
+t_26 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "parties")),runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"tender")),"procuringEntity")),"id"));
+frame.set("organization", t_26, true);
 if(frame.topLevel) {
-context.setVariable("organization", t_23);
+context.setVariable("organization", t_26);
 }
 if(frame.topLevel) {
-context.addExport("organization", t_23);
+context.addExport("organization", t_26);
 }
 output += "\n    ";
 if(!runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "parties")),runtime.memberLookup((runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"tender")),"procuringEntity")),"id"))) {
 output += "\n      ";
-var t_24;
-t_24 = runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"tender")),"procuringEntity");
-frame.set("organization", t_24, true);
+var t_27;
+t_27 = runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"tender")),"procuringEntity");
+frame.set("organization", t_27, true);
 if(frame.topLevel) {
-context.setVariable("organization", t_24);
+context.setVariable("organization", t_27);
 }
 if(frame.topLevel) {
-context.addExport("organization", t_24);
+context.addExport("organization", t_27);
 }
 output += "\n    ";
 ;
@@ -7955,41 +7995,41 @@ output += "\n    ";
 output += "\n    ";
 if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"tender")),"procuringEntity")) {
 output += "\n      ";
-env.getTemplate("organization.html", false, "release.html", null, function(t_27,t_25) {
-if(t_27) { cb(t_27); return; }
-t_25.render(context.getVariables(), frame, function(t_28,t_26) {
-if(t_28) { cb(t_28); return; }
-output += t_26
+env.getTemplate("organization.html", false, "release.html", null, function(t_30,t_28) {
+if(t_30) { cb(t_30); return; }
+t_28.render(context.getVariables(), frame, function(t_31,t_29) {
+if(t_31) { cb(t_31); return; }
+output += t_29
 output += "\n    ";
 })});
 }
 else {
 output += "\n      ";
-output += runtime.suppressValue((lineno = 111, colno = 14, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No procuring entity information provided"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 129, colno = 14, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No procuring entity information provided"])), env.opts.autoescape);
 output += "\n    ";
 ;
 }
 output += "\n  </div>\n\n\t<div class=\"col-md-9 tab-pane\" id=\"buyer\">\n    ";
-var t_29;
-t_29 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "parties")),runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"buyer")),"id"));
-frame.set("organization", t_29, true);
+var t_32;
+t_32 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "parties")),runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"buyer")),"id"));
+frame.set("organization", t_32, true);
 if(frame.topLevel) {
-context.setVariable("organization", t_29);
+context.setVariable("organization", t_32);
 }
 if(frame.topLevel) {
-context.addExport("organization", t_29);
+context.addExport("organization", t_32);
 }
 output += "\n    ";
 if(!runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "parties")),runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"buyer")),"id"))) {
 output += "\n      ";
-var t_30;
-t_30 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"buyer");
-frame.set("organization", t_30, true);
+var t_33;
+t_33 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"buyer");
+frame.set("organization", t_33, true);
 if(frame.topLevel) {
-context.setVariable("organization", t_30);
+context.setVariable("organization", t_33);
 }
 if(frame.topLevel) {
-context.addExport("organization", t_30);
+context.addExport("organization", t_33);
 }
 output += "\n    ";
 ;
@@ -7997,48 +8037,48 @@ output += "\n    ";
 output += "\n    ";
 if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"buyer")) {
 output += "\n      ";
-var t_31;
-t_31 = (lineno = 121, colno = 26, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Buyer"]));
-frame.set("title", t_31, true);
+var t_34;
+t_34 = (lineno = 139, colno = 26, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Buyer"]));
+frame.set("title", t_34, true);
 if(frame.topLevel) {
-context.setVariable("title", t_31);
+context.setVariable("title", t_34);
 }
 if(frame.topLevel) {
-context.addExport("title", t_31);
+context.addExport("title", t_34);
 }
 output += "\n      ";
-env.getTemplate("organization.html", false, "release.html", null, function(t_34,t_32) {
-if(t_34) { cb(t_34); return; }
-t_32.render(context.getVariables(), frame, function(t_35,t_33) {
-if(t_35) { cb(t_35); return; }
-output += t_33
+env.getTemplate("organization.html", false, "release.html", null, function(t_37,t_35) {
+if(t_37) { cb(t_37); return; }
+t_35.render(context.getVariables(), frame, function(t_38,t_36) {
+if(t_38) { cb(t_38); return; }
+output += t_36
 output += "\n    ";
 })});
 }
 else {
 output += "\n      ";
-output += runtime.suppressValue((lineno = 124, colno = 14, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No buyer information provided"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 142, colno = 14, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No buyer information provided"])), env.opts.autoescape);
 output += "\n    ";
 ;
 }
 output += "\n\t</div>\n\n  ";
-var t_36;
-t_36 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"planning");
-frame.set("planning", t_36, true);
+var t_39;
+t_39 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"planning");
+frame.set("planning", t_39, true);
 if(frame.topLevel) {
-context.setVariable("planning", t_36);
+context.setVariable("planning", t_39);
 }
 if(frame.topLevel) {
-context.addExport("planning", t_36);
+context.addExport("planning", t_39);
 }
 output += "\n\t<div id=\"planning\" class=\"tab-pane col-md-9\">\n\t\t";
 if(runtime.contextOrFrameLookup(context, frame, "planning")) {
 output += "\n\t\t\t";
-env.getTemplate("planning.html", false, "release.html", null, function(t_39,t_37) {
-if(t_39) { cb(t_39); return; }
-t_37.render(context.getVariables(), frame, function(t_40,t_38) {
-if(t_40) { cb(t_40); return; }
-output += t_38
+env.getTemplate("planning.html", false, "release.html", null, function(t_42,t_40) {
+if(t_42) { cb(t_42); return; }
+t_40.render(context.getVariables(), frame, function(t_43,t_41) {
+if(t_43) { cb(t_43); return; }
+output += t_41
 output += "\n\t\t";
 })});
 }
@@ -8047,77 +8087,84 @@ output += "\n\t\t\t<div class=\"panel panel-danger\"> <!-- make the panel behavi
 ;
 }
 output += "\n\t</div>\n  ";
-var t_41;
-t_41 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"tender");
-frame.set("tender", t_41, true);
+var t_44;
+t_44 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"tender");
+frame.set("tender", t_44, true);
 if(frame.topLevel) {
-context.setVariable("tender", t_41);
+context.setVariable("tender", t_44);
 }
 if(frame.topLevel) {
-context.addExport("tender", t_41);
+context.addExport("tender", t_44);
 }
 output += "\n\t<div id=\"tender\" class=\"tab-pane col-md-9\">\n\t\t";
-env.getTemplate("tender.html", false, "release.html", null, function(t_44,t_42) {
-if(t_44) { cb(t_44); return; }
-t_42.render(context.getVariables(), frame, function(t_45,t_43) {
-if(t_45) { cb(t_45); return; }
-output += t_43
+env.getTemplate("tender.html", false, "release.html", null, function(t_47,t_45) {
+if(t_47) { cb(t_47); return; }
+t_45.render(context.getVariables(), frame, function(t_48,t_46) {
+if(t_48) { cb(t_48); return; }
+output += t_46
 output += "\n\t</div>\n  ";
-var t_46;
-t_46 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"awards");
-frame.set("awards", t_46, true);
+var t_49;
+t_49 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"awards");
+frame.set("awards", t_49, true);
 if(frame.topLevel) {
-context.setVariable("awards", t_46);
+context.setVariable("awards", t_49);
 }
 if(frame.topLevel) {
-context.addExport("awards", t_46);
+context.addExport("awards", t_49);
 }
 output += "\n\t<div id=\"awards\" class=\"tab-pane col-md-9\">\n\t\t";
-env.getTemplate("awards.html", false, "release.html", null, function(t_49,t_47) {
-if(t_49) { cb(t_49); return; }
-t_47.render(context.getVariables(), frame, function(t_50,t_48) {
-if(t_50) { cb(t_50); return; }
-output += t_48
+env.getTemplate("awards.html", false, "release.html", null, function(t_52,t_50) {
+if(t_52) { cb(t_52); return; }
+t_50.render(context.getVariables(), frame, function(t_53,t_51) {
+if(t_53) { cb(t_53); return; }
+output += t_51
 output += "\n\t</div>\n  ";
-var t_51;
-t_51 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"contracts");
-frame.set("contracts", t_51, true);
+var t_54;
+t_54 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"contracts");
+frame.set("contracts", t_54, true);
 if(frame.topLevel) {
-context.setVariable("contracts", t_51);
+context.setVariable("contracts", t_54);
 }
 if(frame.topLevel) {
-context.addExport("contracts", t_51);
+context.addExport("contracts", t_54);
 }
 output += "\n\t<div id=\"contracts\" class=\"tab-pane col-md-9\">\n\t\t";
-env.getTemplate("contracts.html", false, "release.html", null, function(t_54,t_52) {
-if(t_54) { cb(t_54); return; }
-t_52.render(context.getVariables(), frame, function(t_55,t_53) {
-if(t_55) { cb(t_55); return; }
-output += t_53
-output += " \t\t\n\t</div>\n</main>\n";
+env.getTemplate("contracts.html", false, "release.html", null, function(t_57,t_55) {
+if(t_57) { cb(t_57); return; }
+t_55.render(context.getVariables(), frame, function(t_58,t_56) {
+if(t_58) { cb(t_58); return; }
+output += t_56
+output += " \t\t\n\t</div>\n  ";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"__extra")) {
+output += "\n    <div id=\"extra\" class=\"tab-pane col-md-9\">\n      ";
+output += runtime.suppressValue((lineno = 174, colno = 17, runtime.callWrap(macro_t_4, "extra_view", context, [runtime.contextOrFrameLookup(context, frame, "release")])), env.opts.autoescape);
+output += "\n    </div>\n  ";
+;
+}
+output += "\n</main>\n";
 frame = frame.push();
-var t_58 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"parties");
-if(t_58) {var t_57 = t_58.length;
-for(var t_56=0; t_56 < t_58.length; t_56++) {
-var t_59 = t_58[t_56];
-frame.set("organization", t_59);
-frame.set("loop.index", t_56 + 1);
-frame.set("loop.index0", t_56);
-frame.set("loop.revindex", t_57 - t_56);
-frame.set("loop.revindex0", t_57 - t_56 - 1);
-frame.set("loop.first", t_56 === 0);
-frame.set("loop.last", t_56 === t_57 - 1);
-frame.set("loop.length", t_57);
+var t_61 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "release")),"parties");
+if(t_61) {var t_60 = t_61.length;
+for(var t_59=0; t_59 < t_61.length; t_59++) {
+var t_62 = t_61[t_59];
+frame.set("organization", t_62);
+frame.set("loop.index", t_59 + 1);
+frame.set("loop.index0", t_59);
+frame.set("loop.revindex", t_60 - t_59);
+frame.set("loop.revindex0", t_60 - t_59 - 1);
+frame.set("loop.first", t_59 === 0);
+frame.set("loop.last", t_59 === t_60 - 1);
+frame.set("loop.length", t_60);
 output += "\n  <div class=\"modal\" id=\"organization-";
-output += runtime.suppressValue(runtime.memberLookup((t_59),"id"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((t_62),"id"), env.opts.autoescape);
 output += "\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"orgainization-";
-output += runtime.suppressValue(runtime.memberLookup((t_59),"id"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((t_62),"id"), env.opts.autoescape);
 output += "\">\n    <div class=\"modal-dialog modal-lg\" role=\"document\">\n      <div class=\"modal-content\">\n        <div class=\"modal-body\">\n          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n          ";
-env.getTemplate("organization.html", false, "release.html", null, function(t_62,t_60) {
-if(t_62) { cb(t_62); return; }
-t_60.render(context.getVariables(), frame, function(t_63,t_61) {
-if(t_63) { cb(t_63); return; }
-output += t_61
+env.getTemplate("organization.html", false, "release.html", null, function(t_65,t_63) {
+if(t_65) { cb(t_65); return; }
+t_63.render(context.getVariables(), frame, function(t_66,t_64) {
+if(t_66) { cb(t_66); return; }
+output += t_64
 output += "\n        </div>\n        <div class=\"modal-footer\">\n          <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n        </div>\n      </div>\n    </div>\n  </div>\n";
 })});
 }

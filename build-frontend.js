@@ -41,7 +41,7 @@ var newFunCall = function(node, frame) {
 
 nunjucks.compiler.Compiler.prototype.compileFunCall = newFunCall
 
-fs.writeFile(path.join(__dirname, 'templates.js'), nunjucks.precompile(template_folder, opts))
+fs.writeFile(path.join(__dirname, 'templates.js'), nunjucks.precompile(template_folder, opts), function(){})
 
 //console.log(translation_object)
 //console.log(translations)
@@ -70,6 +70,6 @@ if (program.i18n) {
 
 if (program.watch) {
    watch.watchTree(template_folder, {'interval': 0.1}, function (f, curr, prev) {
-     fs.writeFile(path.join(__dirname, 'templates.js'), nunjucks.precompile(template_folder, opts))
+     fs.writeFile(path.join(__dirname, 'templates.js'), nunjucks.precompile(template_folder, opts), function(){})
    })
 }
