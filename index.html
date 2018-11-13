@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="css/normalize.min.css">
         <link href="css/main.css" rel="stylesheet">
         <link rel="stylesheet" href="css/custom.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/marianoguerra/json.human.js@0.1.1/css/json.human.css">
 
         <!-- Global Site Tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-35677147-3"></script>
@@ -57,10 +58,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
   <script src="https://vega.github.io/vega/vega.min.js"></script>
+  
   <script src="js/nunjucks.min.js"></script>
   <script src="js/merge.js"></script>
   <script src="js/filereader.js"></script>
   <script src="templates.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/marianoguerra/json.human.js@0.1.1/src/json.human.js"></script>
     <script>
 
        var jsonInput = $('#input-json')
@@ -68,7 +71,6 @@
        var jsonInputView = function() {
          return !$("#input-json-container").hasClass("hide")
        }
-
 
        FileReaderJS.setupInput(document.getElementById('upload'), {
          readAsDefault: 'Text',
@@ -83,6 +85,24 @@
        var gettext = function(text) {
           return text
        }
+      
+       id_counter_value = 0
+       var id_counter = function() {
+          id_counter_value = id_counter_value + 1
+          return id_counter_value
+       }
+
+       var after_release_render = function() {
+         $('[data-toggle="popover"]').popover()
+         $('[data-toggle="tooltip"]').tooltip()
+
+         $(".extra_view").each(function (index, extra_view) {
+            var jq_extra_view = $(extra_view)
+            var extra_data = jq_extra_view.data()["extra"]
+            jq_extra_view.append(JsonHuman.format(extra_data))
+         })
+       }
+
        var env = nunjucks.configure()
        // this needs replacing with something readable
        env.addFilter('currency', function(number) {
@@ -113,6 +133,7 @@
          }
 
          input['gettext'] = gettext
+         input['id_counter'] = id_counter
 
          if (input.hasOwnProperty("records")) {
            input.ocids = input.records.map(function (value) {
@@ -184,8 +205,7 @@
            container.append(content)
            var content = env.render('record_release.html', input);
            container.append(content)
-           $('[data-toggle="popover"]').popover()
-           $('[data-toggle="tooltip"]').tooltip()
+           after_release_render()
 
          } else {
            input['releases'].sort(function (a, b) {
@@ -233,8 +253,7 @@
            container.append(content)
            var content = env.render('release.html', input);
            container.append(content)
-           $('[data-toggle="popover"]').popover()
-           $('[data-toggle="tooltip"]').tooltip()
+           after_release_render()
          }
 
          // Shareholder pie chart

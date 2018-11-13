@@ -11,6 +11,13 @@
   padding-top: 20px;
 }
 
+.small-top-margin {
+  margin-top: 7px
+}
+
+.jh-type-object > tbody > tr:nth-child(2n+1), .jh-type-array > tbody > tr:nth-child(2n+1) {
+    background-color: #f4f6e5 !important;
+}
 /* ppp styling
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
     background-color: #F6EDE5 !important;

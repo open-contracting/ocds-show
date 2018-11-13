@@ -9,6 +9,26 @@
     {% endif %}
   {% endmacro %}
 
+  {% macro extra_view(obj) %}
+      <div class="extra_view" data-extra="{{ obj.__extra | dump }}"></div>
+  {% endmacro %}
+
+  {% macro insert_extra_fields(obj) %}
+    {% if obj.__extra %} {{change_label(obj, "__extra")}}
+
+      {% set id_value = id_counter() %}
+      <button class="small-top-margin btn btn-success btn-sm" type="button" data-toggle="collapse" data-target="#collapse_{{id_value}}" aria-expanded="false" aria-controls="collapseExample">
+        Extra fields
+      </button>
+      <div class="collapse" id="collapse_{{id_value}}">
+        <div class="well">
+          {{ extra_view(obj) }}
+        </div>
+      </div>
+    {% endif %}
+
+  {% endmacro %}
+
   {% macro date_popout(object, key) %}
     <span class="no-wrap" data-toggle="tooltip" title="{{object[key]}}"> {{ object[key]|truncate(10,true,"") }} {{change_label(object, key)}} 
       
@@ -46,6 +66,11 @@
     <li role="presentation" class="{% if not release.tender %}disabled{%endif%} " ><a href="#tender">Tender {{ change_label(release, 'tender') }}</a> </li>
     <li role="presentation" class="{% if not release.awards %}disabled{%endif%}" ><a href="#awards">Awards {{ change_label(release, 'awards') }}</a></li>
     <li role="presentation" class="{% if not release.contracts %}disabled{%endif%}" ><a href="#contracts">Contracts {{ change_label(release, 'contracts') }}</a></li>
+
+    {% if release.__extra %}
+      <li role="presentation"><a href="#extra">Extra Fields {{ change_label(release, '__extra') }}</a></li>
+    {% endif %}
+
   </ul>
 
 
@@ -145,6 +170,11 @@
 	<div id="contracts" class="tab-pane col-md-9">
 		{% include 'contracts.html' %} 		
 	</div>
+  {% if release.__extra %}
+    <div id="extra" class="tab-pane col-md-9">
+      {{ extra_view(release) }}
+    </div>
+  {% endif %}
 </main>
 {% for organization in release.parties %}
   <div class="modal" id="organization-{{organization.id}}" tabindex="-1" role="dialog" aria-labelledby="orgainization-{{organization.id}}">

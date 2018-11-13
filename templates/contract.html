@@ -71,9 +71,7 @@
                   <strong class="gap-left">{{ gettext("Max Extent Date: ")}}</strong>
                   {{date_popout(contract.period, 'maxExtentDate')}}
                 {% endif %}
-
-
-              
+                {{ insert_extra_fields(contract.period) }}
              </dd>
              <dt class="dt-large dt-inline dt-gap">
                {{ gettext("Value") }}
@@ -99,10 +97,8 @@
                  <span class="bg-warning">{{ gettext("No date provided") }}</span>
                {% endif %}
              </dd>
-
-           </dl> 
-
-
+            {{ insert_extra_fields(contract) }}
+           </dl>
         </div>
       </div>
     </div>
@@ -170,6 +166,7 @@
                 {{ contract.evaluationIndicators.netPresentValueDetails }} {{change_label(contract.evaluationIndicators, 'netPresentValueDetails')}}
               </dd>
             {% endif %}
+              <dd>{{ insert_extra_fields(contract.evaluationIndicators) }}</dd>
            </dl> 
         </div>
       </div>
@@ -264,6 +261,7 @@
                 <td>
                   {{relatedProcess.relationship|join(", ")}}
                 </td>
+                <td>{{ insert_extra_fields(relatedProcess) }}</td>
               </tr>
               {% endfor %}
             </tbody>
@@ -352,7 +350,6 @@
                   {{contract.financeSummary.shareCapital.currency}}
                   {{change_label(contract.financeSummary.shareCapital, 'currency')}}
                 {% endif %}
-
               </dd>
             {% endif %}
             {% if contract.financeSummary.shareCapitalDetails %}
@@ -380,7 +377,7 @@
                 {{ contract.financeSummary.subsidyRatioDetails }} {{change_label(contract.financeSummary, 'subsidyRatioDetails')}}
               </dd>
             {% endif %}
-
+              <dd>{{ insert_extra_fields(contract.financeSummary) }}</dd>
            </dl> 
         </div>
       </div>
@@ -558,8 +555,8 @@
                      {% else %}
                        <span class="bg-warning">{{ gettext("No notes provided") }}</span>
                      {% endif %}
-
                   </dd>
+                  <dd class="dd-small">{{ insert_extra_fields(finance) }}</dd>
                 </dl> 
               </div>
             </div>
@@ -613,6 +610,7 @@
                        {{ gettext("No Indicator Value Provided") }}
                      {% endif %}
                   </dd>
+                  <dd class="dd-large dd-inline">{{ insert_extra_fields(indicator) }}</dd>
                 </dl> 
               </div>
             </div>
@@ -670,6 +668,9 @@
                    {% else %}
                      {{ gettext("No Milestone Referenced") }}
                    {% endif %}
+                  </dd>
+                  <dd class="dd-large dd-inline">
+                    {{ insert_extra_fields(equityTransferCap) }}
                   </dd>
                 </dl> 
               </div>
@@ -779,7 +780,7 @@
                      {{ gettext("No notes") }}
                    {% endif %}
                   </dd>
-                  
+                  <dd class="dd-small">{{ insert_extra_fields(risk) }}</dd>
                 </dl> 
               </div>
             </div>
@@ -867,6 +868,7 @@
                      {{tariff.notes}}
                      {{change_label(tariff, 'notes')}}
                   </td>
+                  <td>{{ insert_extra_fields(tariff) }}</td>
                 </tr>
               {% endfor %}
             </tbody>
@@ -933,6 +935,22 @@
               {% endif %}
             </div>
           </div>
+          {% if contract.__extra %}
+            <div class="row">
+              <div class="col-md-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">
+                      Extra fields {{change_label(contract, "__extra")}}
+                    </h3>
+                  </div>
+                  <div class="panel-body">
+                    {{ extra_view(contract) }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
         </div>
       </div>
     </div>

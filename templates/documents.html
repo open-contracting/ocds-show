@@ -32,6 +32,7 @@
                 <td>{{ document.language}} {{change_label(document, 'language')}}</td>
                 <td>{{ document.pageStart}} - {{ document.pageEnd}} {{change_label(document, 'pageStart')}} {{change_label(document, 'pageEnd')}}</td>
                 <td>{{ document.accessDetails}} {{change_label(document, 'accessDetails')}}</td>
+                <td>{{ insert_extra_fields(document) }}</td>
               </tr>
               <tr> <!-- add conditional colouring based on presence of url? -->
                 <td colspan="9"> <strong> {{ gettext("Description:") }} </strong> {{ document.description }} {{change_label(document, 'description')}}</td>

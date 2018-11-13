@@ -89,9 +89,11 @@
                    <span class="bg-warning">({{ gettext("Project ID not provided") }})</span>
                  {% endif %}
                </dd>
-             </dl> 
-
-
+               <dt></dt>
+               <dd>
+                {{ insert_extra_fields(planning) }}
+               </dd>
+             </dl>
 					</div>
 				</div>
 			</div>
@@ -137,6 +139,22 @@
 				{% endif %}
 			</div>
 		</div>
+    {% if planning.__extra %}
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+						<div class="panel-heading">
+              <h3 class="panel-title">
+                Extra fields {{change_label(planning, "__extra")}}
+              </h3>
+            </div>
+            <div class="panel-body">
+              {{ extra_view(planning) }}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
 
 </section>
 
