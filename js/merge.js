@@ -171,6 +171,9 @@ function get_changes(old_flat, new_flat) {
 
 function augment_path(obj) {
   var traverse_object = function(path, obj) {
+    if (path.length > 0 && path[path.length -1] === '__extra') {
+      return
+    }
     obj["__path"] = JSON.stringify(path);
     Object.keys(obj).forEach(function (key){
       var value = obj[key];
