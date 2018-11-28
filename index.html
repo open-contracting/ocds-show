@@ -24,7 +24,7 @@
     </head>
     <body>
 
-      <nav class="navbar navbar-inverse">
+      <nav class="navbar navbar-inverse" id="nav">
         <div class="container">
           <a class="navbar-brand" href="#">OCDS Show</a>
           <form class="navbar-form navbar-right" role="search">
@@ -66,11 +66,42 @@
   <script src="https://cdn.jsdelivr.net/gh/marianoguerra/json.human.js@0.1.1/src/json.human.js"></script>
     <script>
 
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = window.location.search.substring(1),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                }
+            }
+        };
+
        var jsonInput = $('#input-json')
        var container = $('#container')
        var jsonInputView = function() {
          return !$("#input-json-container").hasClass("hide")
        }
+
+       var urlParam = getUrlParameter("url");
+
+       if(urlParam) {
+           $.getJSON(urlParam, function( data ) {
+
+               jsonInput.val(JSON.stringify(data));
+               $("#nav").addClass("hide");
+               render_json({"newData": true});
+           }).error(function() {
+               jsonInput.val('error');
+               $("#nav").addClass("hide");
+               render_json({"newData": true});
+           });
+       }
+
 
        FileReaderJS.setupInput(document.getElementById('upload'), {
          readAsDefault: 'Text',
@@ -115,6 +146,7 @@
 
        var render_json = function (context) {
          context = context || {}
+
          var currentValue = jsonInput.val()
          if (!currentValue & jsonInputView()) {
            container.html('')
@@ -126,7 +158,9 @@
          }
 
          try {
-           var input = JSON.parse(jsonInput.val())
+
+             var  input = JSON.parse(jsonInput.val())
+
          } catch (e) {
            container.html('<h2> Invalid JSON data </h2>')
            return
