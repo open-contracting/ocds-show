@@ -1,10 +1,10 @@
 <div class="panel panel-{% if project %}default{% else %}warning{% endif %}">
-	<div class="panel-heading">
-		<h3 class="panel-title">
+  <div class="panel-heading">
+    <h3 class="panel-title">
       {{change_label(parent, 'project')}} {{ gettext("Project: ") }} {{project.title}} {{change_label(project, 'title')}} <small> ({{project.id}} {{change_label(project, 'id')}})</small>
-		</h3>
-	</div>
-	<div class="panel-body">
+    </h3>
+  </div>
+  <div class="panel-body">
   <dl> 
     <dt class="dt-large">
     </dt>
@@ -77,5 +77,5 @@
    {% include 'locations.html' %}
    </dd>
   </dl> 
-	</div>
+  </div>
 </div>

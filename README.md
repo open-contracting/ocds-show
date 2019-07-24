@@ -1,4 +1,4 @@
-# OCDS SHOW
+# OCDS Show
 
 A tool for displaying OCDS releases and records.
 
@@ -9,16 +9,18 @@ A tool for displaying OCDS releases and records.
 
 ## Installation
 
-Clone this repository and run
+Clone this repository and run:
 
-`npm install .`
+    npm install .
 
 ## Development
 
-In order to compile the templates ready to use in the browser run
+In order to compile the templates ready to use in the browser run:
 
-`node build-frontend.js -w`
+    node build-frontend.js
 
-The -w option will watch the template files and recompile them after any changes.
+Or, to watch the templates and re-compile them after any changes:
+
+    node build-frontend.js -w
 
 A test file can be found in example/release_input.html.

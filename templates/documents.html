@@ -1,10 +1,10 @@
 <div class="panel panel-{% if documents|length > 0 %}default{% else %}warning{% endif %}">
-	<div class="panel-heading">
-		<h3 class="panel-title">
-			{{ gettext("Documents") }} {{change_label(parent, 'documents')}}
-		</h3>
-	</div>
-		{% if documents|length > 0 %}
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      {{ gettext("Documents") }} {{change_label(parent, 'documents')}}
+    </h3>
+  </div>
+    {% if documents|length > 0 %}
       <div class="table-responsive">
         <table class="table table-striped">
           <thead>
@@ -41,9 +41,9 @@
           </tbody>
         </table>
       </div>
-		{% else %}
+    {% else %}
       <div class="panel-body">
         {{ gettext("No documents provided") }}
       </div>
-		{% endif %}
+    {% endif %}
 </div>

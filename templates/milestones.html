@@ -1,10 +1,10 @@
 <div class="panel panel-{% if milestones|length > 0 %}default{% else %}warning{% endif %}">
-	<div class="panel-heading">
-		<h3 class="panel-title">
-			{{ gettext("Milestones") }} {{change_label(parent, 'milestones')}}
-		</h3>
-	</div>
-		{% if milestones|length > 0 %}
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      {{ gettext("Milestones") }} {{change_label(parent, 'milestones')}}
+    </h3>
+  </div>
+    {% if milestones|length > 0 %}
       <div class="table-responsive">
         <table class="table table-striped">
           <thead>
@@ -36,9 +36,9 @@
           </tbody>
         </table>
       </div>
-		{% else %}
+    {% else %}
       <div class="panel-body">
-			{{ gettext("No milestones provided") }}
+      {{ gettext("No milestones provided") }}
       </div>
-		{% endif %}
+    {% endif %}
 </div>

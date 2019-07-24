@@ -16,7 +16,7 @@
       <tr>
         <td>{{ requirementResponse.requirement.title }} {{change_label(requirementResponse.requirement, "title")}} 
           <small>({{requirementResponse.requirement.id}}){{change_label(requirementResponse.requirement, "id")}}<small>  
-        </td>	<!-- need to consider whether to present the id - make sure this is consistent with documents approach -->
+        </td>  <!-- need to consider whether to present the id - make sure this is consistent with documents approach -->
 
         <td>{{ requirementResponse.title }} {{change_label(requirementResponse, "title")}}</td>
         <td> {{long_text_popout(requirementResponse, "description")}}</td>
@@ -41,7 +41,7 @@
         <td>{{ insert_extra_fields(requirementResponse) }}</td>
       </tr>
     {% endfor %}
-  </tbody>	
+  </tbody>  
 </table>
 </div>
 

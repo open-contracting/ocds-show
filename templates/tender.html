@@ -7,19 +7,19 @@
       {{ gettext("No title provided") }}
     {% endif %}
     </h3>
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						{% if tender.description %}
-							{{ tender.description }} {{change_label(tender, 'description')}}
-						{% else %}
-							{{ gettext("No description provided") }}
-						{% endif %}
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            {% if tender.description %}
+              {{ tender.description }} {{change_label(tender, 'description')}}
+            {% else %}
+              {{ gettext("No description provided") }}
+            {% endif %}
             <dl> 
-						   <dt class="dt-large dt-inline dt-gap">
-							   {{ gettext("Status") }}
-						   </dt>
+               <dt class="dt-large dt-inline dt-gap">
+                 {{ gettext("Status") }}
+               </dt>
                <dd class="dd-large dd-inline dd-gap">
                   {% if tender.status %}
                     {{ tender.status }} {{change_label(tender, 'status')}}
@@ -28,9 +28,9 @@
                   {% endif %}
                </dd>
 
-						   <dt class="dt-large dt-inline">
-							    {{ gettext("Eligibility criteria")}}
-						   </dt>
+               <dt class="dt-large dt-inline">
+                  {{ gettext("Eligibility criteria")}}
+               </dt>
                <dd class="dd-large dd-inline">
                   {% if tender.eligibilityCriteria %}
                     {{ tender.eligibilityCriteria }} {{change_label(tender, 'eligibilityCriteria')}}
@@ -45,9 +45,9 @@
                   {{ tender.id }} {{change_label(tender, 'id')}}
                </dd>
 
-						   <dt class="dt-large dt-gap">
-							   {{ gettext("Value") }}
-						   </dt>
+               <dt class="dt-large dt-gap">
+                 {{ gettext("Value") }}
+               </dt>
                <dd class="dd-small">
                 <strong>{{ gettext("Lower: ")}}</strong>
                 {% if tender.minValue.amount %}
@@ -60,12 +60,12 @@
                   {{ tender.value.amount|currency }} {{change_label(tender.value, 'amount')}} <small>{{ tender.value.currency}}{{change_label(tender.value, 'currency')}}</small>
                 {% else %}
                   <span class="bg-warning">{{ gettext("No value provided") }}</span>
-						    {% endif %}
+                {% endif %}
                </dd>
 
-						   <dt class="dt-large dt-gap">
-							   {{ gettext("Key Dates")}}
-						   </dt>
+               <dt class="dt-large dt-gap">
+                 {{ gettext("Key Dates")}}
+               </dt>
                <br class="dd-small">
                 <strong>{{ gettext("Tender start: ")}}</strong>
                 {% if tender.tenderPeriod.startDate %}
@@ -137,9 +137,9 @@
                 {{ insert_extra_fields(tender.contractPeriod) }}
                </dd>
 
-						   <dt class="dt-large dt-gap">
-							   {{ gettext("Enquiries")}}
-						   </dt>
+               <dt class="dt-large dt-gap">
+                 {{ gettext("Enquiries")}}
+               </dt>
                <dd class="dd-small">
                  <p>
                  {{change_label(tender, 'hasEnquiries')}}
@@ -176,20 +176,20 @@
                </dd>
 
                {% if tender.procurementCategory %}
-						   <dt class="dt-large dt-gap">
-							   {{ gettext("Procurement Category") }}
-						   </dt>
+               <dt class="dt-large dt-gap">
+                 {{ gettext("Procurement Category") }}
+               </dt>
                <dd class="dd-small">
                  {{ tender.procurementCategory }} {{change_label(tender, 'procurementCategory')}}
                </dd>
                {% endif %}
 
-						   <dt class="dt-large dt-gap">
-							   {{ gettext("Procurement method") }}
-						   </dt>
+               <dt class="dt-large dt-gap">
+                 {{ gettext("Procurement method") }}
+               </dt>
                <dd class="dd-small">
                  {% if tender.procurementMethod %}
-                 <strong>{{tender.procurementMethod}}:{{change_label(tender, 'procurementMethod')}}</strong>	<!-- set up a filter or function to convert between codelist values and titles -->
+                 <strong>{{tender.procurementMethod}}:{{change_label(tender, 'procurementMethod')}}</strong>  <!-- set up a filter or function to convert between codelist values and titles -->
                  {% else %}
                    <strong>No procurement method provided </strong>
                  {% endif %}
@@ -204,9 +204,9 @@
 
                </dd>
 
-						   <dt class="dt-large dt-gap">
-							   {{ gettext("Procurement Categories") }}
-						   </dt>
+               <dt class="dt-large dt-gap">
+                 {{ gettext("Procurement Categories") }}
+               </dt>
                <dd class="dd-small">
                  {% if tender.mainProcurementCategory %}
                    <strong>{{ gettext("Main Procurement Category:") }}</strong>
@@ -218,9 +218,9 @@
                  {% endif %}
                </dd>
 
-						   <dt class="dt-large dt-gap">
-							   {{ gettext("Award criteria") }}
-						   </dt>
+               <dt class="dt-large dt-gap">
+                 {{ gettext("Award criteria") }}
+               </dt>
                <dd class="dd-small">
                  <strong>
                    {% if tender.awardCriteria %}
@@ -238,9 +238,9 @@
                  {% endif %}
                </dd>
 
-						   <dt class="dt-large dt-gap">
+               <dt class="dt-large dt-gap">
                  {{ gettext("Submission method") }}
-						   </dt>
+               </dt>
                <dd class="dd-small">
                 <strong>
                   {% if tender.submissionMethod %}
@@ -258,60 +258,60 @@
                 {% endif %}
                </dd>
              </dl> 
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				{% if tender.items %}
-					{% set items = tender.items %}
-					{% set parent = tender %}
-					{% include 'items.html' %}
-				{% else %}
-					<div class="panel panel-warning">
-						<div class="panel-heading">
-							<h3 class="panel-title">
-								{{ gettext("Items") }}
-							</h3>
-						</div>
-						<div class="panel-body">
-							{{ gettext("No items provided") }}
-						</div>
-					</div>
-				{% endif %}
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				{% if tender.documents %}
-					{% set documents = tender.documents %}
-					{% set parent = tender %}
-					{% include 'documents.html' %}
-				{% else %}
-					<div class="panel panel-warning">
-						<div class="panel-heading">
-							<h3 class="panel-title">
-								{{ gettext("Documents") }}
-							</h3>
-						</div>
-						<div class="panel-body">
-							{{ gettext("No documents provided") }}
-						</div>
-					</div>
-				{% endif %}
-			</div>
-		</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        {% if tender.items %}
+          {% set items = tender.items %}
+          {% set parent = tender %}
+          {% include 'items.html' %}
+        {% else %}
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                {{ gettext("Items") }}
+              </h3>
+            </div>
+            <div class="panel-body">
+              {{ gettext("No items provided") }}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        {% if tender.documents %}
+          {% set documents = tender.documents %}
+          {% set parent = tender %}
+          {% include 'documents.html' %}
+        {% else %}
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                {{ gettext("Documents") }}
+              </h3>
+            </div>
+            <div class="panel-body">
+              {{ gettext("No documents provided") }}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
 
-		<div class="row">
-			<div class="col-md-12">
-				<div class="panel panel-{% if tender.procuringEntity %}default{% else %}warning{% endif %}">
-					<div class="panel-heading">
-						<h3 class="panel-title">
-							 {{ gettext("Procuring Entity") }}
-						</h3>
-					</div>
-					<div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-{% if tender.procuringEntity %}default{% else %}warning{% endif %}">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+               {{ gettext("Procuring Entity") }}
+            </h3>
+          </div>
+          <div class="panel-body">
             <div class="col-md-12">
               {% set organization = parties[tender.procuringEntity.id] %}
               {% if not parties[tender.procuringEntity.id] %}
@@ -319,60 +319,60 @@
               {% endif %}
               {% include 'organization.html' %}
             </div>
-					</div>
-				</div>
-			</div>
-		</div>
+          </div>
+        </div>
+      </div>
+    </div>
     
-		<div class="row">
-			<div class="col-md-12">
-				<div class="panel panel-{% if tender.tenderers %}default{% else %}warning{% endif %}">
-					<div class="panel-heading">
-						<h3 class="panel-title">
-							 {{ gettext("Tenderers:") }} {% if tender.numberOfTenderers %}{{ tender.numberOfTenderers }}{% else %}<span class="bg-warning">{{ gettext("Number of tenderers not provided")}}</span>{% endif %}
-						</h3>
-					</div>
-					<div class="panel-body">
-						{% for tenderer in tender.tenderers %}
-							<div class="col-md-{% if tender.tenderers|length  == 1 %}12{% elif tender.tenderers|length == 2 %}6{% else %}4{% endif %}">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-{% if tender.tenderers %}default{% else %}warning{% endif %}">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+               {{ gettext("Tenderers:") }} {% if tender.numberOfTenderers %}{{ tender.numberOfTenderers }}{% else %}<span class="bg-warning">{{ gettext("Number of tenderers not provided")}}</span>{% endif %}
+            </h3>
+          </div>
+          <div class="panel-body">
+            {% for tenderer in tender.tenderers %}
+              <div class="col-md-{% if tender.tenderers|length  == 1 %}12{% elif tender.tenderers|length == 2 %}6{% else %}4{% endif %}">
                 {% set organization = parties[tenderer.id] %}
                 {% if not parties[tenderer.id] %}
                   {% set organization = tenderer %}
                 {% endif %}
                 {% include 'organization.html' %}
-							</div>
-						{% endfor %}
-					</div>
-				</div>
-			</div>
-		</div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
 
-		<div class="row">
-			<div class="col-md-12">
-				{% if tender.milestones %}
-					{% set milestones = tender.milestones %}
-					{% set parent = tender %}
-					{% include 'milestones.html' %}
-				{% else %}
-					<div class="panel panel-warning">
-						<div class="panel-heading">
-							<h3 class="panel-title">
-								{{ gettext("Milestones") }}
-							</h3>
-						</div>
-						<div class="panel-body">
-							{{ gettext("No milestones provided") }}
-						</div>
-					</div>
-				{% endif %}
-			</div>
-		</div>
+    <div class="row">
+      <div class="col-md-12">
+        {% if tender.milestones %}
+          {% set milestones = tender.milestones %}
+          {% set parent = tender %}
+          {% include 'milestones.html' %}
+        {% else %}
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                {{ gettext("Milestones") }}
+              </h3>
+            </div>
+            <div class="panel-body">
+              {{ gettext("No milestones provided") }}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
 
     {% if tender.__extra %}
       <div class="row">
         <div class="col-md-12">
           <div class="panel panel-default">
-						<div class="panel-heading">
+            <div class="panel-heading">
               <h3 class="panel-title">
                 Extra fields {{change_label(tender, "__extra")}}
               </h3>

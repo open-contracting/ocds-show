@@ -75,42 +75,42 @@
 
 
   <div id="release-tabs" class="tab-content">
-	<div class="col-md-9 tab-pane active" id="metadata">
-					<ul class="list-group">
-						<li class="list-group-item">
-							<strong>OCID: </strong>{{release.ocid}}
-						</li>
-						<li class="list-group-item">
-							<strong>Release ID: </strong>{{release.id}}
-						</li>
+  <div class="col-md-9 tab-pane active" id="metadata">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <strong>OCID: </strong>{{release.ocid}}
+            </li>
+            <li class="list-group-item">
+              <strong>Release ID: </strong>{{release.id}}
+            </li>
             <li class="list-group-item">
                <strong>Date: </strong> {{ date_popout(release, "date") }}
             </li>
             <li class="list-group-item">
               <strong>Language: </strong>{{release.language}}
             </li>
-						<li class="list-group-item">
-							<strong>Tags: </strong>
+            <li class="list-group-item">
+              <strong>Tags: </strong>
               {% if release.tag %}
                 {{ release.tag|join(", ") }}
               {% else %}
-							  {{ gettext("No Tags Provided") }}
+                {{ gettext("No Tags Provided") }}
               {% endif %}
-						</li>
-						<li class="list-group-item">
-							<strong>Initiation type: </strong>{{release.initiationType}}
-						</li>
-					</ul>
-	</div>
+            </li>
+            <li class="list-group-item">
+              <strong>Initiation type: </strong>{{release.initiationType}}
+            </li>
+          </ul>
+  </div>
 
-	<div class="col-md-9 tab-pane" id="relatedProcesses">
+  <div class="col-md-9 tab-pane" id="relatedProcesses">
     <div class="panel panel-default">
       {% set relatedProcesses = release.relatedProcesses %}
       {% include 'related_processes.html' %}
     </div>
   </div>
 
-	<div class="col-md-9 tab-pane" id="parties">
+  <div class="col-md-9 tab-pane" id="parties">
     {% for organization in release.parties %}
       {% include 'organization.html' %}
       {% if not loop.last %}
@@ -119,7 +119,7 @@
     {% endfor %}
   </div>
 
-	<div class="col-md-9 tab-pane" id="procuringEntity">
+  <div class="col-md-9 tab-pane" id="procuringEntity">
     {% set organization = parties[release.tender.procuringEntity.id] %}
     {% if not parties[release.tender.procuringEntity.id] %}
       {% set organization = release.tender.procuringEntity %}
@@ -131,7 +131,7 @@
     {% endif %}
   </div>
 
-	<div class="col-md-9 tab-pane" id="buyer">
+  <div class="col-md-9 tab-pane" id="buyer">
     {% set organization = parties[release.buyer.id] %}
     {% if not parties[release.buyer.id] %}
       {% set organization = release.buyer %}
@@ -142,34 +142,34 @@
     {% else %}
       {{ gettext("No buyer information provided") }}
     {% endif %}
-	</div>
+  </div>
 
   {% set planning = release.planning %}
-	<div id="planning" class="tab-pane col-md-9">
-		{% if planning %}
-			{% include 'planning.html' %}
-		{% else %}
-			<div class="panel panel-danger"> <!-- make the panel behaviour dependent on the release tags, e.g. if planning is present in the release tags this should be danger, otherwise make it collapse -->
-				<div class="panel-heading">
-					<h2 class="panel-title">
-						No planning data provided
-					</h2>
-				</div>
-			</div>
-		{% endif %}
-	</div>
+  <div id="planning" class="tab-pane col-md-9">
+    {% if planning %}
+      {% include 'planning.html' %}
+    {% else %}
+      <div class="panel panel-danger"> <!-- make the panel behaviour dependent on the release tags, e.g. if planning is present in the release tags this should be danger, otherwise make it collapse -->
+        <div class="panel-heading">
+          <h2 class="panel-title">
+            No planning data provided
+          </h2>
+        </div>
+      </div>
+    {% endif %}
+  </div>
   {% set tender = release.tender %}
-	<div id="tender" class="tab-pane col-md-9">
-		{% include 'tender.html' %}
-	</div>
+  <div id="tender" class="tab-pane col-md-9">
+    {% include 'tender.html' %}
+  </div>
   {% set awards = release.awards %}
-	<div id="awards" class="tab-pane col-md-9">
-		{% include 'awards.html' %}
-	</div>
+  <div id="awards" class="tab-pane col-md-9">
+    {% include 'awards.html' %}
+  </div>
   {% set contracts = release.contracts %}
-	<div id="contracts" class="tab-pane col-md-9">
-		{% include 'contracts.html' %} 		
-	</div>
+  <div id="contracts" class="tab-pane col-md-9">
+    {% include 'contracts.html' %}     
+  </div>
   {% if release.__extra %}
     <div id="extra" class="tab-pane col-md-9">
       {{ extra_view(release) }}

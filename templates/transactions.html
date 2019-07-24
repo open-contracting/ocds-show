@@ -1,29 +1,29 @@
 <div class="panel panel-{% if transactions|length > 0 %}default{% else %}warning{% endif %}">
-	<div class="panel-heading">
-		<h3 class="panel-title">
-			{{ gettext("Transactions") }}
-		</h3>
-	</div>
-		{% if transactions|length > 0 %}
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      {{ gettext("Transactions") }}
+    </h3>
+  </div>
+    {% if transactions|length > 0 %}
     <div class="table-responsive">
       <table class="table table-striped">
-				<thead>
-					<tr>
-						<th>{{ gettext("ID") }}</th>
-						<th>{{ gettext("Date") }}</th>
-						<th>{{ gettext("Value") }}</th>
-						<th>{{ gettext("Payee") }} </th>
-						<th>{{ gettext("Payer") }} </th>
-						<th>{{ gettext("Related Milestone") }} </th>
-						<th>{{ gettext("Links") }}</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for transaction in transactions %}
-						<tr>
-							<td>{{ transaction.id }}</td>
-							<td>{{ date_popout(transaction, 'date') }}</td>
-							<td>{{ transaction.amount.amount|currency }} {{ transaction.amount.currency }}{{ transaction.value.amount|currency }} {{ transaction.value.currency }}</td>
+        <thead>
+          <tr>
+            <th>{{ gettext("ID") }}</th>
+            <th>{{ gettext("Date") }}</th>
+            <th>{{ gettext("Value") }}</th>
+            <th>{{ gettext("Payee") }} </th>
+            <th>{{ gettext("Payer") }} </th>
+            <th>{{ gettext("Related Milestone") }} </th>
+            <th>{{ gettext("Links") }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for transaction in transactions %}
+            <tr>
+              <td>{{ transaction.id }}</td>
+              <td>{{ date_popout(transaction, 'date') }}</td>
+              <td>{{ transaction.amount.amount|currency }} {{ transaction.amount.currency }}{{ transaction.value.amount|currency }} {{ transaction.value.currency }}</td>
 
               <td>
                 {% if transaction.payee.id and parties[transaction.payee.id] %}
@@ -57,14 +57,14 @@
                    ({{transaction.relatedImplementationMilestone.id}}) {{change_label(transaction.relatedImplementationMilestone, 'id')}}
                  {% endif %}
               </td>
-							<td><a href="{{transaction.source}}">Source</a> / <a href="{{transaction.uri}}">URI</a></td>
-							<td>{{ insert_extra_fields(transaction) }}</td>
-						</tr>
-					{% endfor %}
-				</tbody>	
-			</table>
+              <td><a href="{{transaction.source}}">Source</a> / <a href="{{transaction.uri}}">URI</a></td>
+              <td>{{ insert_extra_fields(transaction) }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>  
+      </table>
     </div>
-		{% else %}
-			{{ gettext("No transactions provided") }}
-		{% endif %}
+    {% else %}
+      {{ gettext("No transactions provided") }}
+    {% endif %}
 </div>

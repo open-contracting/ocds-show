@@ -926,15 +926,15 @@
         </div>
         <div class="panel-body">
           <div class="col-md-12">
-						{% for signatory in contract.signatories %}
-							<div class="col-md-12">
+            {% for signatory in contract.signatories %}
+              <div class="col-md-12">
                 {% set organization = parties[signatory.id] %}
                 {% if not parties[signatory.id] %}
                   {% set organization = signatory %}
                 {% endif %}
                 {% include 'organization.html' %}
-							</div>
-						{% endfor %}
+              </div>
+            {% endfor %}
           </div>
         </div>
       </div>

@@ -199,7 +199,6 @@ function augment_path(obj) {
   };
   traverse_object([], obj);
   return obj;
-
 }
 
 if (typeof window === 'undefined') {

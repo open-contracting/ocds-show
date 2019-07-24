@@ -1,60 +1,60 @@
 <div class="panel panel-{% if items|length > 0 %}default{% else %}warning{% endif %}">
-	<div class="panel-heading">
-		<h3 class="panel-title">
-			{{ gettext("Items") }} {{change_label(parent, "items")}}
-		</h3>
-	</div>
-		{% if items|length > 0 %}
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      {{ gettext("Items") }} {{change_label(parent, "items")}}
+    </h3>
+  </div>
+    {% if items|length > 0 %}
       <div class="table-responsive">
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>{{ gettext("ID") }}</th>
-						<th>{{ gettext("Description") }}</th>
-						<th>{{ gettext("Classification") }} <small>({{ gettext("Scheme - ID") }})</small></th>
-						<th>{{ gettext("Quantity") }} <small>({{ gettext("Unit") }})</small></th>
-						<th>{{ gettext("Unit") }} </small></th>
-						<th>{{ gettext("Value per unit") }}</th>
-						<th>{{ gettext("Delivery Address") }}</th>
-						<th>{{ gettext("Delivery Location") }}</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for item in items %}
-						<tr>
-							<td>{{ item.id }} {{change_label(item)}} </td>	<!-- need to consider whether to present the id - make sure this is consistent with documents approach -->
-							<td>{{long_text_popout(item, "description")}}</td>
-							<td>
-								{{change_label(item, "classification")}} {{ item.classification.description }} {{change_label(item.classification, "description")}}
-								<small>
-									(<a href="https://standard.open-contracting.org/latest/en/schema/codelists/#item-classification-scheme">{{ item.classification.scheme }}</a> -
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>{{ gettext("ID") }}</th>
+            <th>{{ gettext("Description") }}</th>
+            <th>{{ gettext("Classification") }} <small>({{ gettext("Scheme - ID") }})</small></th>
+            <th>{{ gettext("Quantity") }} <small>({{ gettext("Unit") }})</small></th>
+            <th>{{ gettext("Unit") }} </small></th>
+            <th>{{ gettext("Value per unit") }}</th>
+            <th>{{ gettext("Delivery Address") }}</th>
+            <th>{{ gettext("Delivery Location") }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in items %}
+            <tr>
+              <td>{{ item.id }} {{change_label(item)}} </td>  <!-- need to consider whether to present the id - make sure this is consistent with documents approach -->
+              <td>{{long_text_popout(item, "description")}}</td>
+              <td>
+                {{change_label(item, "classification")}} {{ item.classification.description }} {{change_label(item.classification, "description")}}
+                <small>
+                  (<a href="https://standard.open-contracting.org/latest/en/schema/codelists/#item-classification-scheme">{{ item.classification.scheme }}</a> -
                   {{change_label(item.classification, "scheme")}}
-									{% if item.classification.uri %}
-										<a href="{{ item.classification.uri }}">{{ item.classification.id }}</a>)
+                  {% if item.classification.uri %}
+                    <a href="{{ item.classification.uri }}">{{ item.classification.id }}</a>)
                     {{change_label(item.classification, "uri")}}
-									{% else %}
-										{{ item.classification.id }})
+                  {% else %}
+                    {{ item.classification.id }})
                     {{change_label(item.classification, "id")}}
-									{% endif %}
-								</small>
+                  {% endif %}
+                </small>
                 {{change_label(item, "additionalClassifications")}}
-								{% if item.additionalClassifications %}
-									{% for classification in item.additionalClassifications %}
-										<br>{{ classification.description }}
-										<small>
-											(<a href="https://standard.open-contracting.org/latest/en/schema/codelists/#item-classification-scheme">{{ classification.scheme }}</a> -
-											{% if classification.uri %}
-												<a href="{{ item.classification.uri }}">{{ classification.id }}</a>)
-											{% else %}
-												{{ classification.id }})
-											{% endif %}
-										</small>
-									{% endfor %}
-								{% endif %}
-							
-							</td>
-							<td>{{ item.quantity }} {{change_label(item, "quantity")}} </td>
-							<td>
+                {% if item.additionalClassifications %}
+                  {% for classification in item.additionalClassifications %}
+                    <br>{{ classification.description }}
+                    <small>
+                      (<a href="https://standard.open-contracting.org/latest/en/schema/codelists/#item-classification-scheme">{{ classification.scheme }}</a> -
+                      {% if classification.uri %}
+                        <a href="{{ item.classification.uri }}">{{ classification.id }}</a>)
+                      {% else %}
+                        {{ classification.id }})
+                      {% endif %}
+                    </small>
+                  {% endfor %}
+                {% endif %}
+              
+              </td>
+              <td>{{ item.quantity }} {{change_label(item, "quantity")}} </td>
+              <td>
                 {{change_label(item, "unit")}}
                 {% if item.unit.name %}
                   {{ item.unit.name }} {{change_label(item.unit, "name")}} <br>
@@ -66,12 +66,12 @@
                   <a href="{{item.unit.uri}}"> {{item.unit.uri}}</a> {{change_label(item.unit, "uri")}} 
                 {% endif %}
               </td>
-						  {% if item.unit.value.amount %}
+              {% if item.unit.value.amount %}
                 {{change_label(item.unit, "value")}}
                 <td>{{ item.unit.value.amount|currency }} {{change_label(item.unit.value, "amount")}} {{ item.unit.value.currency }} {{change_label(item.unit.value, "currency")}}</td>
               {% else %}
                 <td></td>
-						  {% endif %}
+              {% endif %}
 
               <td>
                 {% if item.deliveryAddress.streetAddress %}
@@ -112,14 +112,14 @@
               </td>
 
               <td>{{ insert_extra_fields(item) }}</td>
-						</tr>
-					{% endfor %}
-				</tbody>	
-			</table>
+            </tr>
+          {% endfor %}
+        </tbody>  
+      </table>
       </div>
-		{% else %}
+    {% else %}
       <div class="panel-body">
         {{ gettext("No items provided") }}
       </div>
-		{% endif %}
+    {% endif %}
 </div>

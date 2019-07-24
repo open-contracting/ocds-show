@@ -21,9 +21,9 @@
       </div>
     </body>
     
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="../js/nunjucks.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="../js/nunjucks.min.js"></script>
     <script src="../templates.js"></script>
     <script src="release.json"></script>
     <script>
@@ -45,12 +45,12 @@
              var input = {}
              input['release'] = JSON.parse(jsonInput.value)
              input['gettext'] = gettext
-			 env = nunjucks.configure()
-			 // this needs replacing with something readable
+       env = nunjucks.configure()
+       // this needs replacing with something readable
              env.addFilter('currency', function(number) {
-				return number.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
-			 })
-			 var content = env.render('release.html', input);
+        return number.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
+       })
+       var content = env.render('release.html', input);
              container.innerHTML = content
 
          } catch (e) {
