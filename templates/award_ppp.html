@@ -15,44 +15,44 @@
         {{ gettext("No description provided") }}
       {% endif %}
       <dl>
-         <dt class="dt-large dt-inline dt-gap">
-           {{ gettext("Status") }} {{ change_label(award, 'status') }}
-         </dt>
-         <dd class="dd-large dd-inline dd-gap">
-           {% if award.status %}
-             {{ award.status }}
-           {% else %}
-             {{ gettext("No status provided") }}
-           {% endif %}
-         </dd>
+        <dt class="dt-large dt-inline dt-gap">
+          {{ gettext("Status") }} {{ change_label(award, 'status') }}
+        </dt>
+        <dd class="dd-large dd-inline dd-gap">
+          {% if award.status %}
+            {{ award.status }}
+          {% else %}
+            {{ gettext("No status provided") }}
+          {% endif %}
+        </dd>
 
-         <dt class="dt-large dt-inline">
+        <dt class="dt-large dt-inline">
             {{ gettext("Date") }} {{ change_label(award, 'date') }}
-         </dt>
-         <dd class="dd-large dd-inline">
+        </dt>
+        <dd class="dd-large dd-inline">
             {% if award.date %}
               {{ date_popout(award, 'date') }}
             {% else %}
               {{ gettext("No date provided") }}
             {% endif %}
-         </dd>
+        </dd>
 
-         <dt class="dt-large dt-inline">
+        <dt class="dt-large dt-inline">
             {{ gettext("Value") }} {{ change_label(award, 'value') }}
-         </dt>
-         <dd class="dd-large dd-inline">
+        </dt>
+        <dd class="dd-large dd-inline">
             {% if award.value.amount %}
               {{ award.value.amount|currency }} {{ change_label(award.value, 'amount') }}
               {{ award.value.currency }} {{ change_label(award.value, 'currency') }}
             {% else %}
               {{ gettext("Value not provided") }}
             {% endif %}
-         </dd>
+        </dd>
 
-         <dt class="dt-large dt-gap">
+        <dt class="dt-large dt-gap">
             {{ gettext("Contract Period") }} {{ change_label(award, 'contractPeriod') }}
-         </dt>
-         <dd class="dd-small">
+        </dt>
+        <dd class="dd-small">
             <strong>{{ gettext("Start: ") }}</strong>
             {% if award.contractPeriod.startDate %}
               {{ date_popout(award.contractPeriod, 'startDate') }}
@@ -75,9 +75,9 @@
               <strong class="gap-left">{{ gettext("Max Extent Date: ") }}</strong>
               {{ date_popout(award.contractPeriod, 'maxExtentDate') }}
             {% endif %}
-         </dd>
-         <dd>{{ insert_extra_fields(award) }}</dd>
-       </dl>
+        </dd>
+        <dd>{{ insert_extra_fields(award) }}</dd>
+      </dl>
     </div>
   </div>
 
@@ -86,7 +86,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">
-             {{ gettext("Preferred Bidders") }} {{ change_label(award, 'preferredBidders') }}
+            {{ gettext("Preferred Bidders") }} {{ change_label(award, 'preferredBidders') }}
           </h3>
         </div>
         <div class="panel-body">
@@ -110,7 +110,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
-               {{ gettext("Reqirement Responses") }}
+              {{ gettext("Reqirement Responses") }}
             </h3>
           </div>
               {% set requirementResponses = award.requirementResponses %}
@@ -253,7 +253,7 @@
                   {{ award.evaluationIndicators.netPresentValueDetails }} {{ change_label(award.evaluationIndicators, 'netPresentValueDetails') }}
                 </dd>
               {% endif %}
-             </dl>
+            </dl>
           </div>
         </div>
       </div>
