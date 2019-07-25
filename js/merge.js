@@ -1,10 +1,10 @@
-var NOT_FLATTEN_KEYS = ['additionalIdentifiers',
-                        'additionalClassifications',
-                        'suppliers',
-                        'changes',
-                        'tenderers'
-                       ]
-
+var NOT_FLATTEN_KEYS = [
+  'additionalIdentifiers',
+  'additionalClassifications',
+  'suppliers',
+  'changes',
+  'tenderers'
+]
 
 function flatten(obj) {
   var flattened = {};
@@ -202,7 +202,7 @@ function augment_path(obj) {
 }
 
 if (typeof window === 'undefined') {
-   exports.flatten_all = flatten_all;
-   exports.get_changes = get_changes;
-   exports.augment_path = augment_path;
+  exports.flatten_all = flatten_all;
+  exports.get_changes = get_changes;
+  exports.augment_path = augment_path;
 }

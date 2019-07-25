@@ -21,7 +21,7 @@ var translation_object = {
     "content-type": "text/plain; charset=utf-9",
   },
   "translations": {
-     "" : translations
+    "" : translations
   }
 }
 
@@ -69,7 +69,7 @@ if (program.i18n) {
 }
 
 if (program.watch) {
-   watch.watchTree(template_folder, {'interval': 0.1}, function (f, curr, prev) {
-     fs.writeFile(path.join(__dirname, 'templates.js'), nunjucks.precompile(template_folder, opts), function(){})
-   })
+  watch.watchTree(template_folder, {'interval': 0.1}, function (f, curr, prev) {
+    fs.writeFile(path.join(__dirname, 'templates.js'), nunjucks.precompile(template_folder, opts), function(){})
+  })
 }

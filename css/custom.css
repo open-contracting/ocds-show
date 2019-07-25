@@ -1,6 +1,6 @@
 /*h1.panel-heading,h2.panel-heading, h3.panel-heading,h4.panel-heading {
-   margin-top: 0px;
-   margin-bottom: 0px
+  margin-top: 0px;
+  margin-bottom: 0px
 }*/
 
 #release-tabs .tab-pane {
@@ -16,16 +16,16 @@
 }
 
 .jh-type-object > tbody > tr:nth-child(2n+1), .jh-type-array > tbody > tr:nth-child(2n+1) {
-    background-color: #f4f6e5 !important;
+  background-color: #f4f6e5 !important;
 }
 /* ppp styling
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
-    background-color: #F6EDE5 !important;
+  background-color: #F6EDE5 !important;
 }
 
 .nav > li > a:hover, .nav > li > a:focus {
-    text-decoration: none;
-    background-color:  #F6EDE5 !important;
+  text-decoration: none;
+  background-color:  #F6EDE5 !important;
 }
 
 .label-primary {
@@ -44,7 +44,6 @@ a:hover, a:focus {color: #7c1200;text-decoration: underline;}
 
 .navbar-inverse {background-color: #c20000 !important ;border-color: red !important ;}
 */
-
 .gap-left {
   margin-left: 10px
 }
