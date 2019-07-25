@@ -5060,8 +5060,8 @@ var output = "";
 try {
 var parentTemplate = null;
 var macro_t_1 = runtime.makeMacro(
-["change", "gettext"], 
-["class"], 
+["change", "gettext"],
+["class"],
 function (l_change, l_gettext, kwargs) {
 frame = frame.push(true);
 kwargs = kwargs || {};
@@ -7671,8 +7671,8 @@ try {
 var parentTemplate = null;
 output += "  ";
 var macro_t_1 = runtime.makeMacro(
-["object", "key"], 
-[], 
+["object", "key"],
+[],
 function (l_object, l_key, kwargs) {
 frame = frame.push(true);
 kwargs = kwargs || {};
@@ -7724,8 +7724,8 @@ context.addExport("change_label");
 context.setVariable("change_label", macro_t_1);
 output += "\n\n  ";
 var macro_t_4 = runtime.makeMacro(
-["obj"], 
-[], 
+["obj"],
+[],
 function (l_obj, kwargs) {
 frame = frame.push(true);
 kwargs = kwargs || {};
@@ -7743,8 +7743,8 @@ context.addExport("extra_view");
 context.setVariable("extra_view", macro_t_4);
 output += "\n\n  ";
 var macro_t_6 = runtime.makeMacro(
-["obj"], 
-[], 
+["obj"],
+[],
 function (l_obj, kwargs) {
 frame = frame.push(true);
 kwargs = kwargs || {};
@@ -7783,8 +7783,8 @@ context.addExport("insert_extra_fields");
 context.setVariable("insert_extra_fields", macro_t_6);
 output += "\n\n  ";
 var macro_t_9 = runtime.makeMacro(
-["object", "key"], 
-[], 
+["object", "key"],
+[],
 function (l_object, l_key, kwargs) {
 frame = frame.push(true);
 kwargs = kwargs || {};
@@ -7812,8 +7812,8 @@ context.addExport("date_popout");
 context.setVariable("date_popout", macro_t_9);
 output += "\n\n  ";
 var macro_t_11 = runtime.makeMacro(
-["object", "key"], 
-[], 
+["object", "key"],
+[],
 function (l_object, l_key, kwargs) {
 frame = frame.push(true);
 kwargs = kwargs || {};
@@ -8223,8 +8223,8 @@ try {
 var parentTemplate = null;
 output += "\n  ";
 var macro_t_1 = runtime.makeMacro(
-["object", "key"], 
-[], 
+["object", "key"],
+[],
 function (l_object, l_key, kwargs) {
 frame = frame.push(true);
 kwargs = kwargs || {};
@@ -8276,8 +8276,8 @@ context.addExport("change_label");
 context.setVariable("change_label", macro_t_1);
 output += "\n\n  ";
 var macro_t_4 = runtime.makeMacro(
-["object", "key"], 
-[], 
+["object", "key"],
+[],
 function (l_object, l_key, kwargs) {
 frame = frame.push(true);
 kwargs = kwargs || {};
@@ -8305,8 +8305,8 @@ context.addExport("date_popout");
 context.setVariable("date_popout", macro_t_4);
 output += "\n\n  ";
 var macro_t_6 = runtime.makeMacro(
-["object", "key"], 
-[], 
+["object", "key"],
+[],
 function (l_object, l_key, kwargs) {
 frame = frame.push(true);
 kwargs = kwargs || {};

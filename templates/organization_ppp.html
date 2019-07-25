@@ -25,27 +25,27 @@
             <tbody>
               {% for shareholder in organization.shareholders %}
                 <tr>
-                  <td>  
+                  <td>
                     {% if shareholder.shareholder.id and parties[shareholder.shareholder.id] %}
-                    <a data-toggle="modal" href="#organization-{{shareholder.shareholder.id}}">
+                    <a data-toggle="modal" href="#organization-{{ shareholder.shareholder.id }}">
                     {% endif %}
 
-                    {{shareholder.shareholder.name}} {{change_label(shareholder.shareholder, "name")}}
-                    <small> ({{shareholder.shareholder.id}} {{change_label(shareholder.shareholder, "id")}}) </small> 
+                    {{ shareholder.shareholder.name }} {{ change_label(shareholder.shareholder, "name") }}
+                    <small> ({{ shareholder.shareholder.id }} {{ change_label(shareholder.shareholder, "id") }}) </small>
 
                     {% if shareholder.shareholder.id and parties[shareholder.shareholder.id] %}
                     </a>
                     {% endif%}
                   </td>
-                  <td> {{shareholder.shareholding * 100}}% {{change_label(shareholder, "shareholding")}} </td>
-                  <td> {{shareholder.votingRights}} {{change_label(shareholder, "votingRights")}} </td>
-                  <td> {{shareholder.votingRightsDetails}} {{change_label(shareholder, "votingRightsDetails")}} </td>
-                  <td> {{shareholder.notes}} {{change_label(shareholder, "notes")}} </td>
+                  <td> {{ shareholder.shareholding * 100 }}% {{ change_label(shareholder, "shareholding") }} </td>
+                  <td> {{ shareholder.votingRights }} {{ change_label(shareholder, "votingRights") }} </td>
+                  <td> {{ shareholder.votingRightsDetails }} {{ change_label(shareholder, "votingRightsDetails") }} </td>
+                  <td> {{ shareholder.notes }} {{ change_label(shareholder, "notes") }} </td>
                 </tr>
               {% endfor %}
             </tbody>
           </table>
-          <div class="shareholders-chart" id="{{organization.name|replace(' ', '')}}" data-shareholders-chart="{{organization.shareholders|dump}}"></div>
+          <div class="shareholders-chart" id="{{ organization.name|replace(' ', '') }}" data-shareholders-chart="{{ organization.shareholders|dump }}"></div>
       </div>
     </div>
   {% endif %}

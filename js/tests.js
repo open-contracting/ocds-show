@@ -53,7 +53,7 @@ QUnit.test( "Test Augment Path", function( assert ) {
     "list_obj_new": [{"id": 1, "nested": "nested_value"}],
     "list_string": ["a", "b", "c"],
   }
-  var expected = 
+  var expected =
     {
   "__path": "[]",
   "key": "value",

@@ -19,13 +19,13 @@
         <tbody>
           {% for statistic in bids.statistics %}
             <tr>
-              <td>{{ statistic.id }} {{change_label(statistic, "title")}} </td>
+              <td>{{ statistic.id }} {{ change_label(statistic, "title") }} </td>
               <td>{{ date_popout(statistic, "date") }} </td>
-              <td>{{ statistic.measure }} {{change_label(statistic, "measure")}} </td>
-              <td>{{ statistic.value }} {{change_label(statistic, "value")}} </td>
+              <td>{{ statistic.measure }} {{ change_label(statistic, "measure") }} </td>
+              <td>{{ statistic.value }} {{ change_label(statistic, "value") }} </td>
             </tr>
           {% endfor %}
-        </tbody>  
+        </tbody>
       </table>
       </div>
 

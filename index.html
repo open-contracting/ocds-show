@@ -41,7 +41,7 @@
       <div class="container">
 
         <div id="input-json-container" class="hide">
-          <h3> Input a valid OCDS record/release 
+          <h3> Input a valid OCDS record/release
           <button id="hide-input-button" class="pull-right btn btn-primary btn-sm">Hide Input</button>
           </h3>
           <textarea id="input-json" name="input-json"></textarea>
@@ -54,11 +54,11 @@
 
 
     </body>
-    
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
   <script src="https://vega.github.io/vega/vega.min.js"></script>
-  
+
   <script src="js/nunjucks.min.js"></script>
   <script src="js/merge.js"></script>
   <script src="js/filereader.js"></script>
@@ -85,7 +85,7 @@
        var gettext = function(text) {
           return text
        }
-      
+
        id_counter_value = 0
        var id_counter = function() {
           id_counter_value = id_counter_value + 1
@@ -144,7 +144,7 @@
            } else if(context.newData) {
              id = input.ocids[0]
            } else {
-             id = $('#id-select').val() 
+             id = $('#id-select').val()
            }
            input['ocid'] = id
 
@@ -218,11 +218,11 @@
            })
 
            if (context.id) {
-              id = context.id 
+              id = context.id
             } else if (context.newData) {
              id = input.release_ids[0]
            } else {
-             id = $('#id-select').val() 
+             id = $('#id-select').val()
            }
            var current_release;
 
@@ -333,7 +333,7 @@
                var shareData = [];
                var shareObj = JSON.parse(this.dataset.shareholdersChart);
                shareObj.forEach(function(shareholder) {
-                 
+
                  shareData.push({
                   'percent': shareholder.shareholding,
                   'percentString': (shareholder.shareholding * 100) + '%',
@@ -364,20 +364,20 @@
         }
 
        if(getUrlVars()["load"]) {
-          $.get(getUrlVars()["load"],function(data){ 
+          $.get(getUrlVars()["load"],function(data){
               jsonInput.val(JSON.stringify(data))
               if(getUrlVars()["releaseID"]) {
-                render_json({"id":getUrlVars()["releaseID"],"newData":true});  
+                render_json({"id":getUrlVars()["releaseID"],"newData":true});
               } else {
                 render_json({"newData":true});
               }
-              
+
           })
        } else {
-          jsonInput.val("") 
+          jsonInput.val("")
        }
 
-       
+
        render_json({"newData": true});
 
        $('#input-json').on("input", function(e) {

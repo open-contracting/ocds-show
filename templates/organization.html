@@ -1,7 +1,7 @@
 
 
 <h3 class="tab-heading">
-  {{organization.name}} {{change_label(organization, 'name')}} {% if organization.id %} <small>({{organization.id}})</small> {{change_label(organization)}}{% endif %}
+  {{ organization.name }} {{ change_label(organization, 'name') }} {% if organization.id %} <small>({{ organization.id }})</small> {{ change_label(organization) }}{% endif %}
 
 </h3>
 <p>
@@ -9,14 +9,14 @@
   {% endblock additionalOrgFieldsBefore %}
   <div class="panel panel-{% if organization.roles %}default{% else %}warning{% endif %}">
     <div class="panel-heading">
-      <strong> {{gettext("Roles within process")}} </strong> 
+      <strong> {{ gettext("Roles within process") }} </strong>
     </div>
     <div class="panel-body">
       <ul>
         {% for role in organization.roles %}
-           <li>
-             {{role}}
-           </li>
+          <li>
+            {{ role }}
+          </li>
         {% endfor %}
       </ul>
     </div>
@@ -25,25 +25,25 @@
   <div class="panel panel-{% if organization.contactPoint %}default{% else %}warning{% endif %}">
     <div class="panel-heading">
       <h3 class="panel-title">
-        {{ gettext("Contact Point")}} {{change_label(organization, 'contactPoint')}}
+        {{ gettext("Contact Point") }} {{ change_label(organization, 'contactPoint') }}
       </h3>
     </div>
     <div class="panel-body">
       {% if organization.contactPoint %}
         {% if organization.contactPoint.name %}
-          {{organization.contactPoint.name}} {{change_label(organization.contactPoint, "name")}}<br>
+          {{ organization.contactPoint.name }} {{ change_label(organization.contactPoint, "name") }}<br>
         {% endif %}
         {% if organization.contactPoint.email %}
-          <a href="mailto:{{organization.contactPoint.email}}">{{organization.contactPoint.email}}</a>{{change_label(organization.contactPoint, "email")}}<br>
+          <a href="mailto:{{ organization.contactPoint.email }}">{{ organization.contactPoint.email }}</a>{{ change_label(organization.contactPoint, "email") }}<br>
         {% endif %}
         {% if organization.contactPoint.telephone %}
-          {{ gettext("Phone: ") }}{{organization.contactPoint.telephone}} {{change_label(organization.contactPoint, "telephone")}}<br>
+          {{ gettext("Phone: ") }}{{ organization.contactPoint.telephone }} {{ change_label(organization.contactPoint, "telephone") }}<br>
         {% endif %}
         {% if organization.contactPoint.faxNumber %}
-          {{ gettext("Fax: ") }}{{organization.contactPoint.faxNumber}} {{change_label(organization.contactPoint, "faxNumber")}}<br>
+          {{ gettext("Fax: ") }}{{ organization.contactPoint.faxNumber }} {{ change_label(organization.contactPoint, "faxNumber") }}<br>
         {% endif %}
         {% if organization.contactPoint.url %}
-          <a href="{{organization.contactPoint.url}}" target="_blank">{{organization.contactPoint.url}}</a>{{change_label(organization.contactPoint, "url")}}<br>
+          <a href="{{ organization.contactPoint.url }}" target="_blank">{{ organization.contactPoint.url }}</a>{{ change_label(organization.contactPoint, "url") }}<br>
         {% endif %}
         {{ insert_extra_fields(organization.contactPoint) }}
       {% else %}
@@ -54,25 +54,25 @@
   <div class="panel panel-{% if organization.address %}default{% else %}warning{% endif %}">
     <div class="panel-heading">
       <h3 class="panel-title">
-        {{ gettext("Address")}} {{change_label(organization, 'address')}}
+        {{ gettext("Address") }} {{ change_label(organization, 'address') }}
       </h3>
     </div>
     <div class="panel-body">
       {% if organization.address %}
         {% if organization.address.streetAddress %}
-          {{organization.address.streetAddress}} {{change_label(organization.address, "streetAddress")}}<br>
+          {{ organization.address.streetAddress }} {{ change_label(organization.address, "streetAddress") }}<br>
         {% endif %}
-        {% if organization.address.locality %} {{change_label(organization.address, "locality")}}
-          {{organization.address.locality}} <br>
+        {% if organization.address.locality %} {{ change_label(organization.address, "locality") }}
+          {{ organization.address.locality }} <br>
         {% endif %}
-        {% if organization.address.region %} {{change_label(organization.address, "region")}}
-          {{organization.address.region}} <br>
+        {% if organization.address.region %} {{ change_label(organization.address, "region") }}
+          {{ organization.address.region }} <br>
         {% endif %}
-        {% if organization.address.postalCode %} {{change_label(organization.address, "postalCode")}}
-          {{organization.address.postalCode}} <br>
+        {% if organization.address.postalCode %} {{ change_label(organization.address, "postalCode") }}
+          {{ organization.address.postalCode }} <br>
         {% endif %}
-        {% if organization.address.countryName %} {{change_label(organization.address, "countryName")}}
-          {{organization.address.countryName}} <br>
+        {% if organization.address.countryName %} {{ change_label(organization.address, "countryName") }}
+          {{ organization.address.countryName }} <br>
         {% endif %}
         {{ insert_extra_fields(organization.address) }}
       {% else %}
@@ -100,13 +100,13 @@
           <tbody>
             {% if organization.identifier %}
               <tr>
-                <td><a href="https://standard.open-contracting.org/latest/en/schema/codelists/#organization-identifier-scheme" target="_blank">{{ organization.identifier.scheme }}</a>{{change_label(organization.identifier, "scheme")}}</td>
-                <td>{{ organization.identifier.id }} {{change_label(organization.identifier, "id")}}</td>
+                <td><a href="https://standard.open-contracting.org/latest/en/schema/codelists/#organization-identifier-scheme" target="_blank">{{ organization.identifier.scheme }}</a>{{ change_label(organization.identifier, "scheme") }}</td>
+                <td>{{ organization.identifier.id }} {{ change_label(organization.identifier, "id") }}</td>
                 <td>
                   {% if organization.identifier.uri %}
-                    <a href="{{ organization.identifier.uri }}" target="_blank">{{ organization.identifier.legalName }}</a> {{change_label(organization.identifier, "legalName")}} 
+                    <a href="{{ organization.identifier.uri }}" target="_blank">{{ organization.identifier.legalName }}</a> {{ change_label(organization.identifier, "legalName") }}
                   {% else %}
-                    {{ organization.identifier.legalName }} {{change_label(organization.identifier, "legalName")}} 
+                    {{ organization.identifier.legalName }} {{ change_label(organization.identifier, "legalName") }}
                   {% endif %}
                 </td>
                 <td>{{ insert_extra_fields(organization.identifier) }}</td>
@@ -115,7 +115,7 @@
             {% if organization.additionalIdentifiers %}
               {% for identifier in organization.additionalIdentifiers %}
                 <tr>
-                  <td><a href="https://standard.open-contracting.org/latest/en/schema/codelists/#organization-identifier-scheme" target="_blank">{{ identifier.scheme }}</a> {{change_label(identifier, "legalName")}} </td>
+                  <td><a href="https://standard.open-contracting.org/latest/en/schema/codelists/#organization-identifier-scheme" target="_blank">{{ identifier.scheme }}</a> {{ change_label(identifier, "legalName") }} </td>
                   <td>{{ identifier.id }} {{ change_label(identifier, "id") }}</td>
                   <td>
                     {% if identifier.uri %}
@@ -140,7 +140,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">
-          Extra fields {{change_label(organization, "__extra")}}
+          Extra fields {{ change_label(organization, "__extra") }}
         </h3>
       </div>
       <div class="panel-body">

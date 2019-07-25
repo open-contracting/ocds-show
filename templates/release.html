@@ -2,9 +2,9 @@
     {% if get_change %}
       {% set change = get_change(object, key) %}
       {% if change == "new" %}
-        <span class="label label-success {{class}}">{{gettext("new")}}</span>
+        <span class="label label-success {{ class }}">{{ gettext("new") }}</span>
       {% elif change == "changed" %}
-        <span class="label label-primary {{class}}">{{gettext("changed")}}</span>
+        <span class="label label-primary {{ class }}">{{ gettext("changed") }}</span>
       {% endif %}
     {% endif %}
   {% endmacro %}
@@ -14,32 +14,31 @@
   {% endmacro %}
 
   {% macro insert_extra_fields(obj) %}
-    {% if obj.__extra %} {{change_label(obj, "__extra")}}
+    {% if obj.__extra %} {{ change_label(obj, "__extra") }}
 
       {% set id_value = id_counter() %}
-      <button class="small-top-margin btn btn-success btn-sm" type="button" data-toggle="collapse" data-target="#collapse_{{id_value}}" aria-expanded="false" aria-controls="collapseExample">
+      <button class="small-top-margin btn btn-success btn-sm" type="button" data-toggle="collapse" data-target="#collapse_{{ id_value }}" aria-expanded="false" aria-controls="collapseExample">
         Extra fields
       </button>
-      <div class="collapse" id="collapse_{{id_value}}">
+      <div class="collapse" id="collapse_{{ id_value }}">
         <div class="well">
           {{ extra_view(obj) }}
         </div>
       </div>
     {% endif %}
-
   {% endmacro %}
 
   {% macro date_popout(object, key) %}
-    <span class="no-wrap" data-toggle="tooltip" title="{{object[key]}}"> {{ object[key]|truncate(10,true,"") }} {{change_label(object, key)}} 
-      
+    <span class="no-wrap" data-toggle="tooltip" title="{{ object[key] }}"> {{ object[key]|truncate(10,true,"") }} {{ change_label(object, key) }}
+
     {% if object[key] %}
-      <span class="glyphicon glyphicon-new-window small-icon" aria-hidden="true"></span> 
+      <span class="glyphicon glyphicon-new-window small-icon" aria-hidden="true"></span>
     {% endif %}
     </span>
   {% endmacro %}
 
   {% macro long_text_popout(object, key) %}
-  <div {% if object[key]|length > 70 %} data-toggle="popover" {% endif %} data-trigger="hover" data-placement="left" data-content="{{object[key]}}">
+  <div {% if object[key]|length > 70 %} data-toggle="popover" {% endif %} data-trigger="hover" data-placement="left" data-content="{{ object[key] }}">
     {{ object[key]|truncate(70) }}
     {{ change_label(object, key) }}
     {% if object[key]|length > 70  %} <span class="glyphicon glyphicon-new-window small-icon" aria-hidden="true"></span> {% endif %}
@@ -47,60 +46,56 @@
   {% endmacro %}
 
   <h1>
-    {{release.tender.title}} {% if not release.tender.title %} {{release.ocid}} {% endif %}  
+    {{ release.tender.title }} {% if not release.tender.title %} {{ release.ocid }} {% endif %}
   </h1>
 
 <main class="row">
-
   <ul class="release-pills col-md-3 nav nav-pills nav-stacked">
     <li role="presentation" class="active"><a href="#metadata">Metadata</a></li>
-    <li role="presentation" class="{% if not release.relatedProcesses %}disabled{%endif%}" >
-       <a href="#relatedProcesses">Related Processes {% if release.relatedProcesses %}{{change_label(release, 'relatedProcesses')}}{%endif%}</a>
+    <li role="presentation" class="{% if not release.relatedProcesses %}disabled{%endif%}">
+      <a href="#relatedProcesses">Related Processes {% if release.relatedProcesses %}{{ change_label(release, 'relatedProcesses') }}{%endif%}</a>
     </li>
-    <li role="presentation" class="{% if not release.parties %}disabled{%endif%}" >
-       <a href="#parties">Parties {% if release.parties %}{{change_label(release, 'parties')}}{%endif%}</a>
+    <li role="presentation" class="{% if not release.parties %}disabled{%endif%}">
+      <a href="#parties">Parties {% if release.parties %}{{ change_label(release, 'parties') }}{%endif%}</a>
     </li>
-    <li role="presentation" class="{% if not release.tender.procuringEntity %}disabled{%endif%}" ><a href="#procuringEntity">Procuring entity {% if release.tender.procuringEntity %}{{change_label(release, 'tender')}}{%endif%}</a></li>
-    <li role="presentation" class="{% if not release.buyer %}disabled{%endif%}" ><a href="#buyer">Buyer {{change_label(release, 'buyer')}} </a></li>
-    <li role="presentation" class="{% if not release.planning %}disabled{%endif%}" ><a href="#planning">Planning {{change_label(release, 'planning')}}</a></li>
-    <li role="presentation" class="{% if not release.tender %}disabled{%endif%} " ><a href="#tender">Tender {{ change_label(release, 'tender') }}</a> </li>
-    <li role="presentation" class="{% if not release.awards %}disabled{%endif%}" ><a href="#awards">Awards {{ change_label(release, 'awards') }}</a></li>
-    <li role="presentation" class="{% if not release.contracts %}disabled{%endif%}" ><a href="#contracts">Contracts {{ change_label(release, 'contracts') }}</a></li>
-
+    <li role="presentation" class="{% if not release.tender.procuringEntity %}disabled{%endif%}"><a href="#procuringEntity">Procuring entity {% if release.tender.procuringEntity %}{{ change_label(release, 'tender') }}{%endif%}</a></li>
+    <li role="presentation" class="{% if not release.buyer %}disabled{%endif%}"><a href="#buyer">Buyer {{ change_label(release, 'buyer') }} </a></li>
+    <li role="presentation" class="{% if not release.planning %}disabled{%endif%}"><a href="#planning">Planning {{ change_label(release, 'planning') }}</a></li>
+    <li role="presentation" class="{% if not release.tender %}disabled{%endif%}"><a href="#tender">Tender {{ change_label(release, 'tender') }}</a> </li>
+    <li role="presentation" class="{% if not release.awards %}disabled{%endif%}"><a href="#awards">Awards {{ change_label(release, 'awards') }}</a></li>
+    <li role="presentation" class="{% if not release.contracts %}disabled{%endif%}"><a href="#contracts">Contracts {{ change_label(release, 'contracts') }}</a></li>
     {% if release.__extra %}
       <li role="presentation"><a href="#extra">Extra Fields {{ change_label(release, '__extra') }}</a></li>
     {% endif %}
-
   </ul>
-
 
   <div id="release-tabs" class="tab-content">
   <div class="col-md-9 tab-pane active" id="metadata">
-          <ul class="list-group">
-            <li class="list-group-item">
-              <strong>OCID: </strong>{{release.ocid}}
-            </li>
-            <li class="list-group-item">
-              <strong>Release ID: </strong>{{release.id}}
-            </li>
-            <li class="list-group-item">
-               <strong>Date: </strong> {{ date_popout(release, "date") }}
-            </li>
-            <li class="list-group-item">
-              <strong>Language: </strong>{{release.language}}
-            </li>
-            <li class="list-group-item">
-              <strong>Tags: </strong>
-              {% if release.tag %}
-                {{ release.tag|join(", ") }}
-              {% else %}
-                {{ gettext("No Tags Provided") }}
-              {% endif %}
-            </li>
-            <li class="list-group-item">
-              <strong>Initiation type: </strong>{{release.initiationType}}
-            </li>
-          </ul>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <strong>OCID: </strong>{{ release.ocid }}
+      </li>
+      <li class="list-group-item">
+        <strong>Release ID: </strong>{{ release.id }}
+      </li>
+      <li class="list-group-item">
+        <strong>Date: </strong> {{ date_popout(release, "date") }}
+      </li>
+      <li class="list-group-item">
+        <strong>Language: </strong>{{ release.language }}
+      </li>
+      <li class="list-group-item">
+        <strong>Tags: </strong>
+        {% if release.tag %}
+          {{ release.tag|join(", ") }}
+        {% else %}
+          {{ gettext("No Tags Provided") }}
+        {% endif %}
+      </li>
+      <li class="list-group-item">
+        <strong>Initiation type: </strong>{{ release.initiationType }}
+      </li>
+    </ul>
   </div>
 
   <div class="col-md-9 tab-pane" id="relatedProcesses">
@@ -158,26 +153,31 @@
       </div>
     {% endif %}
   </div>
+
   {% set tender = release.tender %}
   <div id="tender" class="tab-pane col-md-9">
     {% include 'tender.html' %}
   </div>
+
   {% set awards = release.awards %}
   <div id="awards" class="tab-pane col-md-9">
     {% include 'awards.html' %}
   </div>
+
   {% set contracts = release.contracts %}
   <div id="contracts" class="tab-pane col-md-9">
-    {% include 'contracts.html' %}     
+    {% include 'contracts.html' %}
   </div>
+
   {% if release.__extra %}
     <div id="extra" class="tab-pane col-md-9">
       {{ extra_view(release) }}
     </div>
   {% endif %}
 </main>
+
 {% for organization in release.parties %}
-  <div class="modal" id="organization-{{organization.id}}" tabindex="-1" role="dialog" aria-labelledby="orgainization-{{organization.id}}">
+  <div class="modal" id="organization-{{ organization.id }}" tabindex="-1" role="dialog" aria-labelledby="orgainization-{{ organization.id }}">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-body">

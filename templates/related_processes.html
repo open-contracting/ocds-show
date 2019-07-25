@@ -21,19 +21,19 @@
     <tr>
       <td>
         {% if relatedProcess.uri %}
-          <a href="{{relatedProcess.uri}}"> {{relatedProcess.title}} </a>
+          <a href="{{ relatedProcess.uri }}"> {{ relatedProcess.title }} </a>
         {% else %}
-          {{relatedProcess.title}}
+          {{ relatedProcess.title }}
         {% endif %}
       </td>
       <td>
-        {{relatedProcess.id}}
+        {{ relatedProcess.id }}
       </td>
       <td>
-        <strong> {{relatedProcess.scheme}} </strong> - {{relatedProcess.identifier}}
+        <strong> {{ relatedProcess.scheme }} </strong> - {{ relatedProcess.identifier }}
       </td>
       <td>
-        {{relatedProcess.relationship|join(", ")}}
+        {{ relatedProcess.relationship|join(", ") }}
       </td>
       <td>
         {{ insert_extra_fields(relatedProcess) }}

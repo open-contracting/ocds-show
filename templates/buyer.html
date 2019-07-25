@@ -2,36 +2,36 @@
   <aside id="buyer" class="panel panel-default">
       <div class="panel-heading">
         <h2>
-          {{ gettext("Buyer") }} 
+          {{ gettext("Buyer") }}
         </h2>
       </div>
       <div class="panel-body">
         <h2>
-          <small>{{buyer.name}}</small>
+          <small>{{ buyer.name }}</small>
         </h2>
         <p>
           {% if buyer.contactPoint %}
             <div id="contactPoint" class="panel panel-default">
               <div class="panel-heading">
                 <h3 class="panel-title">
-                  {{ gettext("Contact Point")}}
+                  {{ gettext("Contact Point") }}
                 </h3>
               </div>
               <div class="panel-body">
                 {% if buyer.contactPoint.name %}
-                  {{buyer.contactPoint.name}} <br>
+                  {{ buyer.contactPoint.name }} <br>
                 {% endif %}
                 {% if buyer.contactPoint.email %}
-                  <a href="mailto:{{buyer.contactPoint.email}}">{{buyer.contactPoint.email}}</a><br>
+                  <a href="mailto:{{ buyer.contactPoint.email }}">{{ buyer.contactPoint.email }}</a><br>
                 {% endif %}
                 {% if buyer.contactPoint.telephone %}
-                  {{ gettext("Phone: ") }}{{buyer.contactPoint.telephone}} <br>
+                  {{ gettext("Phone: ") }}{{ buyer.contactPoint.telephone }} <br>
                 {% endif %}
                 {% if buyer.contactPoint.faxNumber %}
-                  {{ gettext("Fax: ") }}{{buyer.contactPoint.faxNumber}} <br>
+                  {{ gettext("Fax: ") }}{{ buyer.contactPoint.faxNumber }} <br>
                 {% endif %}
                 {% if buyer.contactPoint.url %}
-                  <a href="{{buyer.contactPoint.url}}" target="_blank">{{buyer.contactPoint.url}}</a><br>
+                  <a href="{{ buyer.contactPoint.url }}" target="_blank">{{ buyer.contactPoint.url }}</a><br>
                 {% endif %}
               </div>
             </div>
@@ -39,7 +39,7 @@
             <div id="contactPoint" class="panel panel-warning">
               <div class="panel-heading">
                 <h3 class="panel-title">
-                  {{ gettext("Contact Point")}}
+                  {{ gettext("Contact Point") }}
                 </h3>
               </div>
               <div class="panel-body">
@@ -51,24 +51,24 @@
             <div id="address" class="panel panel-default">
               <div class="panel-heading">
                 <h3 class="panel-title">
-                  {{ gettext("Address")}}
+                  {{ gettext("Address") }}
                 </h3>
               </div>
               <div class="panel-body">
                 {% if buyer.address.streetAddress %}
-                  {{buyer.address.streetAddress}} <br>
+                  {{ buyer.address.streetAddress }} <br>
                 {% endif %}
                 {% if buyer.address.locality %}
-                  {{buyer.address.locality}} <br>
+                  {{ buyer.address.locality }} <br>
                 {% endif %}
                 {% if buyer.address.region %}
-                  {{buyer.address.region}} <br>
+                  {{ buyer.address.region }} <br>
                 {% endif %}
                 {% if buyer.address.postalCode %}
-                  {{buyer.address.postalCode}} <br>
+                  {{ buyer.address.postalCode }} <br>
                 {% endif %}
                 {% if buyer.address.countryName %}
-                  {{buyer.address.countryName}} <br>
+                  {{ buyer.address.countryName }} <br>
                 {% endif %}
               </div>
             </div>
@@ -76,7 +76,7 @@
             <div id="address" class="panel panel-warning">
               <div class="panel-heading">
                 <h3 class="panel-title">
-                  {{ gettext("Address")}}
+                  {{ gettext("Address") }}
                 </h3>
               </div>
               <div class="panel-body">

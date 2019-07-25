@@ -5,7 +5,7 @@
         OCID:
     <select id="id-select">
       {% for id in ocids %}
-      <option {% if id == ocid %}selected{%endif%} value="{{id}}">{{id}}</option> 
+      <option {% if id == ocid %}selected{%endif%} value="{{ id }}">{{ id }}</option>
       {% endfor %}
     </select>
     </label>

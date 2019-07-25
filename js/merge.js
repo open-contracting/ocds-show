@@ -1,4 +1,4 @@
-var NOT_FLATTEN_KEYS = ['additionalIdentifiers', 
+var NOT_FLATTEN_KEYS = ['additionalIdentifiers',
                         'additionalClassifications',
                         'suppliers',
                         'changes',
@@ -181,11 +181,11 @@ function augment_path(obj) {
         if (Array.isArray(value)) {
           if (typeof(value[0]) === 'object' ){
             traverse_array(path.concat(key), value);
-          } 
+          }
         } else {
           traverse_object(path.concat(key), value);
         }
-      } 
+      }
     });
   }
   var traverse_array = function(path, obj) {
@@ -205,4 +205,4 @@ if (typeof window === 'undefined') {
    exports.flatten_all = flatten_all;
    exports.get_changes = get_changes;
    exports.augment_path = augment_path;
-} 
+}

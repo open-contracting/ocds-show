@@ -5,7 +5,7 @@ var program = require('commander');
 var fs = require('fs');
 var watch = require('watch');
 var path = require('path');
- 
+
 program
   .option('-w --watch')
   .option('-i --i18n')
@@ -28,11 +28,11 @@ var translation_object = {
 var opts = {"include": ['\\.html$', '\\.jinja$']}
 nunjucks.compiler.Compiler.prototype.originalFunCall = nunjucks.compiler.Compiler.prototype.compileFunCall
 
-   
+
 
 var newFunCall = function(node, frame) {
   if (node.name.value == 'gettext') {
-    translations[node.args.children[0].value] = {"msgid": node.args.children[0].value, "msgstr": [""], 
+    translations[node.args.children[0].value] = {"msgid": node.args.children[0].value, "msgstr": [""],
       "comments": {"reference": this.templateName + " (lineno " + node.args.children[0].lineno + ", colno " + node.args.children[0].colno + ")"}
     }
   }
