@@ -25,6 +25,14 @@ Or, to watch the templates and re-compile them after any changes:
 
 A test file can be found in example/release_input.html.
 
+To run tests, install development dependencies:
+
+    npm install --only=dev
+
+Then, run:
+
+    npm test
+
 ## Templates
 
 Some templates have an OCDS for PPPs version, suffixed by `_ppp`. Besides referring to suffixed templates wherever possible, the differences are:
