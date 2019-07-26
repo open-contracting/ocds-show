@@ -28,7 +28,9 @@ Then, run:
 
     npm test
 
-## Templates
+## Maintenance
+
+The `full.json` and `full_record_package.json` example files are used by the [OCDS for Public Private Partnerships](https://github.com/open-contracting-extensions/public-private-partnerships) profile, and therefore should not be edited except as part of work on that profile.
 
 Some templates have an OCDS for PPPs version, suffixed by `_ppp`. Besides referring to suffixed templates wherever possible, the differences are:
 
