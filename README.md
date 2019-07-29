@@ -2,6 +2,18 @@
 
 A tool for displaying OCDS releases and records. [Try it now!](https://open-contracting.github.io/ocds-show/)
 
+## Features
+
+You can set the `load` query string parameter to a URL for an OCDS release package or record package:
+
+    https://open-contracting.github.io/ocds-show/?load=https://www.comprasestatales.gub.uy/ocds/release/llamado-631824
+
+This is especially useful if you are embedding OCDS Show in an `<iframe>`, and want to auto-load some data.
+
+**Note:** The URL must be served over HTTPS, because OCDS Show is served over HTTPS.
+
+**Note:** The URL must respond with [CORS headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) indicating that OCDS Show has permission to access the resource, e.g. `Access-Control-Allow-Origin: *`.
+
 ## Installation
 
 Clone this repository, then run:
