@@ -357,14 +357,14 @@ function getUrlVars() {
 }
 
 if(getUrlVars()["load"]) {
-  $.get(getUrlVars()["load"],function(data){
-    jsonInput.val(JSON.stringify(data))
-    if(getUrlVars()["releaseID"]) {
-      render_json({"id":getUrlVars()["releaseID"],"newData":true});
+  $.get(getUrlVars()["load"], function(data) {
+    jsonInput.val(JSON.stringify(data));
+    if (getUrlVars()["releaseID"]) {
+      render_json({"newData": true, "id": getUrlVars()["releaseID"]});
     } else {
-      render_json({"newData":true});
+      render_json({"newData": true});
     }
-  })
+  }, "json");
 } else {
   jsonInput.val("")
 }
