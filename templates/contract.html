@@ -882,6 +882,27 @@
 
   <div class="row">
     <div class="col-md-12">
+      {% if contract.amendments %}
+        {% set amendments = contract.amendments %}
+        {% set parent = contract %}
+        {% include 'amendments.html' %}
+      {% else %}
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              {{ gettext("Amendments") }}
+            </h3>
+          </div>
+          <div class="panel-body">
+            {{ gettext("No amendments provided") }}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">
