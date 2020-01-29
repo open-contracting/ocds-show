@@ -1,0 +1,42 @@
+<div class="panel panel-{% if amendments|length > 0 %}default{% else %}warning{% endif %}">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      {{ gettext("Amendments") }} {{ change_label(parent, 'amendments') }}
+    </h3>
+  </div>
+    {% if amendments|length > 0 %}
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>{{ gettext("ID") }}</th>
+              <th>{{ gettext("Date") }}</th>
+              <th>{{ gettext("Release ID") }}</th>
+              <th>{{ gettext("Amends release ID") }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for amendment in amendments %}
+              <tr> <!-- add conditional colouring based on presence of url? -->
+                <td>{{ amendment.id }} {{ change_label(amendment, 'id') }}</td>
+                <td>{{ date_popout(amendment, "date") }} </td>
+                <td>{{ amendment.releaseID }} {{ change_label(amendment, 'releaseID') }}</td>
+                <td>{{ amendment.amendsReleaseID }} {{ change_label(amendment, 'amendsReleaseID') }}</td>
+                <td>{{ insert_extra_fields(amendment) }}</td>
+              </tr>
+              <tr>
+                <td colspan="4"> <strong> {{ gettext("Description:") }} </strong> {{ amendment.description }} {{ change_label(amendment, 'description') }}</td>
+              </tr>
+              <tr>
+                <td colspan="4"> <strong> {{ gettext("Rationale:") }} </strong> {{ amendment.rationale }} {{ change_label(amendment, 'rationale') }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="panel-body">
+        {{ gettext("No amendments provided") }}
+      </div>
+    {% endif %}
+</div>
