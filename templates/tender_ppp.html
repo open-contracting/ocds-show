@@ -403,6 +403,27 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-md-12">
+        {% if tender.amendments %}
+          {% set amendments = tender.amendments %}
+          {% set parent = tender %}
+          {% include 'amendments.html' %}
+        {% else %}
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                {{ gettext("Amendments") }}
+              </h3>
+            </div>
+            <div class="panel-body">
+              {{ gettext("No amendments provided") }}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
     {% if tender.__extra %}
       <div class="row">
         <div class="col-md-12">

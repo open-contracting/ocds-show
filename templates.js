@@ -4520,21 +4520,21 @@ output += runtime.suppressValue((lineno = 942, colno = 31, runtime.callWrap(runt
 output += "\n                  </div>\n                </div>\n              </div>\n            </div>\n          ";
 ;
 }
-output += "\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">\n          <h3 class=\"panel-title\">\n            ";
-output += runtime.suppressValue((lineno = 958, colno = 20, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Implementation"])), env.opts.autoescape);
-output += "\n          </h3>\n        </div>\n        <div class=\"panel-body\">\n          <div class=\"row\">\n            <div class=\"col-md-12\">\n              ";
+output += "\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      ";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"amendments")) {
+output += "\n        ";
 var t_71;
-t_71 = runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"transactions");
-frame.set("transactions", t_71, true);
+t_71 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"amendments");
+frame.set("amendments", t_71, true);
 if(frame.topLevel) {
-context.setVariable("transactions", t_71);
+context.setVariable("amendments", t_71);
 }
 if(frame.topLevel) {
-context.addExport("transactions", t_71);
+context.addExport("amendments", t_71);
 }
-output += "\n              ";
+output += "\n        ";
 var t_72;
-t_72 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation");
+t_72 = runtime.contextOrFrameLookup(context, frame, "contract");
 frame.set("parent", t_72, true);
 if(frame.topLevel) {
 context.setVariable("parent", t_72);
@@ -4542,25 +4542,36 @@ context.setVariable("parent", t_72);
 if(frame.topLevel) {
 context.addExport("parent", t_72);
 }
-output += "\n              ";
-env.getTemplate("transactions.html", false, "contract_ppp.html", null, function(t_75,t_73) {
+output += "\n        ";
+env.getTemplate("amendments.html", false, "contract_ppp.html", null, function(t_75,t_73) {
 if(t_75) { cb(t_75); return; }
 t_73.render(context.getVariables(), frame, function(t_76,t_74) {
 if(t_76) { cb(t_76); return; }
 output += t_74
-output += "\n            </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"col-md-12\">\n              ";
-if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"milestones")) {
-output += "\n                ";
+output += "\n      ";
+})});
+}
+else {
+output += "\n        <div class=\"panel panel-warning\">\n          <div class=\"panel-heading\">\n            <h3 class=\"panel-title\">\n              ";
+output += runtime.suppressValue((lineno = 963, colno = 22, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Amendments"])), env.opts.autoescape);
+output += "\n            </h3>\n          </div>\n          <div class=\"panel-body\">\n            ";
+output += runtime.suppressValue((lineno = 967, colno = 20, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No amendments provided"])), env.opts.autoescape);
+output += "\n          </div>\n        </div>\n      ";
+;
+}
+output += "\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">\n          <h3 class=\"panel-title\">\n            ";
+output += runtime.suppressValue((lineno = 979, colno = 20, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Implementation"])), env.opts.autoescape);
+output += "\n          </h3>\n        </div>\n        <div class=\"panel-body\">\n          <div class=\"row\">\n            <div class=\"col-md-12\">\n              ";
 var t_77;
-t_77 = runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"milestones");
-frame.set("milestones", t_77, true);
+t_77 = runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"transactions");
+frame.set("transactions", t_77, true);
 if(frame.topLevel) {
-context.setVariable("milestones", t_77);
+context.setVariable("transactions", t_77);
 }
 if(frame.topLevel) {
-context.addExport("milestones", t_77);
+context.addExport("transactions", t_77);
 }
-output += "\n                ";
+output += "\n              ";
 var t_78;
 t_78 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation");
 frame.set("parent", t_78, true);
@@ -4570,101 +4581,129 @@ context.setVariable("parent", t_78);
 if(frame.topLevel) {
 context.addExport("parent", t_78);
 }
-output += "\n                ";
-env.getTemplate("milestones.html", false, "contract_ppp.html", null, function(t_81,t_79) {
+output += "\n              ";
+env.getTemplate("transactions.html", false, "contract_ppp.html", null, function(t_81,t_79) {
 if(t_81) { cb(t_81); return; }
 t_79.render(context.getVariables(), frame, function(t_82,t_80) {
 if(t_82) { cb(t_82); return; }
 output += t_80
+output += "\n            </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"col-md-12\">\n              ";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"milestones")) {
+output += "\n                ";
+var t_83;
+t_83 = runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"milestones");
+frame.set("milestones", t_83, true);
+if(frame.topLevel) {
+context.setVariable("milestones", t_83);
+}
+if(frame.topLevel) {
+context.addExport("milestones", t_83);
+}
+output += "\n                ";
+var t_84;
+t_84 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation");
+frame.set("parent", t_84, true);
+if(frame.topLevel) {
+context.setVariable("parent", t_84);
+}
+if(frame.topLevel) {
+context.addExport("parent", t_84);
+}
+output += "\n                ";
+env.getTemplate("milestones.html", false, "contract_ppp.html", null, function(t_87,t_85) {
+if(t_87) { cb(t_87); return; }
+t_85.render(context.getVariables(), frame, function(t_88,t_86) {
+if(t_88) { cb(t_88); return; }
+output += t_86
 output += "\n              ";
 })});
 }
 else {
 output += "\n                <div class=\"panel panel-warning\">\n                  <div class=\"panel-heading\">\n                    <h3 class=\"panel-title\">\n                      ";
-output += runtime.suppressValue((lineno = 980, colno = 30, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Milestones"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1001, colno = 30, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Milestones"])), env.opts.autoescape);
 output += "\n                    </h3>\n                  </div>\n                  <div class=\"panel-body\">\n                    ";
-output += runtime.suppressValue((lineno = 984, colno = 28, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No milestones provided"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1005, colno = 28, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No milestones provided"])), env.opts.autoescape);
 output += "\n                  </div>\n                </div>\n              ";
 ;
 }
 output += "\n            </div>\n          </div>\n\n          ";
 if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"charges")) {
 output += "\n            <div class=\"row\">\n              <div class=\"col-md-12\">\n                <div class=\"panel panel-default\">\n                  <div class=\"panel-heading\">\n                    <h3 class=\"panel-title\">\n                      ";
-output += runtime.suppressValue((lineno = 997, colno = 30, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Charges"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1018, colno = 30, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Charges"])), env.opts.autoescape);
 output += "\n                    </h3>\n                  </div>\n                  <div class=\"table-responsive\">\n                    <table class=\"table table-striped\">\n                      <thead>\n                        <tr>\n                          <th>";
-output += runtime.suppressValue((lineno = 1004, colno = 38, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Title"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1025, colno = 38, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Title"])), env.opts.autoescape);
 output += "</th>\n                          <th>";
-output += runtime.suppressValue((lineno = 1005, colno = 38, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Period"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1026, colno = 38, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Period"])), env.opts.autoescape);
 output += "</th>\n                          <th>";
-output += runtime.suppressValue((lineno = 1006, colno = 38, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Actual Value"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1027, colno = 38, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Actual Value"])), env.opts.autoescape);
 output += "</th>\n                          <th>";
-output += runtime.suppressValue((lineno = 1007, colno = 38, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Estimated Value"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1028, colno = 38, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Estimated Value"])), env.opts.autoescape);
 output += "</th>\n                          <th>";
-output += runtime.suppressValue((lineno = 1008, colno = 38, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Paid By"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1029, colno = 38, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Paid By"])), env.opts.autoescape);
 output += "</th>\n                          <th>";
-output += runtime.suppressValue((lineno = 1009, colno = 38, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Notes"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1030, colno = 38, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Notes"])), env.opts.autoescape);
 output += "</th>\n                        </tr>\n                      </thead>\n                      <tbody>\n                        ";
 frame = frame.push();
-var t_85 = runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"charges");
-if(t_85) {var t_84 = t_85.length;
-for(var t_83=0; t_83 < t_85.length; t_83++) {
-var t_86 = t_85[t_83];
-frame.set("charge", t_86);
-frame.set("loop.index", t_83 + 1);
-frame.set("loop.index0", t_83);
-frame.set("loop.revindex", t_84 - t_83);
-frame.set("loop.revindex0", t_84 - t_83 - 1);
-frame.set("loop.first", t_83 === 0);
-frame.set("loop.last", t_83 === t_84 - 1);
-frame.set("loop.length", t_84);
+var t_91 = runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"charges");
+if(t_91) {var t_90 = t_91.length;
+for(var t_89=0; t_89 < t_91.length; t_89++) {
+var t_92 = t_91[t_89];
+frame.set("charge", t_92);
+frame.set("loop.index", t_89 + 1);
+frame.set("loop.index0", t_89);
+frame.set("loop.revindex", t_90 - t_89);
+frame.set("loop.revindex0", t_90 - t_89 - 1);
+frame.set("loop.first", t_89 === 0);
+frame.set("loop.last", t_89 === t_90 - 1);
+frame.set("loop.length", t_90);
 output += "\n                          <tr> <!-- add conditional colouring based on presence of url? -->\n                            <td>";
-output += runtime.suppressValue(runtime.memberLookup((t_86),"title"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((t_92),"title"), env.opts.autoescape);
 output += " ";
-output += runtime.suppressValue((lineno = 1015, colno = 60, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [t_86,"title"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1036, colno = 60, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [t_92,"title"])), env.opts.autoescape);
 output += " <small>(";
-output += runtime.suppressValue(runtime.memberLookup((t_86),"id"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((t_92),"id"), env.opts.autoescape);
 output += ")";
-output += runtime.suppressValue((lineno = 1015, colno = 112, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [t_86,"id"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1036, colno = 112, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [t_92,"id"])), env.opts.autoescape);
 output += "</small></td>\n                            <td>\n                              ";
-var t_87;
-t_87 = runtime.memberLookup((t_86),"period");
-frame.set("period", t_87, true);
+var t_93;
+t_93 = runtime.memberLookup((t_92),"period");
+frame.set("period", t_93, true);
 if(frame.topLevel) {
-context.setVariable("period", t_87);
+context.setVariable("period", t_93);
 }
 if(frame.topLevel) {
-context.addExport("period", t_87);
+context.addExport("period", t_93);
 }
 output += "\n                              ";
-env.getTemplate("period.html", false, "contract_ppp.html", null, function(t_90,t_88) {
-if(t_90) { cb(t_90); return; }
-t_88.render(context.getVariables(), frame, function(t_91,t_89) {
-if(t_91) { cb(t_91); return; }
-output += t_89
+env.getTemplate("period.html", false, "contract_ppp.html", null, function(t_96,t_94) {
+if(t_96) { cb(t_96); return; }
+t_94.render(context.getVariables(), frame, function(t_97,t_95) {
+if(t_97) { cb(t_97); return; }
+output += t_95
 output += "\n                            </td>\n                            <td>\n                            ";
-output += runtime.suppressValue(env.getFilter("currency").call(context, runtime.memberLookup((runtime.memberLookup((t_86),"estimatedValue")),"amount")), env.opts.autoescape);
+output += runtime.suppressValue(env.getFilter("currency").call(context, runtime.memberLookup((runtime.memberLookup((t_92),"estimatedValue")),"amount")), env.opts.autoescape);
 output += "\n                            ";
-output += runtime.suppressValue((lineno = 1022, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.memberLookup((t_86),"estimatedValue"),"amount"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1043, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.memberLookup((t_92),"estimatedValue"),"amount"])), env.opts.autoescape);
 output += "\n                            ";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_86),"estimatedValue")),"currency"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_92),"estimatedValue")),"currency"), env.opts.autoescape);
 output += "\n                            ";
-output += runtime.suppressValue((lineno = 1024, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.memberLookup((t_86),"estimatedValue"),"currency"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1045, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.memberLookup((t_92),"estimatedValue"),"currency"])), env.opts.autoescape);
 output += "\n                            </td>\n                            <td>\n                            ";
-output += runtime.suppressValue(env.getFilter("currency").call(context, runtime.memberLookup((runtime.memberLookup((t_86),"actualValue")),"amount")), env.opts.autoescape);
+output += runtime.suppressValue(env.getFilter("currency").call(context, runtime.memberLookup((runtime.memberLookup((t_92),"actualValue")),"amount")), env.opts.autoescape);
 output += "\n                            ";
-output += runtime.suppressValue((lineno = 1028, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.memberLookup((t_86),"actualValue"),"amount"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1049, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.memberLookup((t_92),"actualValue"),"amount"])), env.opts.autoescape);
 output += "\n                            ";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_86),"actualValue")),"currency"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_92),"actualValue")),"currency"), env.opts.autoescape);
 output += "\n                            ";
-output += runtime.suppressValue((lineno = 1030, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.memberLookup((t_86),"actualValue"),"currency"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1051, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.memberLookup((t_92),"actualValue"),"currency"])), env.opts.autoescape);
 output += "\n                            </td>\n                            <td>\n                            ";
-output += runtime.suppressValue(runtime.memberLookup((t_86),"paidBy"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((t_92),"paidBy"), env.opts.autoescape);
 output += "\n                            ";
-output += runtime.suppressValue((lineno = 1034, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [t_86,"amount"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1055, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [t_92,"amount"])), env.opts.autoescape);
 output += "\n                            </td>\n                            <td>\n                            ";
-output += runtime.suppressValue(runtime.memberLookup((t_86),"notes"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((t_92),"notes"), env.opts.autoescape);
 output += "\n                            ";
-output += runtime.suppressValue((lineno = 1038, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [t_86,"notes"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1059, colno = 41, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [t_92,"notes"])), env.opts.autoescape);
 output += "\n                            </td>\n                          </tr>\n                        ";
 })});
 }
@@ -4676,57 +4715,16 @@ output += "\n                      </tbody>\n                    </table>\n     
 output += "\n\n          <div class=\"row\">\n            <div class=\"col-md-12\">\n              ";
 if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"documents")) {
 output += "\n                ";
-var t_92;
-t_92 = runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"documents");
-frame.set("documents", t_92, true);
-if(frame.topLevel) {
-context.setVariable("documents", t_92);
-}
-if(frame.topLevel) {
-context.addExport("documents", t_92);
-}
-output += "\n                ";
-var t_93;
-t_93 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation");
-frame.set("parent", t_93, true);
-if(frame.topLevel) {
-context.setVariable("parent", t_93);
-}
-if(frame.topLevel) {
-context.addExport("parent", t_93);
-}
-output += "\n                ";
-env.getTemplate("documents.html", false, "contract_ppp.html", null, function(t_96,t_94) {
-if(t_96) { cb(t_96); return; }
-t_94.render(context.getVariables(), frame, function(t_97,t_95) {
-if(t_97) { cb(t_97); return; }
-output += t_95
-output += "\n              ";
-})});
-}
-else {
-output += "\n                <div class=\"panel panel-warning\">\n                  <div class=\"panel-heading\">\n                    <h3 class=\"panel-title\">\n                      ";
-output += runtime.suppressValue((lineno = 1060, colno = 30, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Documents"])), env.opts.autoescape);
-output += "\n                    </h3>\n                  </div>\n                  <div class=\"panel-body\">\n                    ";
-output += runtime.suppressValue((lineno = 1064, colno = 28, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No documents provided"])), env.opts.autoescape);
-output += "\n                  </div>\n                </div>\n              ";
-;
-}
-output += "\n            </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"col-md-12\">\n              ";
-if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"metrics")) {
-output += "\n                <div class=\"panel panel-default\">\n                  <div class=\"panel-heading\">\n                    <h3 class=\"panel-title\">\n                      ";
-output += runtime.suppressValue((lineno = 1077, colno = 30, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Metrics"])), env.opts.autoescape);
-output += "\n                    </h3>\n                  </div>\n                  <div class=\"panel-body\">\n                    ";
 var t_98;
-t_98 = runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"metrics");
-frame.set("metrics", t_98, true);
+t_98 = runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"documents");
+frame.set("documents", t_98, true);
 if(frame.topLevel) {
-context.setVariable("metrics", t_98);
+context.setVariable("documents", t_98);
 }
 if(frame.topLevel) {
-context.addExport("metrics", t_98);
+context.addExport("documents", t_98);
 }
-output += "\n                    ";
+output += "\n                ";
 var t_99;
 t_99 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation");
 frame.set("parent", t_99, true);
@@ -4736,101 +4734,142 @@ context.setVariable("parent", t_99);
 if(frame.topLevel) {
 context.addExport("parent", t_99);
 }
-output += "\n                    ";
-env.getTemplate("metrics.html", false, "contract_ppp.html", null, function(t_102,t_100) {
+output += "\n                ";
+env.getTemplate("documents.html", false, "contract_ppp.html", null, function(t_102,t_100) {
 if(t_102) { cb(t_102); return; }
 t_100.render(context.getVariables(), frame, function(t_103,t_101) {
 if(t_103) { cb(t_103); return; }
 output += t_101
+output += "\n              ";
+})});
+}
+else {
+output += "\n                <div class=\"panel panel-warning\">\n                  <div class=\"panel-heading\">\n                    <h3 class=\"panel-title\">\n                      ";
+output += runtime.suppressValue((lineno = 1081, colno = 30, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Documents"])), env.opts.autoescape);
+output += "\n                    </h3>\n                  </div>\n                  <div class=\"panel-body\">\n                    ";
+output += runtime.suppressValue((lineno = 1085, colno = 28, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No documents provided"])), env.opts.autoescape);
+output += "\n                  </div>\n                </div>\n              ";
+;
+}
+output += "\n            </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"col-md-12\">\n              ";
+if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"metrics")) {
+output += "\n                <div class=\"panel panel-default\">\n                  <div class=\"panel-heading\">\n                    <h3 class=\"panel-title\">\n                      ";
+output += runtime.suppressValue((lineno = 1098, colno = 30, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Metrics"])), env.opts.autoescape);
+output += "\n                    </h3>\n                  </div>\n                  <div class=\"panel-body\">\n                    ";
+var t_104;
+t_104 = runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"metrics");
+frame.set("metrics", t_104, true);
+if(frame.topLevel) {
+context.setVariable("metrics", t_104);
+}
+if(frame.topLevel) {
+context.addExport("metrics", t_104);
+}
+output += "\n                    ";
+var t_105;
+t_105 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation");
+frame.set("parent", t_105, true);
+if(frame.topLevel) {
+context.setVariable("parent", t_105);
+}
+if(frame.topLevel) {
+context.addExport("parent", t_105);
+}
+output += "\n                    ";
+env.getTemplate("metrics.html", false, "contract_ppp.html", null, function(t_108,t_106) {
+if(t_108) { cb(t_108); return; }
+t_106.render(context.getVariables(), frame, function(t_109,t_107) {
+if(t_109) { cb(t_109); return; }
+output += t_107
 output += "\n                  </div>\n                </div>\n              ";
 })});
 }
 else {
 output += "\n                <div class=\"panel panel-warning\">\n                  <div class=\"panel-heading\">\n                    <h3 class=\"panel-title\">\n                      ";
-output += runtime.suppressValue((lineno = 1090, colno = 30, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Metrics"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1111, colno = 30, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Metrics"])), env.opts.autoescape);
 output += "\n                    </h3>\n                  </div>\n                  <div class=\"panel-body\">\n                    ";
-output += runtime.suppressValue((lineno = 1094, colno = 28, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No Metrics provided"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1115, colno = 28, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No Metrics provided"])), env.opts.autoescape);
 output += "\n                  </div>\n                </div>\n              ";
 ;
 }
 output += "\n            </div>\n          </div>\n\n          ";
 if(runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"tariffs")) {
 output += "\n            <div class=\"row\">\n              <div class=\"col-xs-12\">\n                <div class=\"panel panel-default\">\n                  <div class=\"panel-heading\">\n                    <h3 class=\"panel-title\">\n                      Tariffs ";
-output += runtime.suppressValue((lineno = 1107, colno = 43, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"tariffs")])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1128, colno = 43, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"tariffs")])), env.opts.autoescape);
 output += "\n                    </h3>\n                  </div>\n                  <div class=\"panel-body\">\n                    <div class=\"table-responsive\">\n                    <table class=\"table table-striped table-condensed\">\n                      <thead>\n                        <tr>\n                          <th>\n                            ";
-output += runtime.suppressValue((lineno = 1116, colno = 36, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["title"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1137, colno = 36, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["title"])), env.opts.autoescape);
 output += "\n                          </th>\n                          <th>\n                            ";
-output += runtime.suppressValue((lineno = 1119, colno = 36, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Period"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1140, colno = 36, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Period"])), env.opts.autoescape);
 output += "\n                          </th>\n                          <th>\n                            ";
-output += runtime.suppressValue((lineno = 1122, colno = 36, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Dimensions"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1143, colno = 36, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Dimensions"])), env.opts.autoescape);
 output += "\n                          </th>\n                          <th>\n                            ";
-output += runtime.suppressValue((lineno = 1125, colno = 36, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Value"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1146, colno = 36, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Value"])), env.opts.autoescape);
 output += "\n                          </th>\n                          <th>\n                            ";
-output += runtime.suppressValue((lineno = 1128, colno = 36, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Unit"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1149, colno = 36, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Unit"])), env.opts.autoescape);
 output += "\n                          </th>\n                          <th>\n                            ";
-output += runtime.suppressValue((lineno = 1131, colno = 36, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Paid By"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1152, colno = 36, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Paid By"])), env.opts.autoescape);
 output += "\n                          </th>\n                          <th>\n                            ";
-output += runtime.suppressValue((lineno = 1134, colno = 36, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Notes"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1155, colno = 36, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Notes"])), env.opts.autoescape);
 output += "\n                          </th>\n                        </tr>\n                      </thead>\n                      <tbody>\n                        ";
 frame = frame.push();
-var t_106 = runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"tariffs");
-if(t_106) {var t_105 = t_106.length;
-for(var t_104=0; t_104 < t_106.length; t_104++) {
-var t_107 = t_106[t_104];
-frame.set("tariff", t_107);
-frame.set("loop.index", t_104 + 1);
-frame.set("loop.index0", t_104);
-frame.set("loop.revindex", t_105 - t_104);
-frame.set("loop.revindex0", t_105 - t_104 - 1);
-frame.set("loop.first", t_104 === 0);
-frame.set("loop.last", t_104 === t_105 - 1);
-frame.set("loop.length", t_105);
+var t_112 = runtime.memberLookup((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"implementation")),"tariffs");
+if(t_112) {var t_111 = t_112.length;
+for(var t_110=0; t_110 < t_112.length; t_110++) {
+var t_113 = t_112[t_110];
+frame.set("tariff", t_113);
+frame.set("loop.index", t_110 + 1);
+frame.set("loop.index0", t_110);
+frame.set("loop.revindex", t_111 - t_110);
+frame.set("loop.revindex0", t_111 - t_110 - 1);
+frame.set("loop.first", t_110 === 0);
+frame.set("loop.last", t_110 === t_111 - 1);
+frame.set("loop.length", t_111);
 output += "\n                          <tr>\n                            <td>\n                              ";
-output += runtime.suppressValue(runtime.memberLookup((t_107),"title"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((t_113),"title"), env.opts.autoescape);
 output += "\n                              ";
-output += runtime.suppressValue((lineno = 1143, colno = 43, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [t_107,"title"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1164, colno = 43, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [t_113,"title"])), env.opts.autoescape);
 output += "\n                              <br>\n                              <small> (";
-output += runtime.suppressValue(runtime.memberLookup((t_107),"id"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((t_113),"id"), env.opts.autoescape);
 output += ") ";
-output += runtime.suppressValue((lineno = 1145, colno = 65, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [t_107,"id"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1166, colno = 65, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [t_113,"id"])), env.opts.autoescape);
 output += " </small>\n                            </td>\n                            <td>\n                              ";
-var t_108;
-t_108 = runtime.memberLookup((t_107),"period");
-frame.set("period", t_108, true);
+var t_114;
+t_114 = runtime.memberLookup((t_113),"period");
+frame.set("period", t_114, true);
 if(frame.topLevel) {
-context.setVariable("period", t_108);
+context.setVariable("period", t_114);
 }
 if(frame.topLevel) {
-context.addExport("period", t_108);
+context.addExport("period", t_114);
 }
 output += "\n                              ";
-env.getTemplate("period.html", false, "contract_ppp.html", null, function(t_111,t_109) {
-if(t_111) { cb(t_111); return; }
-t_109.render(context.getVariables(), frame, function(t_112,t_110) {
-if(t_112) { cb(t_112); return; }
-output += t_110
+env.getTemplate("period.html", false, "contract_ppp.html", null, function(t_117,t_115) {
+if(t_117) { cb(t_117); return; }
+t_115.render(context.getVariables(), frame, function(t_118,t_116) {
+if(t_118) { cb(t_118); return; }
+output += t_116
 output += "\n                            </td>\n                            <td>\n                              ";
 frame = frame.push();
-var t_115 = runtime.memberLookup((t_107),"dimensions");
-if(t_115) {var t_113;
-if(runtime.isArray(t_115)) {
-var t_114 = t_115.length;
-for(t_113=0; t_113 < t_115.length; t_113++) {
-var t_116 = t_115[t_113][0]
-frame.set("key", t_115[t_113][0]);
-var t_117 = t_115[t_113][1]
-frame.set("value", t_115[t_113][1]);
-frame.set("loop.index", t_113 + 1);
-frame.set("loop.index0", t_113);
-frame.set("loop.revindex", t_114 - t_113);
-frame.set("loop.revindex0", t_114 - t_113 - 1);
-frame.set("loop.first", t_113 === 0);
-frame.set("loop.last", t_113 === t_114 - 1);
-frame.set("loop.length", t_114);
+var t_121 = runtime.memberLookup((t_113),"dimensions");
+if(t_121) {var t_119;
+if(runtime.isArray(t_121)) {
+var t_120 = t_121.length;
+for(t_119=0; t_119 < t_121.length; t_119++) {
+var t_122 = t_121[t_119][0]
+frame.set("key", t_121[t_119][0]);
+var t_123 = t_121[t_119][1]
+frame.set("value", t_121[t_119][1]);
+frame.set("loop.index", t_119 + 1);
+frame.set("loop.index0", t_119);
+frame.set("loop.revindex", t_120 - t_119);
+frame.set("loop.revindex0", t_120 - t_119 - 1);
+frame.set("loop.first", t_119 === 0);
+frame.set("loop.last", t_119 === t_120 - 1);
+frame.set("loop.length", t_120);
 output += "\n                                <strong>";
-output += runtime.suppressValue(t_116, env.opts.autoescape);
+output += runtime.suppressValue(t_122, env.opts.autoescape);
 output += ": </strong>";
-output += runtime.suppressValue(t_117, env.opts.autoescape);
+output += runtime.suppressValue(t_123, env.opts.autoescape);
 output += "\n                                ";
 if(!runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "loop")),"last")) {
 output += "\n                                  <br/>\n                                ";
@@ -4840,24 +4879,24 @@ output += "\n                              ";
 ;
 }
 } else {
-t_113 = -1;
-var t_114 = runtime.keys(t_115).length;
-for(var t_118 in t_115) {
-t_113++;
-var t_119 = t_115[t_118];
-frame.set("key", t_118);
-frame.set("value", t_119);
-frame.set("loop.index", t_113 + 1);
-frame.set("loop.index0", t_113);
-frame.set("loop.revindex", t_114 - t_113);
-frame.set("loop.revindex0", t_114 - t_113 - 1);
-frame.set("loop.first", t_113 === 0);
-frame.set("loop.last", t_113 === t_114 - 1);
-frame.set("loop.length", t_114);
+t_119 = -1;
+var t_120 = runtime.keys(t_121).length;
+for(var t_124 in t_121) {
+t_119++;
+var t_125 = t_121[t_124];
+frame.set("key", t_124);
+frame.set("value", t_125);
+frame.set("loop.index", t_119 + 1);
+frame.set("loop.index0", t_119);
+frame.set("loop.revindex", t_120 - t_119);
+frame.set("loop.revindex0", t_120 - t_119 - 1);
+frame.set("loop.first", t_119 === 0);
+frame.set("loop.last", t_119 === t_120 - 1);
+frame.set("loop.length", t_120);
 output += "\n                                <strong>";
-output += runtime.suppressValue(t_118, env.opts.autoescape);
+output += runtime.suppressValue(t_124, env.opts.autoescape);
 output += ": </strong>";
-output += runtime.suppressValue(t_119, env.opts.autoescape);
+output += runtime.suppressValue(t_125, env.opts.autoescape);
 output += "\n                                ";
 if(!runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "loop")),"last")) {
 output += "\n                                  <br/>\n                                ";
@@ -4870,34 +4909,34 @@ output += "\n                              ";
 }
 frame = frame.pop();
 output += "\n                            </td>\n                            <td>\n                              ";
-output += runtime.suppressValue(env.getFilter("currency").call(context, runtime.memberLookup((runtime.memberLookup((t_107),"value")),"amount")), env.opts.autoescape);
+output += runtime.suppressValue(env.getFilter("currency").call(context, runtime.memberLookup((runtime.memberLookup((t_113),"value")),"amount")), env.opts.autoescape);
 output += "\n                              ";
-output += runtime.suppressValue((lineno = 1161, colno = 43, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.memberLookup((t_107),"value"),"amount"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1182, colno = 43, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.memberLookup((t_113),"value"),"amount"])), env.opts.autoescape);
 output += "\n                              ";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_107),"value")),"currency"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_113),"value")),"currency"), env.opts.autoescape);
 output += "\n                              ";
-output += runtime.suppressValue((lineno = 1163, colno = 43, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.memberLookup((t_107),"value"),"currency"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1184, colno = 43, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.memberLookup((t_113),"value"),"currency"])), env.opts.autoescape);
 output += "\n                            </td>\n                            <td>\n                              ";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_107),"unit")),"name"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_113),"unit")),"name"), env.opts.autoescape);
 output += "\n                              ";
-output += runtime.suppressValue((lineno = 1167, colno = 43, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.memberLookup((t_107),"unit"),"name"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1188, colno = 43, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.memberLookup((t_113),"unit"),"name"])), env.opts.autoescape);
 output += "\n                              ";
-if(runtime.memberLookup((runtime.memberLookup((t_107),"unit")),"id")) {
+if(runtime.memberLookup((runtime.memberLookup((t_113),"unit")),"id")) {
 output += "\n                                ";
-output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_107),"unit")),"id"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((runtime.memberLookup((t_113),"unit")),"id"), env.opts.autoescape);
 output += "\n                                ";
-output += runtime.suppressValue((lineno = 1170, colno = 45, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.memberLookup((t_107),"unit"),"id"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1191, colno = 45, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.memberLookup((t_113),"unit"),"id"])), env.opts.autoescape);
 output += "\n                              ";
 ;
 }
 output += "\n                            </td>\n                            <td>\n                              ";
-output += runtime.suppressValue(runtime.memberLookup((t_107),"paidBy"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((t_113),"paidBy"), env.opts.autoescape);
 output += "\n                              ";
-output += runtime.suppressValue((lineno = 1175, colno = 43, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [t_107,"paidBy"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1196, colno = 43, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [t_113,"paidBy"])), env.opts.autoescape);
 output += "\n                            </td>\n                            <td>\n                              ";
-output += runtime.suppressValue(runtime.memberLookup((t_107),"notes"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((t_113),"notes"), env.opts.autoescape);
 output += "\n                              ";
-output += runtime.suppressValue((lineno = 1179, colno = 43, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [t_107,"notes"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1200, colno = 43, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [t_113,"notes"])), env.opts.autoescape);
 output += "\n                            </td>\n                          </tr>\n                        ";
 })});
 }
@@ -4909,9 +4948,9 @@ output += "\n                      </tbody>\n                    </table>\n     
 output += "\n\n          ";
 if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "contract")),"__extra")) {
 output += "\n            <div class=\"row\">\n              <div class=\"col-md-12\">\n                <div class=\"panel panel-default\">\n                  <div class=\"panel-heading\">\n                    <h3 class=\"panel-title\">\n                      Extra fields ";
-output += runtime.suppressValue((lineno = 1198, colno = 48, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.contextOrFrameLookup(context, frame, "contract"),"__extra"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1219, colno = 48, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.contextOrFrameLookup(context, frame, "contract"),"__extra"])), env.opts.autoescape);
 output += "\n                    </h3>\n                  </div>\n                  <div class=\"panel-body\">\n                    ";
-output += runtime.suppressValue((lineno = 1202, colno = 31, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "extra_view"), "extra_view", context, [runtime.contextOrFrameLookup(context, frame, "contract")])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 1223, colno = 31, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "extra_view"), "extra_view", context, [runtime.contextOrFrameLookup(context, frame, "contract")])), env.opts.autoescape);
 output += "\n                  </div>\n                </div>\n              </div>\n            </div>\n          ";
 ;
 }
@@ -11234,12 +11273,51 @@ output += runtime.suppressValue((lineno = 398, colno = 22, runtime.callWrap(runt
 output += "\n            </div>\n          </div>\n        ";
 ;
 }
+output += "\n      </div>\n    </div>\n\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        ";
+if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"amendments")) {
+output += "\n          ";
+var t_48;
+t_48 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"amendments");
+frame.set("amendments", t_48, true);
+if(frame.topLevel) {
+context.setVariable("amendments", t_48);
+}
+if(frame.topLevel) {
+context.addExport("amendments", t_48);
+}
+output += "\n          ";
+var t_49;
+t_49 = runtime.contextOrFrameLookup(context, frame, "tender");
+frame.set("parent", t_49, true);
+if(frame.topLevel) {
+context.setVariable("parent", t_49);
+}
+if(frame.topLevel) {
+context.addExport("parent", t_49);
+}
+output += "\n          ";
+env.getTemplate("amendments.html", false, "tender_ppp.html", null, function(t_52,t_50) {
+if(t_52) { cb(t_52); return; }
+t_50.render(context.getVariables(), frame, function(t_53,t_51) {
+if(t_53) { cb(t_53); return; }
+output += t_51
+output += "\n        ";
+})});
+}
+else {
+output += "\n          <div class=\"panel panel-warning\">\n            <div class=\"panel-heading\">\n              <h3 class=\"panel-title\">\n                ";
+output += runtime.suppressValue((lineno = 415, colno = 24, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["Amendments"])), env.opts.autoescape);
+output += "\n              </h3>\n            </div>\n            <div class=\"panel-body\">\n              ";
+output += runtime.suppressValue((lineno = 419, colno = 22, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "gettext"), "gettext", context, ["No amendments provided"])), env.opts.autoescape);
+output += "\n            </div>\n          </div>\n        ";
+;
+}
 output += "\n      </div>\n    </div>\n\n    ";
 if(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "tender")),"__extra")) {
 output += "\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <div class=\"panel panel-default\">\n            <div class=\"panel-heading\">\n              <h3 class=\"panel-title\">\n                Extra fields ";
-output += runtime.suppressValue((lineno = 411, colno = 42, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.contextOrFrameLookup(context, frame, "tender"),"__extra"])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 432, colno = 42, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "change_label"), "change_label", context, [runtime.contextOrFrameLookup(context, frame, "tender"),"__extra"])), env.opts.autoescape);
 output += "\n              </h3>\n            </div>\n            <div class=\"panel-body\">\n              ";
-output += runtime.suppressValue((lineno = 415, colno = 25, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "extra_view"), "extra_view", context, [runtime.contextOrFrameLookup(context, frame, "tender")])), env.opts.autoescape);
+output += runtime.suppressValue((lineno = 436, colno = 25, runtime.callWrap(runtime.contextOrFrameLookup(context, frame, "extra_view"), "extra_view", context, [runtime.contextOrFrameLookup(context, frame, "tender")])), env.opts.autoescape);
 output += "\n            </div>\n          </div>\n        </div>\n      </div>\n    ";
 ;
 }
