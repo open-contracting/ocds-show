@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "node build-frontend.js",
     "test": "qunit -t js/tests.js --code js/merge.js -d js/nunjucks.min.js"
   },
   "author": "",

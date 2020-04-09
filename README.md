@@ -24,11 +24,11 @@ Clone this repository, then run:
 
 To compile the templates, run:
 
-    node build-frontend.js
+    npm run build
 
 Or, to re-compile the templates whenever they change, run:
 
-    node build-frontend.js -w
+    npm run build -- -w
 
 ## Testing
 
